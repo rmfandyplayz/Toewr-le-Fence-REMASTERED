@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51c2833244dd5f40b7f3b256522638a, type: 3}
   m_Name: Normal
   m_EditorClassIdentifier: 
-  enemyType: 
-  speed: 0
-  overallHealth: 0
+  enemyType: Normal
+  speed: 10
+  overallHealth: 20
   overallShields: 0
-  firedamageamount: 0
-  dropMoneyAmount: 0
+  firedamageamount: 1
+  dropMoneyAmount: 10
