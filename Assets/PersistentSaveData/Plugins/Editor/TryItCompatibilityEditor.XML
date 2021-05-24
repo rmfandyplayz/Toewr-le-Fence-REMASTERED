@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TryItCompatibilityEditor</name>
+    </assembly>
+    <members>
+        <member name="T:TryItCompatibilityEditor.SceneButton">
+            <summary>
+            Descibes how to draw a window button
+            </summary>
+        </member>
+        <member name="F:TryItCompatibilityEditor.SceneButton.normalText">
+            <summary>
+            Text shown when not selected
+            </summary>
+        </member>
+        <member name="F:TryItCompatibilityEditor.SceneButton.selectedText">
+            <summary>
+            Text shown when selected
+            </summary>
+        </member>
+        <member name="F:TryItCompatibilityEditor.SceneButton.sceneName">
+            <summary>
+            Name of the scene the button will open
+            </summary>
+        </member>
+        <member name="F:TryItCompatibilityEditor.SceneButton.sceneInfo">
+            <summary>
+            Information about the scene
+            </summary>
+        </member>
+        <member name="M:TryItCompatibilityEditor.SceneButton.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Init a new scene button
+            </summary>
+            <param name="normalText">Text shown when not selected</param>
+            <param name="selectedText">Text shown when selected</param>
+            <param name="sceneName">Name of the scene the button will open</param>
+            <param name="sceneInfo">Information about the scene</param>
+        </member>
+        <member name="T:TryItCompatibilityEditor.ExampleScenesWindow">
+            <summary>
+            Opens example scene picker
+            </summary>
+        </member>
+        <member name="P:TryItCompatibilityEditor.ExampleScenesWindow.isFullVersion">
+            <summary>
+            Is the package the full version of the TryIt version
+            </summary>
+        </member>
+        <member name="P:TryItCompatibilityEditor.ExampleScenesWindow.packageName">
+            <summary>
+            Name of the package as it is available on the asset store
+            </summary>
+        </member>
+        <member name="P:TryItCompatibilityEditor.ExampleScenesWindow.buttonTexts">
+            <summary>
+            Text and message for the scene cjhange editor window
+            </summary>
+        </member>
+        <member name="P:TryItCompatibilityEditor.ExampleScenesWindow.fullVersionUrl">
+            <summary>
+            URL to get the full version if this is the TryiIt version
+            </summary>
+        </member>
+        <member name="P:TryItCompatibilityEditor.ExampleScenesWindow.newsletterSignupUrl">
+            <summary>
+            URL to sign up for our newsletter with a chance to win a prize
+            </summary>
+        </member>
+        <member name="M:TryItCompatibilityEditor.ExampleScenesWindow.Init(System.String,System.Int32,System.Int32)">
+            <summary>
+            Init the window from the calling class
+            </summary>
+            <param name="title">Title of the window, if not set the packageName will be used</param>
+            <param name="width">Width of the floating editor window</param>
+            <param name="height">Height of the floating editor window</param>
+        </member>
+        <member name="T:TryItCompatibilityEditor.ShowTryIt">
+            <summary>
+            Checks to show TryIt version prompt to new user
+            </summary>
+        </member>
+        <member name="M:TryItCompatibilityEditor.ShowTryIt.DrawTryItLabel(System.Boolean)">
+            <summary>
+            Uses EditorGUILayout.Label to show that product is try it version
+            </summary>
+            <param name="isTryIt">Whether is or is not try it version</param>
+        </member>
+        <member name="M:TryItCompatibilityEditor.ShowTryIt.DrawOpenTryItButton(System.Boolean)">
+            <summary>
+            Uses GUILayout.Button to show that product is try it version and open the window if clicked
+            </summary>
+            <param name="isTryIt">Whether is or is not try it version</param>
+        </member>
+    </members>
+</doc>
