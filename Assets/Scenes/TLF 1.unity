@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec538f196b54df4e9dda1a693d70a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToSwitch: 
 --- !u!114 &124198658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -543,6 +545,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e67c86dce05e54488bfb06da79de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FileName: 989494b9-2f4d-4909-8225-e78919ada499
+  m_Reference: {fileID: 0}
+  m_ReferenceIndex: -1
+  m_PlayModeSync: 0
+  m_PersistData:
+    members: []
+  m_SavePersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 2
+    time: 60
+    noSave: 0
+  m_LoadPersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 1
+    time: 60
+    noSave: 0
 --- !u!114 &176330487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,6 +609,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5599442e9085f364e8b26623bf1cbf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMoney: 0
+  moneyCooldown: 1
+  moneyGiven: 1
+  currentCooldown: 0
+  KeepTrackLevels: 1
+  maxCapacity: 200
+  isMoneyActive: 0
 --- !u!222 &176330489
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -650,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -678,8 +706,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 305098710}
   m_HandleRect: {fileID: 305098709}
   m_Direction: 2
-  m_Value: -0.0033498073
-  m_Size: 0.00000008719308
+  m_Value: -0.00000018041726
+  m_Size: 0.5167143
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -774,6 +802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a647c60c73b5edf49a191a56b035fd7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedTurret: {fileID: 0}
+  moneyScript: {fileID: 0}
+  upgradePanel: {fileID: 0}
 --- !u!114 &219099594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -924,7 +956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ad8a32c49567dd4187b478009a850e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23905966a2e7d4443ab3c284dd8f6a07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1073,6 +1105,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56c143cf4c04642bd1d3c2955e886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType:
+    Name: 
+    Cost: 0
+    costIncreaseAmount: 0
+    startingAmount: 0
+    upgradeEfficiency: 0
+    maxUpgradeValue: 0
+    UpgradeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    isMaximum: 1
+    Counter: 0
+  moneyScript: {fileID: 0}
 --- !u!114 &296790019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,6 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1455,6 +1501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1508,6 +1555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &326001827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,6 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1809,6 +1862,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56c143cf4c04642bd1d3c2955e886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType:
+    Name: 
+    Cost: 0
+    costIncreaseAmount: 0
+    startingAmount: 0
+    upgradeEfficiency: 0
+    maxUpgradeValue: 0
+    UpgradeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    isMaximum: 1
+    Counter: 0
+  moneyScript: {fileID: 0}
 --- !u!114 &422059632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1823,6 +1889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1954,6 +2021,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56c143cf4c04642bd1d3c2955e886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType:
+    Name: 
+    Cost: 0
+    costIncreaseAmount: 0
+    startingAmount: 0
+    upgradeEfficiency: 0
+    maxUpgradeValue: 0
+    UpgradeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    isMaximum: 1
+    Counter: 0
+  moneyScript: {fileID: 0}
 --- !u!114 &439536908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,6 +2048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2101,6 +2182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2154,6 +2236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &480992125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,6 +2529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2495,6 +2583,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &580645490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2754,6 +2847,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56c143cf4c04642bd1d3c2955e886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType:
+    Name: 
+    Cost: 0
+    costIncreaseAmount: 0
+    startingAmount: 0
+    upgradeEfficiency: 0
+    maxUpgradeValue: 0
+    UpgradeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    isMaximum: 1
+    Counter: 0
+  moneyScript: {fileID: 0}
 --- !u!114 &696689312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,6 +2874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3059,6 +3166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec538f196b54df4e9dda1a693d70a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToSwitch: 
 --- !u!114 &790632252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,6 +3181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3520,6 +3629,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e67c86dce05e54488bfb06da79de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FileName: 2ae67247-3f6c-4da6-897a-bb7b2ae14233
+  m_Reference: {fileID: 0}
+  m_ReferenceIndex: -1
+  m_PlayModeSync: 0
+  m_PersistData:
+    members: []
+  m_SavePersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 2
+    time: 60
+    noSave: 0
+  m_LoadPersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 1
+    time: 60
+    noSave: 0
 --- !u!114 &879621501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3532,6 +3659,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc77cbc177e6a9409791ff996dc6d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeprice: 200
+  moneymultiplier: 1.5
+  multiplybutton: {fileID: 0}
+  moneyscript: {fileID: 0}
+  capacityMultiplier: 2
+  cooldownSubtractor: 0.025
+  moneyIncrease: 1
+  upgradetext: {fileID: 0}
+  stonksLevel: 1
+  stonksLevelText: {fileID: 0}
 --- !u!114 &879621502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3546,6 +3683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3607,7 +3745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9764dd803c717604c8139351bc275239, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6ef04c4bec9c49d6a926d8931a50d86, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4435,6 +4573,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56c143cf4c04642bd1d3c2955e886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType:
+    Name: 
+    Cost: 0
+    costIncreaseAmount: 0
+    startingAmount: 0
+    upgradeEfficiency: 0
+    maxUpgradeValue: 0
+    UpgradeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    isMaximum: 1
+    Counter: 0
+  moneyScript: {fileID: 0}
 --- !u!114 &1080264969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4449,6 +4600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4649,7 +4801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 339.43326}
+  m_AnchoredPosition: {x: 0, y: 338.30008}
   m_SizeDelta: {x: 0, y: 700}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1294161476
@@ -4706,6 +4858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4759,6 +4912,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &1294161480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4849,6 +5007,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &1303013975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4863,6 +5026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4993,6 +5157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954f236f40c2ae04e874807d2b3985cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadescreen: {fileID: 0}
+  fadeinspeed: 2
+  fadeoutspeed: 1
 --- !u!225 &1400110242
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5093,6 +5260,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc77cbc177e6a9409791ff996dc6d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeprice: 200
+  moneymultiplier: 1.5
+  multiplybutton: {fileID: 0}
+  moneyscript: {fileID: 0}
+  capacityMultiplier: 2
+  cooldownSubtractor: 0.025
+  moneyIncrease: 1
+  upgradetext: {fileID: 0}
+  stonksLevel: 1
+  stonksLevelText: {fileID: 0}
 --- !u!114 &1409279555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,6 +5420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5375,6 +5553,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09cd06c040177c14ab11aebf2d1022e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: []
+  spawnPoint: {fileID: 0}
+  wavenumbertext: {fileID: 0}
+  startwavebutton: {fileID: 0}
+  waveNumber: 0
+  roundHealth: 5
+  roundShields: 5
+  rhAdder: 5
+  rsAdder: 5
+  timebetweenEnemySpawns: 0
+  moneycontrol: {fileID: 0}
+  enemyfirescript: {fileID: 0}
+  fastenemyfirescript: {fileID: 0}
+  obsidianenemyfirescript: {fileID: 0}
+  shieldedenemyfirescript: {fileID: 0}
+  shieldedfastenemyfirescript: {fileID: 0}
+  shieldedobsidianenemyfirescript: {fileID: 0}
+  knucklesenemyfirescript: {fileID: 0}
 --- !u!114 &1489935691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5387,6 +5583,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e67c86dce05e54488bfb06da79de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FileName: 53b3fc76-0784-45ed-a547-b7597f5b33c6
+  m_Reference: {fileID: 0}
+  m_ReferenceIndex: -1
+  m_PlayModeSync: 0
+  m_PersistData:
+    members: []
+  m_SavePersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 2
+    time: 60
+    noSave: 0
+  m_LoadPersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 1
+    time: 60
+    noSave: 0
 --- !u!114 &1489935692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5496,6 +5710,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e67c86dce05e54488bfb06da79de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FileName: 3fe42e12-16d7-4fb3-abcb-2fb2f80c58af
+  m_Reference: {fileID: 0}
+  m_ReferenceIndex: -1
+  m_PlayModeSync: 0
+  m_PersistData:
+    members: []
+  m_SavePersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 2
+    time: 60
+    noSave: 0
+  m_LoadPersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 1
+    time: 60
+    noSave: 0
 --- !u!114 &1491707183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5508,6 +5740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74af868f3e7b7684ea898efc612a1ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Overall_Health: 50
+  Current_Health: 0
+  Health_Bar: {fileID: 0}
 --- !u!114 &1491707184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5606,7 +5841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7552ad06b3de3d4f854e4928a7560e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a88aed7d41a914da78a9c95b167e25ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5678,6 +5913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5731,6 +5967,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &1529138321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5821,6 +6062,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56c143cf4c04642bd1d3c2955e886a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonType:
+    Name: 
+    Cost: 0
+    costIncreaseAmount: 0
+    startingAmount: 0
+    upgradeEfficiency: 0
+    maxUpgradeValue: 0
+    UpgradeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    isMaximum: 1
+    Counter: 0
+  moneyScript: {fileID: 0}
 --- !u!114 &1607508657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5835,6 +6089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6034,6 +6289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6087,6 +6343,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &1657002252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6179,6 +6440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6232,6 +6494,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &1688385275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6321,6 +6588,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e67c86dce05e54488bfb06da79de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FileName: 5c274c87-b5ea-4fa2-a543-04d59de8a730
+  m_Reference: {fileID: 0}
+  m_ReferenceIndex: -1
+  m_PlayModeSync: 0
+  m_PersistData:
+    members: []
+  m_SavePersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 2
+    time: 60
+    noSave: 0
+  m_LoadPersistence:
+    fileFormat: 1
+    auto: 1
+    usageType: 1
+    time: 60
+    noSave: 0
 --- !u!114 &1695214149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6333,6 +6618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbf80e011edd8d4bb44dc9cedd7a7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreAmount: 0
+  scoretext: {fileID: 0}
 --- !u!114 &1695214150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6509,6 +6796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6562,6 +6850,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &1723084317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6653,6 +6946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6681,7 +6975,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 826006894}
   m_HandleRect: {fileID: 826006893}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6839,6 +7133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccab5e5f293a7bf4dae5dab6a1764c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradePanel: {fileID: 0}
+  camera: {fileID: 0}
+  buttons: []
+  deleteButton: {fileID: 0}
 --- !u!114 &1894805928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6851,6 +7149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637af1afc0c6c0440b0830f39eac618f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausescreen: {fileID: 0}
 --- !u!114 &1894805929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6890,6 +7189,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1894805931
 Canvas:
   m_ObjectHideFlags: 0
@@ -7151,6 +7451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b8a79cb0c3dda4ca680dae9dd779dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  objectTobuy: {fileID: 0}
+  MoneyController: {fileID: 0}
+  CanSpam: 0
+  isSelected: 0
 --- !u!114 &1997085582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7165,6 +7470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
