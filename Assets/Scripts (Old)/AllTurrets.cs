@@ -6,6 +6,7 @@ using UnityEditor;
 public class AllTurrets : MonoBehaviour {
     private Transform target;
     [Header("Game Setup Fields")]
+    /*
     public string enemyTag = "Enemy";
     public string FastEnemyTag = "Fast Enemy";
     public string ObsidianEnemyTag = "Obsidian Enemy";
@@ -13,6 +14,7 @@ public class AllTurrets : MonoBehaviour {
     public string ShieldedFastEnemyTag = "Shielded Fast Enemy";
     public string ShieldedObsidianEnemyTag = "Shielded Obsidian Enemy";
     public string KnucklesEnemyTag = "Knuckles Enemy";
+    */
     public Transform partToRotate;
     public GameObject bulletPrefab;
     public Transform[] firePoints;
@@ -58,7 +60,7 @@ public class AllTurrets : MonoBehaviour {
 
     void UpdateTarget()
     {
-
+        /*
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         GameObject[] Fastenemies = GameObject.FindGameObjectsWithTag(FastEnemyTag);
         GameObject[] Obsidianenemies = GameObject.FindGameObjectsWithTag(ObsidianEnemyTag);
@@ -66,7 +68,6 @@ public class AllTurrets : MonoBehaviour {
         GameObject[] ShieldedFastEnemies = GameObject.FindGameObjectsWithTag(ShieldedFastEnemyTag);
         GameObject[] ShieldedObsidianEnemies = GameObject.FindGameObjectsWithTag(ShieldedObsidianEnemyTag);
         GameObject[] KnucklesEnemies = GameObject.FindGameObjectsWithTag(KnucklesEnemyTag);
-        List<GameObject> allenemies = new List<GameObject>();
         allenemies.AddRange(enemies);
         allenemies.AddRange(Fastenemies);
         allenemies.AddRange(Obsidianenemies);
@@ -74,6 +75,8 @@ public class AllTurrets : MonoBehaviour {
         allenemies.AddRange(ShieldedFastEnemies);
         allenemies.AddRange(ShieldedObsidianEnemies);
         allenemies.AddRange(KnucklesEnemies);
+        */
+        List<GameObject> allenemies = new List<GameObject>();
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
