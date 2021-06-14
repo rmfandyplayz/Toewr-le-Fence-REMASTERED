@@ -11,6 +11,9 @@ public class TurretConfiguration : MonoBehaviour
     public List<int> upgradesCounter;
     public Transform firePoint;
     private GameObject currentTarget;
+    public GameObject temporaryBullet;
+    public float angleOffset = 0;
+    private bool isOnCooldown = false;
 
     private void Start()
     {
@@ -60,13 +63,25 @@ public class TurretConfiguration : MonoBehaviour
         {
             Vector3 dir = currentTarget.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.back);
-            Debug.LogWarning(Vector3.SignedAngle(transform.position, dir, Vector3.forward));
-            transform.eulerAngles = Vector3.forward * (Vector3.SignedAngle(transform.position, dir, Vector3.forward)-180);
+            //Debug.LogWarning(Vector3.SignedAngle(transform.position, dir, Vector3.forward));
+            transform.eulerAngles = Vector3.forward * (Vector3.SignedAngle(transform.position, dir, Vector3.forward)-angleOffset); 
             //transform.LookAt(currentTarget.transform);
+            if(isOnCooldown == false)
+            {
+                StartCoroutine(Shoot());
+            }
         }
     }
 
-
+    IEnumerator Shoot()
+    {
+        GameObject bullet = Instantiate(temporaryBullet, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<BulletController>().targetenemy = currentTarget;
+        //shoot bullet here
+        isOnCooldown = true;
+        yield return new WaitForSeconds(tsettings.fireRate);
+        isOnCooldown = false;
+    }
 
 
 

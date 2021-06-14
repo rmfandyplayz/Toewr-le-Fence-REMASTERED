@@ -9,8 +9,8 @@ public class EnemySetup : ScriptableObject
     public string enemyType;
     public Sprite enemySprite;
     public float speed;
-    public float overallHealth;
-    public float overallShields;
+    public float maxHealth;
+    public float maxShields;
     public float firedamageamount;
     //private float firedmgpertick = 1f;
 

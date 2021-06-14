@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Normal
   m_EditorClassIdentifier: 
   enemyType: Normal
+  enemySprite: {fileID: 0}
   speed: 10
-  overallHealth: 20
-  overallShields: 0
+  maxHealth: 10
+  maxShields: 0
   firedamageamount: 1
   dropMoneyAmount: 10
