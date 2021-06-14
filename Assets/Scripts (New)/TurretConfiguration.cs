@@ -60,8 +60,8 @@ public class TurretConfiguration : MonoBehaviour
         {
             Vector3 dir = currentTarget.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.back);
-            Debug.LogWarning(dir);
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * tsettings.rotateSpeed);
+            Debug.LogWarning(Vector3.SignedAngle(transform.position, dir, Vector3.forward));
+            transform.eulerAngles = Vector3.forward * (Vector3.SignedAngle(transform.position, dir, Vector3.forward)-180);
             //transform.LookAt(currentTarget.transform);
         }
     }
