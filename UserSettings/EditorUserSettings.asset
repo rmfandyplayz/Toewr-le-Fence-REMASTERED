@@ -5,6 +5,36 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+    RecentlyUsedScenePath-0:
+      value: 22424703114646680e0b0227036c72151802563f22213229
+      flags: 0
+    RecentlyUsedScenePath-1:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa816363a3c00ee2e21260032e2060c45e305031f08
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa80a362a3616dc340b29223ee10f471ef8021e12
+      flags: 0
+    RecentlyUsedScenePath-3:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa80830283816e6330a1b193eff1a050eb81e04020517
+      flags: 0
+    RecentlyUsedScenePath-4:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa81f3e2f3c31e733131d002cf7441c05ff1f13
+      flags: 0
+    RecentlyUsedScenePath-5:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa81930303610db2b013b0f1aea0b041bfa0e441e1f07e917
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa8193e283a0ac83d093b4f2afc031d12
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa81b3b2a380cec39000b281aea0b041bfa0e441e1f07e917
+      flags: 0
+    RecentlyUsedScenePath-8:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa8093c3d350be13b21260032e2060c45e305031f08
+      flags: 0
+    RecentlyUsedScenePath-9:
+      value: 224247031146466b010f182b1e2a502401121d24630d3e3120391136f1af073be7e933faa80f16722c0ce6281d
+      flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0
@@ -15,5 +45,7 @@ EditorUserSettings:
   m_SemanticMergeMode: 2
   m_VCShowFailedCheckout: 1
   m_VCOverwriteFailedCheckoutAssets: 1
-  m_VCOverlayIcons: 1
+  m_VCProjectOverlayIcons: 1
+  m_VCHierarchyOverlayIcons: 1
+  m_VCOtherOverlayIcons: 1
   m_VCAllowAsyncUpdate: 0

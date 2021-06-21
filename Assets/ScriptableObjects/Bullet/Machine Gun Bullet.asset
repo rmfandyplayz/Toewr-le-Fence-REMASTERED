@@ -15,7 +15,7 @@ MonoBehaviour:
   bulletSprite: {fileID: 0}
   particlePrefab: {fileID: 0}
   exposionPrefab: {fileID: 0}
-  speed: 5
+  speed: 50
   bulletDamage: 1
   freezeTowerSlowdown: 0
   explosionDamage_subtractfrombulletdamage: -10
