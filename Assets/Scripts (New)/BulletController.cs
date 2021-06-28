@@ -49,10 +49,9 @@ public class BulletController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
         {
+            Destroy(this.gameObject);
             enemy.TakeDamage(bscript.bulletDamage);
-
         }
-        Destroy(this.gameObject);
     }
 
 
