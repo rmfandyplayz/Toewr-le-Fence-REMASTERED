@@ -18,4 +18,5 @@ MonoBehaviour:
   maxHealth: 10
   maxShields: 0
   firedamageamount: 1
-  dropMoneyAmount: 10
+  scoreValue: 1
+  dropMoneyAmount: 1

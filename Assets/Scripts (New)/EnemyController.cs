@@ -38,6 +38,8 @@ public class EnemyController : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            GoldManager.instance?.AddGold(escript.dropMoneyAmount);
+            ScoreManager.scoreManager?.AddScore(escript.scoreValue);
             Destroy(this.gameObject);
         }
         OnHealthUpdate?.Invoke(currentHealth);

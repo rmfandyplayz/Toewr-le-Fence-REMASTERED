@@ -13,7 +13,7 @@ public class EnemySetup : ScriptableObject
     public float maxShields;
     public float firedamageamount;
     //private float firedmgpertick = 1f;
-
+    public int scoreValue;
     public int dropMoneyAmount;
 
 

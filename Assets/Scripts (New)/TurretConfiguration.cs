@@ -45,6 +45,7 @@ public class TurretConfiguration : MonoBehaviour
 
     public void UpdateTarget()
     {
+        //Debug.Break();
         float closestEnemyDistance = float.MaxValue;
         foreach(GameObject enemy in targets)
         {
@@ -54,6 +55,10 @@ public class TurretConfiguration : MonoBehaviour
                 closestEnemyDistance = distance;
                 currentTarget = enemy;
             }
+        }
+        if(targets.Count == 0)
+        {
+            currentTarget = null;
         }
     }
 

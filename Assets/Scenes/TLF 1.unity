@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 30789450}
   - component: {fileID: 30789452}
   - component: {fileID: 30789451}
+  - component: {fileID: 30789453}
   m_Layer: 0
   m_Name: Gold
   m_TagString: Untagged
@@ -225,16 +226,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30789449}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1072760155}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 55, y: 37}
+  m_AnchoredPosition: {x: 54.97986, y: 37}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &30789451
@@ -334,6 +335,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30789449}
   m_CullTransparentMesh: 1
+--- !u!114 &30789453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30789449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df11891b90d13f44090f9ea11d52cb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+  moneyText: {fileID: 30789451}
 --- !u!1 &85713128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,7 +2125,7 @@ GameObject:
   - component: {fileID: 398434316}
   - component: {fileID: 398434319}
   m_Layer: 0
-  m_Name: Test
+  m_Name: Turret Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2123,18 +2138,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398434314}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1270315689}
   m_Father: {fileID: 1072760155}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 737, y: -476}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 181.90002, y: 0}
+  m_SizeDelta: {x: 363.76, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &398434316
 MonoBehaviour:
@@ -2181,7 +2196,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 398434319}
-        m_TargetAssemblyTypeName: Platinio.GearMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: TurretMenu, Assembly-CSharp
         m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
@@ -2212,7 +2227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 425f3e764af99d248a0606f50892c67a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2239,16 +2254,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 398434314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bed0aa20ba41b5488201788d12b2f3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 78d2479865d046e4da0f2d322541d024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   height: 0.5
-  gearRotation: 0
   canvas: {fileID: 1894805932}
-  hideMenu: {fileID: 1270315689}
-  gearIcon: {fileID: 398434315}
-  time: 0.7
-  ease: 24
+  turretSelect: {fileID: 1270315689}
+  turretButton: {fileID: 398434315}
+  time: 0.3
+  ease: 7
 --- !u!1 &403905220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,16 +3061,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494300913}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1072760155}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -211, y: 61}
+  m_AnchoredPosition: {x: -29.120056, y: 61}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &494300915
@@ -5781,17 +5795,17 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 398434315}
   - {fileID: 30789450}
   - {fileID: 494300914}
   - {fileID: 1409607936}
-  - {fileID: 398434315}
   m_Father: {fileID: 1255986043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: -181.87994, y: 0}
+  m_SizeDelta: {x: 1556.2, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072760156
 MonoBehaviour:
@@ -6275,7 +6289,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255986042}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6395,7 +6409,7 @@ GameObject:
   - component: {fileID: 1270315691}
   - component: {fileID: 1270315690}
   m_Layer: 0
-  m_Name: test 2
+  m_Name: Turret Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6408,16 +6422,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270315688}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.8481, y: 2.8481, z: 2.8481}
+  m_LocalScale: {x: 2.8481002, y: 2.8481002, z: 2.8481002}
   m_Children: []
   m_Father: {fileID: 398434315}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -9, y: -653}
+  m_AnchoredPosition: {x: -181.88, y: -511}
   m_SizeDelta: {x: 128, y: 224}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1270315690
@@ -7123,6 +7137,7 @@ GameObject:
   - component: {fileID: 1409607936}
   - component: {fileID: 1409607938}
   - component: {fileID: 1409607937}
+  - component: {fileID: 1409607939}
   m_Layer: 0
   m_Name: Score Counter
   m_TagString: Untagged
@@ -7137,16 +7152,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409607935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1072760155}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -211, y: 8}
+  m_AnchoredPosition: {x: -29.120056, y: 8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1409607937
@@ -7246,6 +7261,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409607935}
   m_CullTransparentMesh: 1
+--- !u!114 &1409607939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409607935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421f550654dab29469dcfb459e295336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  scoreText: {fileID: 1409607937}
 --- !u!1 &1425042557
 GameObject:
   m_ObjectHideFlags: 0

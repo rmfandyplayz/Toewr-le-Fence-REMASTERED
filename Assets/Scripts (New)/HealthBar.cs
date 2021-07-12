@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour
 {
     public float maxValue = 100;
     public float healthDropAnimationTimer = 1;
+    private static int timesCalled = 0;
     public Image hpBar;
     public Ease ease;
 
@@ -17,8 +18,8 @@ public class HealthBar : MonoBehaviour
 
     void Awake()
     {
-        ToggleBars(false);
         PlatinioTween.instance.FillAmountTween(hpBar, 1, healthDropAnimationTimer).SetEase(ease).SetOwner(gameObject);
+        StartCoroutine(ShowBars(0.001f, true));
     }
 
     public void SetMaxValue(float newValue)
@@ -63,14 +64,31 @@ public class HealthBar : MonoBehaviour
         GetComponent<Image>().enabled = toggle;
         foreach (Image i in GetComponentsInChildren<Image>())
         {
-            i.enabled = toggle;
+            //i.enabled = toggle;
+            if(toggle == true)
+            {
+                i.FadeIn(0.25f);
+            }
+            else
+            {
+                i.FadeOut(0.25f);
+            }
         }
     }
-    public IEnumerator ShowBars(float timer = 2)
+    public IEnumerator ShowBars(float timer = 0.5f, bool isHighPriority = false)
     {
         //Debug.Log("ShowBars() ran");
         ToggleBars(true);
+        timesCalled++;
         yield return new WaitForSeconds(timer);
-        ToggleBars(false);
+        timesCalled--;
+        Debug.Log(timesCalled + "(timescalled)");
+        if (isHighPriority == true || timesCalled == 0)
+        {
+            StopAllCoroutines();
+            ToggleBars(false);
+            timesCalled = 0;
+        }
+        //ToggleBars(false);
     }
 }
