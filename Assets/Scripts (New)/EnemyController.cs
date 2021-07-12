@@ -42,7 +42,6 @@ public class EnemyController : MonoBehaviour
         }
         OnHealthUpdate?.Invoke(currentHealth);
         OnShieldUpdate?.Invoke(currentShields);
-        //Debug.Log(damage);
     }
 
 

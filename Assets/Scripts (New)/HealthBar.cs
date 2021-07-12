@@ -10,55 +10,67 @@ public class HealthBar : MonoBehaviour
     public float healthDropAnimationTimer = 1;
     public Image hpBar;
     public Ease ease;
-    //public Slider sliderBar;
+
 
     [SerializeField]
     public bool startingAtMax = true;
 
     void Awake()
     {
-        //sliderBar.maxValue = maxValue;
-        /*
-        Debug.Log(hpBar);
-        if (startingAtMax)
-        {
-            //sliderBar.value = maxValue;
-            hpBar.fillAmount = maxValue / maxValue;
-        }
-        else
-        {
-            //sliderBar.value = 0;
-            hpBar.fillAmount = 0;
-        }
-        Debug.Log(hpBar);
-        */
+        ToggleBars(false);
+        PlatinioTween.instance.FillAmountTween(hpBar, 1, healthDropAnimationTimer).SetEase(ease).SetOwner(gameObject);
     }
 
     public void SetMaxValue(float newValue)
     {
         maxValue = newValue;
-        //sliderBar.maxValue = newValue;
-        /*
-        Debug.Log(hpBar);
-        hpBar.fillAmount = maxValue / maxValue;
-        Debug.Log(hpBar);
-        */
     }
 
    public void UpdateValue(float newValue)
    {
-        Debug.Log("Float newvalue of UpdateValue ran");
+        if (hpBar == null)
+        {
+            GetHPImage();
+        }
         gameObject.CancelAllTweens();
-        //sliderBar.value = newValue;
-        Debug.Log(hpBar);
-        PlatinioTween.instance.FillAmountTween(hpBar, newValue / maxValue, healthDropAnimationTimer).SetEase(ease).SetOwner(gameObject);
+        RunTween(newValue / maxValue);
     }
    public void UpdateValue(int newValue)
    {
-        Debug.Log("Int newvalue of UpdateValue ran");
+        if (hpBar == null)
+        {
+            GetHPImage();
+        }
         gameObject.CancelAllTweens();
-        //sliderBar.value = newValue;
-        Debug.Log(hpBar);
-        PlatinioTween.instance.FillAmountTween(hpBar, (float)newValue / maxValue, healthDropAnimationTimer).SetEase(ease).SetOwner(gameObject);
+        RunTween(newValue / maxValue);
+    }
+    public void GetHPImage()
+    {
+        hpBar = GetComponentInChildren<Image>();
+    }
+    public void RunTween(float value)
+    {
+        if (hpBar == null)
+        {
+            GetHPImage();
+        }
+        StartCoroutine(ShowBars());
+        PlatinioTween.instance.FillAmountTween(hpBar, value, healthDropAnimationTimer).SetEase(ease).SetOwner(gameObject);
+    }
+    public void ToggleBars(bool toggle = false)
+    {
+        //Debug.Log("ToggleBars() ran");
+        GetComponent<Image>().enabled = toggle;
+        foreach (Image i in GetComponentsInChildren<Image>())
+        {
+            i.enabled = toggle;
+        }
+    }
+    public IEnumerator ShowBars(float timer = 2)
+    {
+        //Debug.Log("ShowBars() ran");
+        ToggleBars(true);
+        yield return new WaitForSeconds(timer);
+        ToggleBars(false);
     }
 }
