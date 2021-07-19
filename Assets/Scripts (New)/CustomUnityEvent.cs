@@ -10,4 +10,10 @@ namespace CustomUnityEvent
     {
 
     }
+
+    [System.Serializable]
+    public class UEventInt : UnityEvent<int>
+    {
+
+    }
 }
