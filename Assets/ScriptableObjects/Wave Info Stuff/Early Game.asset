@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a322f889e87e94885d3c1e0b49f67f, type: 3}
+  m_Name: Early Game
+  m_EditorClassIdentifier: 
+  nonBossEnemies:
+  - {fileID: 11400000, guid: 033d6182b6b1ec9429479707cc67afad, type: 2}
+  bossEnemies: []
+  startWave: 1
+  endWave: 2147483647
+  waveEnemyConstant: 0
+  waveEnemyMultiplier: 1

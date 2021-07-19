@@ -12,6 +12,7 @@ public class EnemySetup : ScriptableObject
     public float maxHealth;
     public float maxShields;
     public float firedamageamount;
+    public bool isBossEnemy = false;
     //private float firedmgpertick = 1f;
     public int scoreValue;
     public int dropMoneyAmount;
