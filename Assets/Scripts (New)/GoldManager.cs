@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using CustomUnityEvent;
 
 public class GoldManager : MonoBehaviour
 {
     [SerializeField] private int gold;
     public TextMeshProUGUI moneyText;
     public static GoldManager instance;
+    public UEventInt OnGoldAdded;
 
     private void Awake()
     {
@@ -22,8 +24,7 @@ public class GoldManager : MonoBehaviour
     {
         gold += goldGiven;
         moneyText.text = $"{gold}";
-
-
+        OnGoldAdded?.Invoke(gold);
     }
 
     public static int GetGold()

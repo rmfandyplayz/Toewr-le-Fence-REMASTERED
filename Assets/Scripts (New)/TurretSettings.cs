@@ -12,6 +12,9 @@ public class TurretSettings : ScriptableObject
     public float range;
     public float fireRate;
     public int buyPrice;
+    public Obj2DSimpleInfo colliderPositionAndSize;
+    public List<Obj2DSimpleInfo> firepointPositionRotation;
+
     public BulletSetup bullet;
     public List<TurretUpgradeSetup> tupgrades; 
     /*
@@ -31,4 +34,12 @@ public class TurretSettings : ScriptableObject
     */
 
 
+}
+
+
+[System.Serializable]
+public struct Obj2DSimpleInfo
+{
+    public Vector2 position;
+    public float value;
 }
