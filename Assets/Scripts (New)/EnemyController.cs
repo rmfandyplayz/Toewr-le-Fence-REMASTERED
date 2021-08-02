@@ -21,6 +21,10 @@ public class EnemyController : MonoBehaviour
         setShields?.Invoke(escript.maxShields);
         OnHealthUpdate?.Invoke(currentHealth);
         OnShieldUpdate?.Invoke(currentShields);
+
+        GetComponent<SpriteRenderer>().sprite = escript.enemySprite;
+
+
     }
 
 
@@ -35,15 +39,15 @@ public class EnemyController : MonoBehaviour
             currentShields = 0;
         }
         currentHealth -= newDamage;
-
+        OnHealthUpdate?.Invoke(currentHealth);
+        OnShieldUpdate?.Invoke(currentShields);
         if(currentHealth <= 0)
         {
             GoldManager.instance?.AddGold(escript.dropMoneyAmount);
             ScoreManager.scoreManager?.AddScore(escript.scoreValue);
             Destroy(this.gameObject);
         }
-        OnHealthUpdate?.Invoke(currentHealth);
-        OnShieldUpdate?.Invoke(currentShields);
+        
     }
 
 

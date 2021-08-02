@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Fast
   m_EditorClassIdentifier: 
   enemyType: Fast
-  enemySprite: {fileID: 0}
-  speed: 0
-  maxHealth: 0
+  enemySprite: {fileID: 21300000, guid: a9759eeee14db934f81e9a0a4be0bc30, type: 3}
+  speed: 8
+  maxHealth: 8
   maxShields: 0
   firedamageamount: 0
-  dropMoneyAmount: 0
+  isBossEnemy: 0
+  scoreValue: 1
+  dropMoneyAmount: 1

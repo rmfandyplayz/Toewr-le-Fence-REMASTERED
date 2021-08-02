@@ -17,7 +17,7 @@ MonoBehaviour:
   canRotate: 1
   rotateSpeed: 5
   range: 0
-  fireRate: 0.2
+  fireRate: 0.25
   buyPrice: 0
   bullet: {fileID: 0}
   tupgrades: []
