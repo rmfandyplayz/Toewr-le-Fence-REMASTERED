@@ -9,15 +9,27 @@ public class TurretConfiguration : MonoBehaviour
     public List<GameObject> targets;
     public GameObject bulletPrefab;
     public List<int> upgradesCounter;
-    public Transform firePoint;
+    public List<Transform> firePointList = new List<Transform>();
     private GameObject currentTarget;
     public GameObject temporaryBullet;
     public float angleOffset = 0;
     private bool isOnCooldown = false;
+    public TurretSpriteHandler spriteHolder; 
+    public TurretRangeHandler rangeHolder; 
 
-    private void Start()
+    public void Initialize()
     {
-
+        name = tsettings.turretName;
+        spriteHolder.Initialize(tsettings.turretSprite);
+        rangeHolder.Initialize(tsettings.range);
+        if(firePointList.Count == 0)
+        {
+            foreach(var fp in tsettings.firepointPositionRotation)
+            {
+                var firePoint = new GameObject("FirePoint");
+                firePoint.transform.position = fp.position;
+            }
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,11 +78,18 @@ public class TurretConfiguration : MonoBehaviour
     {
         if(currentTarget != null)
         {
-            Vector3 dir = currentTarget.transform.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.back);
-            //Debug.LogWarning(Vector3.SignedAngle(transform.position, dir, Vector3.forward));
-            transform.eulerAngles = Vector3.forward * (Vector3.SignedAngle(transform.position, dir, Vector3.forward)-angleOffset); 
-            //transform.LookAt(currentTarget.transform);
+            if(tsettings.canRotate)
+            {
+                Vector3 dir = currentTarget.transform.position - transform.position;
+                Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.back);
+                //Debug.LogWarning(Vector3.SignedAngle(transform.position, dir, Vector3.forward));
+                float targetAngle = Vector3.SignedAngle(transform.position, dir, Vector3.forward)-angleOffset;
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles,
+                                                     Vector3.forward * targetAngle,
+                                                     tsettings.rotateSpeed);
+                // transform.eulerAngles = Vector3.forward * (Vector3.SignedAngle(transform.position, dir, Vector3.forward)-angleOffset); 
+                //transform.LookAt(currentTarget.transform);
+            }
             if(isOnCooldown == false)
             {
                 StartCoroutine(Shoot());
@@ -80,12 +99,15 @@ public class TurretConfiguration : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        GameObject bullet = Instantiate(temporaryBullet, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<BulletController>().targetenemy = currentTarget;
-        //shoot bullet here
-        isOnCooldown = true;
-        yield return new WaitForSeconds(tsettings.fireRate);
-        isOnCooldown = false;
+        foreach(Transform firePoint in firePointList)
+        {
+            GameObject bullet = Instantiate(temporaryBullet, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<BulletController>().targetenemy = currentTarget;
+            //shoot bullet here
+            isOnCooldown = true;
+            yield return new WaitForSeconds(tsettings.fireRate);
+            isOnCooldown = false;
+        }
     }
 
 

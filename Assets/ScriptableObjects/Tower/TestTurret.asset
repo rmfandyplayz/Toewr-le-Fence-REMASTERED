@@ -19,5 +19,8 @@ MonoBehaviour:
   range: 0
   fireRate: 0.2
   buyPrice: 0
+  firepointPosition:
+  - position: {x: 0.005, y: 0.575}
+    value: 0
   bullet: {fileID: 0}
   tupgrades: []
