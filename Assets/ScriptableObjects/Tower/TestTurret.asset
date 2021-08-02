@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: TestTurret
   m_EditorClassIdentifier: 
   turretName: Test
-  turretSprite: {fileID: 0}
+  turretSprite: {fileID: 21300000, guid: c5a9e030f24bfd04cb49f17429374c5a, type: 3}
   canRotate: 1
   rotateSpeed: 5
   range: 0
   fireRate: 0.25
-  buyPrice: 0
-  firepointPosition:
-  - position: {x: 0.005, y: 0.575}
+  buyPrice: 1
+  colliderPositionAndSize:
+    position: {x: 0, y: 0}
     value: 0
+  firepointPositionRotation: []
   bullet: {fileID: 0}
   tupgrades: []

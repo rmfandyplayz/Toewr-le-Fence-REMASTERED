@@ -55,12 +55,12 @@ public class SpawningManagement : MonoBehaviour
         for (int i = 0; i < wave.waveEnemyMultiplier * waveNumber + wave.waveEnemyConstant; i++)
         {
             int enemyChoice = Random.Range(0, wave.nonBossEnemies.Count);
-            Debug.LogWarning(enemyChoice + " (SpawningManagement.cs");
             GameObject Enemy = Instantiate(enemyPrefab);
             Enemy.GetComponentInChildren<EnemyController>().escript = wave.nonBossEnemies[enemyChoice];
-            Enemy.GetComponent<PathMovement>().path = path;
+            var enemyPath = Enemy.GetComponent<PathMovement>();
+            enemyPath.path = path;
+            enemyPath.speed = Enemy.GetComponentInChildren<EnemyController>().escript.speed;
             yield return new WaitForSeconds(timer);
         }
     }
-
 }

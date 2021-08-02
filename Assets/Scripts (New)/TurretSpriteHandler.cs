@@ -13,9 +13,23 @@ public class TurretSpriteHandler : MonoBehaviour
         sr.sprite = newSprite;
     }
 
+    public void ToggleTransparency(bool enable, float transparency = 1f)
+    {
+        if(enable == true)
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, Mathf.Clamp01(transparency));
+        }
+        else
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+        }
+    }
+
     private void OnMouseEnter() {
+        Debug.Log(MouseHoverCounter.numberOfObjectsUnderMouse + "from TurretSpriteHandler.cs");
         MouseHoverCounter.numberOfObjectsUnderMouse++;
-        if(MouseHoverCounter.numberOfObjectsUnderMouse > 1)
+        normalColor = sr.color;
+        if (MouseHoverCounter.numberOfObjectsUnderMouse > 1)
         {
             sr.color = invalidColor;
         }

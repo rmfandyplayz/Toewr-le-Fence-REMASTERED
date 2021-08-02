@@ -82,7 +82,6 @@ public class HealthBar : MonoBehaviour
         timesCalled++;
         yield return new WaitForSeconds(timer);
         timesCalled--;
-        Debug.Log(timesCalled + "(timescalled)");
         if (isHighPriority == true || timesCalled <= 0)
         {
             ToggleBars(false);
