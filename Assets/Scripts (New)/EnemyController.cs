@@ -5,8 +5,8 @@ using CustomUnityEvent;
 
 public class EnemyController : MonoBehaviour
 {
-    private float currentHealth;
-    private float currentShields;
+    public float currentHealth;
+    public float currentShields;
     public EnemySetup escript;
     public UEventFloat setHealth;
     public UEventFloat setShields;

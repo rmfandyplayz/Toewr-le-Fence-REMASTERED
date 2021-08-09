@@ -7,9 +7,9 @@ using UnityEngine.Events;
 public class TowerHealth : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth=100;
+    private float maxHealth=100;
     [SerializeField] 
-    private int currentHealth=0;
+    private float currentHealth=0;
 
     public UEventInt OnHealthUpdate;
     public UEventFloat OnHealthRatioUpdate;
@@ -18,7 +18,7 @@ public class TowerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        OnHealthUpdate?.Invoke(currentHealth);
+        OnHealthUpdate?.Invoke((int) currentHealth);
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -33,9 +33,10 @@ public class TowerHealth : MonoBehaviour
             {
                 Destroy(other.gameObject);
             }
-            currentHealth -= 5;
-            OnHealthUpdate?.Invoke(currentHealth);
-            OnHealthRatioUpdate?.Invoke((float)currentHealth/(float)maxHealth);
+            var enemy = other.GetComponent<EnemyController>();
+            currentHealth -= enemy.currentHealth + enemy.currentShields;
+            OnHealthUpdate?.Invoke((int) currentHealth);
+            OnHealthRatioUpdate?.Invoke(currentHealth/maxHealth);
         }   
         if(currentHealth <= 0)
         {
