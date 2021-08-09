@@ -44,6 +44,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -159,6 +160,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -218,7 +220,6 @@ MonoBehaviour:
   firePointList:
   - {fileID: 7677393957092656157}
   temporaryBullet: {fileID: 1073181234680642804, guid: ba9444d7efe703149acf785612aba4e4, type: 3}
-  angleOffset: 90
   spriteHolder: {fileID: 7677393957125659679}
   rangeHolder: {fileID: 7677393956828268213}
 --- !u!58 &7677393956911084492
@@ -312,6 +313,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

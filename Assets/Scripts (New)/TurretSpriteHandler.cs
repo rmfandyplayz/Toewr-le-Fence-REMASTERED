@@ -7,10 +7,12 @@ public class TurretSpriteHandler : MonoBehaviour
     public Color normalColor = Color.white;
     public Color invalidColor = Color.red;
     private SpriteRenderer sr;
+    private bool isInvalid = false;
     public void Initialize(Sprite newSprite)
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = newSprite;
+        isInvalid = false;
     }
 
     public void ToggleTransparency(bool enable, float transparency = 1f)
@@ -25,19 +27,45 @@ public class TurretSpriteHandler : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter() {
-        Debug.Log(MouseHoverCounter.numberOfObjectsUnderMouse + "from TurretSpriteHandler.cs");
-        MouseHoverCounter.numberOfObjectsUnderMouse++;
-        normalColor = sr.color;
-        if (MouseHoverCounter.numberOfObjectsUnderMouse > 1)
+    public bool CheckIfHitObstacles()
+    {
+        Collider2D col = GetComponent<Collider2D>();
+        RaycastHit2D[] hit2Ds = new RaycastHit2D[10];
+        if(col != null && col.Cast(Vector2.zero, hit2Ds) > 0)
         {
-            sr.color = invalidColor;
-        }
+            foreach(var hit in hit2Ds)
+            {
+                if(hit.collider == null) continue;
 
+                // Debug.Log(hit.collider.GetComponent<TurretSpriteHandler>());
+
+                if(hit.collider.CompareTag("LevelObstacle") || hit.collider.GetComponent<TurretSpriteHandler>() != null)
+                {
+                    StartedHittingObstacle();
+                    return true;
+                }
+            }
+        }
+        StoppedHittingObstacle();
+        return false;
     }
 
-    private void OnMouseExit() {
-        MouseHoverCounter.numberOfObjectsUnderMouse--;
-        sr.color = normalColor;
+    public void StartedHittingObstacle()
+    {
+        if(!isInvalid)
+        {
+            normalColor = sr.color;
+            sr.color = invalidColor;
+            isInvalid = true;
+        }
+    }
+
+    public void StoppedHittingObstacle()
+    {
+        if(isInvalid)
+        {
+            sr.color = normalColor;
+            isInvalid = false;
+        }
     }
 }

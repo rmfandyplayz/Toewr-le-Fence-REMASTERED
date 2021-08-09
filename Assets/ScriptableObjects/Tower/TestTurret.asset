@@ -23,5 +23,5 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     value: 0
   firepointPositionRotation: []
-  bullet: {fileID: 0}
+  bullet: {fileID: 11400000, guid: 48b585c22eb3253468beb5c093255c61, type: 2}
   tupgrades: []
