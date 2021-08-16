@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: 
   enemyType: Tank
-  enemySprite: {fileID: 0}
-  speed: 0
-  maxHealth: 0
+  enemySprite: {fileID: 21300000, guid: f7ddc776b5d491f4ca70799e7c759ad4, type: 3}
+  speed: 2.5
+  maxHealth: 40
   maxShields: 0
   firedamageamount: 0
-  dropMoneyAmount: 0
+  isBossEnemy: 0
+  scoreValue: 2
+  dropMoneyAmount: 1

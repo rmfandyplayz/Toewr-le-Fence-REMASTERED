@@ -297,6 +297,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   path: {fileID: 0}
+  OnPathFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &509633357439069631
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +670,6 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -722,6 +724,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   path: {fileID: 0}
+  OnPathFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &509633358732114572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fca9ac80ef61e41a7530a5ee1b77e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
+  currentShields: 0
   escript: {fileID: 0}
   setHealth:
     m_PersistentCalls:
@@ -771,6 +778,21 @@ MonoBehaviour:
   OnShieldUpdate:
     m_PersistentCalls:
       m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 208300711804046432, guid: 8ea6c8ef6a1fe8c45a53bb336f7f0924, type: 3}
+        m_TargetAssemblyTypeName: DamageIndicator, Assembly-CSharp
+        m_MethodName: RunIndicator
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &509633358732114574
 Rigidbody2D:
   serializedVersion: 4

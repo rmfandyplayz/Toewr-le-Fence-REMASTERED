@@ -16,4 +16,10 @@ namespace CustomUnityEvent
     {
 
     }
+
+    [System.Serializable]
+    public class UEventFloatVector3 : UnityEvent<float, Vector3>
+    {
+
+    }
 }
