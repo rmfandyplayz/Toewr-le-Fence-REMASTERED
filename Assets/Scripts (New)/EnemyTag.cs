@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyTag : MonoBehaviour
 {
 
-    private void Start()
+    void OnEnable()
     {
         SpawningManagement.aliveEnemies++;
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         SpawningManagement.aliveEnemies--;
     }

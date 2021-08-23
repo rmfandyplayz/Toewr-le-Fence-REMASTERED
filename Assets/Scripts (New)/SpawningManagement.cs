@@ -57,9 +57,10 @@ public class SpawningManagement : MonoBehaviour
             int enemyChoice = Random.Range(0, wave.nonBossEnemies.Count);
             GameObject Enemy = Instantiate(enemyPrefab);
             Enemy.GetComponentInChildren<EnemyController>().escript = wave.nonBossEnemies[enemyChoice];
-            Enemy.GetComponent<PathMovement>().path = path;
+            var enemyPath = Enemy.GetComponent<PathMovement>();
+            enemyPath.path = path;
+            enemyPath.speed = Enemy.GetComponentInChildren<EnemyController>().escript.speed;
             yield return new WaitForSeconds(timer);
         }
     }
-
 }

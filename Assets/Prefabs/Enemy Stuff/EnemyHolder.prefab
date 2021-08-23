@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 509633357104319375}
   - component: {fileID: 509633357104319369}
   - component: {fileID: 509633357104319368}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: fullhp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 509633357203458482}
   - component: {fileID: 509633357203458492}
   - component: {fileID: 509633357203458483}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: fullshield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 509633357380552398}
   - component: {fileID: 509633357380552397}
   - component: {fileID: 509633357380552396}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,8 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509633357428149698}
   - component: {fileID: 509633357428149699}
-  - component: {fileID: 2671325538383832995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,18 +297,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   path: {fileID: 0}
---- !u!114 &2671325538383832995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509633357428149697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf126c12340a078408ed5dc3c8c388d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnPathFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &509633357439069631
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +312,7 @@ GameObject:
   - component: {fileID: 509633357439069627}
   - component: {fileID: 509633357439069626}
   - component: {fileID: 509633357439069625}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +406,7 @@ GameObject:
   - component: {fileID: 509633357995327387}
   - component: {fileID: 509633357995327397}
   - component: {fileID: 509633357995327396}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +481,7 @@ GameObject:
   - component: {fileID: 509633358570580337}
   - component: {fileID: 509633358570580339}
   - component: {fileID: 509633358570580338}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +556,7 @@ GameObject:
   - component: {fileID: 509633358594155078}
   - component: {fileID: 509633358594155072}
   - component: {fileID: 509633358594155079}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: shieldbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +636,8 @@ GameObject:
   - component: {fileID: 509633358732114572}
   - component: {fileID: 509633358732114574}
   - component: {fileID: 509633358732114573}
-  m_Layer: 0
+  - component: {fileID: 3333472414726377827}
+  m_Layer: 6
   m_Name: Normal Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,6 +724,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   path: {fileID: 0}
+  OnPathFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &509633358732114572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +739,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fca9ac80ef61e41a7530a5ee1b77e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  escript: {fileID: 11400000, guid: 033d6182b6b1ec9429479707cc67afad, type: 2}
+  currentHealth: 0
+  currentShields: 0
+  escript: {fileID: 0}
   setHealth:
     m_PersistentCalls:
       m_Calls:
@@ -782,6 +778,21 @@ MonoBehaviour:
   OnShieldUpdate:
     m_PersistentCalls:
       m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 208300711804046432, guid: 8ea6c8ef6a1fe8c45a53bb336f7f0924, type: 3}
+        m_TargetAssemblyTypeName: DamageIndicator, Assembly-CSharp
+        m_MethodName: RunIndicator
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &509633358732114574
 Rigidbody2D:
   serializedVersion: 4
@@ -819,3 +830,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!114 &3333472414726377827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509633358732114560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf126c12340a078408ed5dc3c8c388d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

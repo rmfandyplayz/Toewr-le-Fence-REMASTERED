@@ -5,13 +5,14 @@ using CustomUnityEvent;
 
 public class EnemyController : MonoBehaviour
 {
-    private float currentHealth;
-    private float currentShields;
+    public float currentHealth;
+    public float currentShields;
     public EnemySetup escript;
     public UEventFloat setHealth;
     public UEventFloat setShields;
     public UEventFloat OnHealthUpdate;
     public UEventFloat OnShieldUpdate;
+    public UEventFloatVector3 OnTakeDamage;
 
     private void Start()
     {
@@ -21,12 +22,17 @@ public class EnemyController : MonoBehaviour
         setShields?.Invoke(escript.maxShields);
         OnHealthUpdate?.Invoke(currentHealth);
         OnShieldUpdate?.Invoke(currentShields);
+
+        GetComponent<SpriteRenderer>().sprite = escript.enemySprite;
+
+
     }
 
 
 
     public void TakeDamage(float damage)
     {
+        OnTakeDamage?.Invoke(damage, transform.position);
         currentShields -= damage;
         float newDamage = 0;
         if(currentShields < 0)
@@ -35,17 +41,26 @@ public class EnemyController : MonoBehaviour
             currentShields = 0;
         }
         currentHealth -= newDamage;
-
+        OnHealthUpdate?.Invoke(currentHealth);
+        OnShieldUpdate?.Invoke(currentShields);
         if(currentHealth <= 0)
         {
             GoldManager.instance?.AddGold(escript.dropMoneyAmount);
             ScoreManager.scoreManager?.AddScore(escript.scoreValue);
             Destroy(this.gameObject);
         }
-        OnHealthUpdate?.Invoke(currentHealth);
-        OnShieldUpdate?.Invoke(currentShields);
+        
     }
 
+
+
+}
+
+public class DamageInfo
+{
+    public float damage;
+    public DamageIndicator.damageIndicatorType damageType;
+    public Vector3 position;
 
 
 

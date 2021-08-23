@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81a322f889e87e94885d3c1e0b49f67f, type: 3}
-  m_Name: Early Game
+  m_Name: 1-5
   m_EditorClassIdentifier: 
   nonBossEnemies:
   - {fileID: 11400000, guid: 033d6182b6b1ec9429479707cc67afad, type: 2}
   bossEnemies: []
   startWave: 1
-  endWave: 2147483647
+  endWave: 5
   waveEnemyConstant: 0
   waveEnemyMultiplier: 1

@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class PathMovement : MonoBehaviour {
     public float speed = 1;
     public Polyline path;
     int targetIndex = 1;
     Vector3 velocity;
+
+    public UnityEvent OnPathFinished;
+
     // Use this for initialization
 	void Start () {
         transform.position = path.nodes[0];
@@ -24,6 +28,7 @@ public class PathMovement : MonoBehaviour {
                 if (targetIndex == path.nodes.Count)
                 {
                     pathFinished = true;
+                    OnPathFinished?.Invoke();
                     return;
                 }
                 velocity = (path.nodes[targetIndex] - path.nodes[targetIndex - 1]).normalized * speed;
@@ -32,4 +37,9 @@ public class PathMovement : MonoBehaviour {
                 transform.position += velocity * Time.deltaTime;
         }
 	}
+
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
+    }
 }

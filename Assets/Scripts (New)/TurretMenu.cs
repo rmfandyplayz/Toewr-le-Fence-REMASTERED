@@ -10,7 +10,6 @@ public class TurretMenu : MonoBehaviour
     [SerializeField] private RectTransform turretButton = null; //previously turretButton
     [SerializeField] private float time = 1.0f;
     [SerializeField] private Ease ease = Ease.Linear;
-
     private Vector2 startPosition = Vector2.zero;
     private bool isVisible = false;
     private bool isBusy = false;
@@ -41,7 +40,11 @@ public class TurretMenu : MonoBehaviour
             isVisible = false;
             turretSelect.gameObject.SetActive(false);
         });
-        //turretButton.RotateTween(Vector3.forward, turretButton.rotation.eulerAngles.z, time).SetEase(ease);
+    }
+
+    public void KeepScriptActive(BuyTurretScript buyTurret)
+    {
+        StartCoroutine(buyTurret.DraggingUpdate());
     }
 
     public void Toggle()

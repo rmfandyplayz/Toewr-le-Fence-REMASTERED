@@ -12,7 +12,6 @@ public class TurretConfiguration : MonoBehaviour
     public List<Transform> firePointList = new List<Transform>();
     private GameObject currentTarget;
     public GameObject temporaryBullet;
-    public float angleOffset = 0;
     private bool isOnCooldown = false;
     public TurretSpriteHandler spriteHolder; 
     public TurretRangeHandler rangeHolder; 
@@ -80,21 +79,23 @@ public class TurretConfiguration : MonoBehaviour
         {
             if(tsettings.canRotate)
             {
-                Vector3 dir = currentTarget.transform.position - transform.position;
-                Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.back);
-                //Debug.LogWarning(Vector3.SignedAngle(transform.position, dir, Vector3.forward));
-                float targetAngle = Vector3.SignedAngle(transform.position, dir, Vector3.forward)-angleOffset;
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles,
-                                                     Vector3.forward * targetAngle,
-                                                     tsettings.rotateSpeed);
-                // transform.eulerAngles = Vector3.forward * (Vector3.SignedAngle(transform.position, dir, Vector3.forward)-angleOffset); 
-                //transform.LookAt(currentTarget.transform);
+                RotateTurret();
             }
             if(isOnCooldown == false)
             {
                 StartCoroutine(Shoot());
             }
         }
+    }
+
+    private void RotateTurret()
+    {
+        Vector3 dir = currentTarget.transform.position - transform.position;
+        float targetAngle = Vector2.SignedAngle(Vector2.up, dir);
+        // Debug.LogWarning(Vector2.SignedAngle(Vector2.up, dir));
+        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles,
+                                                Vector3.forward * targetAngle,
+                                                tsettings.rotateSpeed);
     }
 
     IEnumerator Shoot()
