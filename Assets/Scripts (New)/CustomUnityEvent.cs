@@ -22,4 +22,10 @@ namespace CustomUnityEvent
     {
 
     }
+
+    [System.Serializable]
+    public class UEventGameObject : UnityEvent<GameObject>
+    {
+
+    }
 }

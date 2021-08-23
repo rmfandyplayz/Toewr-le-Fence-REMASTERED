@@ -7,10 +7,14 @@ public class TurretSpriteHandler : MonoBehaviour
     public Color normalColor = Color.white;
     public Color invalidColor = Color.red;
     private SpriteRenderer sr;
+    private CircleCollider2D collider;
     private bool isInvalid = false;
-    public void Initialize(Sprite newSprite)
+    public void Initialize(Sprite newSprite, Obj2DSimpleInfo info)
     {
         sr = GetComponent<SpriteRenderer>();
+        collider = GetComponent<CircleCollider2D>();
+        collider.offset = info.position;
+        collider.radius = info.value;
         sr.sprite = newSprite;
         isInvalid = false;
     }

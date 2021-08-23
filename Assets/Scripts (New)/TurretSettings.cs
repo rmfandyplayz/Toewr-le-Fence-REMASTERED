@@ -9,7 +9,7 @@ public class TurretSettings : ScriptableObject
     public Sprite turretSprite;
     public bool canRotate = true;
     public int rotateSpeed = 5;
-    public float range;
+    public Obj2DSimpleInfo range;
     public float fireRate;
     public int buyPrice;
     public Obj2DSimpleInfo colliderPositionAndSize;

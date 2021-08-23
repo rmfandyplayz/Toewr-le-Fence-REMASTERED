@@ -19,7 +19,7 @@ public class TurretConfiguration : MonoBehaviour
     public void Initialize()
     {
         name = tsettings.turretName;
-        spriteHolder.Initialize(tsettings.turretSprite);
+        spriteHolder.Initialize(tsettings.turretSprite, tsettings.colliderPositionAndSize);
         rangeHolder.Initialize(tsettings.range);
         if(firePointList.Count == 0)
         {
@@ -31,20 +31,20 @@ public class TurretConfiguration : MonoBehaviour
         }        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void AddTarget(GameObject possibleTarget)
     {
-        if(collision.GetComponent<EnemyController>()!= null)
+        if(possibleTarget.GetComponent<EnemyController>()!= null)
         {
-            targets.Add(collision.gameObject);
+            targets.Add(possibleTarget.gameObject);
             UpdateTarget();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void RemoveTarget(GameObject possibleTarget)
     {
-        if (collision.GetComponent<EnemyController>() != null)
+        if (possibleTarget.GetComponent<EnemyController>() != null)
         {
-            targets.Remove(collision.gameObject);
+            targets.Remove(possibleTarget);
             UpdateTarget();
         }
     }
