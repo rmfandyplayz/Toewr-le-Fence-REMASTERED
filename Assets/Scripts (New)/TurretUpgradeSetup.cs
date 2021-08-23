@@ -10,11 +10,6 @@ public class TurretUpgradeSetup : ScriptableObject
     public int priceIncreaseConstant = 0;
 
     public List<UpgradeHolder> upgrader;
-
-    public void x()
-    {
-        typeof()
-    }
 }
 
 public interface IUpgradable
