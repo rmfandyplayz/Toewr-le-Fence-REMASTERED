@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LevelObstacle
   - MoneyScriptTag
+  - World Canvas
   layers:
   - Default
   - TransparentFX
