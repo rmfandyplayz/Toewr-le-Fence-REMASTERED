@@ -29,8 +29,12 @@ public class BulletSetup : ScriptableObject
     [Header("Damage Type and Chance")]
 
     public bool canDealDankDmg;
+    [BeginIndent]
+    [ShowIf(nameof(canDealDankDmg), true)]
     public float dankDmgChance;
+    [ShowIf(nameof(canDealDankDmg), true)]
     public float dankDmgMultiplier;
+    [EndIndent]
 
     public bool canDealSurrealDmg;
     public float surrealDmgChance;
