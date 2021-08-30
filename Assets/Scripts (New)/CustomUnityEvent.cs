@@ -17,15 +17,21 @@ namespace CustomUnityEvent
 
     }
 
-    [System.Serializable]
-    public class UEventFloatVector3 : UnityEvent<float, Vector3>
-    {
+    // [System.Serializable]
+    // public class UEventFloatVector3 : UnityEvent<float, Vector3>
+    // {
 
-    }
+    // }
 
     [System.Serializable]
     public class UEventGameObject : UnityEvent<GameObject>
     {
 
+    }
+
+    [System.Serializable]
+    public class UEventDamageInfo: UnityEvent<DamageInfo>
+    {
+        
     }
 }

@@ -2453,7 +2453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &468055239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10275,6 +10275,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7677393956828268212, guid: 3b32ca48ce80a450bb85ee47e6f6dd9a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7677393956828268213, guid: 3b32ca48ce80a450bb85ee47e6f6dd9a, type: 3}
       propertyPath: turretRange
       value: 5
@@ -10391,6 +10395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7677393956911084492, guid: 3b32ca48ce80a450bb85ee47e6f6dd9a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7677393956911084493, guid: 3b32ca48ce80a450bb85ee47e6f6dd9a, type: 3}
       propertyPath: tsettings
       value: 
@@ -10411,7 +10419,8 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7677393956911084492, guid: 3b32ca48ce80a450bb85ee47e6f6dd9a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3b32ca48ce80a450bb85ee47e6f6dd9a, type: 3}
 --- !u!114 &7677393957458572320 stripped
 MonoBehaviour:

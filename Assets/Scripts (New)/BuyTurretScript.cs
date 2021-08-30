@@ -58,7 +58,7 @@ public class BuyTurretScript : MonoBehaviour
             turret = Instantiate(turretPlaceholder);
             TurretConfiguration config = turret.GetComponent<TurretConfiguration>();
             config.tsettings = settings;
-            config.Initialize();
+            config.Initialize(showTurretRange: true);
             config.enabled = false;
             tsh = turret.GetComponentInChildren<TurretSpriteHandler>();
             tsh.ToggleTransparency(true, 0.4f);
@@ -81,6 +81,7 @@ public class BuyTurretScript : MonoBehaviour
                 isDragging = false;
                 turret.GetComponent<TurretConfiguration>().enabled = true;
                 turret.GetComponentInChildren<TurretSpriteHandler>().ToggleTransparency(false);
+                turret.GetComponentInChildren<TurretRangeHandler>().ToggleRangeVisual(false);
                 turret = null;
                 GoldManager.instance.AddGold(-stns.buyPrice);
                 OnPlaceTurret?.Invoke();

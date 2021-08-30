@@ -39,6 +39,7 @@ public class TurretRangeHandler : MonoBehaviour
 
     public void ToggleRangeVisual(bool? overrideToggle = null)
     {
+        print($"ToggleRangeVisual: {overrideToggle.ToString()}");
         if(overrideToggle != null)
         {
             isShowingRangeVisual = overrideToggle.Value;

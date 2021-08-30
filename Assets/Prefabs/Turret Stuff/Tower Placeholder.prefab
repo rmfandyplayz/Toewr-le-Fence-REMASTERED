@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: 3bb042a5489444d5e9bfdb532f1c75d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &7677393956828268212
@@ -113,6 +113,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8166d5093f45049f58d346a3d2a51333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretRange: 0
+  rangeSprite: {fileID: 7677393956828268211}
+  colliderRange: {fileID: 7677393956828268212}
+  OnRangeEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7677393956911084493}
+        m_TargetAssemblyTypeName: TurretConfiguration, Assembly-CSharp
+        m_MethodName: AddTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRangeExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7677393956911084493}
+        m_TargetAssemblyTypeName: TurretConfiguration, Assembly-CSharp
+        m_MethodName: RemoveTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7677393956911084494
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +157,6 @@ GameObject:
   - component: {fileID: 7677393956911084489}
   - component: {fileID: 7677393956911084490}
   - component: {fileID: 7677393956911084493}
-  - component: {fileID: 7677393956911084492}
   m_Layer: 0
   m_Name: Tower Placeholder
   m_TagString: Untagged
@@ -222,22 +254,6 @@ MonoBehaviour:
   temporaryBullet: {fileID: 1073181234680642804, guid: ba9444d7efe703149acf785612aba4e4, type: 3}
   spriteHolder: {fileID: 7677393957125659679}
   rangeHolder: {fileID: 7677393956828268213}
---- !u!58 &7677393956911084492
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677393956911084494}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 5
 --- !u!1 &7677393957092656158
 GameObject:
   m_ObjectHideFlags: 0

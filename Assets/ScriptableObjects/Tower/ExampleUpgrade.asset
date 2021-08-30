@@ -15,4 +15,6 @@ MonoBehaviour:
   initialPrice: 1
   priceIncreaseMultiplier: 1
   priceIncreaseConstant: 0
-  upgrader: []
+  upgrader:
+  - script: {fileID: 0}
+    x: 0

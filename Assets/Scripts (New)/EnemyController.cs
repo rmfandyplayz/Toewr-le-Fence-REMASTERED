@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     public UEventFloat setShields;
     public UEventFloat OnHealthUpdate;
     public UEventFloat OnShieldUpdate;
-    public UEventFloatVector3 OnTakeDamage;
+    public UEventDamageInfo OnTakeDamage;
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        OnTakeDamage?.Invoke(damage, transform.position);
+        OnTakeDamage?.Invoke(new DamageInfo(damage, damageIndicatorType.dankDamage, transform.position));
         currentShields -= damage;
         float newDamage = 0;
         if(currentShields < 0)
@@ -62,6 +62,11 @@ public class DamageInfo
     public damageIndicatorType damageType;
     public Vector3 position;
 
-
+    public DamageInfo(float dmg, damageIndicatorType dit, Vector3 pos)
+    {
+        damage = dmg;
+        damageType = dit;
+        position = pos;
+    }
 
 }

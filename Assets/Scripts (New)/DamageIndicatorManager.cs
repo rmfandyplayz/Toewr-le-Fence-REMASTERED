@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum damageIndicatorType
 {
@@ -14,23 +15,28 @@ public class DamageIndicatorManager : MonoBehaviour
     public GameObject surrealDamagePrefab;
     public GameObject noScopeDamagePrefab;
 
-    public void GenerateIndicator(damageIndicatorType typeOfDmg)
+    public void GenerateIndicator(DamageInfo damageInfo)
     {
-        switch (typeOfDmg)
+        GameObject damagePrefab = null;
+        switch (damageInfo.damageType)
         {
             case damageIndicatorType.normieDamage:
-                Instantiate(normieDamagePrefab);
+                damagePrefab = normieDamagePrefab;
                 break;
             case damageIndicatorType.dankDamage:
-                Instantiate(dankDamagePrefab);
+                damagePrefab = dankDamagePrefab;
                 break;
             case damageIndicatorType.surrealDamage:
-                Instantiate(surrealDamagePrefab);
+                damagePrefab = surrealDamagePrefab;
                 break;
             case damageIndicatorType.mlgNoScope:
-                Instantiate(noScopeDamagePrefab);
+                damagePrefab = noScopeDamagePrefab;
                 break;
             
+        }
+        if (damagePrefab != null)
+        {
+            Instantiate(damagePrefab, damageInfo.position, Quaternion.identity).GetComponent<DamageIndicator>().InitializeIndicator(damageInfo.damage, damageInfo.damageType);
         }
     }
 

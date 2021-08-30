@@ -16,11 +16,12 @@ public class TurretConfiguration : MonoBehaviour
     public TurretSpriteHandler spriteHolder; 
     public TurretRangeHandler rangeHolder; 
 
-    public void Initialize()
+    public void Initialize(bool showTurretRange = false)
     {
         name = tsettings.turretName;
         spriteHolder.Initialize(tsettings.turretSprite, tsettings.colliderPositionAndSize);
         rangeHolder.Initialize(tsettings.range);
+        rangeHolder.ToggleRangeVisual(showTurretRange);
         if(firePointList.Count == 0)
         {
             foreach(var fp in tsettings.firepointPositionRotation)

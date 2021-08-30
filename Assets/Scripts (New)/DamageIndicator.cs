@@ -1,17 +1,26 @@
+using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class DamageIndicator : MonoBehaviour
 {
-    public TextMeshPro damageIndicatorText;
+    public TMP_Text damageIndicatorText;
     public damageIndicatorType damageType;
     public float dissappearTimer;
     private float angle = 0;
     public float indicatorSpeed = 100;
 
+    public void InitializeIndicator(float damage, damageIndicatorType indicatorType)
+    {
+        damageIndicatorText = GetComponent<TMP_Text>();
+        damageType = indicatorType;
+        damageIndicatorText.text = $"{damage}";
+    }
     void Start()
     {
         angle = Random.Range(0, 360);
@@ -25,12 +34,12 @@ public class DamageIndicator : MonoBehaviour
         transform.position = Vector2.MoveTowards(this.transform.position, target, indicatorSpeed * Time.deltaTime);
     }
 
-    public void RunIndicator(float damage, Vector3 position)
-    {
-        GameObject popup = Instantiate(this.gameObject, position, Quaternion.identity, GameObject.FindGameObjectWithTag("World Canvas").transform);
-        popup.GetComponent<DamageIndicator>().damageIndicatorText.text = damage.ToString();
-        //Debug.Log("StartCoroutine() ran (DamageIndicator.cs)");
-    }
+    // public void RunIndicator(float damage, Vector3 position)
+    // {
+    //     GameObject popup = Instantiate(this.gameObject, position, Quaternion.identity, GameObject.FindGameObjectWithTag("World Canvas").transform);
+    //     popup.GetComponent<DamageIndicator>().damageIndicatorText.text = damage.ToString();
+    //     //Debug.Log("StartCoroutine() ran (DamageIndicator.cs)");
+    // }
 
     public IEnumerator IndicatorMovement(float angle)
     {

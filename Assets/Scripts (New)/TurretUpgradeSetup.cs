@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "Upgrade", menuName = "Object/Upgrade")]
 public class TurretUpgradeSetup : ScriptableObject
@@ -9,15 +10,6 @@ public class TurretUpgradeSetup : ScriptableObject
     public float priceIncreaseMultiplier = 1;
     public int priceIncreaseConstant = 0;
 
-    public List<UpgradeHolder> upgrader;
-}
+    // TODO: Specify which function to call
 
-public interface IUpgradable
-{}
-
-[System.Serializable]
-public class UpgradeHolder
-{
-    public IUpgradable script;
-    public int x;
 }
