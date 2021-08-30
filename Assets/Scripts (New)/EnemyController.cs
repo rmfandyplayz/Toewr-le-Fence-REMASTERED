@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
 public class DamageInfo
 {
     public float damage;
-    public DamageIndicator.damageIndicatorType damageType;
+    public damageIndicatorType damageType;
     public Vector3 position;
 
 

@@ -6,38 +6,39 @@ using UnityEngine.UI;
 
 public class DamageIndicator : MonoBehaviour
 {
-    public enum damageIndicatorType
-    {
-        normieDamage, dankDamage, surrealDamage, mlgNoScope
-    };
     public TextMeshPro damageIndicatorText;
     public damageIndicatorType damageType;
     public float dissappearTimer;
+    private float angle = 0;
+    public float indicatorSpeed = 100;
+
+    void Start()
+    {
+        angle = Random.Range(0, 360);
+        StartCoroutine(IndicatorMovement(angle));
+        //Debug.Log("Updating (DamageIndicator.cs)");
+    }
+
+    void Update()
+    {
+        Vector3 target = transform.position + new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad), 0).normalized;
+        transform.position = Vector2.MoveTowards(this.transform.position, target, indicatorSpeed * Time.deltaTime);
+    }
 
     public void RunIndicator(float damage, Vector3 position)
     {
-        GameObject popup = Instantiate(this.gameObject, position, Quaternion.identity);
+        GameObject popup = Instantiate(this.gameObject, position, Quaternion.identity, GameObject.FindGameObjectWithTag("World Canvas").transform);
         popup.GetComponent<DamageIndicator>().damageIndicatorText.text = damage.ToString();
-        StartCoroutine(popup.GetComponent<DamageIndicator>().IndicatorMovement(Random.Range(0, 360)));
-
-
-     }
+        //Debug.Log("StartCoroutine() ran (DamageIndicator.cs)");
+    }
 
     public IEnumerator IndicatorMovement(float angle)
     {
-        //transform.position = Vector2.MoveTowards(this.transform.position, targetenemy.transform.position, bscript.speed * Time.deltaTime);
-
-        yield return new WaitForSeconds(dissappearTimer);
-        damageIndicatorText.CrossFadeAlpha(0, dissappearTimer, false);
-        Destroy(this.gameObject, dissappearTimer + 0.01f);
-
+        for(int i = 0; i < 10; i++)
+        {
+            damageIndicatorText.alpha -= 0.1f;
+            yield return new WaitForSeconds(dissappearTimer/10);
+        }
+        Destroy(this.gameObject, + 0.01f);
     }
-
-
-
-
-
-
-
-
 }

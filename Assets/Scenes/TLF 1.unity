@@ -2449,7 +2449,7 @@ GameObject:
   - component: {fileID: 468055239}
   m_Layer: 5
   m_Name: World Canvas
-  m_TagString: Untagged
+  m_TagString: World Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9709,6 +9709,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 468055242}
     m_Modifications:
+    - target: {fileID: 208300711804046434, guid: 8ea6c8ef6a1fe8c45a53bb336f7f0924, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 208300711804046435, guid: 8ea6c8ef6a1fe8c45a53bb336f7f0924, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9796,6 +9800,10 @@ PrefabInstance:
     - target: {fileID: 208300711804046436, guid: 8ea6c8ef6a1fe8c45a53bb336f7f0924, type: 3}
       propertyPath: m_Name
       value: Normal Damage Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 208300711804046436, guid: 8ea6c8ef6a1fe8c45a53bb336f7f0924, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ea6c8ef6a1fe8c45a53bb336f7f0924, type: 3}
@@ -9907,9 +9915,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 468055242}
     m_Modifications:
+    - target: {fileID: 1611811339776422156, guid: a48df770ce59c664583bd6c94d855ece, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1611811339776422158, guid: a48df770ce59c664583bd6c94d855ece, type: 3}
       propertyPath: m_Name
       value: Dank Damage Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611811339776422158, guid: a48df770ce59c664583bd6c94d855ece, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1611811339776422159, guid: a48df770ce59c664583bd6c94d855ece, type: 3}
       propertyPath: m_Pivot.x
@@ -10088,9 +10104,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8184916001337668177, guid: 807b057b77923e541b2881a1489ba5db, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8184916001337668191, guid: 807b057b77923e541b2881a1489ba5db, type: 3}
       propertyPath: m_Name
       value: NoScope Damage Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184916001337668191, guid: 807b057b77923e541b2881a1489ba5db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 807b057b77923e541b2881a1489ba5db, type: 3}
@@ -10109,6 +10133,10 @@ PrefabInstance:
     - target: {fileID: 5915393011676989969, guid: 9c4d340596b4db24881f9376e9dda942, type: 3}
       propertyPath: m_Name
       value: Surreal Damage Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915393011676989969, guid: 9c4d340596b4db24881f9376e9dda942, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5915393011676989982, guid: 9c4d340596b4db24881f9376e9dda942, type: 3}
       propertyPath: m_Pivot.x
@@ -10192,6 +10220,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5915393011676989982, guid: 9c4d340596b4db24881f9376e9dda942, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915393011676989983, guid: 9c4d340596b4db24881f9376e9dda942, type: 3}
+      propertyPath: m_isRightToLeft
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

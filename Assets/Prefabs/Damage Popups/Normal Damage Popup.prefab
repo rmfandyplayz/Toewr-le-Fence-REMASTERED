@@ -185,4 +185,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIndicatorText: {fileID: 208300711804046434}
   damageType: 0
-  dissappearTimer: 0.75
+  dissappearTimer: 0.81
+  indicatorSpeed: 2
