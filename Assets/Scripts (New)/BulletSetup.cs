@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Toolbox.Editor.Drawers;
 
 [CreateAssetMenu(fileName = "Bullet", menuName = "Object/Bullet")]
 public class BulletSetup : ScriptableObject
@@ -25,4 +26,17 @@ public class BulletSetup : ScriptableObject
     public bool isTNT = false;
     public bool otherbullets = true;
     public bool hasExplosion = false;
+    [Header("Damage Type and Chance")]
+
+    public bool canDealDankDmg;
+    public float dankDmgChance;
+    public float dankDmgMultiplier;
+
+    public bool canDealSurrealDmg;
+    public float surrealDmgChance;
+    public float surrealDmgMultiplier;
+
+    public bool canDealNoscopeDmg;
+    public float NoscopeDmgChance;
+    public float noscopeDmg = Mathf.Infinity;
 }
