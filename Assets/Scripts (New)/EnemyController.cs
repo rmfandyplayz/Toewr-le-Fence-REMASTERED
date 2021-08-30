@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        OnTakeDamage?.Invoke(new DamageInfo(damage, damageIndicatorType.dankDamage, transform.position));
+        OnTakeDamage?.Invoke(new DamageInfo(damage, damageIndicatorType.normieDamage, transform.position));
         currentShields -= damage;
         float newDamage = 0;
         if(currentShields < 0)
