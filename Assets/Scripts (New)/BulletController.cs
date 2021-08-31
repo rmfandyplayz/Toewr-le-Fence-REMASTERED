@@ -21,7 +21,9 @@ public class BulletController : MonoBehaviour
             //transform.LookAt(targetenemy.transform.position, Vector3.up);
             float angle = 0;
 
-            Vector3 relative = transform.InverseTransformPoint(targetenemy.transform.position);            angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;            transform.Rotate(0, 0, -angle);
+            Vector3 relative = transform.InverseTransformPoint(targetenemy.transform.position);
+            angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+            transform.Rotate(0, 0, -angle);
 
         }
         else
@@ -50,7 +52,7 @@ public class BulletController : MonoBehaviour
         if (enemy != null)
         {
             Destroy(this.gameObject);
-            enemy.TakeDamage(bscript.bulletDamage);
+            enemy.TakeDamage(bscript);
         }
     }
 

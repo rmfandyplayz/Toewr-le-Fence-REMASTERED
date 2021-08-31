@@ -30,10 +30,9 @@ public class EnemyController : MonoBehaviour
 
 
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(BulletSetup bscript)
     {
-        OnTakeDamage?.Invoke(new DamageInfo(damage, damageIndicatorType.normieDamage, transform.position));
-        currentShields -= damage;
+        currentShields -= bscript.bulletDamage;
         float newDamage = 0;
         if(currentShields < 0)
         {
@@ -43,6 +42,9 @@ public class EnemyController : MonoBehaviour
         currentHealth -= newDamage;
         OnHealthUpdate?.Invoke(currentHealth);
         OnShieldUpdate?.Invoke(currentShields);
+        
+        OnTakeDamage?.Invoke(new DamageInfo(bscript.bulletDamage, damageIndicatorType.normieDamage, transform.position));
+        
         if(currentHealth <= 0)
         {
             GoldManager.instance?.AddGold(escript.dropMoneyAmount);

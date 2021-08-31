@@ -29,7 +29,7 @@ MonoBehaviour:
   isTNT: 0
   otherbullets: 1
   hasExplosion: 0
-  canDealDankDmg: 0
+  canDealDankDmg: 1
   dankDmgChance: 0
   dankDmgMultiplier: 0
   canDealSurrealDmg: 0
