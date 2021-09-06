@@ -12,7 +12,7 @@ public class BulletSetup : ScriptableObject
     public GameObject exposionPrefab;
     [Header("Floats and Values")]
     public float speed = 70f;
-    public float bulletDamage = 1;
+    public UpgradableType bulletDamage;
     public float freezeTowerSlowdown = 0;
     public float explosionDamage_subtractfrombulletdamage = -10f;
     public float explosionRadius = 5;
@@ -26,6 +26,8 @@ public class BulletSetup : ScriptableObject
     public bool isTNT = false;
     public bool otherbullets = true;
     public bool hasExplosion = false;
+    [Header("Upgrades")]
+    public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();
     [Header("Damage Type and Chance")]
 
     public bool canDealDankDmg;

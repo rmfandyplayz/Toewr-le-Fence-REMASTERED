@@ -73,9 +73,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: -2413806693520163455, guid: 3bb042a5489444d5e9bfdb532f1c75d3, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.42745098, g: 0.4392157, b: 1, a: 0.4}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -247,11 +247,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tsettings: {fileID: 0}
   targets: []
-  bulletPrefab: {fileID: 0}
-  upgradesCounter: 
+  bulletPrefab: {fileID: 1073181234680642804, guid: ba9444d7efe703149acf785612aba4e4, type: 3}
+  upgradesCounter:
+    pairs: []
+    error: 0
   firePointList:
   - {fileID: 7677393957092656157}
-  temporaryBullet: {fileID: 1073181234680642804, guid: ba9444d7efe703149acf785612aba4e4, type: 3}
   spriteHolder: {fileID: 7677393957125659679}
   rangeHolder: {fileID: 7677393956828268213}
 --- !u!1 &7677393957092656158

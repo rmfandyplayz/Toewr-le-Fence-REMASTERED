@@ -13,18 +13,18 @@ public class TurretRangeHandler : MonoBehaviour
     public UEventGameObject OnRangeEnter;
     public UEventGameObject OnRangeExit;
 
-    public void Initialize(Obj2DSimpleInfo newRangeObj)
+    public void Initialize(float newRangeVal, Vector2 newRangePos)
     {
-        turretRange = newRangeObj.value;
-        this.transform.position = newRangeObj.position;
-        this.transform.localScale = Vector3.one * turretRange * 2;
+        turretRange = newRangeVal;
+        this.transform.position = newRangePos;
+        this.transform.localScale = Vector3.one * turretRange*2;
         if(colliderRange == null)
         {
             colliderRange = GetComponent<CircleCollider2D>();
         }
         colliderRange.isTrigger = true;
         colliderRange.offset = new Vector2(transform.position.x, transform.position.y);
-        colliderRange.radius = turretRange;
+        colliderRange.radius = 0.5f;
         if(rangeSprite == null)
         {
             rangeSprite = GetComponent<SpriteRenderer>();

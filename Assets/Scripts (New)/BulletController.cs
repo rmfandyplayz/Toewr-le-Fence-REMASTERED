@@ -7,10 +7,26 @@ public class BulletController : MonoBehaviour
     public BulletSetup bscript;
     public GameObject targetenemy;
     private Camera main;
+    public SerializedDictionary<TypeOfUpgrade, int> upgradesCounter;
 
     void Start()
     {
         main = Camera.main;
+        foreach(TypeOfUpgrade upgrade in bscript.upgrades)
+        {
+            upgradesCounter.Add(upgrade, 0);
+        } 
+    }
+
+    public void InitUpgrade(SerializedDictionary<TypeOfUpgrade, int> counter)
+    {
+        foreach (var pair in counter)
+        {
+            if(upgradesCounter.ContainsKey(pair.Key))
+            {
+                upgradesCounter[pair.Key] = pair.Value;
+            }
+        }
     }
 
     void Update()

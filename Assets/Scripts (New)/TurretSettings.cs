@@ -8,32 +8,18 @@ public class TurretSettings : ScriptableObject
     public string turretName;
     public Sprite turretSprite;
     public bool canRotate = true;
-    public int rotateSpeed = 5;
-    public Obj2DSimpleInfo range;
-    public float fireRate;
+    [ShowIf(nameof(canRotate), true)]
+    public UpgradableType rotateSpeed = new UpgradableType(5);
+    public UpgradableType range;
+    public UpgradableType fireRate;
     public int buyPrice;
+    public Vector2 rangeVizPosition;
     public Obj2DSimpleInfo colliderPositionAndSize;
     public List<Obj2DSimpleInfo> firepointPositionRotation;
 
     public BulletSetup bullet;
-    public List<TurretUpgradeSetup> tupgrades; 
-    /*
-    What to put here:
-    Bullet scriptable object
-    Complete this one
-    Upgrades scriptable object
 
-    What to draw:
-    Health and shield bar
-    GUI HUD
-    Buy turrets scrollview stuff
-    Upgrade turrets scrollview stuff
-    Buttons
-
-
-    */
-
-
+    public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();
 }
 
 
@@ -42,4 +28,9 @@ public struct Obj2DSimpleInfo
 {
     public Vector2 position;
     public float value;
+}
+
+public enum TypeOfUpgrade
+{
+    Rotation, Range, FireRate, BulletDamage
 }

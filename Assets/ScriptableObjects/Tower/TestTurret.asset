@@ -15,12 +15,26 @@ MonoBehaviour:
   turretName: Test
   turretSprite: {fileID: 21300000, guid: c5a9e030f24bfd04cb49f17429374c5a, type: 3}
   canRotate: 1
-  rotateSpeed: 5
+  rotateSpeed:
+    baseValue: 5
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
   range:
-    position: {x: 0, y: 0}
-    value: 5
-  fireRate: 0.25
+    baseValue: 5
+    upgradeEfficiency: 1
+    maxUpgradeLevel: 10
+    startingPrice: 0
+    priceIncrease: 0
+  fireRate:
+    baseValue: 0.25
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
   buyPrice: 1
+  rangeVizPosition: {x: 0, y: 0}
   colliderPositionAndSize:
     position: {x: 0, y: 0}
     value: 0.3814732
@@ -28,4 +42,4 @@ MonoBehaviour:
   - position: {x: 0.005, y: 0.575}
     value: 0
   bullet: {fileID: 11400000, guid: 48b585c22eb3253468beb5c093255c61, type: 2}
-  tupgrades: []
+  upgrades: 0100000002000000

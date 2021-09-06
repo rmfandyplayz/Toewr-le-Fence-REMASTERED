@@ -16,7 +16,12 @@ MonoBehaviour:
   particlePrefab: {fileID: 0}
   exposionPrefab: {fileID: 0}
   speed: 50
-  bulletDamage: 1
+  bulletDamage:
+    baseValue: 1
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
   freezeTowerSlowdown: 0
   explosionDamage_subtractfrombulletdamage: -10
   explosionRadius: 5
@@ -29,6 +34,7 @@ MonoBehaviour:
   isTNT: 0
   otherbullets: 1
   hasExplosion: 0
+  upgrades: 
   canDealDankDmg: 1
   dankDmgChance: 0
   dankDmgMultiplier: 0

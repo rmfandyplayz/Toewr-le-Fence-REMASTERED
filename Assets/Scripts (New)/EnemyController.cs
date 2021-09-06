@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(BulletSetup bscript)
     {
-        currentShields -= bscript.bulletDamage;
+        currentShields -= bscript.bulletDamage.GetBaseValue;
         float newDamage = 0;
         if(currentShields < 0)
         {
@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
         OnHealthUpdate?.Invoke(currentHealth);
         OnShieldUpdate?.Invoke(currentShields);
         
-        OnTakeDamage?.Invoke(new DamageInfo(bscript.bulletDamage, damageIndicatorType.normieDamage, transform.position));
+        OnTakeDamage?.Invoke(new DamageInfo(bscript.bulletDamage.GetBaseValue, damageIndicatorType.normieDamage, transform.position));
         
         if(currentHealth <= 0)
         {

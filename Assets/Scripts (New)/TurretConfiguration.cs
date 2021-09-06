@@ -1,17 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor;
 
 public class TurretConfiguration : MonoBehaviour
 {
     public TurretSettings tsettings;
     public List<GameObject> targets;
     public GameObject bulletPrefab;
-    public List<int> upgradesCounter;
+    public SerializedDictionary<TypeOfUpgrade, int> upgradesCounter;
     public List<Transform> firePointList = new List<Transform>();
     private GameObject currentTarget;
-    public GameObject temporaryBullet;
     private bool isOnCooldown = false;
     public TurretSpriteHandler spriteHolder; 
     public TurretRangeHandler rangeHolder; 
@@ -20,7 +18,7 @@ public class TurretConfiguration : MonoBehaviour
     {
         name = tsettings.turretName;
         spriteHolder.Initialize(tsettings.turretSprite, tsettings.colliderPositionAndSize);
-        rangeHolder.Initialize(tsettings.range);
+        rangeHolder.Initialize(tsettings.range.GetBaseValue, tsettings.rangeVizPosition);
         rangeHolder.ToggleRangeVisual(showTurretRange);
         if(firePointList.Count == 0)
         {
@@ -29,7 +27,11 @@ public class TurretConfiguration : MonoBehaviour
                 var firePoint = new GameObject("FirePoint");
                 firePoint.transform.position = fp.position;
             }
-        }        
+        }  
+        foreach(TypeOfUpgrade upgrade in tsettings.upgrades)
+        {
+            upgradesCounter.Add(upgrade, 0);
+        }      
     }
 
     public void AddTarget(GameObject possibleTarget)
@@ -96,22 +98,26 @@ public class TurretConfiguration : MonoBehaviour
         // Debug.LogWarning(Vector2.SignedAngle(Vector2.up, dir));
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles,
                                                 Vector3.forward * targetAngle,
-                                                tsettings.rotateSpeed);
+                                                tsettings.rotateSpeed.GetUpgradedValue(CounterValue(TypeOfUpgrade.Rotation)));
     }
 
     IEnumerator Shoot()
     {
         foreach(Transform firePoint in firePointList)
         {
-            GameObject bullet = Instantiate(temporaryBullet, firePoint.position, firePoint.rotation);
-            bullet.GetComponent<BulletController>().targetenemy = currentTarget;
-            //shoot bullet here
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            BulletController bc = bullet.GetComponent<BulletController>();
+            bc.bscript = tsettings.bullet;
+            bc.targetenemy = currentTarget;
+            bc.InitUpgrade(upgradesCounter);
+            
             isOnCooldown = true;
-            yield return new WaitForSeconds(tsettings.fireRate);
+            yield return new WaitForSeconds(tsettings.fireRate.GetUpgradedValue(CounterValue(TypeOfUpgrade.FireRate)));
             isOnCooldown = false;
         }
     }
-
-
-
+    public int CounterValue(TypeOfUpgrade upgradeName) 
+    {
+        return upgradesCounter.ContainsKey(upgradeName)? upgradesCounter[upgradeName] : 0; 
+    }
 }
