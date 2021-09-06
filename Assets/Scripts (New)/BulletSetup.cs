@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Toolbox.Editor.Drawers;
+using Toolbox;
 
 [CreateAssetMenu(fileName = "Bullet", menuName = "Object/Bullet")]
 public class BulletSetup : ScriptableObject
