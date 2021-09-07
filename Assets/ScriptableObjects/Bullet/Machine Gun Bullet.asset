@@ -17,7 +17,7 @@ MonoBehaviour:
   exposionPrefab: {fileID: 0}
   speed: 50
   bulletDamage:
-    baseValue: 1
+    baseValue: 10000
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0
@@ -36,11 +36,11 @@ MonoBehaviour:
   hasExplosion: 0
   upgrades: 
   canDealDankDmg: 1
-  dankDmgChance: 0
-  dankDmgMultiplier: 0
-  canDealSurrealDmg: 0
-  surrealDmgChance: 0
-  surrealDmgMultiplier: 0
-  canDealNoscopeDmg: 0
-  NoscopeDmgChance: 0
+  dankDmgChance: 30
+  dankDmgMultiplier: 2
+  canDealSurrealDmg: 1
+  surrealDmgChance: 20
+  surrealDmgMultiplier: 3
+  canDealNoscopeDmg: 1
+  NoscopeDmgChance: 15
   noscopeDmg: Infinity

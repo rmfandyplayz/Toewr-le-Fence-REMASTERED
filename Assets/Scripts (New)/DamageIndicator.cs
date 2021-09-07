@@ -19,11 +19,19 @@ public class DamageIndicator : MonoBehaviour
     {
         damageIndicatorText = GetComponent<TMP_Text>();
         damageType = indicatorType;
-        damageIndicatorText.text = $"{damage}";
+        if(damageType == damageIndicatorType.mlgNoScope)
+        {
+            damageIndicatorText.text = "360° Noscope'd";
+        }
+        else
+        {
+            damageIndicatorText.text = $"{damage}";
+        }
     }
     void Start()
     {
         angle = Random.Range(0, 360);
+
         StartCoroutine(IndicatorMovement(angle));
         //Debug.Log("Updating (DamageIndicator.cs)");
     }

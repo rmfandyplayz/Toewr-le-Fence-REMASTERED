@@ -67,8 +67,35 @@ public class BulletController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
         {
+            float damage = bscript.bulletDamage.GetBaseValue;
+            var damageType = DamageCalculation(ref damage);
+            enemy.TakeDamage(damage, damageType);
             Destroy(this.gameObject);
-            enemy.TakeDamage(bscript);
+        }
+    }
+
+    public damageIndicatorType DamageCalculation(ref float damage)
+    {
+        int RNG = Random.Range(0, 100);
+        if(bscript.NoscopeDmgChance > RNG)
+        {
+            damage = bscript.noscopeDmg;
+            return damageIndicatorType.mlgNoScope;
+        }
+        else if(bscript.surrealDmgChance > RNG - bscript.NoscopeDmgChance)
+        {
+            damage *= bscript.surrealDmgMultiplier;
+            return damageIndicatorType.surrealDamage;
+        }
+        else if(bscript.dankDmgChance > RNG - bscript.NoscopeDmgChance - bscript.surrealDmgChance)
+        {
+            damage *= bscript.dankDmgMultiplier;
+            return damageIndicatorType.dankDamage;
+        }
+        else
+        {
+            damage = damage;
+            return damageIndicatorType.normieDamage;
         }
     }
 

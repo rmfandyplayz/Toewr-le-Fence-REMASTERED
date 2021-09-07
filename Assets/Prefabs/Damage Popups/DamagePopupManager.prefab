@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 566305099283375831}
   - component: {fileID: 1912194745353014744}
   - component: {fileID: 214499239491265277}
+  - component: {fileID: 6025879937572045669}
   m_Layer: 0
   m_Name: NoScope Damage Popup
   m_TagString: Untagged
@@ -187,7 +188,26 @@ MonoBehaviour:
   damageIndicatorText: {fileID: 1912194745353014744}
   damageType: 0
   dissappearTimer: 2
-  indicatorSpeed: 1
+  indicatorSpeed: 2
+--- !u!114 &6025879937572045669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656870046590606163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eedeb023f2c43b881a052e42db1496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRadialShake: 1
+  rotateSpeed: 100
+  maxRotation: 5
+  isLinearShake: 0
+  linearShakeSpeed: 0
+  maxLinearShake: {x: 0, y: 0}
+  startingPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4037138438999695130
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +408,7 @@ GameObject:
   - component: {fileID: 8835792052809770495}
   - component: {fileID: 9022845012064681091}
   - component: {fileID: 4451981986509920668}
+  - component: {fileID: 6454177560582980058}
   m_Layer: 0
   m_Name: Dank Damage Popup
   m_TagString: Untagged
@@ -564,6 +585,25 @@ MonoBehaviour:
   damageType: 0
   dissappearTimer: 2
   indicatorSpeed: 1
+--- !u!114 &6454177560582980058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705367165412149069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eedeb023f2c43b881a052e42db1496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRadialShake: 0
+  rotateSpeed: 500
+  maxRotation: 9
+  isLinearShake: 1
+  linearShakeSpeed: 100
+  maxLinearShake: {x: 0.02, y: 0.02}
+  startingPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &7359571356390044473
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +667,7 @@ GameObject:
   - component: {fileID: 3433861563086216691}
   - component: {fileID: 5165865149585323172}
   - component: {fileID: 6708484640705002985}
+  - component: {fileID: 6451227344490655181}
   m_Layer: 0
   m_Name: Surrel Damage Popup
   m_TagString: Untagged
@@ -803,3 +844,22 @@ MonoBehaviour:
   damageType: 0
   dissappearTimer: 2
   indicatorSpeed: 1
+--- !u!114 &6451227344490655181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827503077317720728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eedeb023f2c43b881a052e42db1496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRadialShake: 1
+  rotateSpeed: 60
+  maxRotation: 15
+  isLinearShake: 0
+  linearShakeSpeed: 0
+  maxLinearShake: {x: 0, y: 0}
+  startingPosition: {x: 0, y: 0, z: 0}
