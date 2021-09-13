@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TurretSpriteHandler : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class TurretSpriteHandler : MonoBehaviour
     private SpriteRenderer sr;
     private CircleCollider2D tcollider;
     private bool isInvalid = false;
+    public UnityEvent OnSpriteClick = new UnityEvent();
     public void Initialize(Sprite newSprite, Obj2DSimpleInfo info)
     {
         sr = GetComponent<SpriteRenderer>();
@@ -71,5 +73,10 @@ public class TurretSpriteHandler : MonoBehaviour
             sr.color = normalColor;
             isInvalid = false;
         }
+    }
+
+    private void OnMouseDown() {
+        // Debug.LogWarning("Sprite was clicked");
+        OnSpriteClick?.Invoke();
     }
 }

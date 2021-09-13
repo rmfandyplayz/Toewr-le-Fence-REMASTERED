@@ -39,7 +39,7 @@ public class TurretRangeHandler : MonoBehaviour
 
     public void ToggleRangeVisual(bool? overrideToggle = null)
     {
-        print($"ToggleRangeVisual: {overrideToggle.ToString()}");
+        // print($"ToggleRangeVisual: {overrideToggle.ToString()}");
         if(overrideToggle != null)
         {
             isShowingRangeVisual = overrideToggle.Value;
@@ -48,8 +48,13 @@ public class TurretRangeHandler : MonoBehaviour
         }
         else
         {
-            ToggleRangeVisual(!isShowingRangeVisual);
+            ToggleRangeVisualNoOverride();
         }
+    }
+
+    public void ToggleRangeVisualNoOverride()
+    {
+        ToggleRangeVisual(!isShowingRangeVisual);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
