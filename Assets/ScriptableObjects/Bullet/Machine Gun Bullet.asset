@@ -36,11 +36,11 @@ MonoBehaviour:
   hasExplosion: 0
   upgrades: 
   canDealDankDmg: 1
-  dankDmgChance: 30
+  dankDmgChance: 10
   dankDmgMultiplier: 2
   canDealSurrealDmg: 1
-  surrealDmgChance: 20
+  surrealDmgChance: 5
   surrealDmgMultiplier: 3
   canDealNoscopeDmg: 1
-  NoscopeDmgChance: 15
+  NoscopeDmgChance: 1
   noscopeDmg: Infinity
