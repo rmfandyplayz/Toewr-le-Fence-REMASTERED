@@ -10,7 +10,11 @@ public class TurretSpriteHandler : MonoBehaviour
     private SpriteRenderer sr;
     private CircleCollider2D tcollider;
     private bool isInvalid = false;
+    public bool isPlacing = true;
     public UnityEvent OnSpriteClick = new UnityEvent();
+
+
+
     public void Initialize(Sprite newSprite, Obj2DSimpleInfo info)
     {
         sr = GetComponent<SpriteRenderer>();
@@ -76,7 +80,15 @@ public class TurretSpriteHandler : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        // Debug.LogWarning("Sprite was clicked");
-        OnSpriteClick?.Invoke();
+        Debug.LogWarning("Sprite was clicked / " + isPlacing);
+        if (!isPlacing)
+        {
+            OnSpriteClick?.Invoke();
+            
+        }
+        else
+        {
+             return;
+        }
     }
 }

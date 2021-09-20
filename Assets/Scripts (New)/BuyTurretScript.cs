@@ -74,7 +74,8 @@ public class BuyTurretScript : MonoBehaviour
     public IEnumerator DraggingUpdate()
     {
         while(isDragging)
-        {
+         {
+
             turret.transform.position = camera.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10;
             if(!tsh.CheckIfHitObstacles() && Input.GetKey(placeTurretKey))
             {
@@ -82,6 +83,8 @@ public class BuyTurretScript : MonoBehaviour
                 turret.GetComponent<TurretConfiguration>().enabled = true;
                 turret.GetComponentInChildren<TurretSpriteHandler>().ToggleTransparency(false);
                 turret.GetComponentInChildren<TurretRangeHandler>().ToggleRangeVisual(false);
+                turret.GetComponentInChildren<TurretSpriteHandler>().OnSpriteClick.AddListener(FindObjectOfType<UpgradingUI>().Toggle);
+                turret.GetComponentInChildren<TurretSpriteHandler>().isPlacing = false;
                 turret = null;
                 GoldManager.instance.AddGold(-stns.buyPrice);
                 OnPlaceTurret?.Invoke();
@@ -94,6 +97,6 @@ public class BuyTurretScript : MonoBehaviour
                 OnDiscardTurret?.Invoke();
             }
             yield return new WaitForEndOfFrame();
-        }
+         }
     }
 }

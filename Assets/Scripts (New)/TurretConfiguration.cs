@@ -63,6 +63,11 @@ public class TurretConfiguration : MonoBehaviour
         float closestEnemyDistance = float.MaxValue;
         foreach(GameObject enemy in targets)
         {
+            if(enemy == null)
+            {
+                //targets.Remove(enemy);
+                continue;
+            }
             float distance = FindEnemyDistance(this.transform.position, enemy.transform.position); //temporary variable
             if (distance < closestEnemyDistance)
             {
