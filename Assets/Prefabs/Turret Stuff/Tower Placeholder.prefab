@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7677393956828268215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 7677393956911084489}
   m_RootOrder: 2
@@ -75,11 +75,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: -2413806693520163455, guid: 3bb042a5489444d5e9bfdb532f1c75d3, type: 3}
-  m_Color: {r: 0.42745098, g: 0.4392157, b: 1, a: 0.4}
+  m_Color: {r: 0.4292453, g: 0.43888998, b: 1, a: 0.4}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.36, y: 0.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,7 +95,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8166d5093f45049f58d346a3d2a51333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretRange: 0
+  turretRange: 5
   rangeSprite: {fileID: 7677393956828268211}
   colliderRange: {fileID: 7677393956828268212}
   OnRangeEnter:
@@ -133,19 +133,7 @@ MonoBehaviour:
         m_CallState: 2
   OnRangeExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7677393956911084493}
-        m_TargetAssemblyTypeName: TurretConfiguration, Assembly-CSharp
-        m_MethodName: RemoveTarget
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7677393956911084494
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7677393956911084489
 Transform:
   m_ObjectHideFlags: 0
@@ -245,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1ed82564c25d8428b163247b3f90c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tsettings: {fileID: 0}
+  tsettings: {fileID: 11400000, guid: 55a57a73045ea3d41a139254cd6ee564, type: 2}
   targets: []
   bulletPrefab: {fileID: 1073181234680642804, guid: ba9444d7efe703149acf785612aba4e4, type: 3}
   upgradesCounter:
@@ -360,7 +348,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c5a9e030f24bfd04cb49f17429374c5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -368,7 +356,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &7677393957125657568
@@ -427,8 +415,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7677393956828268213}
         m_TargetAssemblyTypeName: TurretRangeHandler, Assembly-CSharp
-        m_MethodName: ToggleRangeVisualNoOverride
-        m_Mode: 1
+        m_MethodName: ToggleRangeVisual
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -35,12 +35,12 @@ MonoBehaviour:
   otherbullets: 1
   hasExplosion: 0
   upgrades: 
-  canDealDankDmg: 1
+  canDealDankDmg: 0
   dankDmgChance: 10
   dankDmgMultiplier: 2
-  canDealSurrealDmg: 1
+  canDealSurrealDmg: 0
   surrealDmgChance: 5
   surrealDmgMultiplier: 3
   canDealNoscopeDmg: 1
-  NoscopeDmgChance: 1
+  NoscopeDmgChance: 100
   noscopeDmg: Infinity
