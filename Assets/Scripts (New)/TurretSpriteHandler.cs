@@ -7,10 +7,12 @@ public class TurretSpriteHandler : MonoBehaviour
 {
     public Color normalColor = Color.white;
     public Color invalidColor = Color.red;
+    public bool isPlacing = true;
+    public float busyTimer = 0.5f;
     private SpriteRenderer sr;
     private CircleCollider2D tcollider;
     private bool isInvalid = false;
-    public bool isPlacing = true;
+    private bool isBusy = false;
     public UnityEvent OnSpriteClick = new UnityEvent();
 
 
@@ -23,6 +25,7 @@ public class TurretSpriteHandler : MonoBehaviour
         tcollider.radius = info.value;
         sr.sprite = newSprite;
         isInvalid = false;
+        isPlacing = true;
     }
 
     public void ToggleTransparency(bool enable, float transparency = 1f)
@@ -81,8 +84,9 @@ public class TurretSpriteHandler : MonoBehaviour
 
     private void OnMouseDown() {
         Debug.LogWarning("Sprite was clicked / " + isPlacing);
-        if (!isPlacing)
+        if (!isPlacing && !isBusy)
         {
+            StartCoroutine(BusySprite());
             OnSpriteClick?.Invoke();
             
         }
@@ -90,5 +94,12 @@ public class TurretSpriteHandler : MonoBehaviour
         {
              return;
         }
+    }
+
+    private IEnumerator BusySprite()
+    {
+        isBusy = true;
+        yield return new WaitForSeconds(busyTimer);
+        isBusy = false;
     }
 }
