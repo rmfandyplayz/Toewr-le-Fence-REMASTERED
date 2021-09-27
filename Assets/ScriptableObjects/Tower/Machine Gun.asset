@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 641e42121c71f704485bb63dc6d51f20, type: 3}
-  m_Name: TestTurret
+  m_Name: Machine Gun
   m_EditorClassIdentifier: 
-  turretName: Test
+  turretName: Machine Gun Turret
   turretSprite: {fileID: 21300000, guid: c5a9e030f24bfd04cb49f17429374c5a, type: 3}
   canRotate: 1
   rotateSpeed:

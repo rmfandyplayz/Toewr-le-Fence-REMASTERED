@@ -80,10 +80,14 @@ public class BuyTurretScript : MonoBehaviour
             if(!tsh.CheckIfHitObstacles() && Input.GetKey(placeTurretKey))
             {
                 isDragging = false;
+                var upgradingUI = FindObjectOfType<UpgradingUI>();
+                var turretConfig = turret.GetComponent<TurretConfiguration>();
+
                 turret.GetComponent<TurretConfiguration>().enabled = true;
                 turret.GetComponentInChildren<TurretSpriteHandler>().ToggleTransparency(false);
                 turret.GetComponentInChildren<TurretRangeHandler>().ToggleRangeVisual(false);
-                turret.GetComponentInChildren<TurretSpriteHandler>().OnSpriteClick.AddListener(FindObjectOfType<UpgradingUI>().Toggle);
+                turret.GetComponentInChildren<TurretSpriteHandler>().OnSpriteClick.AddListener(() => { upgradingUI.tconfig = turretConfig; });
+                turret.GetComponentInChildren<TurretSpriteHandler>().OnSpriteClick.AddListener(upgradingUI.Toggle);
                 turret.GetComponentInChildren<TurretSpriteHandler>().isPlacing = false;
                 turret = null;
                 GoldManager.instance.AddGold(-stns.buyPrice);
