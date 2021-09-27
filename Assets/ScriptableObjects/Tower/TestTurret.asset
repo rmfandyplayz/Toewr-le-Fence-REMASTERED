@@ -16,18 +16,21 @@ MonoBehaviour:
   turretSprite: {fileID: 21300000, guid: c5a9e030f24bfd04cb49f17429374c5a, type: 3}
   canRotate: 1
   rotateSpeed:
+    name: Rotation Speed
     baseValue: 5
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0
     priceIncrease: 0
   range:
+    name: Range
     baseValue: 5
     upgradeEfficiency: 1
     maxUpgradeLevel: 10
     startingPrice: 0
     priceIncrease: 0
   fireRate:
+    name: Fire Rate
     baseValue: 0.25
     upgradeEfficiency: 0
     maxUpgradeLevel: 0

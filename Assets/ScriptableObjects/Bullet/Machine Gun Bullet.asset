@@ -17,6 +17,7 @@ MonoBehaviour:
   exposionPrefab: {fileID: 0}
   speed: 50
   bulletDamage:
+    name: Bullet Damage
     baseValue: 10000
     upgradeEfficiency: 0
     maxUpgradeLevel: 0

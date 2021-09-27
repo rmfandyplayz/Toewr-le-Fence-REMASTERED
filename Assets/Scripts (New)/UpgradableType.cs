@@ -3,12 +3,14 @@ using UnityEngine;
 public class UpgradableType
 {
     [Header("Values")]
+    [SerializeField] string name = "Upgradable";
     [SerializeField] float baseValue;
     [SerializeField] float upgradeEfficiency;
     [SerializeField] int maxUpgradeLevel;
     public float GetBaseValue => baseValue;
     public int MaxLevel => maxUpgradeLevel;
     public float GetUpgradedValue(int level) => baseValue + upgradeEfficiency * Mathf.Clamp(level,0,maxUpgradeLevel); 
+    public string GetName => name;
 
 
     [Header("Pricing")]
