@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7677393956828268211}
   - component: {fileID: 7677393956828268212}
   - component: {fileID: 7677393956828268213}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Range Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,6 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   invalidColor: {r: 1, g: 0, b: 0, a: 1}
+  isPlacing: 1
   OnSpriteClick:
     m_PersistentCalls:
       m_Calls:
@@ -437,4 +438,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isPlacing: 1
