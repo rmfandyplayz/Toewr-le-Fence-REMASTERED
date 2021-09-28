@@ -15,9 +15,8 @@ public class TurretRangeHandler : MonoBehaviour
 
     public void Initialize(float newRangeVal, Vector2 newRangePos)
     {
-        turretRange = newRangeVal;
+        UpdateRange(newRangeVal);
         this.transform.position = newRangePos;
-        this.transform.localScale = Vector3.one * turretRange*2;
         if(colliderRange == null)
         {
             colliderRange = GetComponent<CircleCollider2D>();
@@ -35,6 +34,7 @@ public class TurretRangeHandler : MonoBehaviour
     public void UpdateRange(float newRange)
     {
         turretRange = newRange;
+        this.transform.localScale = Vector3.one * turretRange*2;
     }
 
     public void ToggleRangeVisual(bool? overrideToggle = null)

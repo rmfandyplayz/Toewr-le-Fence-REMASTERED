@@ -18,24 +18,24 @@ MonoBehaviour:
   rotateSpeed:
     name: Rotation Speed
     baseValue: 5
-    upgradeEfficiency: 0
-    maxUpgradeLevel: 0
-    startingPrice: 0
-    priceIncrease: 0
+    upgradeEfficiency: 1
+    maxUpgradeLevel: 5
+    startingPrice: 5
+    priceIncrease: 2
   range:
     name: Range
     baseValue: 5
-    upgradeEfficiency: 1
-    maxUpgradeLevel: 10
-    startingPrice: 0
-    priceIncrease: 0
+    upgradeEfficiency: 0.5
+    maxUpgradeLevel: 4
+    startingPrice: 1
+    priceIncrease: 1
   fireRate:
     name: Fire Rate
     baseValue: 0.25
-    upgradeEfficiency: 0
-    maxUpgradeLevel: 0
-    startingPrice: 0
-    priceIncrease: 0
+    upgradeEfficiency: -0.01
+    maxUpgradeLevel: 25
+    startingPrice: 2
+    priceIncrease: 1
   buyPrice: 1
   rangeVizPosition: {x: 0, y: 0}
   colliderPositionAndSize:

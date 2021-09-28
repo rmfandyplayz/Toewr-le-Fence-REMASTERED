@@ -18,13 +18,13 @@ public class BulletController : MonoBehaviour
         } 
     }
 
-    public void InitUpgrade(SerializedDictionary<TypeOfUpgrade, int> counter)
+    public void InitUpgrade(SerializedDictionary<TypeOfUpgrade, UpgradeCounterInfo> counter)
     {
         foreach (var pair in counter)
         {
             if(upgradesCounter.ContainsKey(pair.Key))
             {
-                upgradesCounter[pair.Key] = pair.Value;
+                upgradesCounter[pair.Key] = pair.Value.Counter;
             }
         }
     }
@@ -67,7 +67,10 @@ public class BulletController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
         {
-            float damage = bscript.bulletDamage.GetBaseValue;
+
+            float damage = bscript.bulletDamage.GetUpgradedValue(upgradesCounter.ContainsKey(TypeOfUpgrade.BulletDamage)
+                                                                                            ? upgradesCounter[TypeOfUpgrade.BulletDamage] 
+                                                                                            : 0);
             var damageType = DamageCalculation(ref damage);
             enemy.TakeDamage(damage, damageType);
             Destroy(this.gameObject);

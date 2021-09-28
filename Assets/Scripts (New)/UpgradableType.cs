@@ -20,6 +20,7 @@ public class UpgradableType
     public int GetStartingPrice => startingPrice;
     public int GetIncreasingPrice => priceIncrease;
 
+    public int GetPrice(int level) => GetStartingPrice + GetIncreasingPrice * Mathf.Clamp(level,0,maxUpgradeLevel); 
     // Constructors
     public UpgradableType() => baseValue = 1;
     public UpgradableType(float newBase) => baseValue = newBase;

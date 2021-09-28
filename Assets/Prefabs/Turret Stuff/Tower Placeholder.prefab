@@ -423,6 +423,7 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   invalidColor: {r: 1, g: 0, b: 0, a: 1}
   isPlacing: 1
+  busyTimer: 0.5
   OnSpriteClick:
     m_PersistentCalls:
       m_Calls:
