@@ -32,19 +32,22 @@ public class BulletSetup : ScriptableObject
 
     public bool canDealDankDmg;
     [ShowIf(nameof(canDealDankDmg), true)]
-    public float dankDmgChance;
+    [SerializeField] float _dankDmgChance = 0;
+    public float dankDmgChance => canDealDankDmg? _dankDmgChance: 0;
     [ShowIf(nameof(canDealDankDmg), true)]
     public float dankDmgMultiplier;
 
     public bool canDealSurrealDmg;
     [ShowIf(nameof(canDealSurrealDmg), true)]
-    public float surrealDmgChance;
+    [SerializeField] float _surrealDmgChance = 0;
+    public float surrealDmgChance => canDealSurrealDmg? _surrealDmgChance: 0;
     [ShowIf(nameof(canDealSurrealDmg), true)]
     public float surrealDmgMultiplier;
 
     public bool canDealNoscopeDmg;
     [ShowIf(nameof(canDealNoscopeDmg), true)]
-    public float NoscopeDmgChance;
+    [SerializeField] float _noscopeDmgChance = 0;
+    public float NoscopeDmgChance => canDealNoscopeDmg? _noscopeDmgChance: 0;
     [ShowIf(nameof(canDealNoscopeDmg), true)]
     public float noscopeDmg = Mathf.Infinity;
 }
