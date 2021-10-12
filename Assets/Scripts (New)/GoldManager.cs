@@ -27,7 +27,7 @@ public class GoldManager : MonoBehaviour
         OnGoldAdded?.Invoke(gold);
     }
 
-    public static int GetGold()
+    public static int CurrentGold()
     {
         if(instance != null)
         {

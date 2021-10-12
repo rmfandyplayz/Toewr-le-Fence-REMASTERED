@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyType: Tank
   enemySprite: {fileID: 21300000, guid: f7ddc776b5d491f4ca70799e7c759ad4, type: 3}
   speed: 2.5
-  maxHealth: 500
+  maxHealth: 40
   maxShields: 0
   firedamageamount: 0
   isBossEnemy: 0

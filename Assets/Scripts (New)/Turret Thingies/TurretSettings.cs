@@ -9,7 +9,7 @@ public class TurretSettings : ScriptableObject
     public Sprite turretSprite;
     public bool canRotate = true;
     [ShowIf(nameof(canRotate), true)]
-    public UpgradableType rotateSpeed = new UpgradableType(5);
+    [HideInInspector] public UpgradableType rotateSpeed = new UpgradableType(5);
     public UpgradableType range;
     public UpgradableType fireRate;
     public int buyPrice;
@@ -32,5 +32,5 @@ public struct Obj2DSimpleInfo
 
 public enum TypeOfUpgrade
 {
-    Rotation, Range, FireRate, BulletDamage
+    Rotation, Range, FireRate, BulletDamage, DankChance, SurrealChance, NoScopeChance
 }

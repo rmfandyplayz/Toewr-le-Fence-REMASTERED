@@ -189,6 +189,7 @@ MonoBehaviour:
   damageType: 0
   dissappearTimer: 2
   indicatorSpeed: 2
+  isUpdating: 0
 --- !u!114 &6025879937572045669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +397,7 @@ MonoBehaviour:
   damageType: 0
   dissappearTimer: 2
   indicatorSpeed: 1
+  isUpdating: 0
 --- !u!1 &6705367165412149069
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +587,7 @@ MonoBehaviour:
   damageType: 0
   dissappearTimer: 2
   indicatorSpeed: 1
+  isUpdating: 0
 --- !u!114 &6454177560582980058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,10 +654,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5fcdac812a60d46a4029dd1e68f2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normieDamagePrefab: {fileID: 4037138438999695130}
-  dankDamagePrefab: {fileID: 6705367165412149069}
-  surrealDamagePrefab: {fileID: 8827503077317720728}
-  noScopeDamagePrefab: {fileID: 1656870046590606163}
+  damageDictionary:
+    pairs:
+    - key: 0
+      value:
+        startAmount: 50
+        indicatorPrefab: {fileID: 4037138438999695130}
+    - key: 1
+      value:
+        startAmount: 17
+        indicatorPrefab: {fileID: 6705367165412149069}
+    - key: 2
+      value:
+        startAmount: 10
+        indicatorPrefab: {fileID: 8827503077317720728}
+    - key: 3
+      value:
+        startAmount: 5
+        indicatorPrefab: {fileID: 1656870046590606163}
+    error: 0
 --- !u!1 &8827503077317720728
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +862,7 @@ MonoBehaviour:
   damageType: 0
   dissappearTimer: 2
   indicatorSpeed: 1
+  isUpdating: 0
 --- !u!114 &6451227344490655181
 MonoBehaviour:
   m_ObjectHideFlags: 0

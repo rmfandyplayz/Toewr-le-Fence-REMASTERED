@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 041ee6b81923f460bbf7999d1b8ce02f, type: 3}
+  m_Script: {fileID: 11500000, guid: 539a4fcd48e94c64d94ec80a93d3cb90, type: 3}
   m_Name: Machine Gun Bullet
   m_EditorClassIdentifier: 
   bulletSprite: {fileID: 0}
@@ -18,11 +18,11 @@ MonoBehaviour:
   speed: 50
   bulletDamage:
     name: Bullet Damage
-    baseValue: 10000
-    upgradeEfficiency: 0
-    maxUpgradeLevel: 0
-    startingPrice: 0
-    priceIncrease: 0
+    baseValue: 1
+    upgradeEfficiency: 1
+    maxUpgradeLevel: 2147483647
+    startingPrice: 1
+    priceIncrease: 1
   freezeTowerSlowdown: 0
   explosionDamage_subtractfrombulletdamage: -10
   explosionRadius: 5
@@ -36,12 +36,30 @@ MonoBehaviour:
   otherbullets: 1
   hasExplosion: 0
   upgrades: 
-  canDealDankDmg: 0
-  dankDmgChance: 10
+  canDealDankDmg: 1
+  _dankDmgChance:
+    name: Dank Chance Increase
+    baseValue: 10
+    upgradeEfficiency: 1
+    maxUpgradeLevel: 50
+    startingPrice: 1
+    priceIncrease: 1
   dankDmgMultiplier: 2
   canDealSurrealDmg: 0
-  surrealDmgChance: 5
+  _surrealDmgChance:
+    name: Upgradable
+    baseValue: 0
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
   surrealDmgMultiplier: 3
-  canDealNoscopeDmg: 1
-  NoscopeDmgChance: 100
+  canDealNoscopeDmg: 0
+  _noscopeDmgChance:
+    name: Upgradable
+    baseValue: 0
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
   noscopeDmg: Infinity

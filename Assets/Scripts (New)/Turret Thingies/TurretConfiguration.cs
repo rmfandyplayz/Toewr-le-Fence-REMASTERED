@@ -107,7 +107,9 @@ public class TurretConfiguration : MonoBehaviour
     {
         foreach(Transform firePoint in firePointList)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            GameObject bullet = ObjectPooling.GetGameObject(bulletPrefab);
+            bullet.transform.position = firePoint.position;
+            bullet.transform.rotation = firePoint.rotation;
             BulletController bc = bullet.GetComponent<BulletController>();
             bc.bscript = tsettings.bullet;
             bc.targetenemy = currentTarget;
@@ -138,14 +140,41 @@ public class TurretConfiguration : MonoBehaviour
             {
                 upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.bulletDamage));
             }
+            if(upgrade == TypeOfUpgrade.DankChance)
+            {
+                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.dankDmgChance));
+            }
+            if (upgrade == TypeOfUpgrade.SurrealChance)
+            {
+                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.surrealDmgChance));
+            }
+            if (upgrade == TypeOfUpgrade.NoScopeChance)
+            {
+                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.NoscopeDmgChance));
+            }
             upgradesCounter[upgrade].Name = upgrade.ToString();
         }
     }
     public int CounterValue(TypeOfUpgrade upgradeName) 
     {
+        Debug.Log(upgradesCounter.ContainsKey(upgradeName));
         return upgradesCounter.ContainsKey(upgradeName)? upgradesCounter[upgradeName].Counter : 0; 
     }
+    
+    public void BuyUpgrade(TypeOfUpgrade upgradeKey)
+    {
+        var price = upgradesCounter[upgradeKey].Upgrade.GetPrice(CounterValue(upgradeKey));
+        GoldManager.instance.AddGold(-price);
+    }
+
+    public void ApplyUpgrade()
+    {
+        rangeHolder.UpdateRange(tsettings.range.GetUpgradedValue(CounterValue(TypeOfUpgrade.Range)));
+    }
+
+
 }
+
 
 [System.Serializable]
 public class UpgradeCounterInfo

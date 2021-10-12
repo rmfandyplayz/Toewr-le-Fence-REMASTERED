@@ -32,22 +32,22 @@ public class BulletSetup : ScriptableObject
 
     public bool canDealDankDmg;
     [ShowIf(nameof(canDealDankDmg), true)]
-    [SerializeField] float _dankDmgChance = 0;
-    public float dankDmgChance => canDealDankDmg? _dankDmgChance: 0;
+    [SerializeField] UpgradableType _dankDmgChance = new UpgradableType(0);
+    public UpgradableType dankDmgChance => canDealDankDmg? _dankDmgChance: new UpgradableType(0);
     [ShowIf(nameof(canDealDankDmg), true)]
     public float dankDmgMultiplier;
 
     public bool canDealSurrealDmg;
     [ShowIf(nameof(canDealSurrealDmg), true)]
-    [SerializeField] float _surrealDmgChance = 0;
-    public float surrealDmgChance => canDealSurrealDmg? _surrealDmgChance: 0;
+    [SerializeField] UpgradableType _surrealDmgChance = new UpgradableType(0);
+    public UpgradableType surrealDmgChance => canDealSurrealDmg? _surrealDmgChance: new UpgradableType(0);
     [ShowIf(nameof(canDealSurrealDmg), true)]
     public float surrealDmgMultiplier;
 
     public bool canDealNoscopeDmg;
     [ShowIf(nameof(canDealNoscopeDmg), true)]
-    [SerializeField] float _noscopeDmgChance = 0;
-    public float NoscopeDmgChance => canDealNoscopeDmg? _noscopeDmgChance: 0;
+    [SerializeField] UpgradableType _noscopeDmgChance = new UpgradableType(0);
+    public UpgradableType NoscopeDmgChance => canDealNoscopeDmg? _noscopeDmgChance: new UpgradableType(0);
     [ShowIf(nameof(canDealNoscopeDmg), true)]
     public float noscopeDmg = Mathf.Infinity;
 }

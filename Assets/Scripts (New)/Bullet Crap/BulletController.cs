@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
     public GameObject targetenemy;
     private Camera main;
     public SerializedDictionary<TypeOfUpgrade, int> upgradesCounter;
+    public int getCounter(TypeOfUpgrade upgradeName) => upgradesCounter.ContainsKey(upgradeName) ? upgradesCounter[upgradeName] : 0;
 
     void Start()
     {
@@ -22,10 +23,10 @@ public class BulletController : MonoBehaviour
     {
         foreach (var pair in counter)
         {
-            if(upgradesCounter.ContainsKey(pair.Key))
-            {
+            //if(upgradesCounter.ContainsKey(pair.Key))
+            //{
                 upgradesCounter[pair.Key] = pair.Value.Counter;
-            }
+            //}
         }
     }
 
@@ -50,12 +51,12 @@ public class BulletController : MonoBehaviour
         Vector2 screenPosition = main.WorldToScreenPoint(transform.position);
         if (screenPosition.y > Screen.height || screenPosition.y < 0)
         {
-            Destroy(this.gameObject);
+            ObjectPooling.ReturnObject(this.gameObject);
         }
 
         if (screenPosition.x > Screen.width || screenPosition.x < 0)
         {
-            Destroy(this.gameObject);
+            ObjectPooling.ReturnObject(this.gameObject);
         }
 
 
@@ -73,24 +74,29 @@ public class BulletController : MonoBehaviour
                                                                                             : 0);
             var damageType = DamageCalculation(ref damage);
             enemy.TakeDamage(damage, damageType);
-            Destroy(this.gameObject);
+            ObjectPooling.ReturnObject(this.gameObject);
         }
     }
 
     public damageIndicatorType DamageCalculation(ref float damage)
     {
         int RNG = Random.Range(0, 100);
-        if(bscript.NoscopeDmgChance > RNG)
+        var noScopeDmgPerc = bscript.NoscopeDmgChance.GetUpgradedValue(getCounter(TypeOfUpgrade.NoScopeChance));
+        var surrealDmgPerc = bscript.surrealDmgChance.GetUpgradedValue(getCounter(TypeOfUpgrade.SurrealChance));
+        var dankDmgPerc = bscript.dankDmgChance.GetUpgradedValue(getCounter(TypeOfUpgrade.DankChance));
+
+
+        if (noScopeDmgPerc > RNG)
         {
             damage = bscript.noscopeDmg;
             return damageIndicatorType.mlgNoScope;
         }
-        else if(bscript.surrealDmgChance > RNG - bscript.NoscopeDmgChance)
+        else if(surrealDmgPerc > RNG - noScopeDmgPerc)
         {
             damage *= bscript.surrealDmgMultiplier;
             return damageIndicatorType.surrealDamage;
         }
-        else if(bscript.dankDmgChance > RNG - bscript.NoscopeDmgChance - bscript.surrealDmgChance)
+        else if(dankDmgPerc > RNG - noScopeDmgPerc - surrealDmgPerc)
         {
             damage *= bscript.dankDmgMultiplier;
             return damageIndicatorType.dankDamage;

@@ -49,7 +49,7 @@ public class BuyTurretScript : MonoBehaviour
     public void BuyTurret(TurretSettings settings)
     {
         stns = settings;
-        if(GoldManager.GetGold() >= stns.buyPrice && !isDragging && turret == null)
+        if(GoldManager.CurrentGold() >= stns.buyPrice && !isDragging && turret == null)
         {
             if (turret != null)
             {
@@ -65,7 +65,7 @@ public class BuyTurretScript : MonoBehaviour
             isDragging = true;
             OnClickBuyButton?.Invoke();
         }
-        else if (GoldManager.GetGold() < stns.buyPrice)
+        else if (GoldManager.CurrentGold() < stns.buyPrice)
         {
             OnNotAbleToBuy?.Invoke();
         }

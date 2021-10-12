@@ -20,7 +20,7 @@ public class ObjectShake : MonoBehaviour
     [SerializeField] private Vector3 startingPosition;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         startingPosition = transform.position;
         //StartCoroutine(Shake());

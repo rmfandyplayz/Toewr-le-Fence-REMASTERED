@@ -18,8 +18,12 @@ public class HealthBar : MonoBehaviour
 
     void Awake()
     {
-        PlatinioTween.instance.FillAmountTween(hpBar, 1, healthDropAnimationTimer).SetEase(ease).SetOwner(gameObject);
-        StartCoroutine(ShowBars(0.06f, true));
+        PlatinioTween.instance.FillAmountTween(hpBar, 1, 0).SetEase(ease).SetOwner(gameObject);
+        //StartCoroutine(ShowBars(0.06f, true));
+        foreach (Image i in GetComponentsInChildren<Image>())
+        {
+            i.FadeOut(0);
+        }
     }
 
     public void SetMaxValue(float newValue)

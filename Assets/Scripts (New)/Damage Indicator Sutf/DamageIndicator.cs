@@ -14,9 +14,26 @@ public class DamageIndicator : MonoBehaviour
     public float dissappearTimer;
     private float angle = 0;
     public float indicatorSpeed = 100;
+    public bool isUpdating = false;
+
+
+    void OnEnable()
+    {
+
+        angle = Random.Range(0, 360);
+        StartCoroutine(IndicatorMovement(angle));
+        damageIndicatorText.alpha = 1;
+        //Debug.Log("Updating (DamageIndicator.cs)");
+    }
+    private void OnDisable()
+    {
+        isUpdating = false;
+    }
+
 
     public void InitializeIndicator(float damage, damageIndicatorType indicatorType)
     {
+        isUpdating = true;
         damageIndicatorText = GetComponent<TMP_Text>();
         damageType = indicatorType;
         if(damageType == damageIndicatorType.mlgNoScope)
@@ -28,18 +45,15 @@ public class DamageIndicator : MonoBehaviour
             damageIndicatorText.text = $"{damage}";
         }
     }
-    void Start()
-    {
-        angle = Random.Range(0, 360);
-
-        StartCoroutine(IndicatorMovement(angle));
-        //Debug.Log("Updating (DamageIndicator.cs)");
-    }
+    
 
     void Update()
     {
-        Vector3 target = transform.position + new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad), 0).normalized;
-        transform.position = Vector2.MoveTowards(this.transform.position, target, indicatorSpeed * Time.deltaTime);
+        if (isUpdating)
+        {
+            Vector3 target = transform.position + new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad), 0).normalized;
+            transform.position = Vector2.MoveTowards(this.transform.position, target, indicatorSpeed * Time.deltaTime);
+        }
     }
 
     // public void RunIndicator(float damage, Vector3 position)
@@ -56,6 +70,6 @@ public class DamageIndicator : MonoBehaviour
             damageIndicatorText.alpha -= 0.1f;
             yield return new WaitForSeconds(dissappearTimer/10);
         }
-        Destroy(this.gameObject, + 0.01f);
+        ObjectPooling.ReturnObject(this.gameObject);
     }
 }
