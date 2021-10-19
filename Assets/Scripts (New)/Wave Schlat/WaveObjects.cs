@@ -11,4 +11,5 @@ public class WaveObjects : ScriptableObject
     public int endWave = 0;
     public int waveEnemyConstant = 0;
     public int waveEnemyMultiplier = 1;
+    [Range(0.0f, 100.0f)] public float bossWaveChance;
 }

@@ -14,6 +14,28 @@ public class SpawningManagement : MonoBehaviour
     private bool isWaveActive = false;
     public Polyline path;
 
+    public static GameObject SpawnEnemy(WaveObjects wave, GameObject enemyPrefab, Polyline path)
+    {
+        int enemyChoice = Random.Range(0, wave.nonBossEnemies.Count);
+        GameObject Enemy = Instantiate(enemyPrefab);
+        Enemy.GetComponentInChildren<EnemyController>().escript = wave.nonBossEnemies[enemyChoice];
+        var enemyPath = Enemy.GetComponent<PathMovement>();
+        enemyPath.path = path;
+        enemyPath.speed = Enemy.GetComponentInChildren<EnemyController>().escript.speed;
+        return Enemy;
+    }
+
+    private void SpawnBoss(WaveObjects information)
+    {
+        var spawnBoss = SpawnEnemy(information, enemyPrefab, path);
+        var controller = spawnBoss.GetComponentInChildren<EnemyController>();
+        controller.escript = information.bossEnemies[0];
+        spawnBoss.GetComponent<PathMovement>().speed = controller.escript.speed;
+        var addComponent = spawnBoss.AddComponent<BossEnemy>();
+        addComponent.InitializeBossEnemy(information, controller.escript, this);
+    }
+
+
     void Start()
     {
         aliveEnemies = 0;
@@ -38,14 +60,17 @@ public class SpawningManagement : MonoBehaviour
             {
                 currentWaveObject++;
             }
-            //temporary
             var wave = waveObjects[currentWaveObject];
-            StartCoroutine(PauseBetweenSpawning(0.3f, wave, waveNumber));
+            float RNG = Random.Range(0.0f, 100.0f);
+            if (RNG <= wave.bossWaveChance && wave.bossEnemies.Count > 0)
+            {
+                SpawnBoss(wave);
+            }
+            else
+            {
+                StartCoroutine(PauseBetweenSpawning(0.3f, wave, waveNumber));
+            }
             isWaveActive = true;
-        }
-        else
-        {
-            Debug.LogError("No Wave Objects Found (From SpawningMangement.cs)");
         }
     }
 
@@ -54,12 +79,7 @@ public class SpawningManagement : MonoBehaviour
     {
         for (int i = 0; i < wave.waveEnemyMultiplier * waveNumber + wave.waveEnemyConstant; i++)
         {
-            int enemyChoice = Random.Range(0, wave.nonBossEnemies.Count);
-            GameObject Enemy = Instantiate(enemyPrefab);
-            Enemy.GetComponentInChildren<EnemyController>().escript = wave.nonBossEnemies[enemyChoice];
-            var enemyPath = Enemy.GetComponent<PathMovement>();
-            enemyPath.path = path;
-            enemyPath.speed = Enemy.GetComponentInChildren<EnemyController>().escript.speed;
+            SpawnEnemy(wave, enemyPrefab, path);
             yield return new WaitForSeconds(timer);
         }
     }

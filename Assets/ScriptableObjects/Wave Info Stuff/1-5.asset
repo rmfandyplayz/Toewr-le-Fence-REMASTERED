@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonBossEnemies:
   - {fileID: 11400000, guid: 033d6182b6b1ec9429479707cc67afad, type: 2}
-  bossEnemies: []
+  bossEnemies:
+  - {fileID: 11400000, guid: 48da7cee8bae31d4eac183d451e4019d, type: 2}
   startWave: 1
   endWave: 5
   waveEnemyConstant: 0
   waveEnemyMultiplier: 1
+  bossWaveChance: 100

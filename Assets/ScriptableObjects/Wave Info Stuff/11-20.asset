@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 351afa86ca8b71d4e9b208774f5270cf, type: 2}
   bossEnemies: []
   startWave: 11
-  endWave: 1000
+  endWave: 20
   waveEnemyConstant: 0
   waveEnemyMultiplier: 1
+  bossWaveChance: 0
