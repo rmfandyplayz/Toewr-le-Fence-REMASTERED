@@ -21,4 +21,6 @@ MonoBehaviour:
   dropMoneyAmount: 8
   isBossEnemy: 1
   maxEnemies2Spawn: 4
-  enemySpawnDelay: 0.25
+  firstEnemySpawnDelay: 3.5
+  enemySpawnFreezeDuration: 1.75
+  enemySpawnDelay: 1.75
