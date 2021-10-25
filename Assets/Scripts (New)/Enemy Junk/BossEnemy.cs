@@ -20,9 +20,12 @@ public class BossEnemy : MonoBehaviour
 
     IEnumerator SpawnBoss()
     {
+        yield return new WaitForSeconds(enemyInfo.firstEnemySpawnDelay);
         for(int i = 0; i < enemyInfo.maxEnemies2Spawn; i++)
         {
-            var enemy = SpawningManagement.SpawnEnemy(waveObject, spawner.enemyPrefab, spawner.path);
+            var pos = transform.position;
+            Debug.Log(GetComponentInParent<PathMovement>().ReturnIndex());
+            var enemy = SpawningManagement.SpawnEnemy(waveObject, spawner.enemyPrefab, spawner.path, GetComponentInParent<PathMovement>().ReturnIndex(), enemyInfo.enemySpawnDelay, pos);
             enemy.transform.position = this.transform.position;
             yield return new WaitForSeconds(enemyInfo.enemySpawnDelay);
         }

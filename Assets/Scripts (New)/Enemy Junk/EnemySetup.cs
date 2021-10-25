@@ -18,6 +18,8 @@ public class EnemySetup : ScriptableObject
     public bool isBossEnemy = false;
     [BeginIndent]
     [ShowIf(nameof(isBossEnemy), true)] public int maxEnemies2Spawn;
+    [ShowIf(nameof(isBossEnemy), true)] public float firstEnemySpawnDelay;
+    [ShowIf(nameof(isBossEnemy), true)] public float enemySpawnFreezeDuration;
     [EndIndent]
     [ShowIf(nameof(isBossEnemy), true)] public float enemySpawnDelay;
 

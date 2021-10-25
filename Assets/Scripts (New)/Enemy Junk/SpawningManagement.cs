@@ -14,24 +14,28 @@ public class SpawningManagement : MonoBehaviour
     private bool isWaveActive = false;
     public Polyline path;
 
-    public static GameObject SpawnEnemy(WaveObjects wave, GameObject enemyPrefab, Polyline path)
+    public static GameObject SpawnEnemy(WaveObjects wave, GameObject enemyPrefab, Polyline path, int startingIndex, float startDelay, Vector3 pos)
     {
         int enemyChoice = Random.Range(0, wave.nonBossEnemies.Count);
         GameObject Enemy = Instantiate(enemyPrefab);
-        Enemy.GetComponentInChildren<EnemyController>().escript = wave.nonBossEnemies[enemyChoice];
+        var enemy = Enemy.GetComponentInChildren<EnemyController>();
         var enemyPath = Enemy.GetComponent<PathMovement>();
-        enemyPath.path = path;
-        enemyPath.speed = Enemy.GetComponentInChildren<EnemyController>().escript.speed;
+
+        enemy.escript = wave.nonBossEnemies[enemyChoice];
+        enemyPath.InitializePath(path, enemy.escript.speed, startingIndex, pos);
+        enemyPath.StartDelay(startDelay);
         return Enemy;
     }
 
     private void SpawnBoss(WaveObjects information)
     {
-        var spawnBoss = SpawnEnemy(information, enemyPrefab, path);
+        var spawnBoss = SpawnEnemy(information, enemyPrefab, path, 1, 0, transform.position);
         var controller = spawnBoss.GetComponentInChildren<EnemyController>();
         controller.escript = information.bossEnemies[0];
         spawnBoss.GetComponent<PathMovement>().speed = controller.escript.speed;
-        var addComponent = spawnBoss.AddComponent<BossEnemy>();
+
+        var addComponent = controller.gameObject.AddComponent<BossEnemy>();
+
         addComponent.InitializeBossEnemy(information, controller.escript, this);
     }
 
@@ -79,7 +83,7 @@ public class SpawningManagement : MonoBehaviour
     {
         for (int i = 0; i < wave.waveEnemyMultiplier * waveNumber + wave.waveEnemyConstant; i++)
         {
-            SpawnEnemy(wave, enemyPrefab, path);
+            SpawnEnemy(wave, enemyPrefab, path, 1, 0, this.transform.position);
             yield return new WaitForSeconds(timer);
         }
     }
