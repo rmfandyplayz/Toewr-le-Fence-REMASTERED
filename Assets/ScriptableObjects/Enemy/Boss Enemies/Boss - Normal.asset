@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: Boss - Normal
   enemySprite: {fileID: 21300000, guid: 31dd670b6470d2242afb4c18ac46f55e, type: 3}
-  speed: 2.5
+  speed: 1
   maxHealth: 650
   maxShields: 0
   scoreValue: 10
   dropMoneyAmount: 8
   isBossEnemy: 1
-  maxEnemies2Spawn: 4
-  firstEnemySpawnDelay: 3.5
-  enemySpawnFreezeDuration: 1.75
-  enemySpawnDelay: 1.75
+  boxShapedSpawningPattern: 0
+  maxEnemies2Spawn: 50
+  firstEnemyOrGroupSpawnDelay: 0
+  enemySpawnFreezeDuration: 1
+  enemySpawnDelay: 1
+  enemySpawnGroupSize: 0

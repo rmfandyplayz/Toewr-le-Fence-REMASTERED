@@ -24,8 +24,6 @@ MonoBehaviour:
     startingPrice: 1
     priceIncrease: 1
   freezeTowerSlowdown: 0
-  explosionDamage_subtractfrombulletdamage: -10
-  explosionRadius: 5
   freezeDuration: 0
   realTNTFuse: 0
   followTarget: 1
@@ -34,7 +32,9 @@ MonoBehaviour:
   stopMoving: 0
   isTNT: 0
   otherbullets: 1
-  hasExplosion: 0
+  explodes: 1
+  explosionRadius: 8
+  explosionDamagePercent: 50
   upgrades: 
   canDealDankDmg: 1
   _dankDmgChance:

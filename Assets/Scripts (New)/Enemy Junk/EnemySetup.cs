@@ -17,11 +17,14 @@ public class EnemySetup : ScriptableObject
     public int dropMoneyAmount;
     public bool isBossEnemy = false;
     [BeginIndent]
-    [ShowIf(nameof(isBossEnemy), true)] public int maxEnemies2Spawn;
-    [ShowIf(nameof(isBossEnemy), true)] public float firstEnemySpawnDelay;
-    [ShowIf(nameof(isBossEnemy), true)] public float enemySpawnFreezeDuration;
+    [ShowIf(nameof(isBossEnemy), true)] public bool boxShapedSpawningPattern = false;
+    [BeginIndent]
+        [ShowIf(nameof(isBossEnemy), true)] public int maxEnemies2Spawn;
+        [ShowIf(nameof(isBossEnemy), true)] public float firstEnemyOrGroupSpawnDelay;
+        [ShowIf(nameof(isBossEnemy), true)] public float enemySpawnFreezeDuration;
+        [ShowIf(nameof(isBossEnemy), true)] public float enemySpawnDelay;
     [EndIndent]
-    [ShowIf(nameof(isBossEnemy), true)] public float enemySpawnDelay;
-
+    [ShowIf(nameof(boxShapedSpawningPattern), true)] public float enemySpawnGroupSize;
+    public float groupSize => boxShapedSpawningPattern ? enemySpawnGroupSize : 1;
 
 }

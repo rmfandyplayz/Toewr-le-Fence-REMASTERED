@@ -63,6 +63,23 @@ public class BulletController : MonoBehaviour
 
     }
 
+    private void ApplyDamage(EnemyController enemy, float damage, damageIndicatorType type)
+    {
+        damage = Mathf.CeilToInt(bscript.explosionDamagePercent / 100 * damage);
+        foreach(var Enemy in Physics2D.OverlapCircleAll(enemy.transform.position , bscript.explosionRadius))
+        {
+
+            if(Enemy.GetComponent<EnemyController>() is EnemyController controller && controller != enemy)
+            {
+                controller.TakeDamage(damage, type);
+            }
+        }
+    }
+
+
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var enemy = collision.gameObject.GetComponent<EnemyController>();
@@ -74,6 +91,7 @@ public class BulletController : MonoBehaviour
                                                                                             : 0);
             var damageType = DamageCalculation(ref damage);
             enemy.TakeDamage(damage, damageType);
+            ApplyDamage(enemy, damage, damageType);
             ObjectPooling.ReturnObject(this.gameObject);
         }
     }

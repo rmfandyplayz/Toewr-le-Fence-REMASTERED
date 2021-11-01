@@ -14,8 +14,6 @@ public class BulletSetup : ScriptableObject
     public float speed = 70f;
     public UpgradableType bulletDamage;
     public float freezeTowerSlowdown = 0;
-    public float explosionDamage_subtractfrombulletdamage = -10f;
-    public float explosionRadius = 5;
     public float freezeDuration = 0;
     public float realTNTFuse;
     [Header("Bools")]
@@ -25,7 +23,14 @@ public class BulletSetup : ScriptableObject
     public bool stopMoving;
     public bool isTNT = false;
     public bool otherbullets = true;
-    public bool hasExplosion = false;
+    public bool explodes = false;
+    [BeginIndent]
+    [ShowIf(nameof(explodes), true)] public float explosionRadius;
+    [EndIndent]
+    [ShowIf(nameof(explodes), true)] public float explosionDamagePercent = 50;
+    public float ExplosionRadius => explodes ? explosionRadius : 0;
+
+
     [Header("Upgrades")]
     public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();
     [Header("Damage Type and Chance")]
@@ -50,4 +55,5 @@ public class BulletSetup : ScriptableObject
     public UpgradableType NoscopeDmgChance => canDealNoscopeDmg? _noscopeDmgChance: new UpgradableType(0);
     [ShowIf(nameof(canDealNoscopeDmg), true)]
     public float noscopeDmg = Mathf.Infinity;
+    
 }

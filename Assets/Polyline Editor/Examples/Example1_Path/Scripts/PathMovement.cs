@@ -8,14 +8,20 @@ public class PathMovement : MonoBehaviour {
     public bool enemyUpdating = false;
     int targetIndex = 1;
     Vector3 velocity;
+    private Vector3 previousPos;
 
     public UnityEvent OnPathFinished;
-
-    // Update is called once per frame
     bool pathFinished = false;
+
+
+
+
+
+
 	void Update () {
         if (!pathFinished && enemyUpdating == true)
         {
+            var waypoint = path.nodes[targetIndex];
             if ((transform.position - path.nodes[targetIndex]).magnitude < (velocity * Time.deltaTime).magnitude)
             {
                 transform.position = path.nodes[targetIndex];
@@ -29,8 +35,17 @@ public class PathMovement : MonoBehaviour {
                 }
                 velocity = (path.nodes[targetIndex] - path.nodes[targetIndex - 1]).normalized * speed;
             }
+
+            else if ((previousPos - waypoint).sqrMagnitude < (transform.position - waypoint).sqrMagnitude)
+            {
+                transform.position = waypoint;
+            }
+
             else
+            {
+                previousPos = transform.position;
                 transform.position += velocity * Time.deltaTime;
+            }
         }
 	}
 
@@ -51,6 +66,7 @@ public class PathMovement : MonoBehaviour {
 
     public void Move()
     {
+        previousPos = transform.position;
         velocity = (path.nodes[targetIndex] - path.nodes[targetIndex - 1]).normalized * speed;
         enemyUpdating = true;
     }
