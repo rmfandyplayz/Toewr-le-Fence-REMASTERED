@@ -32,9 +32,9 @@ MonoBehaviour:
   stopMoving: 0
   isTNT: 0
   otherbullets: 1
-  explodes: 1
-  explosionRadius: 8
-  explosionDamagePercent: 50
+  explodes: 0
+  explosionRadius: 0
+  explosionDamagePercent: 0
   upgrades: 
   canDealDankDmg: 1
   _dankDmgChance:

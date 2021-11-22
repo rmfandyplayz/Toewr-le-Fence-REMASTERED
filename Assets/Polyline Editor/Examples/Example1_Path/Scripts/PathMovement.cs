@@ -26,19 +26,24 @@ public class PathMovement : MonoBehaviour {
             {
                 transform.position = path.nodes[targetIndex];
                 targetIndex++;
-                Debug.Log(targetIndex);
                 if (targetIndex == path.nodes.Count)
                 {
                     pathFinished = true;
                     OnPathFinished?.Invoke();
                     return;
                 }
+                previousPos = Vector3.positiveInfinity;
                 velocity = (path.nodes[targetIndex] - path.nodes[targetIndex - 1]).normalized * speed;
             }
 
             else if ((previousPos - waypoint).sqrMagnitude < (transform.position - waypoint).sqrMagnitude)
             {
-                transform.position = waypoint;
+                //transform.position = waypoint;
+                velocity = (path.nodes[targetIndex] - this.transform.position).normalized * speed;
+                previousPos = transform.position;
+                transform.position += velocity * Time.deltaTime;
+
+                Debug.LogWarning("Teleported");
             }
 
             else

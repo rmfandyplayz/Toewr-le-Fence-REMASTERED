@@ -25,6 +25,8 @@ public class EnemySetup : ScriptableObject
         [ShowIf(nameof(isBossEnemy), true)] public float enemySpawnDelay;
     [EndIndent]
     [ShowIf(nameof(boxShapedSpawningPattern), true)] public float enemySpawnGroupSize;
+    [ShowIf(nameof(boxShapedSpawningPattern), true)] public Vector2 minimumBoxSpawnRadius;
+    [ShowIf(nameof(boxShapedSpawningPattern), true)] public Vector2 maximumBoxSpawnRadius;
     public float groupSize => boxShapedSpawningPattern ? enemySpawnGroupSize : 1;
 
 }

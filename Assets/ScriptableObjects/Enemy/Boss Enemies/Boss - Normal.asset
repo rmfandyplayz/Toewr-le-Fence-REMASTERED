@@ -20,9 +20,11 @@ MonoBehaviour:
   scoreValue: 10
   dropMoneyAmount: 8
   isBossEnemy: 1
-  boxShapedSpawningPattern: 0
+  boxShapedSpawningPattern: 1
   maxEnemies2Spawn: 50
-  firstEnemyOrGroupSpawnDelay: 0
+  firstEnemyOrGroupSpawnDelay: 5
   enemySpawnFreezeDuration: 1
-  enemySpawnDelay: 1
-  enemySpawnGroupSize: 0
+  enemySpawnDelay: 3
+  enemySpawnGroupSize: 3
+  minimumBoxSpawnRadius: {x: -1, y: -1}
+  maximumBoxSpawnRadius: {x: 1, y: 1}

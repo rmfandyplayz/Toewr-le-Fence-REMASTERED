@@ -13,84 +13,46 @@ public class TurretConfiguration : MonoBehaviour
     private bool isOnCooldown = false;
     public TurretSpriteHandler spriteHolder; 
     public TurretRangeHandler rangeHolder; 
+    private TurretAttackType attackType;
 
     public void Initialize(bool showTurretRange = false)
     {
         name = tsettings.turretName;
         spriteHolder.Initialize(tsettings.turretSprite, tsettings.colliderPositionAndSize);
-        rangeHolder.Initialize(tsettings.range.GetBaseValue, tsettings.rangeVizPosition);
+        rangeHolder.Initialize(tsettings.range.GetBaseValue, tsettings.rangeVisualizationPosition);
         rangeHolder.ToggleRangeVisual(showTurretRange);
-        if(firePointList.Count == 0)
+        
+        if(tsettings.turretType!= null)
         {
-            foreach(var fp in tsettings.firepointPositionRotation)
-            {
-                var firePoint = new GameObject("FirePoint");
-                firePoint.transform.position = fp.position;
-            }
-        }  
+            attackType = gameObject.AddComponent(tsettings.turretType.Type) as TurretAttackType;
+            attackType.InitializeScript(this);
+        }
+
         InitUpgrade();      
     }
 
     public void AddTarget(GameObject possibleTarget)
     {
-        if(possibleTarget.GetComponent<EnemyController>()!= null)
-        {
-            targets.Add(possibleTarget.gameObject);
-            UpdateTarget();
-        }
+        attackType.AddTargetToList(possibleTarget);
     }
 
     public void RemoveTarget(GameObject possibleTarget)
     {
-        if (possibleTarget.GetComponent<EnemyController>() != null)
-        {
-            targets.Remove(possibleTarget);
-            UpdateTarget();
-        }
-    }
-
-    public static float FindEnemyDistance(Vector2 towerPosition, Vector2 enemyPos)
-    {
-        return (towerPosition - enemyPos).magnitude;
+        attackType.RemoveTargetFromList(possibleTarget);
     }
 
     public void UpdateTarget()
     {
-        //Debug.Break();
-        float closestEnemyDistance = float.MaxValue;
-        foreach(GameObject enemy in targets)
-        {
-            if(enemy == null)
-            {
-                //targets.Remove(enemy);
-                continue;
-            }
-            float distance = FindEnemyDistance(this.transform.position, enemy.transform.position); //temporary variable
-            if (distance < closestEnemyDistance)
-            {
-                closestEnemyDistance = distance;
-                currentTarget = enemy;
-            }
-        }
-        if(targets.Count == 0)
-        {
-            currentTarget = null;
-        }
+        attackType.UpdateTargetList();
     }
 
     private void Update()
     {
-        if(currentTarget != null)
+        if(tsettings.canRotate == true)
         {
-            if(tsettings.canRotate)
-            {
-                RotateTurret();
-            }
-            if(isOnCooldown == false)
-            {
-                StartCoroutine(Shoot());
-            }
+            attackType.Aim();
         }
+        attackType.PerformAttack(tsettings.fireRate.GetUpgradedValue(CounterValue(TypeOfUpgrade.FireRate)));
     }
 
     private void RotateTurret()
@@ -103,23 +65,6 @@ public class TurretConfiguration : MonoBehaviour
                                                 tsettings.rotateSpeed.GetUpgradedValue(CounterValue(TypeOfUpgrade.Rotation)));
     }
 
-    IEnumerator Shoot()
-    {
-        foreach(Transform firePoint in firePointList)
-        {
-            GameObject bullet = ObjectPooling.GetGameObject(bulletPrefab);
-            bullet.transform.position = firePoint.position;
-            bullet.transform.rotation = firePoint.rotation;
-            BulletController bc = bullet.GetComponent<BulletController>();
-            bc.bscript = tsettings.bullet;
-            bc.targetenemy = currentTarget;
-            bc.InitUpgrade(upgradesCounter);
-            
-            isOnCooldown = true;
-            yield return new WaitForSeconds(tsettings.fireRate.GetUpgradedValue(CounterValue(TypeOfUpgrade.FireRate)));
-            isOnCooldown = false;
-        }
-    }
     public void InitUpgrade()
     {
         foreach(TypeOfUpgrade upgrade in tsettings.upgrades)
@@ -215,5 +160,13 @@ public class UpgradeCounterInfo
     {
         Counter = 0;
         Upgrade = upgrade;
+    }
+}
+
+public static class SerializedDictionaryExtension
+{
+    public static int CounterValue(this SerializedDictionary<TypeOfUpgrade, UpgradeCounterInfo> dictionary, TypeOfUpgrade key)
+    {
+        return dictionary.ContainsKey(key) ? dictionary[key].Counter : 0;
     }
 }

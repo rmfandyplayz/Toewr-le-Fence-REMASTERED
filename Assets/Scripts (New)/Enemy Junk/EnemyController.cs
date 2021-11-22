@@ -34,6 +34,12 @@ public class EnemyController : MonoBehaviour
     {
         currentShields -= damage;
         float newDamage = 0;
+
+        if (damage == 0)
+        {
+            return;
+        }
+
         if(currentShields < 0)
         {
             newDamage = Mathf.Abs(currentShields);

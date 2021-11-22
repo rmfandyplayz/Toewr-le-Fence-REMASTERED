@@ -16,25 +16,40 @@ public class BossEnemy : MonoBehaviour
         StartCoroutine(SpawnBoss());
     }
 
+    public Vector3 SpawnEnemyRandomPos()
+    {
+        float randomXValue;
+        float randomYValue;
 
+        var min = enemyInfo.minimumBoxSpawnRadius;
+        var max = enemyInfo.maximumBoxSpawnRadius;
+
+        if(enemyInfo.boxShapedSpawningPattern == true)
+        {
+            randomXValue = Random.Range(min.x, max.x);
+            randomYValue = Random.Range(min.y, max.y);
+
+            return new Vector3(randomXValue, randomYValue, 0) + transform.position;
+        }
+        return this.transform.position;
+    }
 
     IEnumerator SpawnBoss()
     {
         yield return new WaitForSeconds(enemyInfo.firstEnemyOrGroupSpawnDelay);
-
-        for(int i = 0; i < enemyInfo.maxEnemies2Spawn; i++)
+        PathMovement path = GetComponentInParent<PathMovement>();
+        for (int i = 0; i < enemyInfo.maxEnemies2Spawn; i++)
         {
             for(int j = 0; j < enemyInfo.groupSize; j++)
             {
-                var pos = transform.position - transform.localPosition;
-                Debug.Log(GetComponentInParent<PathMovement>().ReturnIndex());
-                var enemy = SpawningManagement.SpawnEnemy(waveObject, spawner.enemyPrefab, spawner.path, GetComponentInParent<PathMovement>().ReturnIndex(), enemyInfo.enemySpawnDelay, pos);
+                var pos = SpawnEnemyRandomPos();
+                //Debug.Log(GetComponentInParent<PathMovement>().ReturnIndex());
+                var enemy = SpawningManagement.SpawnEnemy(waveObject, spawner.enemyPrefab, spawner.path, path.ReturnIndex(), enemyInfo.enemySpawnFreezeDuration, pos);
                 enemy.transform.position = pos;
+                enemy.GetComponent<AlignEnemy>().Initialization(path, this.transform.position - this.transform.localPosition, enemyInfo.enemySpawnFreezeDuration, enemy.GetComponentInChildren<EnemyController>().escript.speed);
             }
             yield return new WaitForSeconds(enemyInfo.enemySpawnDelay);
         }
-        
-
     }
 
 

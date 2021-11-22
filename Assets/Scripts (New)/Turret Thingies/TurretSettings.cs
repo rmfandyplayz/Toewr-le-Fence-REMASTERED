@@ -7,19 +7,19 @@ public class TurretSettings : ScriptableObject
 {
     public string turretName;
     public Sprite turretSprite;
+    public int buyPrice;
     public bool canRotate = true;
+    public BulletSetup bullet;
+    public Vector2 rangeVisualizationPosition;
     [ShowIf(nameof(canRotate), true)]
     [HideInInspector] public UpgradableType rotateSpeed = new UpgradableType(5);
     public UpgradableType range;
     public UpgradableType fireRate;
-    public int buyPrice;
-    public Vector2 rangeVizPosition;
     public Obj2DSimpleInfo colliderPositionAndSize;
     public List<Obj2DSimpleInfo> firepointPositionRotation;
-
-    public BulletSetup bullet;
-
     public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();
+    [ClassExtends(typeof(TurretAttackType))] public SerializedType turretType;
+
 }
 
 

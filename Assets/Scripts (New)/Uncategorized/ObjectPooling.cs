@@ -18,7 +18,7 @@ public class ObjectPooling : MonoBehaviour
     public GameObject NewObject(GameObject prefab)
     {
         GameObject newObj = Instantiate(prefab);
-        newObj.transform.parent = this.transform;
+        newObj.transform.SetParent(this.transform);
         newObj.name = prefab.name;
         return newObj;
     }
