@@ -83,19 +83,19 @@ public class TurretConfiguration : MonoBehaviour
             }
             if(upgrade == TypeOfUpgrade.BulletDamage)
             {
-                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.bulletDamage));
+                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bulletSetup.bulletDamage));
             }
             if(upgrade == TypeOfUpgrade.DankChance)
             {
-                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.dankDmgChance));
+                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bulletSetup.dankDmgChance));
             }
             if (upgrade == TypeOfUpgrade.SurrealChance)
             {
-                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.surrealDmgChance));
+                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bulletSetup.surrealDmgChance));
             }
             if (upgrade == TypeOfUpgrade.NoScopeChance)
             {
-                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bullet.NoscopeDmgChance));
+                upgradesCounter.Add(upgrade, new UpgradeCounterInfo(tsettings.bulletSetup.NoscopeDmgChance));
             }
             upgradesCounter[upgrade].Name = upgrade.ToString();
         }

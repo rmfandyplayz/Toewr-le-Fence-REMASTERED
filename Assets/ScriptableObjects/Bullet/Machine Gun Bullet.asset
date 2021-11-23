@@ -23,15 +23,9 @@ MonoBehaviour:
     maxUpgradeLevel: 2147483647
     startingPrice: 1
     priceIncrease: 1
-  freezeTowerSlowdown: 0
-  freezeDuration: 0
-  realTNTFuse: 0
   followTarget: 1
-  canSlowEnemies: 0
   hasParticles: 0
   stopMoving: 0
-  isTNT: 0
-  otherbullets: 1
   explodes: 0
   explosionRadius: 0
   explosionDamagePercent: 0

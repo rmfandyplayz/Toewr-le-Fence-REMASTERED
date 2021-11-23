@@ -4,32 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Melee : MonoBehaviour
+public class MeleeDamager : MonoBehaviour
 {
 	//Variables section. Try to use [Header("[text]")] to organize the code.
+	public float damage;
 
-
-
-
-
-	//Functions section
-    void Start()
+    //Functions section
+    private void OnTriggerEnter2D(Collider2D target)
     {
-        
+        if (target.GetComponent<EnemyController>() is EnemyController controller)
+        {
+            controller.TakeDamage(damage, damageIndicatorType.normieDamage);
+        }
     }
 
-    void Update()
-    {
-        
-    }
-	
-	
-	//Coroutine Section
-	
-	IEnumerator TemplateCoroutine(float templateParameter)
-	{
-		yield return templateParameter;
-	}
+
+    //Coroutine Section
 	
 }
 

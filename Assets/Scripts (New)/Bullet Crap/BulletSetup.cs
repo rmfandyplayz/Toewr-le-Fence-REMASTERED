@@ -13,16 +13,10 @@ public class BulletSetup : ScriptableObject
     [Header("Floats and Values")]
     public float speed = 70f;
     public UpgradableType bulletDamage;
-    public float freezeTowerSlowdown = 0;
-    public float freezeDuration = 0;
-    public float realTNTFuse;
     [Header("Bools")]
     public bool followTarget = true;
-    public bool canSlowEnemies = false;
     public bool hasParticles = false;
     public bool stopMoving;
-    public bool isTNT = false;
-    public bool otherbullets = true;
     public bool explodes = false;
     [BeginIndent]
     [ShowIf(nameof(explodes), true)] public float explosionRadius;

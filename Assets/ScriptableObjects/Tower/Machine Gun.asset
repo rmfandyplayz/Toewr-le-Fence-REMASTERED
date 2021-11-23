@@ -16,7 +16,6 @@ MonoBehaviour:
   turretSprite: {fileID: 21300000, guid: c5a9e030f24bfd04cb49f17429374c5a, type: 3}
   buyPrice: 1
   canRotate: 1
-  bullet: {fileID: 11400000, guid: 48b585c22eb3253468beb5c093255c61, type: 2}
   rangeVisualizationPosition: {x: 0, y: 0}
   rotateSpeed:
     name: Rotation Speed
@@ -47,4 +46,8 @@ MonoBehaviour:
     value: 0
   upgrades: 02000000010000000300000004000000
   turretType:
-    classReference: Explosion, Assembly-CSharp
+    classReference: 
+  meeleTurretPrefab: {fileID: 0}
+  idleAnimation: {fileID: 0}
+  attackAnimation: {fileID: 0}
+  bulletSetup: {fileID: 11400000, guid: 48b585c22eb3253468beb5c093255c61, type: 2}

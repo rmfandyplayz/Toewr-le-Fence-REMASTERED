@@ -4,24 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Ranged : TurretAttackType
+public class Melee : TurretAttackType
 {
-    //Variables section. Try to use [Header("[text]")] to organize the code.
+	//Variables section. Try to use [Header("[text]")] to organize the code.
 
-    private GameObject currentTarget;
-
-
+	public const string animationSpeed = "speed";
+    bool isAttacking = false;
+	private GameObject currentTarget;
+	private Animator meeleAnimationController;
 
     //Functions section
-
-    public override void AddTargetToList(GameObject objectToAdd)
+    public override void InitializeScript(TurretConfiguration tConfig)
     {
-        base.AddTargetToList(objectToAdd);
-    }
-
-    public override void RemoveTargetFromList(GameObject objectToRemove)
-    {
-        base.RemoveTargetFromList(objectToRemove);
+		GameObject animationSpawn;
+        base.InitializeScript(tConfig);
+		currentTarget = null;
+		if(turretSettings.attackTypeIsMeele == true)
+        {
+			animationSpawn = Instantiate(turretSettings.meeleTurretPrefab, this.transform);
+			meeleAnimationController = animationSpawn.GetComponentInChildren<Animator>();
+        }
     }
 
     public override void UpdateTargetList()
@@ -46,14 +48,12 @@ public class Ranged : TurretAttackType
         }
     }
 
-    public override void PerformAttack(float cooldown)
-    {
-        if(currentTarget == null) { return; }
-        base.PerformAttack(cooldown);
-    }
-
     public override void Aim()
     {
+        if(isAttacking == true)
+        {
+            return;
+        }
         Vector3 dir = currentTarget.transform.position - transform.position;
         float targetAngle = Vector2.SignedAngle(Vector2.up, dir);
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles,
@@ -61,24 +61,25 @@ public class Ranged : TurretAttackType
                                                 turretSettings.rotateSpeed.GetUpgradedValue(upgrades.CounterValue(TypeOfUpgrade.Rotation)));
     }
 
-
+    public override void PerformAttack(float cooldown)
+    {
+        meeleAnimationController.SetFloat(animationSpeed, 1/cooldown);
+        if(currentTarget != null)
+        {
+            base.PerformAttack(cooldown);
+        }
+    }
     //Coroutine Section
 
     protected override IEnumerator AttackCooldown(float cooldown_coroutine)
     {
-        foreach (Transform firePoint in firePointLocations)
-        {
-            GameObject bullet = ObjectPooling.GetGameObject(bulletPrefab);
-            bullet.transform.position = firePoint.position;
-            bullet.transform.rotation = firePoint.rotation;
-            BulletController bc = bullet.GetComponent<BulletController>();
-            bc.bscript = turretSettings.bulletSetup;
-            bc.targetenemy = currentTarget;
-            bc.InitUpgrade(upgrades);
-        }
-        return base.AttackCooldown(cooldown_coroutine);
+        meeleAnimationController.Play($"{meeleAnimationController.GetLayerName(0)}.{turretSettings.attackAnimation.name}");
+        isAttacking = true;
+        yield return base.AttackCooldown(cooldown_coroutine);
+        meeleAnimationController.Play($"{meeleAnimationController.GetLayerName(0)}.{turretSettings.idleAnimation.name}");
+        isAttacking = false;
     }
-	
+
 }
 
 /*

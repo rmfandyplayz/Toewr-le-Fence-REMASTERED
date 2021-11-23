@@ -22,7 +22,7 @@ public class RadiusEffect : TurretAttackType
         foreach (var targets in targetList)
         {
 
-            targets.GetComponent<EnemyController>().TakeDamage(turretSettings.bullet.bulletDamage.GetBaseValue, damageIndicatorType.normieDamage);
+            targets.GetComponent<EnemyController>().TakeDamage(turretSettings.bulletSetup.bulletDamage.GetBaseValue, damageIndicatorType.normieDamage);
         }
 
         return base.AttackCooldown(cooldown_coroutine);

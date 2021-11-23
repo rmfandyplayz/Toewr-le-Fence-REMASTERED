@@ -98,12 +98,12 @@ public class UpgradingUI : MonoBehaviour
 
             textConfig.turretsprite.texture = tconfig.tsettings.turretSprite.texture;
             textConfig.turretName.text = $"{tconfig.name}";
-            textConfig.damage.text = $"{tconfig.tsettings.bullet.bulletDamage.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.BulletDamage))}";
+            textConfig.damage.text = $"{tconfig.tsettings.bulletSetup.bulletDamage.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.BulletDamage))}";
             textConfig.range.text = $"{tconfig.tsettings.range.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.Range))}";
             textConfig.attackCooldown.text = $"{tconfig.tsettings.fireRate.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.FireRate)):f2}";
-            textConfig.dankDmgChance.text = $"{tconfig.tsettings.bullet.dankDmgChance.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.DankChance)):f2}%";
-            textConfig.surrealDamageChance.text = $"{tconfig.tsettings.bullet.surrealDmgChance.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.SurrealChance)):f2}%";
-            textConfig.noScopeChance.text = $"{tconfig.tsettings.bullet.NoscopeDmgChance.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.NoScopeChance)):f2}%";
+            textConfig.dankDmgChance.text = $"{tconfig.tsettings.bulletSetup.dankDmgChance.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.DankChance)):f2}%";
+            textConfig.surrealDamageChance.text = $"{tconfig.tsettings.bulletSetup.surrealDmgChance.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.SurrealChance)):f2}%";
+            textConfig.noScopeChance.text = $"{tconfig.tsettings.bulletSetup.NoscopeDmgChance.GetUpgradedValue(tconfig.CounterValue(TypeOfUpgrade.NoScopeChance)):f2}%";
         }
 
 
