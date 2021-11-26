@@ -2,7 +2,26 @@
 
 ## Idea
 
-For this guide, you will get a status effect system working. The way we will do this is by using scriptable objects as "factories" to produce status effects tailored to each target and data. The work has been adapted from [A Framework for Status Effects in Unity](https://straypixels.net/statuseffects-framework/)
+For this guide, you will get a status effect system working. The way we will do this is by using scriptable objects as "factories" to produce status effects tailored to each target and data. The work has been adapted from [A Framework for Status Effects in Unity](https://straypixels.net/statuseffects-framework/). Below is an abstract idea for how the status effect should flow in the game.
+```mermaid
+flowchart TB
+   A[StatusEffectFactory]
+   B([StatusEffectFunctionality])
+   C[(StatusEffectData)]
+   D(Effects Holder)
+   E{{Target}}
+   subgraph Effector
+   B-->A
+   C-->A
+   end
+   subgraph Effected
+   E-->A
+   A== generates new effect ==>D
+   D -. run effect .->B
+   B -. run callback .->D
+   end
+
+```
 
 ## Coding
 
