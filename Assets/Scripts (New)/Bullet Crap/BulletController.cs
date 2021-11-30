@@ -89,42 +89,21 @@ public class BulletController : MonoBehaviour
             float damage = bscript.bulletDamage.GetUpgradedValue(upgradesCounter.ContainsKey(TypeOfUpgrade.BulletDamage)
                                                                                             ? upgradesCounter[TypeOfUpgrade.BulletDamage] 
                                                                                             : 0);
-            var damageType = DamageCalculation(ref damage);
+            var damageType = bscript.DamageCalculation(ref damage, upgradesCounter);
             enemy.TakeDamage(damage, damageType);
             ApplyDamage(enemy, damage, damageType);
             ObjectPooling.ReturnObject(this.gameObject);
         }
-    }
-
-    public damageIndicatorType DamageCalculation(ref float damage)
-    {
-        int RNG = Random.Range(0, 100);
-        var noScopeDmgPerc = bscript.NoscopeDmgChance.GetUpgradedValue(getCounter(TypeOfUpgrade.NoScopeChance));
-        var surrealDmgPerc = bscript.surrealDmgChance.GetUpgradedValue(getCounter(TypeOfUpgrade.SurrealChance));
-        var dankDmgPerc = bscript.dankDmgChance.GetUpgradedValue(getCounter(TypeOfUpgrade.DankChance));
-
-
-        if (noScopeDmgPerc > RNG)
+        if(collision.gameObject.GetComponent<StatusEffectHoldable>() is StatusEffectHoldable name)
         {
-            damage = bscript.noscopeDmg;
-            return damageIndicatorType.mlgNoScope;
-        }
-        else if(surrealDmgPerc > RNG - noScopeDmgPerc)
-        {
-            damage *= bscript.surrealDmgMultiplier;
-            return damageIndicatorType.surrealDamage;
-        }
-        else if(dankDmgPerc > RNG - noScopeDmgPerc - surrealDmgPerc)
-        {
-            damage *= bscript.dankDmgMultiplier;
-            return damageIndicatorType.dankDamage;
-        }
-        else
-        {
-            damage = damage;
-            return damageIndicatorType.normieDamage;
+            foreach (var effects in bscript.statusEffects)
+            {
+                name.ApplyStatusEffect(effects.CreateStatusEffect(collision.gameObject));
+            }
         }
     }
+
+    
 
 
 

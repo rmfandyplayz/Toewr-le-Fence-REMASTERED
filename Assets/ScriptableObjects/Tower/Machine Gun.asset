@@ -46,7 +46,7 @@ MonoBehaviour:
     value: 0
   upgrades: 02000000010000000300000004000000
   turretType:
-    classReference: 
+    classReference: Ranged, Assembly-CSharp
   meeleTurretPrefab: {fileID: 0}
   idleAnimation: {fileID: 0}
   attackAnimation: {fileID: 0}

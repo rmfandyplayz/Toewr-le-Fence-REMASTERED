@@ -1,0 +1,35 @@
+// This file would have been named: #SCRIPTNAME# 
+ 
+using System.Collections; 
+using UnityEngine; 
+using UnityEngine.Events; 
+ 
+[CreateAssetMenu(fileName = "New #SCRIPTNAME#", menuName = 
+"Status Effect/#SCRIPTNAME#")] 
+public class #SCRIPTNAME#_Factory : StatusEffectCreation<#SCRIPTNAME#_Data, #SCRIPTNAME#>
+<#SCRIPTNAME#_Data, #SCRIPTNAME#>{} 
+ 
+[System.Serializable] 
+public class #SCRIPTNAME#_Data: [CLASS_#1] 
+{ 
+   // Put additional data here for the status effect 
+} 
+ 
+public class #SCRIPTNAME#: [CLASS_#2G]
+<#SCRIPTNAME#_Data> 
+{ 
+    public override float [FUNC_#1] 
+    { 
+        // return the immunity timer amount 
+    } 
+ 
+    public override void [FUNC_#2]([INTERFACE_#1] statusEffectsHolder, 
+UnityAction<[CLASS_#2A]> callback) 
+    { 
+        // Add functionality here 
+        // You can use helper functions from below 
+        // Don't forget to invoke the callback with the  
+    } 
+ 
+    // Put additional helper functions/coroutines here 
+}

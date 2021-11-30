@@ -169,4 +169,9 @@ public static class SerializedDictionaryExtension
     {
         return dictionary.ContainsKey(key) ? dictionary[key].Counter : 0;
     }
+
+    public static int CounterValue(this SerializedDictionary<TypeOfUpgrade, int> dictionary, TypeOfUpgrade key)
+    {
+        return dictionary.ContainsKey(key) ? dictionary[key] : 0;
+    }
 }

@@ -24,6 +24,7 @@ public class BulletSetup : ScriptableObject
     [ShowIf(nameof(explodes), true)] public float explosionDamagePercent = 50;
     public float ExplosionRadius => explodes ? explosionRadius : 0;
 
+    public List<StatusEffectCreation> statusEffects;
 
     [Header("Upgrades")]
     public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();
@@ -49,5 +50,35 @@ public class BulletSetup : ScriptableObject
     public UpgradableType NoscopeDmgChance => canDealNoscopeDmg? _noscopeDmgChance: new UpgradableType(0);
     [ShowIf(nameof(canDealNoscopeDmg), true)]
     public float noscopeDmg = Mathf.Infinity;
-    
+
+    public damageIndicatorType DamageCalculation(ref float damage, SerializedDictionary<TypeOfUpgrade, int> upgradeCounter)
+    {
+        int RNG = Random.Range(0, 100);
+        var noScopeDmgPerc = this.NoscopeDmgChance.GetUpgradedValue(upgradeCounter.CounterValue(TypeOfUpgrade.NoScopeChance));
+        var surrealDmgPerc = this.surrealDmgChance.GetUpgradedValue(upgradeCounter.CounterValue(TypeOfUpgrade.SurrealChance));
+        var dankDmgPerc = this.dankDmgChance.GetUpgradedValue(upgradeCounter.CounterValue(TypeOfUpgrade.DankChance));
+
+
+        if (noScopeDmgPerc > RNG)
+        {
+            damage = this.noscopeDmg;
+            return damageIndicatorType.mlgNoScope;
+        }
+        else if (surrealDmgPerc > RNG - noScopeDmgPerc)
+        {
+            damage *= this.surrealDmgMultiplier;
+            return damageIndicatorType.surrealDamage;
+        }
+        else if (dankDmgPerc > RNG - noScopeDmgPerc - surrealDmgPerc)
+        {
+            damage *= this.dankDmgMultiplier;
+            return damageIndicatorType.dankDamage;
+        }
+        else
+        {
+            damage = damage;
+            return damageIndicatorType.normieDamage;
+        }
+    }
+
 }
