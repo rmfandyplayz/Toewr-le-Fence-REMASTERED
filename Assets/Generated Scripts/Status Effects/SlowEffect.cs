@@ -3,18 +3,19 @@ using UnityEngine;
 using UnityEngine.Events; 
 using Toolbox;
  
-[CreateAssetMenu(fileName = "New #SCRIPTNAME#", menuName = 
-"Status Effect/#SCRIPTNAME#")] 
-public class #SCRIPTNAME# : StatusEffectCreation<#SCRIPTNAME#_Data, #SCRIPTNAME#_Functionality>{}
+[CreateAssetMenu(fileName = "New SlowEffect", menuName = 
+"Status Effect/SlowEffect")] 
+public class SlowEffect : StatusEffectCreation<SlowEffect_Data, SlowEffect_Functionality>{}
  
 [System.Serializable] 
-public class #SCRIPTNAME#_Data: StatusEffectCenter
+public class SlowEffect_Data: StatusEffectCenter
 { 
    // Put additional data here for the status effect 
    // This class inherits from StatusEffectCenter; includes effectChance, effectDuration, and effectLevel
+
 } 
  
-public class #SCRIPTNAME#_Functionality: StatusEffectFunctionality <#SCRIPTNAME#_Data> 
+public class SlowEffect_Functionality: StatusEffectFunctionality <SlowEffect_Data> 
 { 
     public override float ImmuneToEffectTimer()
     { 
@@ -23,10 +24,11 @@ public class #SCRIPTNAME#_Functionality: StatusEffectFunctionality <#SCRIPTNAME#
     } 
  
     public override void RunStatusEffect(StatusEffectHoldable statusEffectHolder, UnityAction<StatusEffectFunctionality> callback)
-    { 
-        // Add functionality here 
-        // You can use helper functions from below 
-        // Don't forget to invoke the callback
+    {
+        if(RNG.Chance(statusEffectData.effectChance) == true)
+        {
+            Debug.Log("Enemy is slowed down");
+        }
     } 
  
     // Put additional helper functions/coroutines here 

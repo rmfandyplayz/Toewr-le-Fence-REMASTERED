@@ -29,6 +29,8 @@ MonoBehaviour:
   explodes: 0
   explosionRadius: 0
   explosionDamagePercent: 0
+  statusEffects:
+  - {fileID: 11400000, guid: 76b24557bd4cbac4584b5f4ad1e21c28, type: 2}
   upgrades: 
   canDealDankDmg: 1
   _dankDmgChance:
@@ -39,19 +41,19 @@ MonoBehaviour:
     startingPrice: 1
     priceIncrease: 1
   dankDmgMultiplier: 2
-  canDealSurrealDmg: 0
+  canDealSurrealDmg: 1
   _surrealDmgChance:
     name: Upgradable
-    baseValue: 0
+    baseValue: 10
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0
     priceIncrease: 0
   surrealDmgMultiplier: 3
-  canDealNoscopeDmg: 0
+  canDealNoscopeDmg: 1
   _noscopeDmgChance:
     name: Upgradable
-    baseValue: 0
+    baseValue: 10
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0

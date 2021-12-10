@@ -5,47 +5,20 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Toolbox;
 
-public abstract class StatusEffectCreation : ScriptableObject
+public static class RNG
 {
-	//Variables section. Try to use [Header("[text]")] to organize the code.
-
-
-
-	//Functions section
-	public abstract StatusEffectFunctionality CreateStatusEffect(GameObject target);
-    
-
-	
-}
-
-public abstract class StatusEffectCreation<DataType, EffectType> : StatusEffectCreation where DataType : StatusEffectCenter where EffectType : StatusEffectFunctionality<DataType>, new() 
-{
-	public DataType statusEffect;
-
-    public override StatusEffectFunctionality CreateStatusEffect(GameObject target)
+    public static bool Chance(float chanceOfSuccess)
     {
-        if(Random.Range(0.0f, 100.0f) < statusEffect.effectChance)
-        {
-            return new EffectType
-            {
-                statusEffectData = this.statusEffect,
-                targetOfStatusEffect = target
-            };
-        }
-        else
-        {
-            return null;
-        }
+        return Random.Range(0.0f, 100.0f) < chanceOfSuccess ? true : false;
     }
 }
-
 
 /*
 Quick References:
 
 interface - A class where you can't put variables in it. Can only put functions. (Inherit from multiple interfaces) Think of this like a set of tasks that the interface is able to do.
 typeof - Returns object information
-abstract - A template for other classes
+abstract - Basically means "it exists, but I'm not going to tell you how it's implemented"
 virtual - Allows implimintation inside the function
 protected - Lets the abstract class access items within the subclass
 static - Allows other classes to use the target content without creating the class

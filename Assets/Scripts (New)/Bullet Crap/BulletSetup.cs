@@ -23,8 +23,7 @@ public class BulletSetup : ScriptableObject
     [EndIndent]
     [ShowIf(nameof(explodes), true)] public float explosionDamagePercent = 50;
     public float ExplosionRadius => explodes ? explosionRadius : 0;
-
-    public List<StatusEffectCreation> statusEffects;
+    [InLineEditor] public List<StatusEffectCreation> statusEffects;
 
     [Header("Upgrades")]
     public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();

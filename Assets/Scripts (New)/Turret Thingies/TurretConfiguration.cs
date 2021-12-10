@@ -102,7 +102,6 @@ public class TurretConfiguration : MonoBehaviour
     }
     public int CounterValue(TypeOfUpgrade upgradeName) 
     {
-        Debug.Log(upgradesCounter.ContainsKey(upgradeName));
         return upgradesCounter.ContainsKey(upgradeName)? upgradesCounter[upgradeName].Counter : 0; 
     }
     
