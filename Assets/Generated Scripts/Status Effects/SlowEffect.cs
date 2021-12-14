@@ -15,7 +15,7 @@ public class SlowEffect_Data: StatusEffectCenter
 
 } 
  
-public class SlowEffect_Functionality: StatusEffectFunctionality <SlowEffect_Data> 
+public class SlowEffect_Functionality: StatusEffectFunctionality <SlowEffect_Data>
 { 
     public override float ImmuneToEffectTimer()
     { 
@@ -27,9 +27,19 @@ public class SlowEffect_Functionality: StatusEffectFunctionality <SlowEffect_Dat
     {
         if(RNG.Chance(statusEffectData.effectChance) == true)
         {
-            Debug.Log("Enemy is slowed down");
+            var temp = new MonoBehaviour();
+            temp.StartCoroutine(SlowEffect(callback));
         }
     } 
  
     // Put additional helper functions/coroutines here 
+    public IEnumerator SlowEffect(UnityAction<StatusEffectFunctionality> callback)
+    {
+        float originalSpeed = targetOfStatusEffect.GetComponentInParent<PathMovement>().speed;
+        targetOfStatusEffect.GetComponentInParent<PathMovement>().speed /= statusEffectData.effectLevel;
+        yield return new WaitForSeconds(statusEffectData.effectDuration);
+        targetOfStatusEffect.GetComponentInParent<PathMovement>().speed = originalSpeed;
+        callback.Invoke(this);
+    }
+
 }

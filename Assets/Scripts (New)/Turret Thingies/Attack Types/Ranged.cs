@@ -54,6 +54,10 @@ public class Ranged : TurretAttackType
 
     public override void Aim()
     {
+        if(currentTarget == null)
+        {
+            return;
+        }
         Vector3 dir = currentTarget.transform.position - transform.position;
         float targetAngle = Vector2.SignedAngle(Vector2.up, dir);
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles,

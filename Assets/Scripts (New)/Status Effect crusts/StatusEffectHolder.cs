@@ -7,7 +7,7 @@ using Toolbox;
 
 public class StatusEffectHolder : MonoBehaviour, StatusEffectHoldable
 {
-	SerializedDictionary<string, StatusEffectInformation> effectInformation;
+	SerializedDictionary<string, StatusEffectInformation> effectInformation = new SerializedDictionary<string, StatusEffectInformation>();
 
 
 	//Functions section
@@ -47,7 +47,7 @@ public class StatusEffectHolder : MonoBehaviour, StatusEffectHoldable
 		if(status == null)
         {
 			return;
-        }
+		}
 		else if(effectInformation.TryGetValue(status.name, out information) == true)
         {
 			if(information.isImmunetoEffect == true)

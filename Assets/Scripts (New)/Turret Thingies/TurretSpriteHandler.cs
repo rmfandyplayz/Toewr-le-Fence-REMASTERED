@@ -83,7 +83,6 @@ public class TurretSpriteHandler : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        Debug.LogWarning("Sprite was clicked / " + isPlacing);
         if (!isPlacing && !isBusy)
         {
             StartCoroutine(BusySprite());

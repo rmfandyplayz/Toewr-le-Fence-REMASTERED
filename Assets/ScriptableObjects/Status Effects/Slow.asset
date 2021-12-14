@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Slow
   m_EditorClassIdentifier: 
   statusEffect:
-    effectChance: 50
+    effectChance: 100
     effectDuration: 3
     effectLevel: 2
