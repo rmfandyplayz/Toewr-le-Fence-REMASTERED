@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class PathMovement : MonoBehaviour {
     public float speed = 1;
+    private List<float> slowLevel = new List<float>();
+    private float currentMaxSlowLevel = 0;
     public Polyline path;
     public bool enemyUpdating = false;
     int targetIndex = 1;
@@ -13,10 +16,34 @@ public class PathMovement : MonoBehaviour {
     public UnityEvent OnPathFinished;
     bool pathFinished = false;
 
+    public void ApplySlow(float efficiency)
+    {
+        if(efficiency > currentMaxSlowLevel)
+        {
+            currentMaxSlowLevel = efficiency;
+        }
+        slowLevel.Add(efficiency);
+        UpdateSpeed();
+    }
 
+    public void RemoveSlow(float efficiency)
+    {
+        slowLevel.Remove(efficiency);
+        if(efficiency == currentMaxSlowLevel)
+        {
+            currentMaxSlowLevel = 0;
+             foreach (int level in slowLevel)
+            {
+                currentMaxSlowLevel = Mathf.Max(level, currentMaxSlowLevel);
+            }
+        }
+        UpdateSpeed();
+    }
 
-
-
+    public void UpdateSpeed()
+    {
+        velocity = (path.nodes[targetIndex] - this.transform.position).normalized * (speed - (speed * currentMaxSlowLevel/10)) ;
+    }
 
 	void Update () {
         if (!pathFinished && enemyUpdating == true)

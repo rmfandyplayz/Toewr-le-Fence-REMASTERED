@@ -13,7 +13,7 @@ using Toolbox;
 
 	public float effectChance;
 	public float effectDuration;
-	public int effectLevel;
+	public float effectLevel;
 
 	/*
 	public bool slow;

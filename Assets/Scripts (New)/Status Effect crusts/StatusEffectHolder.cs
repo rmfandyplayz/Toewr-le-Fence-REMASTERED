@@ -24,6 +24,7 @@ public class StatusEffectHolder : MonoBehaviour, StatusEffectHoldable
 
 		if(information.effectsStacked == 0)
         {
+			Debug.Log("Immunity Timer is Running");
 			StartCoroutine(ImmunityTimer(information));
         }
 

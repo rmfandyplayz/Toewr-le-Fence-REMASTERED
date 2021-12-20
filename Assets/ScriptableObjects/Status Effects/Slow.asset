@@ -15,4 +15,4 @@ MonoBehaviour:
   statusEffect:
     effectChance: 100
     effectDuration: 3
-    effectLevel: 2
+    effectLevel: 9

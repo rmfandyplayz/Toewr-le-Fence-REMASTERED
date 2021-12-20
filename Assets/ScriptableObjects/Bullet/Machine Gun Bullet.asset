@@ -50,10 +50,10 @@ MonoBehaviour:
     startingPrice: 0
     priceIncrease: 0
   surrealDmgMultiplier: 3
-  canDealNoscopeDmg: 1
+  canDealNoscopeDmg: 0
   _noscopeDmgChance:
     name: Upgradable
-    baseValue: 10
+    baseValue: 0.5
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0

@@ -25,20 +25,18 @@ public class SlowEffect_Functionality: StatusEffectFunctionality <SlowEffect_Dat
  
     public override void RunStatusEffect(StatusEffectHoldable statusEffectHolder, UnityAction<StatusEffectFunctionality> callback)
     {
-        if(RNG.Chance(statusEffectData.effectChance) == true)
+        if(RNG.Chance(statusEffectData.effectChance) == true && statusEffectHolder is StatusEffectHolder holder)
         {
-            var temp = new MonoBehaviour();
-            temp.StartCoroutine(SlowEffect(callback));
+            holder.StartCoroutine(SlowEffect(callback));
         }
     } 
  
     // Put additional helper functions/coroutines here 
     public IEnumerator SlowEffect(UnityAction<StatusEffectFunctionality> callback)
     {
-        float originalSpeed = targetOfStatusEffect.GetComponentInParent<PathMovement>().speed;
-        targetOfStatusEffect.GetComponentInParent<PathMovement>().speed /= statusEffectData.effectLevel;
+        targetOfStatusEffect.GetComponentInParent<PathMovement>().ApplySlow(statusEffectData.effectLevel);
         yield return new WaitForSeconds(statusEffectData.effectDuration);
-        targetOfStatusEffect.GetComponentInParent<PathMovement>().speed = originalSpeed;
+        targetOfStatusEffect.GetComponentInParent<PathMovement>().RemoveSlow(statusEffectData.effectLevel);
         callback.Invoke(this);
     }
 
