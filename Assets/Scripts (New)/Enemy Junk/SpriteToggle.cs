@@ -5,82 +5,61 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Toolbox;
 
-public class StatusEffectHolder : MonoBehaviour, StatusEffectHoldable
+public class SpriteToggle : MonoBehaviour
 {
-	SerializedDictionary<string, StatusEffectInformation> effectInformation = new SerializedDictionary<string, StatusEffectInformation>();
+	//Variables section. Try to use [Header("[text]")] to organize the code.
+
+    public int calls = 0;
 
 
-	//Functions section
-	public void FinishStatusEffect(StatusEffectFunctionality effect)
+
+    //Functions section
+
+    private void Start()
     {
-		StatusEffectInformation information;
-		
-		if(effectInformation.TryGetValue(effect.name, out information) == false)
-        {
-			return;
-        }
-		information.effectsStacked--;
-		information.effectImmunityTimer += effect.ImmuneToEffectTimer();
-
-		if(information.effectsStacked == 0)
-        {
-			StartCoroutine(ImmunityTimer(information));
-        }
-
+        StartCoroutine(ShowBars(0, true));
     }
 
-	public bool HasEffect<T>()
+    public void ToggleSprites(bool toggle = false)
     {
-        if (effectInformation.ContainsKey(typeof(T).ToString()))
-		{
-			return true;
-        }
-        else
+        foreach (Image i in GetComponentsInChildren<Image>())
         {
-			return false;
-        }
-    }
-
-	public void ApplyStatusEffect(StatusEffectFunctionality status)
-    {
-		StatusEffectInformation information;
-		if(status == null)
-        {
-			return;
-		}
-		else if(effectInformation.TryGetValue(status.name, out information) == true)
-        {
-			if(information.isImmunetoEffect == true)
+            //i.enabled = toggle;
+            if (toggle == true)
             {
-				return;
+                i.FadeIn(0.2f);
             }
-			information.effectsStacked++;
+            else
+            {
+                i.FadeOut(0.2f);
+            }
         }
-        else
-        {
-			information = new StatusEffectInformation();
-			information.effectsStacked = 1;
-			effectInformation.Add(status.name, information);
-        }
-		status.RunStatusEffect(this, FinishStatusEffect);
     }
-	
-	//Coroutines section
-	public IEnumerator ImmunityTimer(StatusEffectInformation info)
+
+    public void RunCoroutine()
     {
-		info.isImmunetoEffect = true;
-		yield return new WaitForSeconds(info.effectImmunityTimer);
-		info.isImmunetoEffect = false;
+        StartCoroutine(ShowBars());
     }
 
-}
 
-[System.Serializable]
-public class StatusEffectInformation
-{
-	public bool isImmunetoEffect;
-	public float effectImmunityTimer;
-	public int effectsStacked;
+    //Coroutine Section
+
+    public IEnumerator ShowBars(float timer = 0.5f, bool isHighPriority = false)
+    {
+        //Debug.Log("ShowBars() ran");
+        ToggleSprites(true);
+        calls++;
+        yield return new WaitForSeconds(timer);
+        calls--;
+        if (isHighPriority == true || calls <= 0)
+        {
+            ToggleSprites(false);
+            calls = 0;
+            StopAllCoroutines();
+        }
+        //ToggleBars(false);
+    }
+
 }
 
 /*

@@ -18,9 +18,9 @@ public class SlowEffect_Data: StatusEffectCenter
 public class SlowEffect_Functionality: StatusEffectFunctionality <SlowEffect_Data>
 { 
     public override float ImmuneToEffectTimer()
-    { 
+    {
         // return the immunity timer amount 
-        return base.ImmuneToEffectTimer();
+        return statusEffectData.effectDuration;
     } 
  
     public override void RunStatusEffect(StatusEffectHoldable statusEffectHolder, UnityAction<StatusEffectFunctionality> callback)

@@ -60,22 +60,21 @@ public class PathMovement : MonoBehaviour {
                     return;
                 }
                 previousPos = Vector3.positiveInfinity;
-                velocity = (path.nodes[targetIndex] - path.nodes[targetIndex - 1]).normalized * speed;
+                UpdateSpeed();
             }
 
             else if ((previousPos - waypoint).sqrMagnitude < (transform.position - waypoint).sqrMagnitude)
             {
                 //transform.position = waypoint;
-                velocity = (path.nodes[targetIndex] - this.transform.position).normalized * speed;
+                UpdateSpeed();
                 previousPos = transform.position;
                 transform.position += velocity * Time.deltaTime;
-
-                Debug.LogWarning("Teleported");
             }
 
             else
             {
                 previousPos = transform.position;
+                UpdateSpeed();
                 transform.position += velocity * Time.deltaTime;
             }
         }
@@ -99,7 +98,7 @@ public class PathMovement : MonoBehaviour {
     public void Move()
     {
         previousPos = transform.position;
-        velocity = (path.nodes[targetIndex] - path.nodes[targetIndex - 1]).normalized * speed;
+        UpdateSpeed();
         enemyUpdating = true;
     }
 

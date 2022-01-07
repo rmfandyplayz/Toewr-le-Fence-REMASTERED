@@ -64,7 +64,6 @@ public class HealthBar : MonoBehaviour
     }
     public void ToggleBars(bool toggle = false)
     {
-        //Debug.Log("ToggleBars() ran");
         GetComponent<Image>().enabled = toggle;
         foreach (Image i in GetComponentsInChildren<Image>())
         {
