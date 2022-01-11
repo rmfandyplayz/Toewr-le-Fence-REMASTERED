@@ -194,7 +194,7 @@ public static class PlatinioTweenExtension
         return PlatinioTween.instance.FadeAtSpeed(cg , to , speed);
     }
 
-    public static BaseTween Fade(Image image, float to, float t)
+    public static BaseTween Fade(this Image image, float to, float t)
     {
         return PlatinioTween.instance.Fade(image , to , t);
     }

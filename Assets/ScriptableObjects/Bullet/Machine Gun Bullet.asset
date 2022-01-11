@@ -53,7 +53,7 @@ MonoBehaviour:
   canDealNoscopeDmg: 0
   _noscopeDmgChance:
     name: Upgradable
-    baseValue: 0.5
+    baseValue: 0
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0
