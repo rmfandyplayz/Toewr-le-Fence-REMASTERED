@@ -13,7 +13,10 @@ public class ImageTween : MonoBehaviour
     [SerializeField] private TweeningScriptObj tweenScriptObj;
     [SerializeField] private float startingAlphaValue;
     [SerializeField] private float startingFillValue = 1;
+    [SerializeField] private float holdTimeUntilStart = 0.5f;
     [SerializeField] private int runningTweenEffects;
+    [SerializeField] private bool applyTweenForChildren = true;
+    [SerializeField] private bool isRunnerActive = false;
 
     private void Awake()
     {
@@ -24,29 +27,138 @@ public class ImageTween : MonoBehaviour
 
         targetObjectToTween?.Fade(startingAlphaValue, 0);
         targetObjectToTween?.FillAmountTween(startingFillValue, 0);
-    }
 
+        if (targetObjectToTween != null && applyTweenForChildren == true)
+        {
+            foreach(Image image in targetObjectToTween.GetComponentsInChildren<Image>())
+            {
+                image.Fade(startingAlphaValue, 0);
+                image.FillAmountTween(startingFillValue, 0);
+            }
+        }
+        isRunnerActive = false;
+        pauseTween(holdTimeUntilStart, () => isRunnerActive = true);
+    }
     public void RunTweenDefault()
     {
-
+        RunTweenOverride(tweenScriptObj);
+    }
+    public void RunTweenOverride(TweeningScriptObj newPreset)
+    {
+        if(applyTweenForChildren == false)
+        {
+            return;
+        }
+        RunTween(newPreset, targetObjectToTween, 0);
+        if (targetObjectToTween != null && applyTweenForChildren == true)
+        {
+            foreach (Image image in targetObjectToTween.GetComponentsInChildren<Image>())
+            {
+                RunTween(newPreset, image, 0, true);
+            }
+        }
     }
 
-    public void RunTween(TweeningScriptObj tween, int current)
+/// <summary>
+/// Run the current tween event from a Tweening Scriptable Object
+/// </summary>
+/// <remarks>
+/// Type: public function
+/// </remarks>
+/// <param name="tween">TweeningScriptObj: The tween object preset to use.</param>
+/// <param name="imageToTween">Image: The image object to apply the effect to.</param>
+/// <param name="current">int: The number representing the current tween event</param>
+/// <param name="isChild">bool: Whether the image is a child of the main image runner</param>
+/// <return> Nothing </return> (if this is not given, it means return nothing (void))
+
+    public void RunTween(TweeningScriptObj tween, Image imageToTween, int current, bool isChild = false)
     {
-        if (tween == null || targetObjectToTween == null || current >= tween.helpers.Count)
+        if(tween == null || imageToTween == null)
         {
-            runningTweenEffects--;
             return;
+        }
+        if (current >= tween.helpers.Count)
+        {
+            if (!isChild)
+            {
+                runningTweenEffects--;
+            }
+            return;
+        }
+        if(current <= 0)
+        {
+            current = 0;
+            if (!isChild)
+            {
+                runningTweenEffects++;
+            }
         }
         var currentTween = tween.helpers[current];
         if(currentTween.disallowMultipleEvents == true && runningTweenEffects > 1)
         {
-            runningTweenEffects--;
+            if (!isChild)
+            {
+                runningTweenEffects--;
+            }
             return;
         }
-        
-        
+        StartTweenEvent(imageToTween, currentTween, ()=> RunTween(tween, imageToTween, current + 1, isChild));
     }
+
+    /// <summary>
+    /// Will apply a given tween event to a given image. Runs callback function when the tween is finished.
+    /// </summary>
+    /// <remarks>
+    /// Type: public function
+    /// </remarks>
+    /// <param name="imageApplied"> Image: The image to apply the effect to</param>
+    /// <param name="tween"> TweeningHelper: The tween effect that will be applied.</param>
+    /// <param name="callback"> System.Action: A function to run when the tween is completed. </param>
+    /// <return> Nothing </return>
+    public void StartTweenEvent(Image imageApplied, TweeningHelper tween, System.Action callback)
+    {
+        if (tween.typeOfTweenEvent == tweenEvents.fade)
+        {
+            if (tween.useSpeedValue == true)
+            {
+                imageApplied.FadeAtSpeed(tween.targetValueOfTween, tween.speedValueOfTween).SetEase(tween.ease).SetOwner(this.gameObject).SetOnComplete(callback);
+            }
+            else
+            {
+                imageApplied.Fade(tween.targetValueOfTween, tween.timeValueOfTween).SetEase(tween.ease).SetOwner(this.gameObject).SetOnComplete(callback);
+            }
+        }
+        else if(tween.typeOfTweenEvent == tweenEvents.cancel)
+        {
+            imageApplied.gameObject.CancelAllTweens();
+            StartCoroutine(pauseTween(tween.timeValueOfTween, callback));
+        }
+        else
+        {
+            pauseTween(tween.timeValueOfTween, callback);
+        }
+    }
+
+    //Coroutines section
+
+    /// <summary>
+    /// Holds a tween for a given time
+    /// </summary>
+    /// <remarks>
+    /// Type: public coroutine
+    /// </remarks>
+    /// <param name="timer">float: time to hold the tween.</param>
+    /// <param name="callback">System.Action: the function to callback when finished.</param>
+    /// <returns>IEnumerator for coroutine</returns>
+
+    public IEnumerator pauseTween(float timer, System.Action callback)
+    {
+        yield return new WaitForSeconds(timer);
+        callback?.Invoke();
+    }
+
+
+
 }
 
 /*

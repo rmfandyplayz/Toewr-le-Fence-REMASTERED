@@ -50,7 +50,7 @@ public class Melee : TurretAttackType
 
     public override void Aim()
     {
-        if(isAttacking == true)
+        if(isAttacking == true || currentTarget == null)
         {
             return;
         }

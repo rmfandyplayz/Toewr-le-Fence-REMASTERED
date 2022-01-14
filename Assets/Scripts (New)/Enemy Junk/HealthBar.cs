@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Platinio.TweenEngine;
+using CustomUnityEvent;
 
 public class HealthBar : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class HealthBar : MonoBehaviour
     private int timesCalled = 0;
     public Image hpBar;
     public Ease ease;
+    public UEventFloat onHealthBarUpdate;
+
 
 
     [SerializeField]
@@ -18,12 +21,7 @@ public class HealthBar : MonoBehaviour
 
     void Awake()
     {
-        PlatinioTween.instance.FillAmountTween(hpBar, 1, 0).SetEase(ease).SetOwner(gameObject);
-        //StartCoroutine(ShowBars(0.06f, true));
-        foreach (Image i in GetComponentsInChildren<Image>())
-        {
-            i.FadeOut(0);
-        }
+        
     }
 
     public void SetMaxValue(float newValue)
@@ -38,7 +36,7 @@ public class HealthBar : MonoBehaviour
             GetHPImage();
         }
         gameObject.CancelAllTweens();
-        RunTween(newValue / maxValue);
+        onHealthBarUpdate?.Invoke(newValue / maxValue);
     }
    public void UpdateValue(int newValue)
    {
@@ -47,7 +45,7 @@ public class HealthBar : MonoBehaviour
             GetHPImage();
         }
         gameObject.CancelAllTweens();
-        RunTween(newValue / maxValue);
+        onHealthBarUpdate?.Invoke(newValue / maxValue);
     }
     public void GetHPImage()
     {
