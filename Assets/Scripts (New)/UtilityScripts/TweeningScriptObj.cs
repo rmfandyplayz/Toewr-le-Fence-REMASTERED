@@ -1,31 +1,48 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using Toolbox;
 
 public enum tweenEvents
 {
-	hold, cancel, fade
+    fade,
+    fill,
+    hold, //pauses tweens
+    cancel //stops tweens
 };
 
 
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
 {
-	public List<TweeningHelper> helpers = new List<TweeningHelper>();
+    public List<TweeningHelper> helpers = new List<TweeningHelper>();
 }
 
-[System.Serializable] public class TweeningHelper
+[System.Serializable]
+public class TweeningHelper
 {
-	public tweenEvents typeOfTweenEvent;
-	public bool disallowMultipleEvents;
-	public bool useSpeedValue;
-	[ShowIf(nameof(useSpeedValue), true)] public float speedValueOfTween;
-	[ShowIf(nameof(useSpeedValue), false)] public float timeValueOfTween;
-	public float targetValueOfTween;
-	public Ease ease;
+    public tweenEvents typeOfTweenEvent;
+    public bool disallowMultipleEvents;
+    public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
+    public bool useDynamicValue; //No hardcoding items
+    [ShowIf(nameof(useSpeedValue), true)] public float speedValueOfTween;
+    [ShowIf(nameof(useSpeedValue), false)] public float timeValueOfTween;
+    [HideIf(nameof(useDynamicValue), true)] public float targetValueOfTween;
+    public Ease ease;
+    public float dynamicFloat
+    {
+        //Dynamically sets/gets values
+        get
+        {
+            return targetValueOfTween;
+        }
+        set
+        {
+            if (useDynamicValue)
+            {
+                targetValueOfTween = value;
+                Debug.LogWarning(value);
+            }
+        }
+    }
 }
 
 /*

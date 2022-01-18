@@ -37,12 +37,25 @@ public class ImageTween : MonoBehaviour
             }
         }
         isRunnerActive = false;
-        pauseTween(holdTimeUntilStart, () => isRunnerActive = true);
+        StartCoroutine(PauseTween(holdTimeUntilStart, () => isRunnerActive = true));
     }
     public void RunTweenDefault()
     {
         RunTweenOverride(tweenScriptObj);
     }
+    
+    public void RunTweenWithFillValue(float value)
+    {
+        tweenScriptObj.helpers.ForEach((x /* Every tween helper gets put in there*/) =>
+        {
+            if (x.useDynamicValue == true)
+            {
+                x.dynamicFloat = value;
+            }
+        });
+        RunTweenOverride(tweenScriptObj);
+    }
+
     public void RunTweenOverride(TweeningScriptObj newPreset)
     {
         if(applyTweenForChildren == false)
@@ -73,7 +86,7 @@ public class ImageTween : MonoBehaviour
 
     public void RunTween(TweeningScriptObj tween, Image imageToTween, int current, bool isChild = false)
     {
-        if(tween == null || imageToTween == null)
+        if(tween == null || imageToTween == null || isRunnerActive == false)
         {
             return;
         }
@@ -128,14 +141,25 @@ public class ImageTween : MonoBehaviour
                 imageApplied.Fade(tween.targetValueOfTween, tween.timeValueOfTween).SetEase(tween.ease).SetOwner(this.gameObject).SetOnComplete(callback);
             }
         }
+        else if (tween.typeOfTweenEvent == tweenEvents.fill)
+        {
+            if (tween.useSpeedValue == true)
+            {
+                imageApplied.FillAmountTweenAtSpeed(tween.targetValueOfTween, tween.speedValueOfTween).SetEase(tween.ease).SetOwner(this.gameObject).SetOnComplete(callback);
+            }
+            else
+            {
+                imageApplied.FillAmountTween(tween.targetValueOfTween, tween.timeValueOfTween).SetEase(tween.ease).SetOwner(this.gameObject).SetOnComplete(callback);
+            }
+        }
         else if(tween.typeOfTweenEvent == tweenEvents.cancel)
         {
             imageApplied.gameObject.CancelAllTweens();
-            StartCoroutine(pauseTween(tween.timeValueOfTween, callback));
+            StartCoroutine(PauseTween(tween.timeValueOfTween, callback));
         }
         else
         {
-            pauseTween(tween.timeValueOfTween, callback);
+            StartCoroutine(PauseTween(tween.timeValueOfTween, callback));
         }
     }
 
@@ -151,7 +175,7 @@ public class ImageTween : MonoBehaviour
     /// <param name="callback">System.Action: the function to callback when finished.</param>
     /// <returns>IEnumerator for coroutine</returns>
 
-    public IEnumerator pauseTween(float timer, System.Action callback)
+    public IEnumerator PauseTween(float timer, System.Action callback)
     {
         yield return new WaitForSeconds(timer);
         callback?.Invoke();
