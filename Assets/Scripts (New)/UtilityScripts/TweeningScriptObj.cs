@@ -19,7 +19,20 @@ public class TweeningScriptObj : ScriptableObject
 [System.Serializable]
 public class TweeningHelper
 {
-    public tweenEvents typeOfTweenEvent;
+    private readonly SerializedDictionary<string, System.Action> functionSelecter = new SerializedDictionary<string, System.Action>
+    {{
+        "test", ()=> Debug.Log("test2")
+    },
+    {
+        "test2", ()=> Debug.Log("test3")
+    }
+        };
+    List<string> functions = new List<string>{
+        "test",
+        "test2"
+        };
+    [PresetAttribute(nameof(functions))] public string function;
+    [SearchableEnum] public tweenEvents typeOfTweenEvent;
     public bool disallowMultipleEvents;
     public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
     public bool useDynamicValue; //No hardcoding items
