@@ -14,6 +14,7 @@ public enum tweenEvents
 public class TweeningScriptObj : ScriptableObject
 {
     public List<TweeningHelper> helpers = new List<TweeningHelper>();
+    //have a function that will run TWEEN_FUNCTION(ObjectToTween, tweenAmount, tweenTarget).setDelay(holdTimer).SetOwner(this.gameobject).SetEase(this.ease).SetOnComplete(NextTweenHelper);
 }
 
 [System.Serializable]
