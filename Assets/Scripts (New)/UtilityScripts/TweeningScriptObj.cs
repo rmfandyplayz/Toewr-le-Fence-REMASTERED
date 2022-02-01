@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public enum tweenEvents
@@ -13,8 +14,61 @@ public enum tweenEvents
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
 {
+    private static readonly SerializedDictionary<string, System.Type> validTweenTargets = new SerializedDictionary<string, System.Type>
+    {
+        {
+            nameof(Image), typeof(Image)
+        }, 
+        {
+            nameof(SpriteRenderer), typeof(SpriteRenderer)
+        } 
+    }; //Has to equal name of image and image type, can add values later on
+    private readonly List<string> validTargetNames = new List<string>
+    (
+        validTweenTargets.Keys
+    ); //Takes each valid target name, gets the keys from dictionary, puts in array
+    [Preset(nameof(validTargetNames))] public string targetType;
     public List<TweeningHelper> helpers = new List<TweeningHelper>();
+
     //have a function that will run TWEEN_FUNCTION(ObjectToTween, tweenAmount, tweenTarget).setDelay(holdTimer).SetOwner(this.gameobject).SetEase(this.ease).SetOnComplete(NextTweenHelper);
+    public void CheckTweenOnObj(Object checkedObject)
+    {
+        if(checkedObject == null)
+        {
+            Debug.LogError("Checkobject is null");
+            return;
+        }
+        if (!validTweenTargets.TryGetValue(targetType, out var checkedType))
+        {
+            Debug.LogError("Failed to find target type");
+            return;
+        }
+        if(checkedObject.GetType() != checkedType)
+        {
+            Debug.LogError($"Checked Object has a different type! ({checkedObject.GetType()}), ({checkedType})");
+            return;
+        }
+        Debug.LogError("SUCCESS!");
+    } //Verifies that the object passed in is supported
+
+    public void RunTweenOnObj()
+    {
+
+    }
+}
+
+public class Tweening_Dynamic_Transfer
+{
+    private Vector4 dynamicValue;
+    public float dynamicValueFloat
+    {
+        get { return dynamicValue.x; }
+        private set { dynamicValue.x = value; }
+    } //Allows to choose dynamic float value type
+    public Tweening_Dynamic_Transfer(float value)
+    {
+        dynamicValueFloat = value;
+    }
 }
 
 [System.Serializable]
@@ -53,7 +107,6 @@ public class TweeningHelper
             if (useDynamicValue)
             {
                 targetValueOfTween = value;
-                Debug.LogWarning(value);
             }
         }
     }

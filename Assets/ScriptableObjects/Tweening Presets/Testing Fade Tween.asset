@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
   m_Name: Testing Fade Tween
   m_EditorClassIdentifier: 
+  targetType: SpriteRenderer
   helpers:
-  - typeOfTweenEvent: 2
+  - function: 
+    typeOfTweenEvent: 2
     disallowMultipleEvents: 0
     useSpeedValue: 0
     useDynamicValue: 0
@@ -21,7 +23,8 @@ MonoBehaviour:
     timeValueOfTween: 0.1
     targetValueOfTween: 1
     ease: 0
-  - typeOfTweenEvent: 0
+  - function: 
+    typeOfTweenEvent: 0
     disallowMultipleEvents: 0
     useSpeedValue: 0
     useDynamicValue: 0
@@ -29,7 +32,8 @@ MonoBehaviour:
     timeValueOfTween: 0.2
     targetValueOfTween: 1
     ease: 0
-  - typeOfTweenEvent: 2
+  - function: 
+    typeOfTweenEvent: 2
     disallowMultipleEvents: 1
     useSpeedValue: 0
     useDynamicValue: 0
