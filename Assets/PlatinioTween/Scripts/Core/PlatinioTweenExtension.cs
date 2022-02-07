@@ -97,32 +97,32 @@ public static class PlatinioTweenExtension
 
     public static BaseTween ScaleZ(this Transform obj, float value, float t)
     {
-        return PlatinioTween.instance.ScaleX( obj, value, t );
+        return PlatinioTween.instance.ScaleZ( obj, value, t );
     }
 
     public static BaseTween ScaleZ(this GameObject obj, float value, float t)
     {
-        return PlatinioTween.instance.ScaleX( obj, value, t );
+        return PlatinioTween.instance.ScaleZ( obj, value, t );
     }
 
     public static BaseTween ScaleZ(this RectTransform obj, float value, float t)
     {
-        return PlatinioTween.instance.ScaleX( obj, value, t );
+        return PlatinioTween.instance.ScaleZ( obj, value, t );
     }
 
     public static BaseTween ScaleZAtSpeed(this Transform obj, float value, float speed)
     {
-        return PlatinioTween.instance.ScaleXAtSpeed( obj, value, speed );
+        return PlatinioTween.instance.ScaleZAtSpeed( obj, value, speed );
     }
 
     public static BaseTween ScaleZAtSpeed(this GameObject obj, float value, float speed)
     {
-        return PlatinioTween.instance.ScaleXAtSpeed( obj, value, speed );
+        return PlatinioTween.instance.ScaleZAtSpeed( obj, value, speed );
     }
 
     public static BaseTween ScaleZAtSpeed(this RectTransform obj, float value, float speed)
     {
-        return PlatinioTween.instance.ScaleXAtSpeed( obj, value, speed );
+        return PlatinioTween.instance.ScaleZAtSpeed( obj, value, speed );
     }
 
     public static BaseTween RotateTween(this Transform t, Vector3 axis, float to, float time)
@@ -286,7 +286,7 @@ public static class PlatinioTweenExtension
 
     public static BaseTween FillAmountTweenAtSpeed(this Image img, float to, float speed)
     {
-        return PlatinioTween.instance.FillAmountTween(img, to, speed);
+        return PlatinioTween.instance.FillAmountTweenAtSpeed(img, to, speed);
     }
 
     public static BaseTween Move(this Transform obj, Transform to, float t)
