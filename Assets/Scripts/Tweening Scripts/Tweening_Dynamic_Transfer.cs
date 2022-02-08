@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
+[System.Serializable]
 public class Tweening_Dynamic_Transfer
 {
     [SerializeField] private Vector4 dynamicValue;

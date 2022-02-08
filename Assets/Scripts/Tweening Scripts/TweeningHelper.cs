@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Platinio;
+using Platinio.TweenEngine;
+using UnityEngine.UI;
 
 public enum tweenEvents
 {
@@ -21,23 +23,81 @@ public class TweeningHelper
     private readonly SerializedDictionary<tweenEvents, System.Func<Object, bool, Tweening_Dynamic_Transfer, float, Platinio.TweenEngine.BaseTween>
 > functionSelecter = new SerializedDictionary<tweenEvents, System.Func<Object, bool, Tweening_Dynamic_Transfer, float, Platinio.TweenEngine.BaseTween>> //Based on tweening event type, automatically picks the correct function for the tweening event.
     {
-        {tweenEvents.fade, (obj, useSpeedValue, info, amountValue)=> {Debug.Log("Fade"); return null; } },
-        {tweenEvents.fill, (obj, useSpeedValue, info, amountValue)=> {Debug.Log("Fill"); return null; }},
-        {tweenEvents.move, (obj, useSpeedValue, info, amountValue)=> {Debug.Log("Move"); return null; } },
-        {tweenEvents.rotate, (obj, useSpeedValue, info, amountValue)=> {Debug.Log("Rotate"); return null; } },
-        {tweenEvents.scale, (obj, useSpeedValue, info, amountValue)=> {Debug.Log("Scale"); return null; }},
-        {tweenEvents.color, (obj, useSpeedValue, info, amountValue)=> {Debug.Log("Color"); return null; }}
+        {tweenEvents.fade, (obj, useSpeedValue, info, amountValue)=>
+        { 
+        if(obj is Image img)
+            {
+                return useSpeedValue ?img.FadeAtSpeed(info.dynamicValueFloat, amountValue) : img.Fade(info.dynamicValueFloat,amountValue);
+            }
+        else if(obj is SpriteRenderer spriteRender)
+            {
+                return useSpeedValue ?spriteRender.FadeAtSpeed(info.dynamicValueFloat, amountValue) : spriteRender.Fade(info.dynamicValueFloat,amountValue);
+            }  return null; } },
+            
+        {tweenEvents.fill, (obj, useSpeedValue, info, amountValue)=>
+        {
+            if(obj is Image img)
+            {
+                return useSpeedValue ?img.FillAmountTweenAtSpeed(info.dynamicValueFloat, amountValue) : img.FillAmountTween(info.dynamicValueFloat,amountValue);
+            };
+                return null; } },
+
+        {tweenEvents.move, (obj, useSpeedValue, info, amountValue)=>
+        {
+            if(obj is GameObject gameObj)
+            {
+                return useSpeedValue ?gameObj.MoveAtSpeed(info.dynamicValueVector3, amountValue) : gameObj.Move(info.dynamicValueVector3,amountValue);
+            }
+                return null; } },
+
+        {tweenEvents.rotate, (obj, useSpeedValue, info, amountValue)=>
+        {
+            if(obj is GameObject gameObj)
+            {
+                return gameObj.RotateTween(info.dynamicValueVector3, amountValue);
+            }
+                return null; } },
+
+        {tweenEvents.scale, (obj, useSpeedValue, info, amountValue)=>
+        {
+            if(obj is GameObject gameObj)
+            {
+                return useSpeedValue ?gameObj.ScaleAtSpeed(info.dynamicValueVector3, amountValue) : gameObj.ScaleTween(info.dynamicValueVector3,amountValue);
+            }
+                return null; } },
+
+        {tweenEvents.color, (obj, useSpeedValue, info, amountValue)=>
+        {
+            if(obj is Image img)
+            {
+                return useSpeedValue ?img.ColorTweenAtSpeed(info.dynamicValueColor, amountValue) : img.ColorTween(info.dynamicValueColor,amountValue);
+            }
+        else if(obj is SpriteRenderer spriteRender)
+            {
+                return useSpeedValue ?spriteRender.ColorTweenAtSpeed(info.dynamicValueColor, amountValue) : spriteRender.ColorTween(info.dynamicValueColor,amountValue);
+            }  return null; } }
      };
-    //based on the object (obj), if the speed value == true, use speed version, else, use regular. Inside, pass in info and amountValue.
 
     [SearchableEnum] public tweenEvents typeOfTweenEvent;
     public bool disallowMultipleEvents;
     public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
     public bool useDynamicValue; //No hardcoding items
+    public Ease ease;
+    public float amountValue; //Value for either using speed or time value
+    public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work
+    public BaseTween getTween(Object obj, Tweening_Dynamic_Transfer dynamicValue)
+    {
+        var info = useDynamicValue ? dynamicValue : defaultTarget;
+        if(info != null && functionSelecter.TryGetValue(typeOfTweenEvent, out var tween))
+        {
+            return tween(obj, useSpeedValue, info, amountValue);
+        }
+        return null;
+    }
+    //To delete below
     [ShowIf(nameof(useSpeedValue), true)] public float speedValueOfTween;
     [ShowIf(nameof(useSpeedValue), false)] public float timeValueOfTween;
     [HideIf(nameof(useDynamicValue), true)] public float targetValueOfTween;
-    public Ease ease;
     public float dynamicFloat
     {
         //Dynamically sets/gets values
@@ -54,6 +114,8 @@ public class TweeningHelper
         }
     }
 }
+
+
 
 /*
 Quick References:

@@ -8,10 +8,13 @@ public class TweeningScriptObj : ScriptableObject
     private static readonly SerializedDictionary<string, System.Type> validTweenTargets = new SerializedDictionary<string, System.Type>
     {
         {
-            nameof(Image), typeof(Image)
+            "Image - Fade, Fill, or Color", typeof(Image)
         }, 
         {
-            nameof(SpriteRenderer), typeof(SpriteRenderer)
+            "Sprite Renderer - Fade or Color", typeof(SpriteRenderer)
+        }, 
+        {
+            "Game Object - Transformations, Rotations, or Scale", typeof(GameObject)
         } 
     }; //Has to equal name of image and image type, can add values later on
     private readonly List<string> validTargetNames = new List<string>
@@ -21,30 +24,41 @@ public class TweeningScriptObj : ScriptableObject
     [Preset(nameof(validTargetNames))] public string targetType;
     public List<TweeningHelper> helpers = new List<TweeningHelper>();
 
-    //have a function that will run TWEEN_FUNCTION(ObjectToTween, tweenAmount, tweenTarget).setDelay(holdTimer).SetOwner(this.gameobject).SetEase(this.ease).SetOnComplete(NextTweenHelper);
-    public void CheckTweenOnObj(Object checkedObject)
+    public void RunTweenOnObjectUsingDefaultPreset(Object checkedObject)
+    {
+        RunTweenOnObjectUsingDynamicValue(checkedObject, null);
+    }
+
+    public void RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer dynamicValue)
     {
         if(checkedObject == null)
         {
-            //Debug.LogError("Checkobject is null");
+            ///Debug.LogError("Checkobject is null");
             return;
         }
         if (!validTweenTargets.TryGetValue(targetType, out var checkedType))
         {
-            //Debug.LogError("Failed to find target type");
+            ///Debug.LogError("Failed to find target type");
             return;
         }
         if(checkedObject.GetType() != checkedType)
         {
-            //Debug.LogError($"Checked Object has a different type! ({checkedObject.GetType()}), ({checkedType})");
+            ///Debug.LogError($"Checked Object has a different type! ({checkedObject.GetType()}), ({checkedType})");
             return;
         }
-        //Debug.LogError("SUCCESS!");
+        ///Debug.LogError("SUCCESS!");
     } //Verifies that the object passed in is supported
 
-    public void RunTweenOnObj()
+    public Platinio.TweenEngine.BaseTween RunTweenOnObj(Object checkedObject, Tweening_Dynamic_Transfer dynamicValue, int currentIndex = 0 , float delay = 0, bool automatic = true)
     {
+        currentIndex = Mathf.Max(0, currentIndex);
+        if (currentIndex >= helpers.Count)
+        {
+            return null;
+        }
 
+        //rest of the if statements returns baseTween based on current index
+        return null;
     }
 }
 
