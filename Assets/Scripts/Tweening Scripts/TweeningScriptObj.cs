@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Platinio.TweenEngine;
+using Platinio;
 
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
@@ -17,6 +19,12 @@ public class TweeningScriptObj : ScriptableObject
             "Game Object - Transformations, Rotations, or Scale", typeof(GameObject)
         } 
     }; //Has to equal name of image and image type, can add values later on
+
+    public bool TryGetType(out System.Type target)
+    {
+        return validTweenTargets.TryGetValue(targetType, out target);
+    }
+
     private readonly List<string> validTargetNames = new List<string>
     (
         validTweenTargets.Keys
@@ -56,9 +64,17 @@ public class TweeningScriptObj : ScriptableObject
         {
             return null;
         }
+        var currentHelper = helpers[currentIndex];
 
-        //rest of the if statements returns baseTween based on current index
-        return null;
+        if(currentHelper.getTween(checkedObject, dynamicValue) is BaseTween baseTween)
+        {
+            baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease).SetOnComplete(()=> RunTweenOnObj(checkedObject, dynamicValue, currentIndex++, 0, automatic));
+            return baseTween;
+        }
+        else
+        {
+            return RunTweenOnObj(checkedObject,dynamicValue, currentIndex++, currentHelper.amountValue, automatic);
+        }
     }
 }
 
