@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: Testing Immediate Fade Tween
   m_EditorClassIdentifier: 
   targetType: 
-  helpers: []
+  helpers:
+  - typeOfTweenEvent: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    ease: 0
+    amountValue: 0
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 0}
