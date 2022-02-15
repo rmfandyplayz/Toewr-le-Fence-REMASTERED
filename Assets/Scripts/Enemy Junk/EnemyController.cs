@@ -20,8 +20,8 @@ public class EnemyController : MonoBehaviour
         currentShields = escript.maxShields;
         setHealth?.Invoke(escript.maxHealth);
         setShields?.Invoke(escript.maxShields);
-        OnHealthUpdate?.Invoke(currentHealth);
-        OnShieldUpdate?.Invoke(currentShields);
+        OnHealthUpdate?.Invoke(currentHealth / escript.maxHealth);
+        OnShieldUpdate?.Invoke(currentShields / escript.maxShields);
 
         GetComponent<SpriteRenderer>().sprite = escript.enemySprite;
 
@@ -46,8 +46,8 @@ public class EnemyController : MonoBehaviour
             currentShields = 0;
         }
         currentHealth -= newDamage;
-        OnHealthUpdate?.Invoke(currentHealth);
-        OnShieldUpdate?.Invoke(currentShields);
+        OnHealthUpdate?.Invoke(currentHealth/escript.maxHealth);
+        OnShieldUpdate?.Invoke(currentShields/escript.maxShields);
         OnTakeDamage?.Invoke(new DamageInfo(damage, damageType, transform.position));
         if(currentHealth <= 0)
         {

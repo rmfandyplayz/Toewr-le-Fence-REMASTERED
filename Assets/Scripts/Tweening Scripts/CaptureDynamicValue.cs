@@ -12,29 +12,63 @@ public class CaptureDynamicValue : MonoBehaviour
 	[SerializeField, NotNull] private TweeningScriptObj tweeningScriptObj;
 	[SerializeField] private bool applyTweenToChildren = true;
 	
+    //FUNCTIONS SECTION
+    public void RunTweenDefault()
+    {
+        tweeningScriptObj.RunTweenOnObjectUsingDefaultPreset(objectToTween);
+        if (applyTweenToChildren)
+        {
+            RunTweenOnChildren(null);
+        }
+    }
+
 	public void RunTweenWithDynamicFloat(float dynamicFloat)
     {
         Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicFloat);
         tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicValue);
         if (applyTweenToChildren)
         {
-            if(objectToTween is GameObject gameobject && tweeningScriptObj.TryGetType(out var type))
-            {
-                foreach (var children in gameobject.GetComponentsInChildren(type))
-                {
-                    tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
-                }
-            }
-            else if (objectToTween is Component component && tweeningScriptObj.TryGetType(out var _type))
-            {
-                foreach (var children in component.GetComponentsInChildren(_type))
-                {
-                    tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
-                }
-            }
+            RunTweenOnChildren(dynamicValue);
+        }
+    }
+    
+    public void RunTweenWithDynamicColor(Color dynamicColor)
+    {
+        Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicColor);
+        tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicValue);
+        if (applyTweenToChildren)
+        {
+            RunTweenOnChildren(dynamicValue);
+        }
+    }
+    
+    public void RunTweenWithDynamicVector3(Vector3 dynamicVector3)
+    {
+        Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicVector3);
+        tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicValue);
+        if (applyTweenToChildren)
+        {
+            RunTweenOnChildren(dynamicValue);
         }
     }
 
+    private void RunTweenOnChildren(Tweening_Dynamic_Transfer dynamicValue)
+    {
+        if (objectToTween is GameObject gameobject && tweeningScriptObj.TryGetType(out var type))
+        {
+            foreach (var children in gameobject.GetComponentsInChildren(type))
+            {
+                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
+            }
+        }
+        else if (objectToTween is Component component && tweeningScriptObj.TryGetType(out var _type))
+        {
+            foreach (var children in component.GetComponentsInChildren(_type))
+            {
+                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
+            }
+        }
+    }
 }
 
 /*

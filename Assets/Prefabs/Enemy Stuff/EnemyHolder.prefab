@@ -453,7 +453,6 @@ GameObject:
   - component: {fileID: 509633357439069624}
   - component: {fileID: 509633357439069627}
   - component: {fileID: 509633357439069626}
-  - component: {fileID: 509633357439069625}
   - component: {fileID: 6280506232651399644}
   m_Layer: 6
   m_Name: healthbar
@@ -521,38 +520,6 @@ MonoBehaviour:
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &509633357439069625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509633357439069631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26f36526e2545c48a35966d3d11514c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxValue: 100
-  healthDropAnimationTimer: 0.1
-  hpBar: {fileID: 509633357104319368}
-  ease: 1
-  onHealthBarUpdate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6280506232651399644}
-        m_TargetAssemblyTypeName: CaptureDynamicValue, Assembly-CSharp
-        m_MethodName: RunTweenWithDynamicFloat
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  startingAtMax: 1
 --- !u!114 &6280506232651399644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,28 +869,16 @@ MonoBehaviour:
   escript: {fileID: 0}
   setHealth:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 509633357439069625}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
-        m_MethodName: SetMaxValue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   setShields:
     m_PersistentCalls:
       m_Calls: []
   OnHealthUpdate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 509633357439069625}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
-        m_MethodName: UpdateValue
+      - m_Target: {fileID: 6280506232651399644}
+        m_TargetAssemblyTypeName: CaptureDynamicValue, Assembly-CSharp
+        m_MethodName: RunTweenWithDynamicFloat
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

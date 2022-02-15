@@ -14,12 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: Image - Fade, Fill, or Color
   helpers:
-  - typeOfTweenEvent: 1
+  - typeOfTweenEvent: 7
     disallowMultipleEvents: 1
     useSpeedValue: 0
     useDynamicValue: 1
     ease: 0
     amountValue: 0
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 0}
+    speedValueOfTween: 0
+    timeValueOfTween: 1
+    targetValueOfTween: 1
+  - typeOfTweenEvent: 1
+    disallowMultipleEvents: 1
+    useSpeedValue: 0
+    useDynamicValue: 1
+    ease: 0
+    amountValue: 1
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
     speedValueOfTween: 0

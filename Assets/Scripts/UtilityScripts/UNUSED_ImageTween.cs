@@ -1,9 +1,11 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Toolbox;
+
 
 public class ImageTween : MonoBehaviour
 {
@@ -46,7 +48,7 @@ public class ImageTween : MonoBehaviour
     
     public void RunTweenWithFillValue(float value)
     {
-        tweenScriptObj.helpers.ForEach((x /* Every tween helper gets put in there*/) =>
+        tweenScriptObj.helpers.ForEach((x) =>
         {
             if (x.useDynamicValue == true)
             {
@@ -184,6 +186,7 @@ public class ImageTween : MonoBehaviour
 
 
 }
+*/
 
 /*
 Quick References:

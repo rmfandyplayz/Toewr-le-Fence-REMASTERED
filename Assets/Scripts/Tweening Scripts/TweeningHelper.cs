@@ -79,12 +79,13 @@ public class TweeningHelper
      };
 
     [SearchableEnum] public tweenEvents typeOfTweenEvent;
-    public bool disallowMultipleEvents;
     public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
-    public bool useDynamicValue; //No hardcoding items
+    [Tooltip("Prevents values from being hardcoded and makes it flexible. Some scenarios where you would use this include healthbars, which could change. Hardcoding a healthbar does not make sense.")] public bool useDynamicValue; //No hardcoding items
     public Ease ease;
-    public float amountValue; //Value for either using speed or time value
-    public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work
+    [Tooltip("This value uses time in seconds if useSpeedValue is disabled. Otherwise, this value determines how fast the animation will be.")] public float amountValue; //Value for either using speed or time value
+    [Tooltip("Hardcode target values here."), HideIf(nameof(useDynamicValue), true)] public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work
+
+
     public BaseTween getTween(Object obj, Tweening_Dynamic_Transfer dynamicValue)
     {
         var info = useDynamicValue ? dynamicValue : defaultTarget;
@@ -92,26 +93,18 @@ public class TweeningHelper
         {
             return tween(obj, useSpeedValue, info, amountValue);
         }
-        return null;
-    }
-    //To delete below
-    [ShowIf(nameof(useSpeedValue), true)] public float speedValueOfTween;
-    [ShowIf(nameof(useSpeedValue), false)] public float timeValueOfTween;
-    [HideIf(nameof(useDynamicValue), true)] public float targetValueOfTween;
-    public float dynamicFloat
-    {
-        //Dynamically sets/gets values
-        get
+        if(typeOfTweenEvent is tweenEvents.cancel)
         {
-            return targetValueOfTween;
-        }
-        set
-        {
-            if (useDynamicValue)
+            if(obj is GameObject gameObj)
             {
-                targetValueOfTween = value;
+                gameObj.CancelAllTweens();
+            }
+            else if (obj is Component component)
+            {
+                component.gameObject.CancelAllTweens();
             }
         }
+        return null;
     }
 }
 

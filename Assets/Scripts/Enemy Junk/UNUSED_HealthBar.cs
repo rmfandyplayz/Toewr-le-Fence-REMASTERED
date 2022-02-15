@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/*
 using UnityEngine.UI;
 using Platinio.TweenEngine;
 using CustomUnityEvent;
@@ -92,3 +93,4 @@ public class HealthBar : MonoBehaviour
         //ToggleBars(false);
     }
 }
+*/

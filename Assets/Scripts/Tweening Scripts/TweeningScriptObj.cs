@@ -29,8 +29,12 @@ public class TweeningScriptObj : ScriptableObject
     (
         validTweenTargets.Keys
     ); //Takes each valid target name, gets the keys from dictionary, puts in array
+    
     [Preset(nameof(validTargetNames))] public string targetType;
-    public List<TweeningHelper> helpers = new List<TweeningHelper>();
+    [ReorderableList] public List<TweeningHelper> helpers = new List<TweeningHelper>();
+
+    //FUNCTIONS AREA
+
 
     public void RunTweenOnObjectUsingDefaultPreset(Object checkedObject)
     {
@@ -39,22 +43,14 @@ public class TweeningScriptObj : ScriptableObject
 
     public void RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer dynamicValue)
     {
-        if(checkedObject == null)
+        if(checkedObject == null || !validTweenTargets.TryGetValue(targetType, out var checkedType) || checkedObject.GetType() != checkedType)
         {
-            ///Debug.LogError("Checkobject is null");
             return;
         }
-        if (!validTweenTargets.TryGetValue(targetType, out var checkedType))
+        else
         {
-            ///Debug.LogError("Failed to find target type");
-            return;
+            RunTweenOnObj(checkedObject, dynamicValue);
         }
-        if(checkedObject.GetType() != checkedType)
-        {
-            ///Debug.LogError($"Checked Object has a different type! ({checkedObject.GetType()}), ({checkedType})");
-            return;
-        }
-        ///Debug.LogError("SUCCESS!");
     } //Verifies that the object passed in is supported
 
     public Platinio.TweenEngine.BaseTween RunTweenOnObj(Object checkedObject, Tweening_Dynamic_Transfer dynamicValue, int currentIndex = 0 , float delay = 0, bool automatic = true)
@@ -68,12 +64,12 @@ public class TweeningScriptObj : ScriptableObject
 
         if(currentHelper.getTween(checkedObject, dynamicValue) is BaseTween baseTween)
         {
-            baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease).SetOnComplete(()=> RunTweenOnObj(checkedObject, dynamicValue, currentIndex++, 0, automatic));
+            baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease).SetOnComplete(()=> RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, automatic));
             return baseTween;
         }
         else
         {
-            return RunTweenOnObj(checkedObject,dynamicValue, currentIndex++, currentHelper.amountValue, automatic);
+            return RunTweenOnObj(checkedObject,dynamicValue, ++currentIndex, currentHelper.amountValue, automatic);
         }
     }
 }
