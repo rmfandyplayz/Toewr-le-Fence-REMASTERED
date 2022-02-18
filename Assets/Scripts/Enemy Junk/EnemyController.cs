@@ -20,8 +20,8 @@ public class EnemyController : MonoBehaviour
         currentShields = escript.maxShields;
         setHealth?.Invoke(escript.maxHealth);
         setShields?.Invoke(escript.maxShields);
-        OnHealthUpdate?.Invoke(currentHealth / escript.maxHealth);
-        OnShieldUpdate?.Invoke(currentShields / escript.maxShields);
+        //OnHealthUpdate?.Invoke(currentHealth / escript.maxHealth);
+        //OnShieldUpdate?.Invoke(currentShields / escript.maxShields);
 
         GetComponent<SpriteRenderer>().sprite = escript.enemySprite;
 
@@ -57,9 +57,10 @@ public class EnemyController : MonoBehaviour
         }
         
     }
-
-
-
+    private void OnDestroy()
+    {
+        this.gameObject.CancelAllTweens();
+    }
 }
 
 public class DamageInfo

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3064558860349760786}
   - component: {fileID: 1706211157489817158}
   m_Layer: 6
-  m_Name: Canvas
+  m_Name: Status Effects Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 509633357104319375}
   - component: {fileID: 509633357104319369}
   - component: {fileID: 509633357104319368}
-  - component: {fileID: 6130480148637427337}
+  - component: {fileID: 8220119166891068490}
   m_Layer: 6
   m_Name: fullhp
   m_TagString: Untagged
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6130480148637427337
+--- !u!114 &8220119166891068490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,8 +278,9 @@ GameObject:
   - component: {fileID: 509633357380552398}
   - component: {fileID: 509633357380552397}
   - component: {fileID: 509633357380552396}
+  - component: {fileID: 1023078726011798198}
   m_Layer: 6
-  m_Name: Canvas
+  m_Name: Healthbar Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,6 +368,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1023078726011798198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509633357380552386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 509633357439069631}
+  tweeningScriptObj: {fileID: 11400000, guid: 4b61adfee895e444bb8c6597c9f912ac, type: 2}
+  applyTweenToChildren: 1
 --- !u!1 &509633357428149697
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,12 +789,12 @@ GameObject:
   - component: {fileID: 509633358732114563}
   - component: {fileID: 509633358732114562}
   - component: {fileID: 509633358732114572}
-  - component: {fileID: 509633358732114574}
-  - component: {fileID: 509633358732114573}
   - component: {fileID: 3333472414726377827}
   - component: {fileID: 7841289274597352542}
+  - component: {fileID: 509633358732114574}
+  - component: {fileID: 509633358732114573}
   m_Layer: 6
-  m_Name: Normal Enemy
+  m_Name: Blueprint Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -869,7 +885,19 @@ MonoBehaviour:
   escript: {fileID: 0}
   setHealth:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1023078726011798198}
+        m_TargetAssemblyTypeName: CaptureDynamicValue, Assembly-CSharp
+        m_MethodName: RunTweenDefault
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   setShields:
     m_PersistentCalls:
       m_Calls: []
@@ -888,7 +916,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6130480148637427337}
+      - m_Target: {fileID: 8220119166891068490}
         m_TargetAssemblyTypeName: CaptureDynamicValue, Assembly-CSharp
         m_MethodName: RunTweenWithDynamicFloat
         m_Mode: 0
@@ -918,6 +946,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3333472414726377827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509633358732114560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf126c12340a078408ed5dc3c8c388d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7841289274597352542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509633358732114560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4e826febaac274a897671d86c6a326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &509633358732114574
 Rigidbody2D:
   serializedVersion: 4
@@ -955,30 +1007,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
---- !u!114 &3333472414726377827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509633358732114560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf126c12340a078408ed5dc3c8c388d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7841289274597352542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509633358732114560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4e826febaac274a897671d86c6a326, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1030501947149958804
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
   m_Name: Testing Immediate Fade Tween
   m_EditorClassIdentifier: 
-  targetType: 
+  targetType: Image - Fade, Fill, or Color
   helpers:
-  - typeOfTweenEvent: 0
+  - typeOfTweenEvent: 2
     useSpeedValue: 0
     useDynamicValue: 0
-    ease: 0
+    ease: 21
     amountValue: 0
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}

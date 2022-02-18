@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public enum tweenEvents
 {
     fade,
+    appear,
+    disappear,
     fill,
     move,
     rotate,
@@ -75,15 +77,50 @@ public class TweeningHelper
         else if(obj is SpriteRenderer spriteRender)
             {
                 return useSpeedValue ?spriteRender.ColorTweenAtSpeed(info.dynamicValueColor, amountValue) : spriteRender.ColorTween(info.dynamicValueColor,amountValue);
-            }  return null; } }
+            }  return null; } },
+
+        {tweenEvents.appear, (obj, useSpeedValue, info, amountValue)=>
+        {
+            if(obj is GameObject gameObj)
+            {
+                gameObj.SetActive(true);
+            }
+            else if(obj is Component component)
+            {
+                component.gameObject.SetActive(true);
+            }
+                return null; } },
+
+        {tweenEvents.disappear, (obj, useSpeedValue, info, amountValue)=>
+        {
+            if(obj is GameObject gameObj)
+            {
+                gameObj.SetActive(false);
+            }
+            else if(obj is Component component)
+            {
+                component.gameObject.SetActive(false);
+            }
+                return null; } }
      };
+    private bool toggleOptionsVisibility => typeOfTweenEvent != tweenEvents.appear && typeOfTweenEvent != tweenEvents.disappear;
+    private bool toggleDefaultTargetVisibility => toggleOptionsVisibility && !useDynamicValue;
 
     [SearchableEnum] public tweenEvents typeOfTweenEvent;
-    public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
-    [Tooltip("Prevents values from being hardcoded and makes it flexible. Some scenarios where you would use this include healthbars, which could change. Hardcoding a healthbar does not make sense.")] public bool useDynamicValue; //No hardcoding items
+
+    [Tooltip("Treat amountValue as a speed value instead of a time value."), ShowIf(nameof(toggleOptionsVisibility), true)] public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
+
+    [Tooltip("Prevents values from being hardcoded and makes it flexible. Some scenarios where you would use this include healthbars, which could change. Hardcoding a healthbar does not make sense."), ShowIf(nameof(toggleOptionsVisibility), true)] 
+    public bool useDynamicValue; //No hardcoding items
+
+    [Tooltip("Choose the type of animation."), ShowIf(nameof(toggleOptionsVisibility), true)]
     public Ease ease;
-    [Tooltip("This value uses time in seconds if useSpeedValue is disabled. Otherwise, this value determines how fast the animation will be.")] public float amountValue; //Value for either using speed or time value
-    [Tooltip("Hardcode target values here."), HideIf(nameof(useDynamicValue), true)] public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work
+
+    [Tooltip("This value uses time in seconds if useSpeedValue is disabled. Otherwise, this value determines how fast the animation will be."), ShowIf(nameof(toggleOptionsVisibility), true)] 
+    public float amountValue; //Value for either using speed or time value
+
+    [Tooltip("Hardcode target values here."), ShowIf(nameof(toggleDefaultTargetVisibility), true)] 
+    public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work
 
 
     public BaseTween getTween(Object obj, Tweening_Dynamic_Transfer dynamicValue)

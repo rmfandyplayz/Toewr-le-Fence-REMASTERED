@@ -16,7 +16,7 @@ public class TweeningScriptObj : ScriptableObject
             "Sprite Renderer - Fade or Color", typeof(SpriteRenderer)
         }, 
         {
-            "Game Object - Transformations, Rotations, or Scale", typeof(GameObject)
+            "Game Object - Transformations, Rotations, Scale, or Set Activation", typeof(GameObject)
         } 
     }; //Has to equal name of image and image type, can add values later on
 
