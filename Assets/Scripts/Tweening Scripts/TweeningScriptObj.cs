@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using Platinio.TweenEngine;
@@ -55,11 +55,19 @@ public class TweeningScriptObj : ScriptableObject
 
     public Platinio.TweenEngine.BaseTween RunTweenOnObj(Object checkedObject, Tweening_Dynamic_Transfer dynamicValue, int currentIndex = 0 , float delay = 0, bool automatic = true)
     {
+        /*
+        ##########################################################################################################
+        */
+        Debug.LogError($"{checkedObject}, {currentIndex}");
+
+
         currentIndex = Mathf.Max(0, currentIndex);
+
         if (currentIndex >= helpers.Count)
         {
             return null;
         }
+
         var currentHelper = helpers[currentIndex];
 
         if(currentHelper.getTween(checkedObject, dynamicValue) is BaseTween baseTween)

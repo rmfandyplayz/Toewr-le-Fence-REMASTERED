@@ -18,27 +18,27 @@ MonoBehaviour:
     useSpeedValue: 0
     useDynamicValue: 0
     ease: 0
-    amountValue: 0.5
+    _amountValue: 0
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 0
     useSpeedValue: 0
     useDynamicValue: 0
     ease: 0
-    amountValue: 0.5
+    _amountValue: 0
     defaultTarget:
       dynamicValue: {x: 1, y: 0, z: 0, w: 0}
-  - typeOfTweenEvent: 6
+  - typeOfTweenEvent: 8
     useSpeedValue: 0
     useDynamicValue: 0
     ease: 0
-    amountValue: 1.5
+    _amountValue: 0
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 0
     useSpeedValue: 0
     useDynamicValue: 0
     ease: 0
-    amountValue: 0.5
+    _amountValue: 0
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
