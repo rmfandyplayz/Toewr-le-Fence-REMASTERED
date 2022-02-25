@@ -103,7 +103,7 @@ public class TweeningHelper
             }
                 return null; } }
      };
-    private bool toggleOptionsVisibility => typeOfTweenEvent != tweenEvents.appear && typeOfTweenEvent != tweenEvents.disappear && typeOfTweenEvent != tweenEvents.cancel;
+    private bool toggleOptionsVisibility => typeOfTweenEvent != tweenEvents.appear && typeOfTweenEvent != tweenEvents.disappear && typeOfTweenEvent != tweenEvents.cancel && typeOfTweenEvent != tweenEvents.hold;
     
     private bool toggleDefaultTargetVisibility => toggleOptionsVisibility && !useDynamicValue;
 
@@ -120,7 +120,7 @@ public class TweeningHelper
     [Tooltip("This value uses time in seconds if useSpeedValue is disabled. Otherwise, this value determines how fast the animation will be."), /*ShowIf(nameof(toggleOptionsVisibility), true)*/] 
     [SerializeField] private float _amountValue; //Value for either using speed or time value
 
-    public float amountValue => toggleOptionsVisibility ? _amountValue : 0; //property that returns _amountValue if options are visible
+    public float amountValue => toggleOptionsVisibility || typeOfTweenEvent == tweenEvents.hold ? _amountValue : 0; //property that returns _amountValue if options are visible
 
     [Tooltip("Hardcode target values here."), ShowIf(nameof(toggleDefaultTargetVisibility), true)] 
     public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work

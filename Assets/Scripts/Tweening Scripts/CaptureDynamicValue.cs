@@ -54,16 +54,17 @@ public class CaptureDynamicValue : MonoBehaviour
 
     private void RunTweenOnChildren(Tweening_Dynamic_Transfer dynamicValue)
     {
-        if (objectToTween is GameObject gameobject && tweeningScriptObj.TryGetType(out var type))
+        bool foundValidType = tweeningScriptObj.TryGetType(out var type);
+        if (objectToTween is GameObject gameobject && foundValidType)
         {
             foreach (var children in gameobject.GetComponentsInChildren(type))
             {
                 tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
             }
         }
-        else if (objectToTween is Component component && tweeningScriptObj.TryGetType(out var _type))
+        else if (objectToTween is Component component && foundValidType)
         {
-            foreach (var children in component.GetComponentsInChildren(_type))
+            foreach (var children in component.GetComponentsInChildren(type))
             {
                 tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
             }

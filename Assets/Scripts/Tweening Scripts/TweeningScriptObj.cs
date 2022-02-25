@@ -58,7 +58,7 @@ public class TweeningScriptObj : ScriptableObject
         /*
         ##########################################################################################################
         */
-        Debug.LogError($"{checkedObject}, {currentIndex}");
+        //Debug.LogError($"{checkedObject}, {currentIndex}");
 
 
         currentIndex = Mathf.Max(0, currentIndex);
@@ -77,7 +77,7 @@ public class TweeningScriptObj : ScriptableObject
         }
         else
         {
-            return RunTweenOnObj(checkedObject,dynamicValue, ++currentIndex, currentHelper.amountValue, automatic);
+            return RunTweenOnObj(checkedObject,dynamicValue, ++currentIndex, currentHelper.amountValue + delay, automatic);
         }
     }
 }
