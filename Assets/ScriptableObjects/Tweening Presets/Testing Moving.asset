@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
+  m_Name: Testing Moving
+  m_EditorClassIdentifier: 
+  targetType: Game Object - Transformations, Rotations, Scale, or Set Activation
+  helpers:
+  - typeOfTweenEvent: 4
+    useSpeedValue: 0
+    useDynamicValue: 0
+    ease: 9
+    _amountValue: 2
+    defaultTarget:
+      dynamicValue: {x: -10, y: 0, z: 0, w: 0}
+  - typeOfTweenEvent: 4
+    useSpeedValue: 0
+    useDynamicValue: 0
+    ease: 11
+    _amountValue: 2
+    defaultTarget:
+      dynamicValue: {x: 10, y: 0, z: 0, w: 0}
+  - typeOfTweenEvent: 4
+    useSpeedValue: 0
+    useDynamicValue: 0
+    ease: 9
+    _amountValue: 2
+    defaultTarget:
+      dynamicValue: {x: -10, y: 0, z: 0, w: 0}
