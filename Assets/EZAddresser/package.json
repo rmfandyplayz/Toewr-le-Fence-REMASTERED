@@ -1,0 +1,16 @@
+{
+  "name": "com.harumak.ezaddresser",
+  "displayName": "EZAddresser",
+  "version": "0.2.4",
+  "unity": "2020.1",
+  "license": "MIT",
+  "dependencies": {
+    "com.unity.addressables": "1.8.5"
+  },
+  "author": {
+    "name": "Haruki Yano",
+    "url": "https://github.com/Haruma-K"
+  },
+  "type": "tool",
+  "description": "Automatic addressing system for Unity Addressable Asset System."
+}
