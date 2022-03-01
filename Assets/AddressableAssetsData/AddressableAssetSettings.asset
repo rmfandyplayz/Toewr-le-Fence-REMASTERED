@@ -42,7 +42,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43d9f4deb6eb3451484fbc19441aa6f2, type: 2}
   - {fileID: 11400000, guid: 290cb23da0ec642f9b52797a111a3262, type: 2}
   - {fileID: 11400000, guid: 3b358f15f54dfe946bc8e0faad477521, type: 2}
-  - {fileID: 0}
   - {fileID: 11400000, guid: 632b6010125fe604fa7f86b305699bd9, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
@@ -85,6 +84,13 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Enemy
+    - Wave_Info_Stuff
+    - Tweening_Presets
+    - Tower
+    - Status_Effects
+    - Bullet
+    - Boss_Enemies
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0a5d63def048a438aa5ea5771ec90d5b, type: 2}
