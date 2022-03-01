@@ -122,7 +122,7 @@ public class TweeningHelper
 
     public float amountValue => toggleOptionsVisibility || typeOfTweenEvent == tweenEvents.hold ? _amountValue : 0; //property that returns _amountValue if options are visible
 
-    [Tooltip("Hardcode target values here."), ShowIf(nameof(toggleDefaultTargetVisibility), true)] 
+    [Tooltip("Hardcode target values here."), ShowIf(nameof(toggleDefaultTargetVisibility), true), NewLabel("Modify Dynamic Value - Default")] 
     public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work
 
 

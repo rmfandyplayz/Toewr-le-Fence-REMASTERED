@@ -5,7 +5,9 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Tweening_Dynamic_Transfer
 {
-    [SerializeField] private Vector4 dynamicValue;
+    [SerializeField, NewLabel("Dynamic Values - Vector4"), Tooltip("If using float, use X (This could be used for Fade and Fill)\nIf using Vector3, use XY[Z] (This could be used for Move, Rotate [Use ONLY Z for 2D rotation], Scale))\nIf using color, use XYZW, which is RGBA (red, green, blue, alpha)")]
+    private Vector4 dynamicValue;
+
     public float dynamicValueFloat
     {
         get { return dynamicValue.x; }

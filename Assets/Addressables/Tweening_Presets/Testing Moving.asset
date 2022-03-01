@@ -20,18 +20,18 @@ MonoBehaviour:
     ease: 9
     _amountValue: 2
     defaultTarget:
-      dynamicValue: {x: -10, y: 0, z: 0, w: 0}
+      dynamicValue: {x: -6, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 4
     useSpeedValue: 0
     useDynamicValue: 0
     ease: 11
     _amountValue: 2
     defaultTarget:
-      dynamicValue: {x: 10, y: 0, z: 0, w: 0}
+      dynamicValue: {x: 6, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 4
     useSpeedValue: 0
     useDynamicValue: 0
-    ease: 9
+    ease: 13
     _amountValue: 2
     defaultTarget:
-      dynamicValue: {x: -10, y: 0, z: 0, w: 0}
+      dynamicValue: {x: -6, y: 0, z: 0, w: 0}
