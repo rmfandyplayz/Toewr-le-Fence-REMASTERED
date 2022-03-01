@@ -6,13 +6,13 @@
                     "_value": "7eedec38-befd-4dcb-9203-706cc50d1d90"
                 },
                 "_addressablePathRule": {
-                    "_value": "(?<tag_3>\\w+)\\/(?<tag_2>\\w+)\\/(?<tag_1>\\w+)\\/(?<name>.+).asset "
+                    "_value": "(?<tag_3>\\w+)\\/(?<tag_2>\\w+)\\/(?<tag_1>\\w+)\\/(?<name>.+).asset"
                 },
                 "_addressingMode": {
                     "_value": 1
                 },
                 "_groupNameRule": {
-                    "_value": "Scriptable Objects1"
+                    "_value": "Scriptable Objects"
                 },
                 "_labelRules": {
                     "_value": "${tag_1},${tag_2},${tag_3}"
@@ -23,13 +23,13 @@
                     "_value": "17f829f6-15f3-4f08-96fa-33a0f689d782"
                 },
                 "_addressablePathRule": {
-                    "_value": "(?<tag_2>\\w+)\\/(?<tag_1>\\w+)\\/(?<name>.+).asset "
+                    "_value": "(?<tag_2>\\w+)\\/(?<tag_1>\\w+)\\/(?<name>.+).asset"
                 },
                 "_addressingMode": {
                     "_value": 1
                 },
                 "_groupNameRule": {
-                    "_value": "Scriptable Objects2"
+                    "_value": "Scriptable Objects"
                 },
                 "_labelRules": {
                     "_value": "${tag_1},${tag_2}"
@@ -40,13 +40,13 @@
                     "_value": "9ccc68d6-ef94-4d1e-8601-42954da9b3e7"
                 },
                 "_addressablePathRule": {
-                    "_value": "(?<tag_1>\\w+)\\/(?<name>.+).asset "
+                    "_value": "(?<tag_1>\\w+)\\/(?<name>.+).asset"
                 },
                 "_addressingMode": {
                     "_value": 1
                 },
                 "_groupNameRule": {
-                    "_value": "Scriptable Objects3"
+                    "_value": "Scriptable Objects"
                 },
                 "_labelRules": {
                     "_value": "${tag_1}"
