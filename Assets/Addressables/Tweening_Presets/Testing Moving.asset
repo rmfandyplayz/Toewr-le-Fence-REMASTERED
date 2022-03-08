@@ -12,26 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
   m_Name: Testing Moving
   m_EditorClassIdentifier: 
+  timesToRepeat: 3
   targetType: Game Object - Transformations, Rotations, Scale, or Set Activation
   helpers:
   - typeOfTweenEvent: 4
+    ease: 9
     useSpeedValue: 0
     useDynamicValue: 0
-    ease: 9
+    useRelativeValue: 1
+    runNextTweenImmediately: 0
     _amountValue: 2
     defaultTarget:
       dynamicValue: {x: -6, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 4
+    ease: 11
     useSpeedValue: 0
     useDynamicValue: 0
-    ease: 11
+    useRelativeValue: 1
+    runNextTweenImmediately: 0
     _amountValue: 2
     defaultTarget:
       dynamicValue: {x: 6, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 4
+    ease: 13
     useSpeedValue: 0
     useDynamicValue: 0
-    ease: 13
+    useRelativeValue: 1
+    runNextTweenImmediately: 1
     _amountValue: 2
     defaultTarget:
       dynamicValue: {x: -6, y: 0, z: 0, w: 0}
+  - typeOfTweenEvent: 5
+    ease: 15
+    useSpeedValue: 1
+    useDynamicValue: 0
+    useRelativeValue: 1
+    runNextTweenImmediately: 0
+    _amountValue: 2
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: -90, w: 0}

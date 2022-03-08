@@ -109,13 +109,19 @@ public class TweeningHelper
 
     [SearchableEnum] public tweenEvents typeOfTweenEvent;
 
+    [Tooltip("Choose the type of animation."), ShowIf(nameof(toggleOptionsVisibility), true)]
+    public Ease ease;
+
     [Tooltip("Treat amountValue as a speed value instead of a time value."), ShowIf(nameof(toggleOptionsVisibility), true)] public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
 
     [Tooltip("Prevents values from being hardcoded and makes it flexible. Some scenarios where you would use this include healthbars, which could change. Hardcoding a healthbar does not make sense."), ShowIf(nameof(toggleOptionsVisibility), true)] 
     public bool useDynamicValue; //No hardcoding items
 
-    [Tooltip("Choose the type of animation."), ShowIf(nameof(toggleOptionsVisibility), true)]
-    public Ease ease;
+    [Tooltip("If this is checked, it allows for an input of how much to change relative to the current value rather than changing to a fixed value.")]
+    public bool useRelativeValue = true;
+
+    [Tooltip("If this option is checked, the next helper will run immediately alongside the current helper.")]
+    public bool runNextTweenImmediately;
 
     [Tooltip("This value uses time in seconds if useSpeedValue is disabled. Otherwise, this value determines how fast the animation will be."), /*ShowIf(nameof(toggleOptionsVisibility), true)*/] 
     [SerializeField] private float _amountValue; //Value for either using speed or time value
@@ -125,11 +131,11 @@ public class TweeningHelper
     [Tooltip("Hardcode target values here."), ShowIf(nameof(toggleDefaultTargetVisibility), true), NewLabel("Modify Dynamic Value - Default")] 
     public Tweening_Dynamic_Transfer defaultTarget; //Fallback if dynamicValue does not work
 
-
-    public BaseTween getTween(Object obj, Tweening_Dynamic_Transfer dynamicValue)
+    public BaseTween getTween(Object obj, Tweening_Dynamic_Transfer? dynamicValue)
     {
-        var info = useDynamicValue ? dynamicValue : defaultTarget;
-        if(info != null && functionSelecter.TryGetValue(typeOfTweenEvent, out var tween))
+        var info = useDynamicValue && dynamicValue.HasValue ? dynamicValue.Value : defaultTarget; //Info is a dynamic transfer value; Making a choice between making using default or dynamic value with "?" and "&&." ? and : is basically an if statement. If first expression == true, use the thing after the question mark. Otherwise, use the thing after the colon.
+
+        if(functionSelecter.TryGetValue(typeOfTweenEvent, out var tween))
         {
             return tween(obj, useSpeedValue, info, amountValue);
         }

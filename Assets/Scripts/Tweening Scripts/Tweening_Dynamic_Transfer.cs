@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class Tweening_Dynamic_Transfer
+public struct Tweening_Dynamic_Transfer
 {
     [SerializeField, NewLabel("Dynamic Values - Vector4"), Tooltip("If using float, use X (This could be used for Fade and Fill)\nIf using Vector3, use XY[Z] (This could be used for Move, Rotate [Use ONLY Z for 2D rotation], Scale))\nIf using color, use XYZW, which is RGBA (red, green, blue, alpha)")]
     private Vector4 dynamicValue;
@@ -13,7 +13,7 @@ public class Tweening_Dynamic_Transfer
         get { return dynamicValue.x; }
         private set { dynamicValue.x = value; }
     } //Allows to choose dynamic float value type
-    public Tweening_Dynamic_Transfer(float value)
+    public Tweening_Dynamic_Transfer(float value) : this()
     {
         dynamicValueFloat = value;
     }
@@ -22,7 +22,7 @@ public class Tweening_Dynamic_Transfer
         get { return dynamicValue; }
         private set { dynamicValue = value; }
     } //Allows to choose dynamic float value type
-    public Tweening_Dynamic_Transfer(Vector3 value)
+    public Tweening_Dynamic_Transfer(Vector3 value) : this()
     {
         dynamicValueVector3 = value;
     }
@@ -31,10 +31,28 @@ public class Tweening_Dynamic_Transfer
         get { return dynamicValue; }
         private set { dynamicValue = value; }
     } //Allows to choose dynamic float value type
-    public Tweening_Dynamic_Transfer(Color value)
+    public Tweening_Dynamic_Transfer(Color value) : this()
     {
         dynamicValueColor = value;
     }
+
+    //Auto Caster (Implicit Casting) Allows to convert some other type to dynamic transfer
+
+    public static implicit operator Tweening_Dynamic_Transfer(float value)
+    {
+        return new Tweening_Dynamic_Transfer(value);
+    }
+
+    public static implicit operator Tweening_Dynamic_Transfer(Vector3 value)
+    {
+        return new Tweening_Dynamic_Transfer(value);
+    }
+
+    public static implicit operator Tweening_Dynamic_Transfer(Color color)
+    {
+        return new Tweening_Dynamic_Transfer(color);
+    }
+
 }
 
 /*

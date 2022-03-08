@@ -24,11 +24,11 @@ public class CaptureDynamicValue : MonoBehaviour
 
 	public void RunTweenWithDynamicFloat(float dynamicFloat)
     {
-        Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicFloat);
-        tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicValue);
+        //Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicFloat);
+        tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicFloat);
         if (applyTweenToChildren)
         {
-            RunTweenOnChildren(dynamicValue);
+            RunTweenOnChildren(dynamicFloat);
         }
     }
     
@@ -52,7 +52,7 @@ public class CaptureDynamicValue : MonoBehaviour
         }
     }
 
-    private void RunTweenOnChildren(Tweening_Dynamic_Transfer dynamicValue)
+    private void RunTweenOnChildren(Tweening_Dynamic_Transfer? dynamicValue)
     {
         bool foundValidType = tweeningScriptObj.TryGetType(out var type);
         if (objectToTween is GameObject gameobject && foundValidType)

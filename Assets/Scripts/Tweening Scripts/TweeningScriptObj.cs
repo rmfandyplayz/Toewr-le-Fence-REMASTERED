@@ -29,7 +29,10 @@ public class TweeningScriptObj : ScriptableObject
     (
         validTweenTargets.Keys
     ); //Takes each valid target name, gets the keys from dictionary, puts in array
-    
+
+    [Tooltip("Any positive number - Repeat this amount of times\nAny negative number - Repeat infinetly until told to stop (It is recommended to put '-1')\n0 - Off (No repeating)")] 
+    public int timesToRepeat = 0;
+
     [Preset(nameof(validTargetNames))] public string targetType;
     [ReorderableList] public List<TweeningHelper> helpers = new List<TweeningHelper>();
 
@@ -41,7 +44,7 @@ public class TweeningScriptObj : ScriptableObject
         RunTweenOnObjectUsingDynamicValue(checkedObject, null);
     }
 
-    public void RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer dynamicValue)
+    public void RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue)
     {
         if(checkedObject == null || !validTweenTargets.TryGetValue(targetType, out var checkedType) || checkedObject.GetType() != checkedType)
         {
@@ -53,32 +56,38 @@ public class TweeningScriptObj : ScriptableObject
         }
     } //Verifies that the object passed in is supported
 
-    public Platinio.TweenEngine.BaseTween RunTweenOnObj(Object checkedObject, Tweening_Dynamic_Transfer dynamicValue, int currentIndex = 0 , float delay = 0, bool automatic = true)
+    public Platinio.TweenEngine.BaseTween RunTweenOnObj(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue, int currentIndex = 0, float delay = 0, int currentLoop = 0)
     {
-        /*
-        ##########################################################################################################
-        */
-        //Debug.LogError($"{checkedObject}, {currentIndex}");
-
-
         currentIndex = Mathf.Max(0, currentIndex);
 
         if (currentIndex >= helpers.Count)
         {
-            return null;
+            if(currentLoop == timesToRepeat)
+            {
+                return null;
+            }
+            else
+            {
+                currentIndex = 0;
+                currentLoop++;
+            }
         }
 
         var currentHelper = helpers[currentIndex];
 
         if(currentHelper.getTween(checkedObject, dynamicValue) is BaseTween baseTween)
         {
-            baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease).SetOnComplete(()=> RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, automatic));
-            return baseTween;
+            baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease);
+            if(currentHelper.runNextTweenImmediately == false)
+            {
+                return baseTween.SetOnComplete(() => RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, currentLoop));
+            }
         }
         else
         {
-            return RunTweenOnObj(checkedObject,dynamicValue, ++currentIndex, currentHelper.amountValue + delay, automatic);
+            delay += currentHelper.amountValue;
         }
+        return RunTweenOnObj(checkedObject,dynamicValue, ++currentIndex, delay, currentLoop);
     }
 }
 
