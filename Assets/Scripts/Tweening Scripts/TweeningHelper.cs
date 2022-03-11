@@ -22,10 +22,10 @@ public enum tweenEvents
 [System.Serializable]
 public class TweeningHelper
 {
-    private readonly SerializedDictionary<tweenEvents, System.Func<Object, bool, Tweening_Dynamic_Transfer, float, Platinio.TweenEngine.BaseTween>
-> functionSelecter = new SerializedDictionary<tweenEvents, System.Func<Object, bool, Tweening_Dynamic_Transfer, float, Platinio.TweenEngine.BaseTween>> //Based on tweening event type, automatically picks the correct function for the tweening event.
+    private readonly SerializedDictionary<tweenEvents, System.Func<Object, bool, Tweening_Dynamic_Transfer, bool, float, Platinio.TweenEngine.BaseTween>
+> functionSelecter = new SerializedDictionary<tweenEvents, System.Func<Object, bool, Tweening_Dynamic_Transfer, bool, float, Platinio.TweenEngine.BaseTween>> //Based on tweening event type, automatically picks the correct function for the tweening event.
     {
-        {tweenEvents.fade, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.fade, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         { 
         if(obj is Image img)
             {
@@ -36,7 +36,7 @@ public class TweeningHelper
                 return useSpeedValue ?spriteRender.FadeAtSpeed(info.dynamicValueFloat, amountValue) : spriteRender.Fade(info.dynamicValueFloat,amountValue);
             }  return null; } },
             
-        {tweenEvents.fill, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.fill, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is Image img)
             {
@@ -44,7 +44,7 @@ public class TweeningHelper
             };
                 return null; } },
 
-        {tweenEvents.move, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.move, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is GameObject gameObj)
             {
@@ -52,7 +52,7 @@ public class TweeningHelper
             }
                 return null; } },
 
-        {tweenEvents.rotate, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.rotate, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is GameObject gameObj)
             {
@@ -60,7 +60,7 @@ public class TweeningHelper
             }
                 return null; } },
 
-        {tweenEvents.scale, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.scale, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is GameObject gameObj)
             {
@@ -68,7 +68,7 @@ public class TweeningHelper
             }
                 return null; } },
 
-        {tweenEvents.color, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.color, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is Image img)
             {
@@ -79,7 +79,7 @@ public class TweeningHelper
                 return useSpeedValue ?spriteRender.ColorTweenAtSpeed(info.dynamicValueColor, amountValue) : spriteRender.ColorTween(info.dynamicValueColor,amountValue);
             }  return null; } },
 
-        {tweenEvents.appear, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.appear, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is GameObject gameObj)
             {
@@ -91,7 +91,7 @@ public class TweeningHelper
             }
                 return null; } },
 
-        {tweenEvents.disappear, (obj, useSpeedValue, info, amountValue)=>
+        {tweenEvents.disappear, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is GameObject gameObj)
             {
@@ -137,7 +137,7 @@ public class TweeningHelper
 
         if(functionSelecter.TryGetValue(typeOfTweenEvent, out var tween))
         {
-            return tween(obj, useSpeedValue, info, amountValue);
+            return tween(obj, useRelativeValue, info, useSpeedValue, amountValue);
         }
         if(typeOfTweenEvent is tweenEvents.cancel)
         {
