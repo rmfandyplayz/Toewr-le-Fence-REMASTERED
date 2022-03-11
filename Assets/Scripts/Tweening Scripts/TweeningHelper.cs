@@ -27,58 +27,93 @@ public class TweeningHelper
     {
         {tweenEvents.fade, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         { 
+            var tweeningInfo = info.dynamicValueFloat;
+            System.Func<float, float, BaseTween> function = null;
         if(obj is Image img)
             {
-                return useSpeedValue ?img.FadeAtSpeed(info.dynamicValueFloat, amountValue) : img.Fade(info.dynamicValueFloat,amountValue);
+                tweeningInfo = useRelativeValue ? img.color.a + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?img.FadeAtSpeed : img.Fade;
             }
         else if(obj is SpriteRenderer spriteRender)
             {
-                return useSpeedValue ?spriteRender.FadeAtSpeed(info.dynamicValueFloat, amountValue) : spriteRender.Fade(info.dynamicValueFloat,amountValue);
-            }  return null; } },
-            
+                tweeningInfo = useRelativeValue ? spriteRender.color.a + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?spriteRender.FadeAtSpeed : spriteRender.Fade;
+            }  return function?.Invoke(tweeningInfo, amountValue); } },
+            //======================================================================
         {tweenEvents.fill, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
+            var tweeningInfo = info.dynamicValueFloat;
+            System.Func<float, float, BaseTween> function = null;
             if(obj is Image img)
             {
-                return useSpeedValue ?img.FillAmountTweenAtSpeed(info.dynamicValueFloat, amountValue) : img.FillAmountTween(info.dynamicValueFloat,amountValue);
+                tweeningInfo = useRelativeValue ? img.fillAmount + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?img.FillAmountTweenAtSpeed : img.FillAmountTween;
             };
-                return null; } },
-
-        {tweenEvents.move, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
+                return function?.Invoke(tweeningInfo, amountValue); } },
+            //=======================================================================
+        {tweenEvents.move, (obj, useRelativeValue, info, useSpeedValue, amountValue)=> //MOVE
         {
+            var tweeningInfo = info.dynamicValueVector3;
+            System.Func<Vector3, float, BaseTween> function = null;
             if(obj is GameObject gameObj)
             {
-                return useSpeedValue ?gameObj.MoveAtSpeed(info.dynamicValueVector3, amountValue) : gameObj.Move(info.dynamicValueVector3,amountValue);
+                tweeningInfo = useRelativeValue ? gameObj.transform.position + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?gameObj.MoveAtSpeed : gameObj.Move;
             }
-                return null; } },
-
-        {tweenEvents.rotate, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
+            else if(obj is Component component)
+            {
+                tweeningInfo = useRelativeValue ? component.transform.position + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?component.gameObject.MoveAtSpeed : component.gameObject.Move;
+            }
+                return function?.Invoke(tweeningInfo, amountValue); } },
+        //=========================================================================
+        {tweenEvents.rotate, (obj, useRelativeValue, info, useSpeedValue, amountValue)=> //ROTATE
         {
+            var tweeningInfo = info.dynamicValueVector3;
+            System.Func<Vector3, float, BaseTween> function = null;
             if(obj is GameObject gameObj)
             {
-                return gameObj.RotateTween(info.dynamicValueVector3, amountValue);
+                tweeningInfo = useRelativeValue ? gameObj.transform.rotation.eulerAngles + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?gameObj.RotateTween : gameObj.RotateTween;
             }
-                return null; } },
-
-        {tweenEvents.scale, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
+            else if(obj is Component component)
+            {
+                tweeningInfo = useRelativeValue ? component.transform.rotation.eulerAngles + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?component.gameObject.RotateTween : component.gameObject.RotateTween;
+            }
+                return function?.Invoke(tweeningInfo, amountValue); } },
+        //=========================================================================
+        {tweenEvents.scale, (obj, useRelativeValue, info, useSpeedValue, amountValue)=> //SCALE
         {
+            var tweeningInfo = info.dynamicValueVector3;
+            System.Func<Vector3, float, BaseTween> function = null;
             if(obj is GameObject gameObj)
             {
-                return useSpeedValue ?gameObj.ScaleAtSpeed(info.dynamicValueVector3, amountValue) : gameObj.ScaleTween(info.dynamicValueVector3,amountValue);
+                tweeningInfo = useRelativeValue ? gameObj.transform.localScale + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?gameObj.ScaleAtSpeed : gameObj.ScaleTween;
             }
-                return null; } },
-
+            else if(obj is Component component)
+            {
+                tweeningInfo = useRelativeValue ? component.transform.localScale + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?component.gameObject.ScaleAtSpeed : component.gameObject.ScaleTween;
+            }
+                return function?.Invoke(tweeningInfo, amountValue); } },
+        //=========================================================================
         {tweenEvents.color, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
-            if(obj is Image img)
+            var tweeningInfo = info.dynamicValueColor;
+            System.Func<Color, float, BaseTween> function = null;
+        if(obj is Image img)
             {
-                return useSpeedValue ?img.ColorTweenAtSpeed(info.dynamicValueColor, amountValue) : img.ColorTween(info.dynamicValueColor,amountValue);
+                tweeningInfo = useRelativeValue ? img.color + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?img.ColorTweenAtSpeed : img.ColorTween;
             }
         else if(obj is SpriteRenderer spriteRender)
             {
-                return useSpeedValue ?spriteRender.ColorTweenAtSpeed(info.dynamicValueColor, amountValue) : spriteRender.ColorTween(info.dynamicValueColor,amountValue);
-            }  return null; } },
-
+                tweeningInfo = useRelativeValue ? spriteRender.color + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?spriteRender.ColorTweenAtSpeed : spriteRender.ColorTween;
+            }  return function?.Invoke(tweeningInfo, amountValue); } },
+        //=========================================================================
         {tweenEvents.appear, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is GameObject gameObj)
@@ -90,7 +125,7 @@ public class TweeningHelper
                 component.gameObject.SetActive(true);
             }
                 return null; } },
-
+        //=========================================================================
         {tweenEvents.disappear, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             if(obj is GameObject gameObj)
