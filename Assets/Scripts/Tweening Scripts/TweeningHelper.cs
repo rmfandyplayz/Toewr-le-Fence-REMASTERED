@@ -39,7 +39,7 @@ public class TweeningHelper
                 tweeningInfo = useRelativeValue ? spriteRender.color.a + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?spriteRender.FadeAtSpeed : spriteRender.Fade;
             }  return function?.Invoke(tweeningInfo, amountValue); } },
-            //======================================================================
+        //======================================================================
         {tweenEvents.fill, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
             var tweeningInfo = info.dynamicValueFloat;
@@ -50,7 +50,7 @@ public class TweeningHelper
                 function = useSpeedValue ?img.FillAmountTweenAtSpeed : img.FillAmountTween;
             };
                 return function?.Invoke(tweeningInfo, amountValue); } },
-            //=======================================================================
+        //=======================================================================
         {tweenEvents.move, (obj, useRelativeValue, info, useSpeedValue, amountValue)=> //MOVE
         {
             var tweeningInfo = info.dynamicValueVector3;

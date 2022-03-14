@@ -15,7 +15,7 @@
                     "_value": "Scriptable Objects"
                 },
                 "_labelRules": {
-                    "_value": "${tag_1},${tag_2},${tag_3}"
+                    "_value": "${tag_1},${tag_2},${tag_3},ScriptObj"
                 }
             },
             {
@@ -32,7 +32,7 @@
                     "_value": "Scriptable Objects"
                 },
                 "_labelRules": {
-                    "_value": "${tag_1},${tag_2}"
+                    "_value": "${tag_1},${tag_2},ScriptObj"
                 }
             },
             {
@@ -49,7 +49,7 @@
                     "_value": "Scriptable Objects"
                 },
                 "_labelRules": {
-                    "_value": "${tag_1}"
+                    "_value": "${tag_1},ScriptObj"
                 }
             }
         ]
