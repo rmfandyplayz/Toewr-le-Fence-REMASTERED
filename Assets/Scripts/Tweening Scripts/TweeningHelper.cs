@@ -101,7 +101,7 @@ public class TweeningHelper
         //=========================================================================
         {tweenEvents.color, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
-            var tweeningInfo = info.dynamicValueColor;
+            var tweeningInfo = info.dynamicValueColor / 255;
             System.Func<Color, float, BaseTween> function = null;
         if(obj is Image img)
             {

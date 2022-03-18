@@ -9,14 +9,12 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AddressablesHolder : MonoBehaviour
 {
-    
-
     //Variables section. Try to use [Header("[text]")] to organize the code.
     [EditorButton(nameof(TestLoading))]
     public List<string> keys = new List<string>();
     public List<TurretSettings> turretsList = new List<TurretSettings>();
 
-    public SerializedDictionary<string, List<ScriptableObject>> scriptableObjectDictionary = new SerializedDictionary<string, List<ScriptableObject>>(); //String = key
+    public static SerializedDictionary<string, List<ScriptableObject>> scriptableObjectDictionary = new SerializedDictionary<string, List<ScriptableObject>>(); //String = key
     private const string SCRIPTOBJ = "ScriptableObject";
 
     private AsyncOperationHandle<IList<TurretSettings>> trackLoadedObjects; //tracks what objects are loaded from the addressables and loads it into the lists above
@@ -42,8 +40,12 @@ public class AddressablesHolder : MonoBehaviour
         StartCoroutine(LoadItemsAsync());
     }
 
-    public List<ScriptableObject> FilterByType(System.Type objectType)
+    public static List<ScriptableObject> FilterByType(System.Type objectType)
     {
+        if(scriptableObjectDictionary.TryGetValue(objectType.Name, out var cachedList))
+        {
+            return cachedList;
+        }
         var objectList = new List<ScriptableObject>();
         if (scriptableObjectDictionary.TryGetValue(SCRIPTOBJ, out var currentObjectList)){
             foreach (var item in currentObjectList)
@@ -54,6 +56,7 @@ public class AddressablesHolder : MonoBehaviour
                 }
             }
         }
+        scriptableObjectDictionary.Add(objectType.Name, objectList);
         return objectList;
     }
 

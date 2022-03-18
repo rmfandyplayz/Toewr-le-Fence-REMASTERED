@@ -318,6 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 700827800}
   - component: {fileID: 700827799}
+  - component: {fileID: 700827801}
   m_Layer: 0
   m_Name: Testing
   m_TagString: Untagged
@@ -340,26 +341,6 @@ MonoBehaviour:
   keys:
   - ScriptObj
   turretsList: []
-  scriptableObjectDictionary:
-    pairs:
-    - key: ScriptableObject
-      value:
-      - {fileID: 11400000, guid: 042b127033ab2274598261c081569e9e, type: 2}
-      - {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
-      - {fileID: 11400000, guid: 351afa86ca8b71d4e9b208774f5270cf, type: 2}
-      - {fileID: 11400000, guid: 55a57a73045ea3d41a139254cd6ee564, type: 2}
-      - {fileID: 11400000, guid: 76b24557bd4cbac4584b5f4ad1e21c28, type: 2}
-      - {fileID: 11400000, guid: 07c474fe7868e1141853061422d1e16a, type: 2}
-      - {fileID: 11400000, guid: 37904f7ebc1270b438f55e31105e008e, type: 2}
-      - {fileID: 11400000, guid: 48b585c22eb3253468beb5c093255c61, type: 2}
-      - {fileID: 11400000, guid: 48da7cee8bae31d4eac183d451e4019d, type: 2}
-      - {fileID: 11400000, guid: 88e08c2e0bc9bad4abb85661e36ee276, type: 2}
-      - {fileID: 11400000, guid: 8a53811927597ba46950e2fe9c529ea8, type: 2}
-      - {fileID: 11400000, guid: faa940984b2049c4488a9bae85427662, type: 2}
-      - {fileID: 11400000, guid: 4b61adfee895e444bb8c6597c9f912ac, type: 2}
-      - {fileID: 11400000, guid: 3cce6f6dcbd7b98449a83c6217b07679, type: 2}
-      - {fileID: 11400000, guid: 033d6182b6b1ec9429479707cc67afad, type: 2}
-    error: 0
 --- !u!4 &700827800
 Transform:
   m_ObjectHideFlags: 0
@@ -375,6 +356,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &700827801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700827798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238da292d7929334db6cf2bcb59f3b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretButtons: {fileID: 0}
+  turretTabs: {fileID: 0}
+  tabs: []
+  test: 0
 --- !u!1 &1249840622
 GameObject:
   m_ObjectHideFlags: 0
