@@ -8,12 +8,14 @@ public class TurretSettings : ScriptableObject
     public string turretName;
     public Sprite turretSprite;
     public int buyPrice;
+    public UpgradableType range;
+    public UpgradableType fireRate;
+    public float deploymentCooldown; // This variable may be changed in the future.
     public bool canRotate = true;
     public Vector2 rangeVisualizationPosition;
     [ShowIf(nameof(canRotate), true)]
     [HideInInspector] public UpgradableType rotateSpeed = new UpgradableType(5);
-    public UpgradableType range;
-    public UpgradableType fireRate;
+    
     [HideInInspector] public Obj2DSimpleInfo colliderPositionAndSize;
     public List<Obj2DSimpleInfo> firepointPositionRotation;
     public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();

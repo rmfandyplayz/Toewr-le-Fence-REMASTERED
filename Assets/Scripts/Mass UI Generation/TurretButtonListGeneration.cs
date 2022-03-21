@@ -12,9 +12,6 @@ public class TurretButtonListGeneration : MonoBehaviour
     [EditorButton(nameof(GenerateButtons))] public bool test; //TEMPORARY
 
     //Functions section
-    // Generate Buttons function
-    // 1. Get all of the turret setting from the addressable holder
-    // 2. Generate a button using each of the turret setting from the previous step ()
 
      public void GenerateButtons()
     {
@@ -23,6 +20,13 @@ public class TurretButtonListGeneration : MonoBehaviour
             if(tab is TurretSettings turret)
             {
                 Debug.LogWarning(turret.name);
+                // Instantiate a new game object from the turret button
+                // Get the turret button initializing
+                // Pass in turret to the initializing function
+
+                var newButtons = Instantiate(turretButtons);
+                newButtons.GetComponent<TurretButtonInitializing>().InitializeButton(turret);
+
             }
         }
     }
