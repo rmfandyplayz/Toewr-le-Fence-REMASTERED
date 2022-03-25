@@ -15,15 +15,6 @@ MonoBehaviour:
   turretName: 
   turretSprite: {fileID: 0}
   buyPrice: 0
-  canRotate: 1
-  rangeVisualizationPosition: {x: 0, y: 0}
-  rotateSpeed:
-    name: Upgradable
-    baseValue: 5
-    upgradeEfficiency: 0
-    maxUpgradeLevel: 0
-    startingPrice: 0
-    priceIncrease: 0
   range:
     name: Upgradable
     baseValue: 2.5
@@ -34,6 +25,16 @@ MonoBehaviour:
   fireRate:
     name: Upgradable
     baseValue: 1
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
+  deploymentCooldown: 1.5
+  canRotate: 1
+  rangeVisualizationPosition: {x: 0, y: 0}
+  rotateSpeed:
+    name: Upgradable
+    baseValue: 5
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0

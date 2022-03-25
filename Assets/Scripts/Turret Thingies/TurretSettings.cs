@@ -29,6 +29,7 @@ public class TurretSettings : ScriptableObject
 
 
     [InLineEditor] public BulletSetup bulletSetup;
+    public float turretDamage => bulletSetup == null ? 0 : bulletSetup.bulletDamage.GetBaseValue;
 }
 
 

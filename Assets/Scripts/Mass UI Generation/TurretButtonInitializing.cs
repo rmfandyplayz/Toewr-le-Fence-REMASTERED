@@ -40,9 +40,9 @@ public class TurretButtonInitializing : MonoBehaviour
         this.turretSettings = turretSettings;
         nameText.text = turretSettings.turretName;
         priceText.text = turretSettings.buyPrice.ToString();
-        damageText.text = turretSettings.bulletSetup.bulletDamage.ToString();
-        rangeText.text = turretSettings.range.ToString();
-        attackCooldownText.text = turretSettings.fireRate.ToString();
+        damageText.text = turretSettings.turretDamage.ToString();
+        rangeText.text = turretSettings.range.GetBaseValue.ToString();
+        attackCooldownText.text = turretSettings.fireRate.GetBaseValue.ToString();
         deployCooldownText.text = turretSettings.deploymentCooldown.ToString(); //May be updated later
         turretIcon.sprite = turretSettings.turretSprite;
     }
