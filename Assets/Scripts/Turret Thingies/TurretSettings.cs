@@ -6,6 +6,7 @@ using UnityEngine;
 public class TurretSettings : ScriptableObject
 {
     public string turretName;
+    public TabScriptableObject turretCategory;
     public Sprite turretSprite;
     public int buyPrice;
     public UpgradableType range;
