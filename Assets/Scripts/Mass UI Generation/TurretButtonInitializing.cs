@@ -14,7 +14,7 @@ public class TurretButtonInitializing : MonoBehaviour
     // bool for is currently on cooldown
     [Header("References")]
     [SerializeField] private Button button;
-    [SerializeField] private TurretSettings turretSettings;
+    public TurretSettings turretSettings;
 
     [Header("Text Input")]
     [NewLabel("Turret Name")] public TextMeshProUGUI nameText;
