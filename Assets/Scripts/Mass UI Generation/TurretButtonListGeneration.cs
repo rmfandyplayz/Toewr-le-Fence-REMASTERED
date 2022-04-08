@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretButtonListGeneration : MonoBehaviour
 {
@@ -8,16 +9,20 @@ public class TurretButtonListGeneration : MonoBehaviour
     [SerializeField] private GameObject turretButtons;
     [SerializeField] private GameObject turretTabs;
     [SerializeField] private List<string> tabs = new List<string>();
-    [SerializeField] private GameObject parentObject;
+    [SerializeField] private GameObject tabHolder;
+    [SerializeField] private GameObject buttonHolder;
     [SerializeField] private List<GameObject> generatedButtons = new List<GameObject>();
-    
+    [SerializeField] private GameObject allTab;
+    [SerializeField] private BuyTurretScript buyTurretScript;
 
     [EditorButton(nameof(GenerateButtons))] public bool test; //TEMPORARY
     //Functions section
 
     private void Start()
     {
+        GenerateButtons(buttonHolder);
         PlaceButtonsInAllTab();
+        GenerateEachTabCategory();
     }
 
 
@@ -32,9 +37,10 @@ public class TurretButtonListGeneration : MonoBehaviour
             {
                 Debug.LogWarning(turret.name);
                 var newButtons = Instantiate(turretButtons);
+                generatedButtons.Add(newButtons);
                 newButtons.transform.SetParent(parentTab.transform);
                 newButtons.GetComponent<TurretButtonInitializing>().InitializeButton(turret);
-                
+                newButtons.GetComponent<Button>().onClick.AddListener(() => buyTurretScript.BuyTurret(turret));
             }
         }
     }
@@ -42,9 +48,8 @@ public class TurretButtonListGeneration : MonoBehaviour
     public void PlaceButtonsInAllTab()
     {
         var allTab = Instantiate(turretTabs);
-        allTab.transform.SetParent(parentObject.transform);
-        GenerateButtons(allTab);
-        GenerateEachTabCategory();
+        allTab.transform.SetParent(tabHolder.transform);
+        allTab.GetComponent<TabButton>().onTabSelect.AddListener(()=> SelectivelyToggleButtons(null));
     }
     
     
@@ -61,8 +66,9 @@ public class TurretButtonListGeneration : MonoBehaviour
             if(tab is TabScriptableObject)
             {
                 var newTab = Instantiate(turretTabs);
-                newTab.transform.SetParent(parentObject.transform);
+                newTab.transform.SetParent(tabHolder.transform);
                 newTab.GetComponent<TabInitializer>().InitializeTab(tab as TabScriptableObject);
+                newTab.GetComponent<TabButton>().onTabSelect.AddListener(() => SelectivelyToggleButtons(tab as TabScriptableObject));
             }
         }
     }
@@ -101,7 +107,7 @@ public class TurretButtonListGeneration : MonoBehaviour
             if (tab is TabScriptableObject tabScriptableObject)
             {
                 var newTab = Instantiate(turretTabs);
-                newTab.transform.SetParent(parentObject.transform);
+                newTab.transform.SetParent(tabHolder.transform);
                 newTab.GetComponent<TabInitializer>().InitializeTab(tabScriptableObject);
                 GenerateButtons(newTab);
             }
