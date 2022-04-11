@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class TurretButtonListGeneration : MonoBehaviour
 {
@@ -20,12 +21,32 @@ public class TurretButtonListGeneration : MonoBehaviour
 
     private void Start()
     {
+        if (AddressablesHolder.trackLoadedObjects.IsDone)
+        {
+            OnAssetLoad();
+        }
+        else
+        {
+            AddressablesHolder.trackLoadedObjects.Completed += OnAssetLoad;
+        }
+    }
+
+    void OnAssetLoad(AsyncOperationHandle<IList<ScriptableObject>> _) => OnAssetLoad(); //Throw away value from async operation
+
+    private void OnAssetLoad()
+    {
         GenerateButtons(buttonHolder);
         PlaceButtonsInAllTab();
         GenerateEachTabCategory();
     }
 
-
+    private void OnDestroy()
+    {
+        if (AddressablesHolder.trackLoadedObjects.IsValid())
+        {
+            AddressablesHolder.trackLoadedObjects.Completed -= OnAssetLoad;
+        }
+    }
 
 
     // Below is a function which will generate the buttons based on each turret settings. Then it will assign it to each tab.
@@ -35,9 +56,10 @@ public class TurretButtonListGeneration : MonoBehaviour
         {
             if(tab is TurretSettings turret)
             {
-                Debug.LogWarning(turret.name);
+                //Debug.LogWarning(turret.name);
                 var newButtons = Instantiate(turretButtons);
                 generatedButtons.Add(newButtons);
+                //Debug.Log($"{newButtons}, {parentTab}; From TurretButtonListGeneration.cs");
                 newButtons.transform.SetParent(parentTab.transform);
                 newButtons.GetComponent<TurretButtonInitializing>().InitializeButton(turret);
                 newButtons.GetComponent<Button>().onClick.AddListener(() => buyTurretScript.BuyTurret(turret));
@@ -98,8 +120,7 @@ public class TurretButtonListGeneration : MonoBehaviour
         }
     }
 
-
-
+    /*
     public void GenerateTabs()
     {
         foreach (var tab in AddressablesHolder.FilterByType(typeof(TabScriptableObject)))
@@ -113,4 +134,6 @@ public class TurretButtonListGeneration : MonoBehaviour
             }
         }
     }
+    */
+    
 }

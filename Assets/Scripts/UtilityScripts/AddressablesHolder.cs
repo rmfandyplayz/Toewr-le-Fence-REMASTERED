@@ -17,7 +17,7 @@ public class AddressablesHolder : MonoBehaviour
     public static SerializedDictionary<string, List<ScriptableObject>> scriptableObjectDictionary = new SerializedDictionary<string, List<ScriptableObject>>(); //String = key
     private const string SCRIPTOBJ = "ScriptableObject";
 
-    private AsyncOperationHandle<IList<TurretSettings>> trackLoadedObjects; //tracks what objects are loaded from the addressables and loads it into the lists above
+    public static AsyncOperationHandle<IList<ScriptableObject>> trackLoadedObjects; //tracks what objects are loaded from the addressables and loads it into the lists above
 
     //Functions section
     
@@ -64,7 +64,7 @@ public class AddressablesHolder : MonoBehaviour
 
     public IEnumerator LoadItemsAsync()
     {
-        var loadedItems = Addressables.LoadAssetsAsync<ScriptableObject>(keys, (items) =>
+        trackLoadedObjects = Addressables.LoadAssetsAsync<ScriptableObject>(keys, (items) =>
         {
         //Debug.LogError(items.name + " AddressablesHolder.cs");
             if (!scriptableObjectDictionary.ContainsKey(SCRIPTOBJ))
@@ -76,7 +76,7 @@ public class AddressablesHolder : MonoBehaviour
                 scriptableObjectDictionary[SCRIPTOBJ].Add(items);
             }
         }, Addressables.MergeMode.UseFirst, true);
-        yield return loadedItems ;
+        yield return trackLoadedObjects;
         //Debug.LogError("Finished loading objects! From AddressablesHolder.cs");
     }
 

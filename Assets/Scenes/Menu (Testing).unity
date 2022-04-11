@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabButtonsList: []
-  selectedTabButton: {fileID: 1914963445}
+  selectedTabButton: {fileID: 0}
   idleTab: {fileID: 21300000, guid: c1b856e751b43564089f78b233bb5112, type: 3}
   hoverTab: {fileID: 21300000, guid: 8540fa88e59d38b469b2d995289c0245, type: 3}
   pressedTab: {fileID: 21300000, guid: 5d2abcefaf7d10244b28207c188a8e07, type: 3}
@@ -814,7 +814,6 @@ GameObject:
   m_Component:
   - component: {fileID: 700827800}
   - component: {fileID: 700827799}
-  - component: {fileID: 700827801}
   m_Layer: 0
   m_Name: Testing
   m_TagString: Untagged
@@ -852,27 +851,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &700827801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700827798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238da292d7929334db6cf2bcb59f3b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretButtons: {fileID: 1618435787}
-  turretTabs: {fileID: 0}
-  tabs: []
-  tabHolder: {fileID: 0}
-  buttonHolder: {fileID: 0}
-  generatedButtons: []
-  allTab: {fileID: 0}
-  buyTurretScript: {fileID: 0}
-  test: 0
 --- !u!1 &794411726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,7 +2041,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1618435792}
-  - component: {fileID: 1618435788}
   - component: {fileID: 1618435791}
   - component: {fileID: 1618435790}
   - component: {fileID: 1618435789}
@@ -2074,30 +2051,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1618435788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618435787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1464641efb0195d4b9172e47aac8b5f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1618435791}
-  turretSettings: {fileID: 0}
-  nameText: {fileID: 493437392}
-  priceText: {fileID: 1368548497}
-  damageText: {fileID: 1459840076}
-  rangeText: {fileID: 222544359}
-  attackCooldownText: {fileID: 1213040076}
-  deployCooldownText: {fileID: 794411727}
-  turretIcon: {fileID: 1618435789}
-  isAnimated: 0
-  animatedSprite: {fileID: 0}
-  isButtonOnCooldown: 0
 --- !u!114 &1618435789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2296,6 +2249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1830634251}
   - component: {fileID: 1830634250}
+  - component: {fileID: 1830634252}
   m_Layer: 5
   m_Name: Temporary
   m_TagString: Untagged
@@ -2348,6 +2302,30 @@ RectTransform:
   m_AnchoredPosition: {x: 230, y: 261}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1830634252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830634249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1464641efb0195d4b9172e47aac8b5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1618435791}
+  turretSettings: {fileID: 0}
+  nameText: {fileID: 493437392}
+  priceText: {fileID: 1368548497}
+  damageText: {fileID: 1459840076}
+  rangeText: {fileID: 222544359}
+  attackCooldownText: {fileID: 1213040076}
+  deployCooldownText: {fileID: 794411727}
+  turretIcon: {fileID: 1618435789}
+  isAnimated: 0
+  animatedSprite: {fileID: 0}
+  isButtonOnCooldown: 0
 --- !u!1 &1914963442
 GameObject:
   m_ObjectHideFlags: 0
