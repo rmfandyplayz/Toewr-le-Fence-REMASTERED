@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Toolbox;
+using UnityEngine.Scripting;
 
 [SerializeField] public class StatusEffectCenter
 {
 	//Variables section. Try to use [Header("[text]")] to organize the code.
 
 	[Header("Turret Effects")]
-
 	public float effectChance;
 	public float effectDuration;
 	public float effectLevel;
+	[Header("Effect Image")]
+	public Image activeEffectSprite;
+    public Image inmmuneEffectSprite;
 
-	/*
+    /*
 	public bool slow;
 	[ShowIf(nameof(slow),true)] public float slowChance;
 	[ShowIf(nameof(slow), true)] public float slowLevel;
@@ -71,11 +74,11 @@ using Toolbox;
 
 	public bool heavyweight;
 	*/
-	//Functions section
+    //Functions section
 
 
 
-	//Coroutine Section
+    //Coroutine Section
 
 
 

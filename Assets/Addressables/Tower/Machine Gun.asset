@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Machine Gun
   m_EditorClassIdentifier: 
   turretName: Machine Gun Turret
+  turretCategory: {fileID: 11400000, guid: 5edce0b4d133c404aa9f0f30069db3db, type: 2}
   turretSprite: {fileID: 21300000, guid: c5a9e030f24bfd04cb49f17429374c5a, type: 3}
   buyPrice: 1
   range:

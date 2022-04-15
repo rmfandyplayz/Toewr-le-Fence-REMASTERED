@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Test Melee Turret
   m_EditorClassIdentifier: 
   turretName: 
+  turretCategory: {fileID: 11400000, guid: a36c7713564719b4db98bb2e37608272, type: 2}
   turretSprite: {fileID: 0}
   buyPrice: 0
   range:
