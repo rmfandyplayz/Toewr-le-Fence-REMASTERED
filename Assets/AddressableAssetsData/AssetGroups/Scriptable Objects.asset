@@ -47,12 +47,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Tower
     - ScriptObj
-  - m_GUID: 76b24557bd4cbac4584b5f4ad1e21c28
-    m_Address: Slow
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Status_Effects
-    - ScriptObj
   - m_GUID: 07c474fe7868e1141853061422d1e16a
     m_Address: 1-5
     m_ReadOnly: 0
@@ -119,6 +113,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Category_Tabs
+    - ScriptObj
+  - m_GUID: 0c15d84f0b5c8a44eb1381968e0fd699
+    m_Address: Testing Status Effect
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Status_Effects
     - ScriptObj
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 67a89d1c636694f08a0667bb9f1d9515, type: 2}

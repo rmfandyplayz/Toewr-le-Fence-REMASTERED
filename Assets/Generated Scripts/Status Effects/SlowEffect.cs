@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.Events; 
 using Toolbox;
  
-[CreateAssetMenu(fileName = "New SlowEffect", menuName = 
-"Status Effect/SlowEffect")] 
 public class SlowEffect : StatusEffectCreation<SlowEffect_Data, SlowEffect_Functionality>{}
  
 [System.Serializable] 

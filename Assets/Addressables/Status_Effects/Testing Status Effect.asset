@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce7a773119d04d4f8c3760db590d091, type: 3}
+  m_Name: Testing Status Effect
+  m_EditorClassIdentifier: 
+  statusName: 
+  isAnimatedActiveIcon: 0
+  animatedActiveIcon: {fileID: 0}
+  activeIcon: {fileID: 0}
+  immuneIcon: {fileID: 0}
+  effectDuration: 0
+  canBeStacked: 0
+  customFunctionality_Visual: {fileID: 0}
+  customFunctionality_Script: {fileID: 0}
