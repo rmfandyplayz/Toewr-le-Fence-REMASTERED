@@ -20,4 +20,8 @@ MonoBehaviour:
   effectDuration: 0
   canBeStacked: 0
   customFunctionality_Visual: {fileID: 0}
-  customFunctionality_Script: {fileID: 0}
+  customFunctionality_Script:
+    classReference: TestingFunctionality, Assembly-CSharp
+  note: "\r\n    To add custom functionality (for a normal C# script, not visual
+    script):\r\n    \u2022 Create a new class, name it anything you want\r\n    \u2022
+    Inherit from StatusEffectsCustomFunctionality\r\n    \u2022 Override run functionalitites.\r\n    "
