@@ -30,7 +30,9 @@ Currently, the status effect system requires creating a script for the data and 
 
 ## Guiding Questions Part 2: How does the status effect run?
 1. Which game object(s) does the status effect spawn on?
+    * Spawn under status effect object (Enemy > Blueprint Enemy > Status Effect Canvas > Status Effect)
 2. What components cause the status effect to active/deactive?
+    * Status effect Runner script that is part of the "Status Effect Square".
 3. How do we pass the target information to the status effect? 
 4. How does a status effect apply changes to the target object?
 5. How should we handle interactions between status effects (e.g. if an enemy is always immune to a status effect, how do we tell the status effect to not apply its effect)?
