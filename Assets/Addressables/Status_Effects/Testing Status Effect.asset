@@ -19,6 +19,7 @@ MonoBehaviour:
   immuneIcon: {fileID: 0}
   effectDuration: 0
   canBeStacked: 0
+  useNormalScripting: 0
   customFunctionality_Visual: {fileID: 0}
   customFunctionality_Script:
     classReference: TestingFunctionality, Assembly-CSharp

@@ -18,8 +18,9 @@ public class StatusEffectsScriptObj : ScriptableObject
     public bool canBeStacked;
 
     [Header("Custom Functionality")]
-    public ScriptGraphAsset customFunctionality_Visual;
-    [ClassExtends(typeof(StatusEffectsCustomFunctionality))] public UnityEngine.SerializedType customFunctionality_Script;
+    public bool useNormalScripting = false;
+    [ShowIf(nameof(useNormalScripting), false)] public ScriptGraphAsset customFunctionality_Visual;
+    [ClassExtends(typeof(StatusEffectsCustomFunctionality)), ShowIf(nameof(useNormalScripting), true)] public UnityEngine.SerializedType customFunctionality_Script;
     [TextArea(minLines: 8, maxLines: 100), Disable] public string note = @"
     To add custom functionality (for a normal C# script, not visual script):
     • Create a new class, name it anything you want
