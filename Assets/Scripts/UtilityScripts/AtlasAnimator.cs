@@ -25,7 +25,21 @@ public class AtlasAnimator : MonoBehaviour
     void Update()
     {
 		int spriteNumber = (int)(Time.time * animationSpeed) % spriteAtlas.spriteCount;
-		spriteRenderer.sprite = spriteAtlas.GetSprite($"{texture.name}_{spriteNumber}");
+        if (spriteRenderer)
+		{
+            spriteRenderer.sprite = spriteAtlas.GetSprite($"{texture.name}_{spriteNumber}");
+        }
+        if (image)
+        {
+            image.sprite = spriteAtlas.GetSprite($"{texture.name}_{spriteNumber}");
+		}
+    }
+
+    public void ReassignAnimation(SpriteAtlas spriteAtlas, Texture2D newTexture, float newAnimationSpeed)
+    {
+		this.spriteAtlas = spriteAtlas;
+        this.animationSpeed = newAnimationSpeed;
+        this.texture = newTexture;
     }
 	
 	

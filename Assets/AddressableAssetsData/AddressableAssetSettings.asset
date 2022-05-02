@@ -96,6 +96,8 @@ MonoBehaviour:
     - SO
     - ScriptObj
     - Category_Tabs
+    - Tween_Animatinos
+    - Tween_Animations
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0a5d63def048a438aa5ea5771ec90d5b, type: 2}

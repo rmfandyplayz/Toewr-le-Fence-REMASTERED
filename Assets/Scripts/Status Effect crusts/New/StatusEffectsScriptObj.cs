@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using Toolbox;
+using UnityEngine.U2D;
 
 [CreateAssetMenu(menuName = "Status Effect")]
 public class StatusEffectsScriptObj : ScriptableObject
@@ -11,7 +12,9 @@ public class StatusEffectsScriptObj : ScriptableObject
     [Header("General")]
     public string statusName;
     public bool isAnimatedActiveIcon = false;
-    [ShowIf(nameof(isAnimatedActiveIcon), true)] public AtlasAnimator animatedActiveIcon;
+    [ShowIf(nameof(isAnimatedActiveIcon), true)] public SpriteAtlas animatedActiveIcon;
+    [ShowIf(nameof(isAnimatedActiveIcon), true)] public Texture2D activeIconTexture; //name of the texture to animate
+    [ShowIf(nameof(isAnimatedActiveIcon), true)] public float animationSpeed; //how fast the animation runs
     [ShowIf(nameof(isAnimatedActiveIcon), false)] public Sprite activeIcon;
     public Sprite immuneIcon;
     public float effectDuration;

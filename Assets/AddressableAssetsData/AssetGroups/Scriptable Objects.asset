@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Address: Testing Fade Tween
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Tweening_Presets
+    - Tween_Animations
     - ScriptObj
   - m_GUID: 351afa86ca8b71d4e9b208774f5270cf
     m_Address: Tank
@@ -57,7 +57,7 @@ MonoBehaviour:
     m_Address: Testing Fill Tween
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Tweening_Presets
+    - Tween_Animations
     - ScriptObj
   - m_GUID: 48b585c22eb3253468beb5c093255c61
     m_Address: Machine Gun Bullet
@@ -82,7 +82,7 @@ MonoBehaviour:
     m_Address: Testing Moving
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Tweening_Presets
+    - Tween_Animations
     - ScriptObj
   - m_GUID: faa940984b2049c4488a9bae85427662
     m_Address: Fast
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_Address: Testing Immediate Fade Tween
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Tweening_Presets
+    - Tween_Animations
     - ScriptObj
   - m_GUID: 3cce6f6dcbd7b98449a83c6217b07679
     m_Address: Test Melee Turret
@@ -119,6 +119,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Status_Effects
+    - ScriptObj
+  - m_GUID: fdcace342ef686a41ad091284a713a2c
+    m_Address: Testing Monitor Open
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Tween_Animations
     - ScriptObj
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 67a89d1c636694f08a0667bb9f1d9515, type: 2}

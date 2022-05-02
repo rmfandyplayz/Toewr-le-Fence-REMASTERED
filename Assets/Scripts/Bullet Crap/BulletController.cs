@@ -76,10 +76,6 @@ public class BulletController : MonoBehaviour
         }
     }
 
-
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var enemy = collision.gameObject.GetComponent<EnemyController>();
@@ -94,17 +90,14 @@ public class BulletController : MonoBehaviour
             ApplyDamage(enemy, damage, damageType);
             ObjectPooling.ReturnObject(this.gameObject);
         }
+        //REPLACE
         if(collision.gameObject.GetComponent<StatusEffectHoldable>() is StatusEffectHoldable name)
         {
             foreach (var effects in bscript.statusEffects)
             {
                 name.ApplyStatusEffect(effects.CreateStatusEffect(collision.gameObject));
+                //REPLACE WITH NEW STATUS EFFECT SYSTEM!!!
             }
         }
     }
-
-    
-
-
-
 }
