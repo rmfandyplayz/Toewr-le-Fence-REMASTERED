@@ -35,6 +35,12 @@ public class StatusEffectsRunner : MonoBehaviour
         }
     }
 
+    public void InitializePermanentImmunitiy(StatusEffectsScriptObj scriptObjRef)
+    {
+        scriptableObjReference = scriptObjRef;
+        statusEffectImage.sprite = scriptableObjReference.permanentImmuneIcon;
+    }
+
     public void OnEnable() //Passed the if check, this function handles the running of the status effect
     {
         if (atlasAnimatorRef && scriptableObjReference.isAnimatedActiveIcon == true)

@@ -17,8 +17,10 @@ public class StatusEffectsScriptObj : ScriptableObject
     [ShowIf(nameof(isAnimatedActiveIcon), true)] public float animationSpeed; //how fast the animation runs
     [ShowIf(nameof(isAnimatedActiveIcon), false)] public Sprite activeIcon;
     public Sprite immuneIcon;
+    public Sprite permanentImmuneIcon;
     public float effectDuration;
     public bool canBeStacked;
+
 
     [Header("Custom Functionality")]
     public bool useNormalScripting = false;

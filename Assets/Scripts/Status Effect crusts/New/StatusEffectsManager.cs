@@ -9,9 +9,10 @@ using UnityEngine;
 //Permanent, temporary, etc.
 public class StatusEffectsManager : MonoBehaviour
 {
-    List<StatusEffectsScriptObj> permanentImmunitiesList = new List<StatusEffectsScriptObj>();
     List<StatusEffectsScriptObj> statusEffectsList = new List<StatusEffectsScriptObj>();
-    
+    public GameObject statusEffectPrefab;
+    EnemySetup enemySetup;
+
     //Might expand: A variable to hold which state of status effect the enemy is in.
 
     //TODO
@@ -19,7 +20,9 @@ public class StatusEffectsManager : MonoBehaviour
 
     private void Start()
     {
-        foreach(StatusEffectsScriptObj statusEffect in permanentImmunitiesList)
+        enemySetup = GetComponent<EnemyController>().escript;
+
+        foreach (StatusEffectsScriptObj statusEffect in enemySetup.permanentImmunities)
         {
             ApplyPermanentImmunity(statusEffect); //When the enemy spawns, apply any permanent immunities specified.
         }
@@ -27,7 +30,9 @@ public class StatusEffectsManager : MonoBehaviour
 
     public void ApplyPermanentImmunity(StatusEffectsScriptObj statusEffect)
     {
-        
+        //Applies any permanent immunities for the enemy when it spawns, if there is any.
+        GameObject immunity = ObjectPooling.GetGameObject(statusEffectPrefab);
+        immunity.GetComponent<StatusEffectsRunner>().InitializePermanentImmunitiy(statusEffect);
     }
 
     public void ApplyTemporaryStatusEffect(StatusEffectsScriptObj statusEffect)
@@ -63,4 +68,11 @@ public class StatusEffectsManager : MonoBehaviour
 5. How does the manager handle interactions between status effects of the same type? ... Of the same type but different levels? 
     * Same Status Effect and Same Stack/Level: Stacking Additively
     * Same Status Effect but Different Stack/Level: Stacking additively with priority for more potent effects; Less potent effects will freeze and be stored while the more potent effect will run. After the more potent effect finishes, it will run the less potent effect. (TODO: See if there is a priority queue built-in)
+*/
+
+
+/*
+    * For Permentant Immunity:
+        1. Get the Status Effect Prefab and assign it the perm-immune
+        2. Set the prefab (mainly the sprite) to the "Permanent Immune" State in the StatusEffectRunner
 */

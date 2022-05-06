@@ -15,6 +15,10 @@ public class EnemySetup : ScriptableObject
     //private float firedmgpertick = 1f;
     public int scoreValue;
     public int dropMoneyAmount;
+    [Space]
+    public bool hasPermanentImmunities = false;
+    [ShowIf(nameof(hasPermanentImmunities), true)] public List<StatusEffectsScriptObj> permanentImmunities = new List<StatusEffectsScriptObj>();
+    [Space]
     public bool isBossEnemy = false;
     [BeginIndent]
     [ShowIf(nameof(isBossEnemy), true)] public bool boxShapedSpawningPattern = false;
@@ -27,6 +31,7 @@ public class EnemySetup : ScriptableObject
     [ShowIf(nameof(boxShapedSpawningPattern), true)] public float enemySpawnGroupSize;
     [ShowIf(nameof(boxShapedSpawningPattern), true)] public Vector2 minimumBoxSpawnRadius;
     [ShowIf(nameof(boxShapedSpawningPattern), true)] public Vector2 maximumBoxSpawnRadius;
+
     public float groupSize => boxShapedSpawningPattern ? enemySpawnGroupSize : 1;
 
 }
