@@ -90,13 +90,15 @@ public class BulletController : MonoBehaviour
             ApplyDamage(enemy, damage, damageType);
             ObjectPooling.ReturnObject(this.gameObject);
         }
-        //REPLACE
         if(collision.gameObject.GetComponent<StatusEffectHoldable>() is StatusEffectHoldable name)
         {
+            //TODO: Add a filter function for permanent immunities.
             foreach (var effects in bscript.statusEffects)
             {
-                name.ApplyStatusEffect(effects.CreateStatusEffect(collision.gameObject));
-                //REPLACE WITH NEW STATUS EFFECT SYSTEM!!!
+                if (RNG.Chance(effects.chance))
+                {
+                    //TODO: Give the status effect to the statuseffectmanager
+                }
             }
         }
     }

@@ -126,6 +126,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Tween_Animations
     - ScriptObj
+  - m_GUID: d9069ae53c6429745942ef3f56f28d69
+    m_Address: Testing Dissolve
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Tween_Animations
+    - ScriptObj
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 67a89d1c636694f08a0667bb9f1d9515, type: 2}
   m_SchemaSet:

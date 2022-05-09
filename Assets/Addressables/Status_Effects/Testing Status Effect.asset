@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce7a773119d04d4f8c3760db590d091, type: 3}
   m_Name: Testing Status Effect
   m_EditorClassIdentifier: 
-  statusName: 
+  statusName: Testing
   isAnimatedActiveIcon: 0
   animatedActiveIcon: {fileID: 0}
+  activeIconTexture: {fileID: 0}
+  animationSpeed: 0
   activeIcon: {fileID: 0}
   immuneIcon: {fileID: 0}
+  permanentImmuneIcon: {fileID: 0}
   effectDuration: 0
   canBeStacked: 0
   useNormalScripting: 0

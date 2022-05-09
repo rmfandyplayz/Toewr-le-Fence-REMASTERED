@@ -23,7 +23,7 @@ public class BulletSetup : ScriptableObject
     [EndIndent]
     [ShowIf(nameof(explodes), true)] public float explosionDamagePercent = 50;
     public float ExplosionRadius => explodes ? explosionRadius : 0;
-    [InLineEditor] public List<StatusEffectCreation> statusEffects;
+    public List<StatusEffectsInfoCarry> statusEffects;
 
     [Header("Upgrades")]
     public List<TypeOfUpgrade> upgrades = new List<TypeOfUpgrade>();
@@ -80,4 +80,15 @@ public class BulletSetup : ScriptableObject
         }
     }
 
+}
+
+[System.Serializable]
+public class StatusEffectsInfoCarry
+{
+    [InLineEditor] public StatusEffectsScriptObj statusEffect;
+    [HideIf(nameof(statusEffect), false)] public float chance;
+    [HideIf(nameof(statusEffect), false)] public float duration;
+    [HideIf(nameof(statusEffect), false)] public int tier; //Max 10 tiers
+    
+    
 }

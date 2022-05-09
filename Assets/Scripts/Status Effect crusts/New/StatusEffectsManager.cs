@@ -12,6 +12,7 @@ public class StatusEffectsManager : MonoBehaviour
     List<StatusEffectsScriptObj> statusEffectsList = new List<StatusEffectsScriptObj>();
     public GameObject statusEffectPrefab;
     EnemySetup enemySetup;
+    [SerializeField] GameObject statusEffectSpriteHolder;
 
     //Might expand: A variable to hold which state of status effect the enemy is in.
 
@@ -32,6 +33,7 @@ public class StatusEffectsManager : MonoBehaviour
     {
         //Applies any permanent immunities for the enemy when it spawns, if there is any.
         GameObject immunity = ObjectPooling.GetGameObject(statusEffectPrefab);
+        immunity.transform.SetParent(statusEffectSpriteHolder.transform);
         immunity.GetComponent<StatusEffectsRunner>().InitializePermanentImmunitiy(statusEffect);
     }
 
@@ -40,6 +42,14 @@ public class StatusEffectsManager : MonoBehaviour
         //Checks if there is an immunity
         //Rolls the RNG
         //If passes, it will send signals to StatusEffectRunner to run the chosen status effect.
+        
+        if (enemySetup.permanentImmunities.Contains(statusEffect))
+        {
+            return;
+        }
+        GameObject effect = ObjectPooling.GetGameObject(statusEffectPrefab);
+        effect.transform.SetParent(statusEffectSpriteHolder.transform);
+        effect.GetComponent<StatusEffectsRunner>().InitializeEffect(statusEffect, this.gameObject);
     }
 
     public void ApplyTemporaryImmunity(StatusEffectsScriptObj statusEffect)
