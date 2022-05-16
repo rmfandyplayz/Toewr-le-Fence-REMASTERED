@@ -6,6 +6,7 @@ using UnityEngine;
 using Toolbox;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using Priority_Queue;
 
 //This script handles running a specific status effect (single) ASSUMING it passed all the checks in order to apply an effect.
 public class StatusEffectsRunner : MonoBehaviour
@@ -17,6 +18,7 @@ public class StatusEffectsRunner : MonoBehaviour
     AtlasAnimator atlasAnimatorRef;
     ScriptMachine scriptMachineRef;
     StatusEffectsCustomFunctionality customFunctionalityRef;
+    SimplePriorityQueue<StatusEffectsScriptObj> statusEffectQueue;
 
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
     {
