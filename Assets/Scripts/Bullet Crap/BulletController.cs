@@ -90,14 +90,13 @@ public class BulletController : MonoBehaviour
             ApplyDamage(enemy, damage, damageType);
             ObjectPooling.ReturnObject(this.gameObject);
         }
-        if(collision.gameObject.GetComponent<StatusEffectHoldable>() is StatusEffectHoldable name)
+        if(collision.gameObject.GetComponentInChildren<StatusEffectsManager>() is StatusEffectsManager effectManager)
         {
-            //TODO: Add a filter function for permanent immunities.
             foreach (var effects in bscript.statusEffects)
             {
-                if (RNG.Chance(effects.chance))
+                if (RNG.Chance(effects.chance) && effectManager.hasImmunity(effects.statusEffect) == false)
                 {
-                    //TODO: Give the status effect to the statuseffectmanager
+                    effectManager.ApplyTemporaryStatusEffect_NoCheck(effects);
                 }
             }
         }

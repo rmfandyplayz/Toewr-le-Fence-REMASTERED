@@ -9,7 +9,8 @@ using UnityEngine;
 //Permanent, temporary, etc.
 public class StatusEffectsManager : MonoBehaviour
 {
-    List<StatusEffectsScriptObj> statusEffectsList = new List<StatusEffectsScriptObj>();
+    List<StatusEffectsRunner> statusEffectsList = new List<StatusEffectsRunner>();
+    List<StatusEffectsScriptObj> temporaryImmuneList = new List<StatusEffectsScriptObj>();
     public GameObject statusEffectPrefab;
     EnemySetup enemySetup;
     [SerializeField] GameObject statusEffectSpriteHolder;
@@ -18,6 +19,7 @@ public class StatusEffectsManager : MonoBehaviour
 
     //TODO
     //Make a system which will handle the potency of effects. (aka I, II, III, IV)
+    //Also make a program which will reorder the list of effects based on priority
 
     private void Start()
     {
@@ -37,29 +39,56 @@ public class StatusEffectsManager : MonoBehaviour
         immunity.GetComponent<StatusEffectsRunner>().InitializePermanentImmunitiy(statusEffect);
     }
 
-    public void ApplyTemporaryStatusEffect(StatusEffectsScriptObj statusEffect)
+    public bool hasImmunity(StatusEffectsScriptObj statusScriptObj) => enemySetup.permanentImmunities.Contains(statusScriptObj) || temporaryImmuneList.Contains(statusScriptObj);
+    
+    //May use later. Currently has no use.
+    public void ApplyTemporaryStatusEffect(StatusEffectsInfoCarry infoCarry)
     {
-        //Checks if there is an immunity
-        //Rolls the RNG
-        //If passes, it will send signals to StatusEffectRunner to run the chosen status effect.
-        
-        if (enemySetup.permanentImmunities.Contains(statusEffect))
+        if (hasImmunity(infoCarry.statusEffect) == true)
         {
             return;
         }
         GameObject effect = ObjectPooling.GetGameObject(statusEffectPrefab);
         effect.transform.SetParent(statusEffectSpriteHolder.transform);
-        effect.GetComponent<StatusEffectsRunner>().InitializeEffect(statusEffect, this.gameObject);
+        effect.GetComponent<StatusEffectsRunner>().InitializeEffect(infoCarry.statusEffect, this.gameObject);
     }
 
-    public void ApplyTemporaryImmunity(StatusEffectsScriptObj statusEffect)
+    public void ApplyTemporaryStatusEffect_NoCheck(StatusEffectsInfoCarry infoCarry)
     {
-
+        GameObject effect = ObjectPooling.GetGameObject(statusEffectPrefab);
+        effect.transform.SetParent(statusEffectSpriteHolder.transform);
+        effect.GetComponent<StatusEffectsRunner>().InitializeEffect(infoCarry.statusEffect, this.gameObject);
     }
 
-    public void DeactivateStatusEffect(StatusEffectsScriptObj statusEffect) //Returns status effect to object pool for it to be reused.
+    public void ApplyTemporaryImmunity(StatusEffectsInfoCarry infoCarry)
     {
+        temporaryImmuneList.Add(infoCarry.statusEffect);
+        foreach (StatusEffectsRunner effect in statusEffectsList)
+        {
+            if (effect.scriptableObjReference == infoCarry.statusEffect)
+            {
+                effect.StartImmunity(infoCarry.duration, () => { DeactivateStatusEffect(infoCarry); });
+                break;
+            }
+        }
+    }
 
+    public void DeactivateStatusEffect(StatusEffectsInfoCarry infoCarry) //Returns status effect to object pool for it to be reused.
+    {
+        temporaryImmuneList.Remove(infoCarry.statusEffect);
+        foreach (StatusEffectsRunner effect in statusEffectsList)
+        {
+            if (effect.scriptableObjReference == infoCarry.statusEffect)
+            {
+                ObjectPooling.ReturnObject(effect.gameObject);
+                break;
+            }
+        }
+    }
+
+    public void ReorderList()
+    {
+        
     }
 
 }

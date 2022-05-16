@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using Toolbox;
 using UnityEngine.UI;
@@ -18,6 +20,7 @@ public class StatusEffectsRunner : MonoBehaviour
 
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
     {
+        
         
         this.scriptableObjReference = scriptableObjReference;
         this.targetToApply = target;
@@ -43,13 +46,20 @@ public class StatusEffectsRunner : MonoBehaviour
 
     public void OnEnable() //Passed the if check, this function handles the running of the status effect
     {
+        ApplyStatusEffect(0, null);
+        //TODO
+        //Add callback for when status effect finishes
+    }
+
+    private void ApplyStatusEffect(float duration, UnityAction callback)
+    {
         if (atlasAnimatorRef && scriptableObjReference.isAnimatedActiveIcon == true)
         {
             atlasAnimatorRef.enabled = true;
         }
-        if(scriptableObjReference.useNormalScripting == false)
+        if (scriptableObjReference.useNormalScripting == false)
         {
-            if(scriptMachineRef == null)
+            if (scriptMachineRef == null)
             {
                 scriptMachineRef = GetComponent<ScriptMachine>();
             }
@@ -68,13 +78,17 @@ public class StatusEffectsRunner : MonoBehaviour
             }
             customFunctionalityRef.enabled = true;
         }
-        //TODO
-        //Add callback for when status effect finishes
+        StartCoroutine(DelayCallback(duration, callback));
     }
 
     public void OnDisable()
     {
-        if(atlasAnimatorRef != null)
+        StartImmunity(0, null);
+    }
+    
+    public void StartImmunity(float duration, UnityAction callback)
+    {
+        if (atlasAnimatorRef != null)
         {
             atlasAnimatorRef.enabled = false;
         }
@@ -87,10 +101,17 @@ public class StatusEffectsRunner : MonoBehaviour
             customFunctionalityRef.enabled = false;
         }
         //Show immunity: change image
+        StartCoroutine(DelayCallback(duration, callback));
         statusEffectImage.sprite = scriptableObjReference.immuneIcon;
-
-        //TODO:
-        //Add callback for when immunity finishes
     }
 
+    public IEnumerator DelayCallback(float duration, UnityAction callback)
+    {
+        yield return new WaitForSeconds(duration);
+        if (callback != null)
+        {
+            callback.Invoke();
+        }
+    }
+    
 }

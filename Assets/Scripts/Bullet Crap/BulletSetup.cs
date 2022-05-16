@@ -75,7 +75,6 @@ public class BulletSetup : ScriptableObject
         }
         else
         {
-            damage = damage;
             return damageIndicatorType.normieDamage;
         }
     }
