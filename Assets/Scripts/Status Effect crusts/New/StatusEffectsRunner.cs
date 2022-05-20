@@ -11,6 +11,8 @@ using Priority_Queue;
 //This script handles running a specific status effect (single) ASSUMING it passed all the checks in order to apply an effect.
 public class StatusEffectsRunner : MonoBehaviour
 {
+    
+
     //Variables Section
     public StatusEffectsScriptObj scriptableObjReference;
     public Image statusEffectImage; //The actual image component, NOT the visible sprite
@@ -18,8 +20,9 @@ public class StatusEffectsRunner : MonoBehaviour
     AtlasAnimator atlasAnimatorRef;
     ScriptMachine scriptMachineRef;
     StatusEffectsCustomFunctionality customFunctionalityRef;
-    SimplePriorityQueue<StatusEffectsScriptObj> statusEffectQueue;
-
+    SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue;
+    private const int effectCountdown = 1;
+    
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
     {
         
@@ -80,7 +83,8 @@ public class StatusEffectsRunner : MonoBehaviour
             }
             customFunctionalityRef.enabled = true;
         }
-        StartCoroutine(DelayCallback(duration, callback));
+        statusEffectQueue.Enqueue(new StatusEffectsExtras(1, duration, 1), 1); //CHANGE LATER
+        StartCoroutine(RunStatusEffect(callback));
     }
 
     public void OnDisable()
@@ -115,5 +119,38 @@ public class StatusEffectsRunner : MonoBehaviour
             callback.Invoke();
         }
     }
-    
+
+    public IEnumerator RunStatusEffect(UnityAction callback)
+    {
+        while(statusEffectQueue.Count != 0)
+        {
+            var currentEffect = statusEffectQueue.First;
+            
+            while (currentEffect.duration > 0)
+            {
+               //TO DO:
+               //Invoke the run effect function
+               currentEffect.duration -= effectCountdown;
+               yield return new WaitForSeconds(effectCountdown);
+               currentEffect = statusEffectQueue.First;
+                
+            }
+            statusEffectQueue.Dequeue();
+        }
+        callback.Invoke();
+        
+    }
+}
+
+public class StatusEffectsExtras
+{
+    public int potency;
+    public float duration;
+    public int effectsStacked; //may be used?
+    public StatusEffectsExtras(int potency, float duration, int stack = 1)
+    {
+        this.potency = potency;
+        this.duration = duration;
+        this.effectsStacked = stack;
+    }
 }
