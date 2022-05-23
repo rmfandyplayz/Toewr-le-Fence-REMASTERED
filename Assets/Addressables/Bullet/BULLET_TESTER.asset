@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539a4fcd48e94c64d94ec80a93d3cb90, type: 3}
+  m_Name: BULLET_TESTER
+  m_EditorClassIdentifier: 
+  bulletSprite: {fileID: 0}
+  particlePrefab: {fileID: 0}
+  exposionPrefab: {fileID: 0}
+  speed: 50
+  bulletDamage:
+    name: Upgradable
+    baseValue: 1
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
+  followTarget: 1
+  hasParticles: 0
+  stopMoving: 0
+  explodes: 0
+  explosionRadius: 0
+  explosionDamagePercent: 50
+  statusEffects: []
+  upgrades: 
+  canDealDankDmg: 0
+  _dankDmgChance:
+    name: Upgradable
+    baseValue: 0
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
+  dankDmgMultiplier: 0
+  canDealSurrealDmg: 0
+  _surrealDmgChance:
+    name: Upgradable
+    baseValue: 0
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
+  surrealDmgMultiplier: 0
+  canDealNoscopeDmg: 0
+  _noscopeDmgChance:
+    name: Upgradable
+    baseValue: 0
+    upgradeEfficiency: 0
+    maxUpgradeLevel: 0
+    startingPrice: 0
+    priceIncrease: 0
+  noscopeDmg: Infinity

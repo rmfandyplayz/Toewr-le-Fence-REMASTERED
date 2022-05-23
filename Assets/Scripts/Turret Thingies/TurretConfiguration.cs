@@ -31,6 +31,14 @@ public class TurretConfiguration : MonoBehaviour
         InitUpgrade();      
     }
 
+    [SerializeField] bool initOnAwake = false;
+    void Awake(){
+        if(initOnAwake)
+        {
+            Initialize(true);
+        }
+    }
+
     public void AddTarget(GameObject possibleTarget)
     {
         attackType.AddTargetToList(possibleTarget);

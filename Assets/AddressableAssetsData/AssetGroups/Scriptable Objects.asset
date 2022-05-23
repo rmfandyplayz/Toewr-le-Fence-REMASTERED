@@ -23,48 +23,56 @@ MonoBehaviour:
     m_SerializedLabels:
     - Enemy
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 042b127033ab2274598261c081569e9e
     m_Address: 6-10
     m_ReadOnly: 0
     m_SerializedLabels:
     - Wave_Info_Stuff
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 05c86d59ae170be48b0aa7b66efb053a
     m_Address: Testing Fade Tween
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tween_Animations
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 351afa86ca8b71d4e9b208774f5270cf
     m_Address: Tank
     m_ReadOnly: 0
     m_SerializedLabels:
     - Enemy
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55a57a73045ea3d41a139254cd6ee564
     m_Address: Machine Gun
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tower
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 07c474fe7868e1141853061422d1e16a
     m_Address: 1-5
     m_ReadOnly: 0
     m_SerializedLabels:
     - Wave_Info_Stuff
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 37904f7ebc1270b438f55e31105e008e
     m_Address: Testing Fill Tween
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tween_Animations
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48b585c22eb3253468beb5c093255c61
     m_Address: Machine Gun Bullet
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bullet
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48da7cee8bae31d4eac183d451e4019d
     m_Address: Boss - Normal
     m_ReadOnly: 0
@@ -72,66 +80,98 @@ MonoBehaviour:
     - Boss_Enemies
     - Enemy
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 88e08c2e0bc9bad4abb85661e36ee276
     m_Address: 11-20
     m_ReadOnly: 0
     m_SerializedLabels:
     - Wave_Info_Stuff
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a53811927597ba46950e2fe9c529ea8
     m_Address: Testing Moving
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tween_Animations
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: faa940984b2049c4488a9bae85427662
     m_Address: Fast
     m_ReadOnly: 0
     m_SerializedLabels:
     - Enemy
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b61adfee895e444bb8c6597c9f912ac
     m_Address: Testing Immediate Fade Tween
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tween_Animations
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3cce6f6dcbd7b98449a83c6217b07679
     m_Address: Test Melee Turret
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tower
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a36c7713564719b4db98bb2e37608272
     m_Address: Testing1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Category_Tabs
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5edce0b4d133c404aa9f0f30069db3db
     m_Address: Testing2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Category_Tabs
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c15d84f0b5c8a44eb1381968e0fd699
     m_Address: Testing Status Effect
     m_ReadOnly: 0
     m_SerializedLabels:
     - Status_Effects
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fdcace342ef686a41ad091284a713a2c
     m_Address: Testing Monitor Open
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tween_Animations
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d9069ae53c6429745942ef3f56f28d69
     m_Address: Testing Dissolve
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tween_Animations
     - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04c1640412fac4c9f8e7e15165d5db1b
+    m_Address: TURRET_TESTER
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Tower
+    - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94ec1d748bf6e46148d71895c4789635
+    m_Address: BULLET_TESTER
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Bullet
+    - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41ae3689098fd465e8e0b56883d2f097
+    m_Address: ENEMY_TESTER
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Enemy
+    - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 67a89d1c636694f08a0667bb9f1d9515, type: 2}
   m_SchemaSet:

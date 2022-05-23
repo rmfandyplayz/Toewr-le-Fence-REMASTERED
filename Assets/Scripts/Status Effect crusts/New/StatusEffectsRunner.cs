@@ -130,6 +130,12 @@ public class StatusEffectsRunner : MonoBehaviour
             {
                //TO DO:
                //Invoke the run effect function
+               if (scriptableObjReference.useNormalScripting){
+                   customFunctionalityRef.RunEffect(currentEffect.potency);
+               }
+               else {
+                   // Invoke run effect for visual scripting custom functionality
+               }
                currentEffect.duration -= effectCountdown;
                yield return new WaitForSeconds(effectCountdown);
                currentEffect = statusEffectQueue.First;

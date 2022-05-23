@@ -15,6 +15,7 @@ public class PathMovement : MonoBehaviour {
 
     public UnityEvent OnPathFinished;
     bool pathFinished = false;
+    [SerializeField] bool pathWillLoop = false;
 
     public void ApplySlow(float efficiency)
     {
@@ -55,9 +56,16 @@ public class PathMovement : MonoBehaviour {
                 targetIndex++;
                 if (targetIndex == path.nodes.Count)
                 {
-                    pathFinished = true;
-                    OnPathFinished?.Invoke();
-                    return;
+                    if(pathWillLoop)
+                    {
+                        targetIndex = 1;
+                    }
+                    else
+                    {                    
+                        pathFinished = true;
+                        OnPathFinished?.Invoke();
+                        return;
+                    }
                 }
                 previousPos = Vector3.positiveInfinity;
                 UpdateSpeed();
