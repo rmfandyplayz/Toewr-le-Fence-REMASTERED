@@ -41,7 +41,7 @@ public class StatusEffectsManager : MonoBehaviour
 
     public bool hasImmunity(StatusEffectsScriptObj statusScriptObj) => enemySetup.permanentImmunities.Contains(statusScriptObj) || temporaryImmuneList.Contains(statusScriptObj);
     
-    //May use later. Currently has no use.
+    //May use later. Currently has no use. ---
     public void ApplyTemporaryStatusEffect(StatusEffectsInfoCarry infoCarry)
     {
         if (hasImmunity(infoCarry.statusEffect) == true)
@@ -52,12 +52,23 @@ public class StatusEffectsManager : MonoBehaviour
         effect.transform.SetParent(statusEffectSpriteHolder.transform);
         effect.GetComponent<StatusEffectsRunner>().InitializeEffect(infoCarry.statusEffect, this.gameObject);
     }
+    //---
 
     public void ApplyTemporaryStatusEffect_NoCheck(StatusEffectsInfoCarry infoCarry)
     {
+        foreach(StatusEffectsRunner statusEffect in statusEffectsList)
+        {
+            if (statusEffect.scriptableObjReference == infoCarry.statusEffect)
+            {
+                statusEffect.ApplyStatusEffect(infoCarry.duration, null);
+                return;
+            }
+        }
         GameObject effect = ObjectPooling.GetGameObject(statusEffectPrefab);
+        Debug.LogError(infoCarry + " Info carry");
         effect.transform.SetParent(statusEffectSpriteHolder.transform);
         effect.GetComponent<StatusEffectsRunner>().InitializeEffect(infoCarry.statusEffect, this.gameObject);
+        statusEffectsList.Add(effect.GetComponent<StatusEffectsRunner>());
     }
 
     public void ApplyTemporaryImmunity(StatusEffectsInfoCarry infoCarry)

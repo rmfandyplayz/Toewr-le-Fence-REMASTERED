@@ -20,7 +20,7 @@ public class StatusEffectsRunner : MonoBehaviour
     AtlasAnimator atlasAnimatorRef;
     ScriptMachine scriptMachineRef;
     StatusEffectsCustomFunctionality customFunctionalityRef;
-    SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue;
+    SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue = new SimplePriorityQueue<StatusEffectsExtras>();
     private const int effectCountdown = 1;
     
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
@@ -56,7 +56,7 @@ public class StatusEffectsRunner : MonoBehaviour
         //Add callback for when status effect finishes
     }
 
-    private void ApplyStatusEffect(float duration, UnityAction callback)
+    public void ApplyStatusEffect(float duration, UnityAction callback)
     {
         if (atlasAnimatorRef && scriptableObjReference.isAnimatedActiveIcon == true)
         {
@@ -73,13 +73,13 @@ public class StatusEffectsRunner : MonoBehaviour
         }
         else
         {
-            if (this.GetComponent(scriptableObjReference.customFunctionality_Script.GetType()) is StatusEffectsCustomFunctionality customFunc)
+            if (this.GetComponent(scriptableObjReference.customFunctionality_Script.Type) is StatusEffectsCustomFunctionality customFunc)
             {
                 customFunctionalityRef = customFunc;
             }
             else
             {
-                customFunctionalityRef = this.gameObject.AddComponent(scriptableObjReference.customFunctionality_Script.GetType()) as StatusEffectsCustomFunctionality;
+                customFunctionalityRef = this.gameObject.AddComponent(scriptableObjReference.customFunctionality_Script.Type) as StatusEffectsCustomFunctionality;
             }
             customFunctionalityRef.enabled = true;
         }
@@ -128,23 +128,17 @@ public class StatusEffectsRunner : MonoBehaviour
             
             while (currentEffect.duration > 0)
             {
-               //TO DO:
-               //Invoke the run effect function
-               if (scriptableObjReference.useNormalScripting){
-                   customFunctionalityRef.RunEffect(currentEffect.potency);
-               }
-               else {
-                   // Invoke run effect for visual scripting custom functionality
-               }
-               currentEffect.duration -= effectCountdown;
-               yield return new WaitForSeconds(effectCountdown);
-               currentEffect = statusEffectQueue.First;
-                
+               if(scriptableObjReference.useNormalScripting == true)
+                {
+                    currentEffect.duration -= effectCountdown;
+                    customFunctionalityRef.RunEffect(currentEffect.potency);
+                }
+                yield return new WaitForSeconds(effectCountdown);
+                currentEffect = statusEffectQueue.First;
             }
             statusEffectQueue.Dequeue();
         }
         callback.Invoke();
-        
     }
 }
 

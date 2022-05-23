@@ -17,12 +17,12 @@ MonoBehaviour:
   animatedActiveIcon: {fileID: 0}
   activeIconTexture: {fileID: 0}
   animationSpeed: 0
-  activeIcon: {fileID: 0}
-  immuneIcon: {fileID: 0}
-  permanentImmuneIcon: {fileID: 0}
+  activeIcon: {fileID: 21300000, guid: e016567711276c94bbadadcb9818c840, type: 3}
+  immuneIcon: {fileID: 21300000, guid: 2060c9532ebff0742b19906e235d794f, type: 3}
+  permanentImmuneIcon: {fileID: 21300000, guid: b290d507b78630f459e0a77c6b5d7d0e, type: 3}
   effectDuration: 0
   canBeStacked: 0
-  useNormalScripting: 0
+  useNormalScripting: 1
   customFunctionality_Visual: {fileID: 0}
   customFunctionality_Script:
     classReference: TestingFunctionality, Assembly-CSharp
