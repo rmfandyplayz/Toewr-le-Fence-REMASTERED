@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 413559753401205981}
   - component: {fileID: 3064558860349760786}
   - component: {fileID: 1706211157489817158}
+  - component: {fileID: 318160578731031162}
   m_Layer: 6
   m_Name: Status Effects Canvas
   m_TagString: Untagged
@@ -101,6 +102,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &318160578731031162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198124609725142161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 1687804957210966688}
+  tweeningScriptObj: {fileID: 11400000, guid: 4b61adfee895e444bb8c6597c9f912ac, type: 2}
+  applyTweenToChildren: 1
 --- !u!1 &509633357104319374
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +467,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  pathWillLoop: 0
 --- !u!114 &7368970891079477917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,6 +973,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8800154705062399812}
+        m_TargetAssemblyTypeName: CaptureDynamicValue, Assembly-CSharp
+        m_MethodName: RunTweenDefault
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3333472414726377827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,6 +1134,7 @@ GameObject:
   - component: {fileID: 7667031392254117243}
   - component: {fileID: 4258486783094786945}
   - component: {fileID: 7481907598429468621}
+  - component: {fileID: 8800154705062399812}
   m_Layer: 6
   m_Name: StatusEffects
   m_TagString: Untagged
@@ -1187,6 +1217,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   calls: 0
+--- !u!114 &8800154705062399812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687804957210966688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 1687804957210966688}
+  tweeningScriptObj: {fileID: 11400000, guid: 4b61adfee895e444bb8c6597c9f912ac, type: 2}
+  applyTweenToChildren: 1
 --- !u!1 &3103351826025689982
 GameObject:
   m_ObjectHideFlags: 0

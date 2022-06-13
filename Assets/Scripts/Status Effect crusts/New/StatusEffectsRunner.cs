@@ -138,7 +138,9 @@ public class StatusEffectsRunner : MonoBehaviour
             }
             statusEffectQueue.Dequeue();
         }
-        callback.Invoke();
+        if(callback != null){
+            callback.Invoke();
+        }
     }
 }
 

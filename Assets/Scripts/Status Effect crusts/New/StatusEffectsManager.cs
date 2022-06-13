@@ -39,7 +39,7 @@ public class StatusEffectsManager : MonoBehaviour
         immunity.GetComponent<StatusEffectsRunner>().InitializePermanentImmunitiy(statusEffect);
     }
 
-    public bool hasImmunity(StatusEffectsScriptObj statusScriptObj) => enemySetup.permanentImmunities.Contains(statusScriptObj) || temporaryImmuneList.Contains(statusScriptObj);
+    public bool hasImmunity(StatusEffectsScriptObj statusScriptObj) =>(enemySetup.permanentImmunities?.Contains(statusScriptObj) ?? false)|| (temporaryImmuneList?.Contains(statusScriptObj) ?? false);
     
     //May use later. Currently has no use. ---
     public void ApplyTemporaryStatusEffect(StatusEffectsInfoCarry infoCarry)
