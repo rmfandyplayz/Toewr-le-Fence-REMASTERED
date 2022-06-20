@@ -12,7 +12,7 @@ public class StatusEffectsManager : MonoBehaviour
     List<StatusEffectsRunner> statusEffectsList = new List<StatusEffectsRunner>();
     List<StatusEffectsScriptObj> temporaryImmuneList = new List<StatusEffectsScriptObj>();
     public GameObject statusEffectPrefab;
-    EnemySetup enemySetup;
+    public EnemySetup enemySetup;
     [SerializeField] GameObject statusEffectSpriteHolder;
 
     //Might expand: A variable to hold which state of status effect the enemy is in.
@@ -39,7 +39,16 @@ public class StatusEffectsManager : MonoBehaviour
         immunity.GetComponent<StatusEffectsRunner>().InitializePermanentImmunitiy(statusEffect);
     }
 
-    public bool hasImmunity(StatusEffectsScriptObj statusScriptObj) =>(enemySetup.permanentImmunities?.Contains(statusScriptObj) ?? false)|| (temporaryImmuneList?.Contains(statusScriptObj) ?? false);
+    public bool hasImmunity(StatusEffectsScriptObj statusScriptObj)
+    {
+        if(enemySetup == null)
+        {
+            enemySetup = GetComponentInParent<EnemyController>().escript;
+            Debug.LogError("Enemy Setup:", enemySetup);
+        }
+        return (enemySetup.permanentImmunities?.Contains(statusScriptObj) ?? false) || (temporaryImmuneList?.Contains(statusScriptObj) ?? false);
+    }
+    
     
     //May use later. Currently has no use. ---
     public void ApplyTemporaryStatusEffect(StatusEffectsInfoCarry infoCarry)
@@ -99,7 +108,7 @@ public class StatusEffectsManager : MonoBehaviour
 
     public void ReorderList()
     {
-        
+        //Do sometime later!
     }
 
 }
