@@ -17,7 +17,7 @@ public class SpawningManagement : MonoBehaviour
     public static GameObject SpawnEnemy(WaveObjects wave, GameObject enemyPrefab, Polyline path, int startingIndex, float startDelay, Vector3 pos)
     {
         int enemyChoice = Random.Range(0, wave.nonBossEnemies.Count);
-        GameObject Enemy = Instantiate(enemyPrefab);
+        GameObject Enemy = ObjectPooling.GetGameObject(enemyPrefab);
         var enemy = Enemy.GetComponentInChildren<EnemyController>();
         var enemyPath = Enemy.GetComponent<PathMovement>();
 

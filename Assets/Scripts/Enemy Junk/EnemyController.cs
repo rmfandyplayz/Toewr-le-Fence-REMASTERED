@@ -53,11 +53,11 @@ public class EnemyController : MonoBehaviour
         {
             GoldManager.instance?.AddGold(escript.dropMoneyAmount);
             ScoreManager.scoreManager?.AddScore(escript.scoreValue);
-            Destroy(this.gameObject);
+            ObjectPooling.ReturnObject(this.gameObject);
         }
         
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         this.gameObject.CancelAllTweens();
     }

@@ -21,7 +21,6 @@ public class StatusEffectsScriptObj : ScriptableObject
     public float effectDuration;
     public bool canBeStacked;
 
-
     [Header("Custom Functionality")]
     public bool useNormalScripting = false;
     [ShowIf(nameof(useNormalScripting), false)] public ScriptGraphAsset customFunctionality_Visual;

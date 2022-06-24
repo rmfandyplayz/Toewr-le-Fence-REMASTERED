@@ -22,13 +22,13 @@ public class StatusEffectsRunner : MonoBehaviour
     StatusEffectsCustomFunctionality customFunctionalityRef;
     SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue = new SimplePriorityQueue<StatusEffectsExtras>();
     private const int effectCountdown = 1;
+    public int effectWeight = 0;
     
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
-    {
-        
-        
+    {   
         this.scriptableObjReference = scriptableObjReference;
         this.targetToApply = target;
+        
         if(scriptableObjReference.isAnimatedActiveIcon == true)
         {
             if (atlasAnimatorRef == null)
@@ -45,18 +45,12 @@ public class StatusEffectsRunner : MonoBehaviour
 
     public void InitializePermanentImmunitiy(StatusEffectsScriptObj scriptObjRef)
     {
+        effectWeight = 12;
         scriptableObjReference = scriptObjRef;
         statusEffectImage.sprite = scriptableObjReference.permanentImmuneIcon;
     }
 
-    public void OnEnable() //Passed the if check, this function handles the running of the status effect
-    {
-        ApplyStatusEffect(0, null);
-        //TODO
-        //Add callback for when status effect finishes
-    }
-
-    public void ApplyStatusEffect(float duration, UnityAction callback)
+    public void ApplyStatusEffect(StatusEffectsInfoCarry infoCarry, UnityAction callback)
     {
         if (atlasAnimatorRef && scriptableObjReference.isAnimatedActiveIcon == true)
         {
@@ -83,17 +77,19 @@ public class StatusEffectsRunner : MonoBehaviour
             }
             customFunctionalityRef.enabled = true;
         }
-        statusEffectQueue.Enqueue(new StatusEffectsExtras(1, duration, 1), 1); //CHANGE LATER
-        StartCoroutine(RunStatusEffect(callback));
-    }
+        statusEffectQueue.Enqueue(new StatusEffectsExtras(infoCarry.tier, infoCarry.duration, 1), infoCarry.tier); //CHANGE LATER
+        effectWeight = statusEffectQueue.First.potency;
+        
 
-    public void OnDisable()
-    {
-        StartImmunity(0, null);
+        if(callback != null)
+        {
+            StartCoroutine(RunStatusEffect(callback));
+        }
     }
     
     public void StartImmunity(float duration, UnityAction callback)
     {
+        effectWeight = 11;
         if (atlasAnimatorRef != null)
         {
             atlasAnimatorRef.enabled = false;
@@ -125,7 +121,8 @@ public class StatusEffectsRunner : MonoBehaviour
         while(statusEffectQueue.Count != 0)
         {
             var currentEffect = statusEffectQueue.First;
-            
+            effectWeight = currentEffect.potency;
+
             while (currentEffect.duration > 0)
             {
                if(scriptableObjReference.useNormalScripting == true)
@@ -145,6 +142,7 @@ public class StatusEffectsRunner : MonoBehaviour
 }
 
 public class StatusEffectsExtras
+//This class contains the information for the effect when running it.
 {
     public int potency;
     public float duration;

@@ -23,12 +23,17 @@ public class StatusEffectsManager : MonoBehaviour
 
     private void Start()
     {
-        enemySetup = GetComponent<EnemyController>().escript;
+        enemySetup = GetComponentInParent<EnemyController>().escript;
 
         foreach (StatusEffectsScriptObj statusEffect in enemySetup.permanentImmunities)
         {
             ApplyPermanentImmunity(statusEffect); //When the enemy spawns, apply any permanent immunities specified.
         }
+    }
+
+    private void OnDisable()
+    {
+        enemySetup = null;
     }
 
     public void ApplyPermanentImmunity(StatusEffectsScriptObj statusEffect)
@@ -49,7 +54,6 @@ public class StatusEffectsManager : MonoBehaviour
         return (enemySetup.permanentImmunities?.Contains(statusScriptObj) ?? false) || (temporaryImmuneList?.Contains(statusScriptObj) ?? false);
     }
     
-    
     //May use later. Currently has no use. ---
     public void ApplyTemporaryStatusEffect(StatusEffectsInfoCarry infoCarry)
     {
@@ -61,23 +65,28 @@ public class StatusEffectsManager : MonoBehaviour
         effect.transform.SetParent(statusEffectSpriteHolder.transform);
         effect.GetComponent<StatusEffectsRunner>().InitializeEffect(infoCarry.statusEffect, this.gameObject);
     }
-    //---
+    //--- Prob won't use
 
     public void ApplyTemporaryStatusEffect_NoCheck(StatusEffectsInfoCarry infoCarry)
     {
+        //If there is an existing running status effect, add time
         foreach(StatusEffectsRunner statusEffect in statusEffectsList)
         {
             if (statusEffect.scriptableObjReference == infoCarry.statusEffect)
             {
-                statusEffect.ApplyStatusEffect(infoCarry.duration, null);
+                statusEffect.ApplyStatusEffect(infoCarry, null);
                 return;
             }
         }
+
+        //If not, make a new one
         GameObject effect = ObjectPooling.GetGameObject(statusEffectPrefab);
         Debug.LogError(infoCarry + " Info carry");
         effect.transform.SetParent(statusEffectSpriteHolder.transform);
-        effect.GetComponent<StatusEffectsRunner>().InitializeEffect(infoCarry.statusEffect, this.gameObject);
-        statusEffectsList.Add(effect.GetComponent<StatusEffectsRunner>());
+        StatusEffectsRunner statusEffectsRunner = effect.GetComponent<StatusEffectsRunner>();
+        statusEffectsRunner.InitializeEffect(infoCarry.statusEffect, this.gameObject);
+        statusEffectsList.Add(statusEffectsRunner);
+        statusEffectsRunner.ApplyStatusEffect(infoCarry, callback: () => { ApplyTemporaryImmunity(infoCarry); });
     }
 
     public void ApplyTemporaryImmunity(StatusEffectsInfoCarry infoCarry)
@@ -108,7 +117,22 @@ public class StatusEffectsManager : MonoBehaviour
 
     public void ReorderList()
     {
-        //Do sometime later!
+        //Skip the count of permanent immunities. Don't reshuffle them
+        //
+
+        /*
+        We have a list of temporary immunities and a list of active ones.
+        Reorder the visible child objects under the manager (StatusEffects object in the scene)
+        */
+
+        foreach(Transform child in this.transform)
+        {
+            child.gameObject.transform.SetSiblingIndex(0);
+        }
+
+        //We can shuffle the temporary immunities independent from the active immunities.
+        //We also need to keep track of the index number.
+
     }
 
 }

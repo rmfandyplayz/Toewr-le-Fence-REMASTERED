@@ -19,8 +19,9 @@ MonoBehaviour:
   maxShields: 0
   scoreValue: 1
   dropMoneyAmount: 1
-  hasPermanentImmunities: 0
-  permanentImmunities: []
+  hasPermanentImmunities: 1
+  permanentImmunities:
+  - {fileID: 11400000, guid: 0c15d84f0b5c8a44eb1381968e0fd699, type: 2}
   isBossEnemy: 0
   boxShapedSpawningPattern: 0
   maxEnemies2Spawn: 0

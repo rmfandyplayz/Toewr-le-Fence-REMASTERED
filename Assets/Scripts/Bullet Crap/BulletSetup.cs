@@ -83,6 +83,7 @@ public class BulletSetup : ScriptableObject
 
 [System.Serializable]
 public class StatusEffectsInfoCarry
+//This class contains the status effects from the bullet to the StatusEffectManager
 {
     [InLineEditor] public StatusEffectsScriptObj statusEffect;
     [HideIf(nameof(statusEffect), false)] public float chance;
