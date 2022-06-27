@@ -11,7 +11,16 @@ using Priority_Queue;
 //This script handles running a specific status effect (single) ASSUMING it passed all the checks in order to apply an effect.
 public class StatusEffectsRunner : MonoBehaviour
 {
-    
+    //TODO
+    /*
+    Make it so there is a red badge on the top right corner of the status effect icon showing the total number of stacked effects (capped at 99. will show "99+" after. If there is only a single stack, don't show anything
+    Also make it so there is a different badge on the bottom left corner of the status effect icon showing the maximum current tier the status effect is running. Also make it so if it's tier 1 nothing shows up.
+
+    Investigate new bug with immunity after deactivation.
+    */
+    // ***
+
+
 
     //Variables Section
     public StatusEffectsScriptObj scriptableObjReference;

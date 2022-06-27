@@ -30,10 +30,14 @@ MonoBehaviour:
   explosionRadius: 0
   explosionDamagePercent: 50
   statusEffects:
-  - statusEffect: {fileID: 11400000, guid: 0c15d84f0b5c8a44eb1381968e0fd699, type: 2}
+  - statusEffect: {fileID: 11400000, guid: 2a834d8263f7b834ba2edffb2f75dee8, type: 2}
     chance: 100
-    duration: 10
+    duration: 2
     tier: 1
+  - statusEffect: {fileID: 11400000, guid: 7f762fbb8ff2af941b8febe0bd4daa40, type: 2}
+    chance: 100
+    duration: 2
+    tier: 2
   upgrades: 
   canDealDankDmg: 0
   _dankDmgChance:

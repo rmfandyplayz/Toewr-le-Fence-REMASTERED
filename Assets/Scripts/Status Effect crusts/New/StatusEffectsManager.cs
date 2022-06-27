@@ -40,8 +40,11 @@ public class StatusEffectsManager : MonoBehaviour
     {
         //Applies any permanent immunities for the enemy when it spawns, if there is any.
         GameObject immunity = ObjectPooling.GetGameObject(statusEffectPrefab);
+        var immuneGetComp = immunity.GetComponent<StatusEffectsRunner>();
+        immuneGetComp.InitializePermanentImmunitiy(statusEffect);
         immunity.transform.SetParent(statusEffectSpriteHolder.transform);
-        immunity.GetComponent<StatusEffectsRunner>().InitializePermanentImmunitiy(statusEffect);
+        
+        statusEffectsList.Add(immuneGetComp);
     }
 
     public bool hasImmunity(StatusEffectsScriptObj statusScriptObj)
@@ -87,6 +90,7 @@ public class StatusEffectsManager : MonoBehaviour
         statusEffectsRunner.InitializeEffect(infoCarry.statusEffect, this.gameObject);
         statusEffectsList.Add(statusEffectsRunner);
         statusEffectsRunner.ApplyStatusEffect(infoCarry, callback: () => { ApplyTemporaryImmunity(infoCarry); });
+        ReorderEffectsList();
     }
 
     public void ApplyTemporaryImmunity(StatusEffectsInfoCarry infoCarry)
@@ -100,6 +104,7 @@ public class StatusEffectsManager : MonoBehaviour
                 break;
             }
         }
+        ReorderEffectsList();
     }
 
     public void DeactivateStatusEffect(StatusEffectsInfoCarry infoCarry) //Returns status effect to object pool for it to be reused.
@@ -113,9 +118,10 @@ public class StatusEffectsManager : MonoBehaviour
                 break;
             }
         }
+        ReorderEffectsList();
     }
 
-    public void ReorderList()
+    public void ReorderEffectsList()
     {
         //Skip the count of permanent immunities. Don't reshuffle them
         //
@@ -125,15 +131,28 @@ public class StatusEffectsManager : MonoBehaviour
         Reorder the visible child objects under the manager (StatusEffects object in the scene)
         */
 
+        /*
         foreach(Transform child in this.transform)
         {
             child.gameObject.transform.SetSiblingIndex(0);
+            
+        }
+        */
+
+        
+        statusEffectsList.Sort((x, y) => { return y.effectWeight - x.effectWeight; });
+        //Lambda function: x and y are any two StatusEffectRunner's that are being compared. 
+        for (int i = enemySetup.permanentImmunities.Count; i < statusEffectsList.Count; i++)
+        {
+            statusEffectsList[i].gameObject.transform.SetSiblingIndex(i);
         }
 
         //We can shuffle the temporary immunities independent from the active immunities.
         //We also need to keep track of the index number.
 
     }
+
+    
 
 }
 /*

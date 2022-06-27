@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce7a773119d04d4f8c3760db590d091, type: 3}
+  m_Name: Testing Status Effect 2
+  m_EditorClassIdentifier: 
+  statusName: Testing3
+  isAnimatedActiveIcon: 0
+  animatedActiveIcon: {fileID: 0}
+  activeIconTexture: {fileID: 0}
+  animationSpeed: 0
+  activeIcon: {fileID: 21300000, guid: f7ddc776b5d491f4ca70799e7c759ad4, type: 3}
+  immuneIcon: {fileID: 21300000, guid: 5d2abcefaf7d10244b28207c188a8e07, type: 3}
+  permanentImmuneIcon: {fileID: 21300000, guid: 8102e4dd861cf8e4f9f58e15890bf3b9, type: 3}
+  effectDuration: 0
+  canBeStacked: 0
+  useNormalScripting: 1
+  customFunctionality_Visual: {fileID: 0}
+  customFunctionality_Script:
+    classReference: TestingFunctionality, Assembly-CSharp
+  note: "\r\n    To add custom functionality (for a normal C# script, not visual
+    script):\r\n    \u2022 Create a new class, name it anything you want\r\n    \u2022
+    Inherit from StatusEffectsCustomFunctionality\r\n    \u2022 Override run functionalitites.\r\n    "
