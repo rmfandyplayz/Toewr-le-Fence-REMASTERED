@@ -155,8 +155,9 @@ MonoBehaviour:
   nodes:
   - {x: -2, y: 1, z: 0}
   - {x: 2, y: 1, z: 0}
-  - {x: 2, y: -4.4523873, z: 0}
-  - {x: -2, y: -4.4523873, z: 0}
+  - {x: 2, y: -2.0152175, z: 0}
+  - {x: 2, y: -3.2692318, z: 0}
+  - {x: -2, y: -3.2692318, z: 0}
   - {x: -2, y: 1, z: 0}
 --- !u!4 &187888316
 Transform:
@@ -708,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c2712ddc05e4e439563f108ac4be29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   path: {fileID: 187888315}
   enemyUpdating: 1
   OnPathFinished:

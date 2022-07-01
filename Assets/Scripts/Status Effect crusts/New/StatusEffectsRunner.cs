@@ -137,7 +137,7 @@ public class StatusEffectsRunner : MonoBehaviour
                if(scriptableObjReference.useNormalScripting == true)
                 {
                     currentEffect.duration -= effectCountdown;
-                    customFunctionalityRef.RunEffect(currentEffect.potency);
+                    customFunctionalityRef.RunEffect(currentEffect.potency, targetToApply);
                 }
                 yield return new WaitForSeconds(effectCountdown);
                 currentEffect = statusEffectQueue.First;

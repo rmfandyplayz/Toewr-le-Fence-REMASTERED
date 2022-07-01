@@ -147,6 +147,11 @@ public class TweeningHelper
     [Tooltip("Choose the type of animation."), ShowIf(nameof(toggleOptionsVisibility), true)]
     public Ease ease;
 
+    [Tooltip("Makes it so this animation block can be resetted to another animation.")]
+    public bool canBeInterrupted;
+
+    //TODO: Add the ability to reset to a certain element (index)
+
     [Tooltip("Treat amountValue as a speed value instead of a time value."), ShowIf(nameof(toggleOptionsVisibility), true)] public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
 
     [Tooltip("Prevents values from being hardcoded and makes it flexible. Some scenarios where you would use this include healthbars, which could change. Hardcoding a healthbar does not make sense."), ShowIf(nameof(toggleOptionsVisibility), true)] 

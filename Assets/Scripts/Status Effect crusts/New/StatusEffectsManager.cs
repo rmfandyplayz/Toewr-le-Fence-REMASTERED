@@ -83,8 +83,7 @@ public class StatusEffectsManager : MonoBehaviour
         }
 
         //If not, make a new one
-        GameObject effect = ObjectPooling.GetGameObject(statusEffectPrefab);
-        Debug.LogError(infoCarry + " Info carry");
+        GameObject effect = ObjectPooling.GetGameObject(statusEffectPrefab, statusEffectSpriteHolder.transform);
         effect.transform.SetParent(statusEffectSpriteHolder.transform);
         StatusEffectsRunner statusEffectsRunner = effect.GetComponent<StatusEffectsRunner>();
         statusEffectsRunner.InitializeEffect(infoCarry.statusEffect, this.gameObject);
@@ -114,7 +113,9 @@ public class StatusEffectsManager : MonoBehaviour
         {
             if (effect.scriptableObjReference == infoCarry.statusEffect)
             {
+                //Debug.Log(effect.gameObject);
                 ObjectPooling.ReturnObject(effect.gameObject);
+                statusEffectsList.Remove(effect);
                 break;
             }
         }

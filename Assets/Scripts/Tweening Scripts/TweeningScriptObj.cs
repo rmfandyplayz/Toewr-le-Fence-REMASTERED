@@ -7,6 +7,7 @@ using Platinio;
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
 {
+    
     private static readonly SerializedDictionary<string, System.Type> validTweenTargets = new SerializedDictionary<string, System.Type>
     {
         {

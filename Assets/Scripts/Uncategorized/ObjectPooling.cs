@@ -15,10 +15,10 @@ public class ObjectPooling : MonoBehaviour
         }
     }
 
-    public GameObject NewObject(GameObject prefab)
+    public GameObject NewObject(GameObject prefab, Transform parent = null)
     {
         GameObject newObj = Instantiate(prefab);
-        newObj.transform.SetParent(this.transform);
+        newObj.transform.SetParent(parent != null ? parent : this.transform);
         newObj.name = prefab.name;
         return newObj;
     }
@@ -43,11 +43,12 @@ public class ObjectPooling : MonoBehaviour
         }
         objPoolReference.objectPool.Add(prefabObject.name, objectList);
     }
-    
-    public static GameObject GetGameObject(GameObject prefab)
+
+    public static GameObject GetGameObject(GameObject prefab, Transform parent = null)
     {
         if(objPoolReference == null)
         {
+            Debug.Log(prefab);
             return Instantiate(prefab);
         }
         List<GameObject> list;
@@ -57,11 +58,15 @@ public class ObjectPooling : MonoBehaviour
             obj = list[list.Count-1];
             list.RemoveAt(list.Count - 1);
             obj.SetActive(true);
+            if (parent != null)
+            {
+                obj.transform.SetParent(parent);
+            }
             return obj;
         }
         else
         {
-            return objPoolReference.NewObject(prefab);
+            return objPoolReference.NewObject(prefab, parent);
         }
     }
 
@@ -83,5 +88,6 @@ public class ObjectPooling : MonoBehaviour
             objPoolReference.objectPool.Add(prefab.name, objectList);
         }
         prefab.SetActive(false);
+        prefab.transform.SetParent(objPoolReference.transform);
     }
 }

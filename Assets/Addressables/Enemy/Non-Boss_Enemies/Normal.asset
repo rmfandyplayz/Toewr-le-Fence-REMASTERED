@@ -19,6 +19,14 @@ MonoBehaviour:
   maxShields: 0
   scoreValue: 1
   dropMoneyAmount: 1
+  hasPermanentImmunities: 0
+  permanentImmunities: []
   isBossEnemy: 0
+  boxShapedSpawningPattern: 0
   maxEnemies2Spawn: 0
+  firstEnemyOrGroupSpawnDelay: 0
+  enemySpawnFreezeDuration: 0
   enemySpawnDelay: 0
+  enemySpawnGroupSize: 0
+  minimumBoxSpawnRadius: {x: 0, y: 0}
+  maximumBoxSpawnRadius: {x: 0, y: 0}
