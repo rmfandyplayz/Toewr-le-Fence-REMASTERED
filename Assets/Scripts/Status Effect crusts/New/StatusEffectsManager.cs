@@ -99,7 +99,7 @@ public class StatusEffectsManager : MonoBehaviour
         {
             if (effect.scriptableObjReference == infoCarry.statusEffect)
             {
-                effect.StartImmunity(infoCarry.duration, () => { DeactivateStatusEffect(infoCarry); });
+                effect.StartImmunity(() => { DeactivateStatusEffect(infoCarry); });
                 break;
             }
         }

@@ -13,5 +13,15 @@ public abstract class StatusEffectsCustomFunctionality : MonoBehaviour
         //Debug.LogError($"Potency - {potency}, from StatusEffectsCustomFunctionality (Script)");
     }
 
+    public virtual void StartEffect(GameObject target)
+    {
+        
+    }
+
+    public virtual void FinishEffect(GameObject target)
+    {
+        
+    }
+
     //TODO: Add a mechanism to get the current highest potency of the effects list.
 }

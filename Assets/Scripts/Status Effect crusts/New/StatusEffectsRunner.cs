@@ -32,6 +32,7 @@ public class StatusEffectsRunner : MonoBehaviour
     SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue = new SimplePriorityQueue<StatusEffectsExtras>();
     private const int effectCountdown = 1;
     public int effectWeight = 0;
+    private float accumulateImmunity; //the total amount of time accumulated in the effect immunity timer
     
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
     {   
@@ -96,7 +97,7 @@ public class StatusEffectsRunner : MonoBehaviour
         }
     }
     
-    public void StartImmunity(float duration, UnityAction callback)
+    public void StartImmunity(UnityAction callback)
     {
         effectWeight = 11;
         if (atlasAnimatorRef != null)
@@ -112,7 +113,7 @@ public class StatusEffectsRunner : MonoBehaviour
             customFunctionalityRef.enabled = false;
         }
         //Show immunity: change image
-        StartCoroutine(DelayCallback(duration, callback));
+        StartCoroutine(DelayCallback(accumulateImmunity, callback));
         statusEffectImage.sprite = scriptableObjReference.immuneIcon;
     }
 
@@ -127,11 +128,12 @@ public class StatusEffectsRunner : MonoBehaviour
 
     public IEnumerator RunStatusEffect(UnityAction callback)
     {
-        while(statusEffectQueue.Count != 0)
+        accumulateImmunity = 0;
+        customFunctionalityRef.StartEffect(targetToApply);
+        while (statusEffectQueue.Count != 0)
         {
             var currentEffect = statusEffectQueue.First;
             effectWeight = currentEffect.potency;
-
             while (currentEffect.duration > 0)
             {
                if(scriptableObjReference.useNormalScripting == true)
@@ -140,10 +142,12 @@ public class StatusEffectsRunner : MonoBehaviour
                     customFunctionalityRef.RunEffect(currentEffect.potency, targetToApply);
                 }
                 yield return new WaitForSeconds(effectCountdown);
+                accumulateImmunity += effectCountdown;
                 currentEffect = statusEffectQueue.First;
             }
             statusEffectQueue.Dequeue();
         }
+        customFunctionalityRef.FinishEffect(targetToApply);
         if(callback != null){
             callback.Invoke();
         }
