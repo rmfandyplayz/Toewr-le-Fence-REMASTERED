@@ -25,7 +25,7 @@ MonoBehaviour:
     priceIncrease: 0
   fireRate:
     name: Upgradable
-    baseValue: 1
+    baseValue: 1.5
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0

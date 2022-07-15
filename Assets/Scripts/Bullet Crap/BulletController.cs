@@ -97,6 +97,7 @@ public class BulletController : MonoBehaviour
                 if (RNG.Chance(effects.chance) && effectManager.hasImmunity(effects.statusEffect) == false)
                 {
                     effectManager.ApplyTemporaryStatusEffect_NoCheck(effects);
+                    Debug.LogError($"{effects.statusEffect} has been applied");
                 }
             }
         }

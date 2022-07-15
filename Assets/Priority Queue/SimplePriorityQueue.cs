@@ -11,7 +11,7 @@ namespace Priority_Queue
     /// </summary>
     /// <typeparam name="TItem">The type to enqueue</typeparam>
     /// <typeparam name="TPriority">The priority-type to use for nodes.  Must extend IComparable&lt;TPriority&gt;</typeparam>
-    public class SimplePriorityQueue<TItem, TPriority> : IPriorityQueue<TItem, TPriority>
+    [System.Serializable] public class SimplePriorityQueue<TItem, TPriority> : IPriorityQueue<TItem, TPriority>
     {
         private class SimpleNode : GenericPriorityQueueNode<TPriority>
         {
@@ -565,7 +565,7 @@ namespace Priority_Queue
     /// This class is kept here for backwards compatibility.  It's recommended you use SimplePriorityQueue&lt;TItem, TPriority&gt;
     /// </summary>
     /// <typeparam name="TItem">The type to enqueue</typeparam>
-    public class SimplePriorityQueue<TItem> : SimplePriorityQueue<TItem, float>
+    [System.Serializable] public class SimplePriorityQueue<TItem> : SimplePriorityQueue<TItem, float>
     {
         /// <summary>
         /// Instantiate a new Priority Queue
