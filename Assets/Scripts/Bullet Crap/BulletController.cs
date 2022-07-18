@@ -92,13 +92,26 @@ public class BulletController : MonoBehaviour
         }
         if(collision.gameObject.GetComponentInChildren<StatusEffectsManager>() is StatusEffectsManager effectManager)
         {
+            List<StatusEffectsInfoCarry> tempEffectList = new List<StatusEffectsInfoCarry>(); //Stores all the effects that passes the RNG check to check for the highest tier
             foreach (var effects in bscript.statusEffects)
             {
                 if (RNG.Chance(effects.chance) && effectManager.hasImmunity(effects.statusEffect) == false)
                 {
-                    effectManager.ApplyTemporaryStatusEffect_NoCheck(effects);
-                    Debug.LogError($"{effects.statusEffect} has been applied");
+                    int index = tempEffectList.FindIndex(effectsInfo => effectsInfo.statusEffect == effects.statusEffect);
+                    if (index == -1)
+                    {
+                        tempEffectList.Add(effects);
+                    }
+                    else if (tempEffectList[index].tier < effects.tier)
+                    {
+                        tempEffectList[index] = effects;
+                    }
                 }
+            }
+            foreach(var effect in tempEffectList)
+            {
+                effectManager.ApplyTemporaryStatusEffect_NoCheck(effect);
+                Debug.LogError($"{effect.statusEffect} has been applied");
             }
         }
     }

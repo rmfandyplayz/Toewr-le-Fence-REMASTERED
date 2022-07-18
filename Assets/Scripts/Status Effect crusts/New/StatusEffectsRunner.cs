@@ -109,7 +109,7 @@ public class StatusEffectsRunner : MonoBehaviour
             }
             customFunctionalityRef.enabled = true;
         }
-        statusEffectQueue.Enqueue(new StatusEffectsExtras(infoCarry.tier, infoCarry.duration, 1), infoCarry.tier); //CHANGE LATER
+        statusEffectQueue.Enqueue(new StatusEffectsExtras(infoCarry.tier, infoCarry.duration, 1), -infoCarry.tier); //CHANGE LATER
         effectWeight = statusEffectQueue.First.potency;
 
 
