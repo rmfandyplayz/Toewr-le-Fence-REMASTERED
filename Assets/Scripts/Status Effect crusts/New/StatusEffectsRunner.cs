@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using Toolbox;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 using Priority_Queue;
 using TMPro;
 
@@ -30,7 +29,6 @@ public class StatusEffectsRunner : MonoBehaviour
     public TextMeshProUGUI stackText;
     GameObject targetToApply;
     AtlasAnimator atlasAnimatorRef;
-    ScriptMachine scriptMachineRef;
     StatusEffectsCustomFunctionality customFunctionalityRef;
     [SerializeField] SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue = new SimplePriorityQueue<StatusEffectsExtras>();
 
@@ -88,27 +86,15 @@ public class StatusEffectsRunner : MonoBehaviour
         {
             atlasAnimatorRef.enabled = true;
         }
-        if (scriptableObjReference.useNormalScripting == false)
+        if (this.GetComponent(scriptableObjReference.customFunctionality.Type) is StatusEffectsCustomFunctionality customFunc)
         {
-            if (scriptMachineRef == null)
-            {
-                scriptMachineRef = GetComponent<ScriptMachine>();
-            }
-            scriptMachineRef.graphData = scriptableObjReference.customFunctionality_Visual.graph.CreateData();
-            scriptMachineRef.enabled = true;
+            customFunctionalityRef = customFunc;
         }
         else
         {
-            if (this.GetComponent(scriptableObjReference.customFunctionality_Script.Type) is StatusEffectsCustomFunctionality customFunc)
-            {
-                customFunctionalityRef = customFunc;
-            }
-            else
-            {
-                customFunctionalityRef = this.gameObject.AddComponent(scriptableObjReference.customFunctionality_Script.Type) as StatusEffectsCustomFunctionality;
-            }
-            customFunctionalityRef.enabled = true;
+            customFunctionalityRef = this.gameObject.AddComponent(scriptableObjReference.customFunctionality.Type) as StatusEffectsCustomFunctionality;
         }
+        customFunctionalityRef.enabled = true;
         statusEffectQueue.Enqueue(new StatusEffectsExtras(infoCarry.tier, infoCarry.duration, 1), -infoCarry.tier); //CHANGE LATER
         effectWeight = statusEffectQueue.First.potency;
 
@@ -130,10 +116,6 @@ public class StatusEffectsRunner : MonoBehaviour
         if (atlasAnimatorRef != null)
         {
             atlasAnimatorRef.enabled = false;
-        }
-        if (scriptMachineRef != null)
-        {
-            scriptMachineRef.enabled = false;
         }
         if (customFunctionalityRef != null)
         {
@@ -165,11 +147,8 @@ public class StatusEffectsRunner : MonoBehaviour
             effectWeight = currentEffect.potency;
             while (currentEffect.duration > 0)
             {
-                if (scriptableObjReference.useNormalScripting == true)
-                {
-                    currentEffect.duration -= effectCountdown;
-                    customFunctionalityRef.RunEffect(currentEffect.potency, targetToApply);
-                }
+                currentEffect.duration -= effectCountdown;
+                customFunctionalityRef.RunEffect(currentEffect.potency, targetToApply);
                 if(statusEffectQueue.Count <= 1)
                 {
                     stackText.transform.parent.gameObject.SetActive(false);

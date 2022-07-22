@@ -9,7 +9,7 @@ public class BulletController : MonoBehaviour
     private Camera main;
     public SerializedDictionary<TypeOfUpgrade, int> upgradesCounter;
     public int getCounter(TypeOfUpgrade upgradeName) => upgradesCounter.ContainsKey(upgradeName) ? upgradesCounter[upgradeName] : 0;
-
+     
     void Start()
     {
         main = Camera.main;
