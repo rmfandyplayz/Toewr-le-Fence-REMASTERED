@@ -46,7 +46,7 @@ MonoBehaviour:
   firepointPositionRotation: []
   upgrades: 
   turretType:
-    classReference: Melee, Assembly-CSharp
+    classReference: Melee, Scripts
   meeleTurretPrefab: {fileID: 1962478162291070552, guid: 70a3a5944d4a94bcb8287f7494d26469, type: 3}
   idleAnimation: {fileID: 7400000, guid: 8c2bbf5ee254c4e038e7bd894838e09c, type: 2}
   attackAnimation: {fileID: 7400000, guid: c8c451d11ef7342eb8e521915325acf3, type: 2}

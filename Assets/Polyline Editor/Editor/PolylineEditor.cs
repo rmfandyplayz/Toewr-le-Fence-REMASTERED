@@ -117,7 +117,7 @@ public class PolylineEditor : Editor
         {
             Vector3 pos = polyline.transform.TransformPoint(polyline.nodes[i]);
             float handleSize = HandleUtility.GetHandleSize(pos);
-            Vector3 newPos = Handles.FreeMoveHandle(pos, Quaternion.identity, handleSize * 0.09f, Vector3.one, HandleFunc);
+            var fmh_120_58_637943610203874358 = Quaternion.identity; Vector3 newPos = Handles.FreeMoveHandle(pos, handleSize * 0.09f, Vector3.one, HandleFunc);
             if (newPos != pos)
             {
                 CheckAlignment(worldPoints, handleSize * 0.1f, i, ref newPos);

@@ -11,7 +11,7 @@ public class BuyTurretScript : MonoBehaviour
     private static GameObject turret = null;
     private TurretSpriteHandler tsh;
     private bool isDragging = false;
-    private Camera camera;
+    private Camera camClickDetect;
     private TurretSettings stns;
 
     public UnityEvent OnClickBuyButton;
@@ -21,7 +21,7 @@ public class BuyTurretScript : MonoBehaviour
 
     void Start() 
     {
-        camera = Camera.main;
+        camClickDetect = Camera.main;
     }
 
     // void Update()
@@ -76,7 +76,7 @@ public class BuyTurretScript : MonoBehaviour
         while(isDragging)
          {
 
-            turret.transform.position = camera.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10;
+            turret.transform.position = camClickDetect.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 10;
             if(!tsh.CheckIfHitObstacles() && Input.GetKey(placeTurretKey))
             {
                 isDragging = false;

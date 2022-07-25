@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7367653604898599653}
   - component: {fileID: -4713708004452191021}
+  - component: {fileID: 7528879870953369904}
   m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
@@ -245,7 +246,7 @@ RectTransform:
   - {fileID: 1991108887746677349}
   - {fileID: 8587670358528089373}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -268,7 +269,23 @@ MonoBehaviour:
   statusEffectImage: {fileID: 2774113923712509508}
   tierText: {fileID: 7623490905864053950}
   stackText: {fileID: 5774561424607978304}
+  sTE: []
   effectWeight: 0
+--- !u!114 &7528879870953369904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667519121632339281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 3667519121632339281}
+  tweeningScriptObj: {fileID: 11400000, guid: ad37f9385acb9ae40a4ec75ba8690506, type: 2}
+  applyTweenToChildren: 0
 --- !u!1 &7176371745758817953
 GameObject:
   m_ObjectHideFlags: 0

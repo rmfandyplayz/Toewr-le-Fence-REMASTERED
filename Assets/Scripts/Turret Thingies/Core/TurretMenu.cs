@@ -7,7 +7,6 @@ public class TurretMenu : MonoBehaviour
     [SerializeField] private float height = 0.05f;
     [SerializeField] private RectTransform canvas = null;
     [SerializeField] private RectTransform turretSelect = null; //previously turretSelect
-    [SerializeField] private RectTransform turretButton = null; //previously turretButton
     [SerializeField] private float time = 1.0f;
     [SerializeField] private Ease ease = Ease.Linear;
     private Vector2 startPosition = Vector2.zero;

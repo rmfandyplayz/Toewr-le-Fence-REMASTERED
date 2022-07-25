@@ -30,7 +30,7 @@ public class TurretButtonInitializing : MonoBehaviour
     [ShowIf(nameof(isAnimated), true), NewLabel("Place your animated sprite here")] public AtlasAnimator animatedSprite;
 
     [Header("Extra Button Attributes")]
-    [SerializeField, NewLabel("Is the button on cooldown?")] private bool isButtonOnCooldown = false;
+    [SerializeField, NewLabel("Is the button on cooldown?")] private bool isButtonOnCooldown = false; //Don't delete - Will be used in the future
 
     // Functions Section
 
@@ -45,6 +45,7 @@ public class TurretButtonInitializing : MonoBehaviour
         attackCooldownText.text = turretSettings.fireRate.GetBaseValue.ToString();
         deployCooldownText.text = turretSettings.deploymentCooldown.ToString(); //May be updated later
         turretIcon.sprite = turretSettings.turretSprite;
+        isButtonOnCooldown = false;
     }
 
 }

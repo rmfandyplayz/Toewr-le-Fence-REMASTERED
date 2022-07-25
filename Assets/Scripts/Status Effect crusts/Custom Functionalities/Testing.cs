@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Testing : StatusEffectsCustomFunctionality
 {
-    public override void RunEffect(int potency, GameObject target)
+    public override void OnEffectUpdate(int potency, GameObject target)
     {
         target.GetComponentInParent<EnemyController>().TakeDamage(2 * potency, damageIndicatorType.dankDamage);
     }

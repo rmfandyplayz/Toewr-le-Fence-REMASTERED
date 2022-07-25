@@ -10,7 +10,6 @@ public class TurretConfiguration : MonoBehaviour
     public SerializedDictionary<TypeOfUpgrade, UpgradeCounterInfo> upgradesCounter;
     public List<Transform> firePointList = new List<Transform>();
     private GameObject currentTarget;
-    private bool isOnCooldown = false;
     public TurretSpriteHandler spriteHolder; 
     public TurretRangeHandler rangeHolder; 
     private TurretAttackType attackType;
@@ -134,7 +133,7 @@ public class UpgradeCounterInfo
     [SerializeField] string name = "";
     [SerializeField] int counter = 0;
     [SerializeField] UpgradableType upgradable;
-    [SerializeField] int maxCounter = 0;
+    
     public string Name {
         get{
             return name;

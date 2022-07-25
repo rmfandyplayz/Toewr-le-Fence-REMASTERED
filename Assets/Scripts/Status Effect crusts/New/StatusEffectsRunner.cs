@@ -140,7 +140,7 @@ public class StatusEffectsRunner : MonoBehaviour
     public IEnumerator RunStatusEffect(UnityAction callback)
     {
         accumulateImmunity = 0;
-        customFunctionalityRef.StartEffect(targetToApply);
+        customFunctionalityRef.OnEffectStart(targetToApply);
         while (statusEffectQueue.Count != 0)
         {
             var currentEffect = statusEffectQueue.First;
@@ -148,7 +148,7 @@ public class StatusEffectsRunner : MonoBehaviour
             while (currentEffect.duration > 0)
             {
                 currentEffect.duration -= effectCountdown;
-                customFunctionalityRef.RunEffect(currentEffect.potency, targetToApply);
+                customFunctionalityRef.OnEffectUpdate(currentEffect.potency, targetToApply);
                 if(statusEffectQueue.Count <= 1)
                 {
                     stackText.transform.parent.gameObject.SetActive(false);
@@ -174,7 +174,7 @@ public class StatusEffectsRunner : MonoBehaviour
             }
             statusEffectQueue.Remove(currentEffect);
         }
-        customFunctionalityRef.FinishEffect(targetToApply);
+        customFunctionalityRef.OnEffectEnd(targetToApply);
         if (callback != null)
         {
             callback.Invoke();
