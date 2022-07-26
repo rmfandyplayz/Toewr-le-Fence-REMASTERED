@@ -29,11 +29,7 @@ MonoBehaviour:
   explodes: 0
   explosionRadius: 0
   explosionDamagePercent: 0
-  statusEffects:
-  - statusEffect: {fileID: 11400000, guid: 0c15d84f0b5c8a44eb1381968e0fd699, type: 2}
-    chance: 0
-    duration: 0
-    tier: 0
+  statusEffects: []
   upgrades: 
   canDealDankDmg: 1
   _dankDmgChance:

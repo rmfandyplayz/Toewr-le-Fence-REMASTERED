@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Toolbox;
 
-public class CaptureDynamicValue : MonoBehaviour
+public class RunTween : MonoBehaviour
 {
 	//Variables section. Try to use [Header("[text]")] to organize the code.
 	[SerializeField, NotNull] private Object objectToTween;

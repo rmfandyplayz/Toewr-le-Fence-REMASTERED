@@ -265,12 +265,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83371ddeee053b24a9cad97211f3d891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptableObjReference: {fileID: 0}
+  scriptableObjReference: {fileID: 11400000, guid: 2a834d8263f7b834ba2edffb2f75dee8, type: 2}
   statusEffectImage: {fileID: 2774113923712509508}
   tierText: {fileID: 7623490905864053950}
   stackText: {fileID: 5774561424607978304}
-  sTE: []
   effectWeight: 0
+  OnEffectStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7528879870953369904}
+        m_TargetAssemblyTypeName: RunTween, Scripts
+        m_MethodName: RunTweenDefault
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTransitionToImmunity:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEffectEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7528879870953369904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToTween: {fileID: 3667519121632339281}
-  tweeningScriptObj: {fileID: 11400000, guid: ad37f9385acb9ae40a4ec75ba8690506, type: 2}
+  tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
   applyTweenToChildren: 0
 --- !u!1 &7176371745758817953
 GameObject:
@@ -429,7 +449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99+
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d67c5f5e33b8b943bfa01fee1a78d6a, type: 2}
   m_sharedMaterial: {fileID: -4705270201027337040, guid: 2d67c5f5e33b8b943bfa01fee1a78d6a, type: 2}
@@ -456,7 +476,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.45
+  m_fontSize: 20.05
   m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1

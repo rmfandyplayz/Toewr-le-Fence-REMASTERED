@@ -19,7 +19,7 @@ MonoBehaviour:
   maxShields: 0
   scoreValue: 1
   dropMoneyAmount: 1
-  hasPermanentImmunities: 1
+  hasPermanentImmunities: 0
   permanentImmunities: []
   isBossEnemy: 0
   boxShapedSpawningPattern: 0

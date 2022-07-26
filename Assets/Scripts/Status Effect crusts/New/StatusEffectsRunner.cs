@@ -11,17 +11,6 @@ using TMPro;
 //This script handles running a specific status effect (single) ASSUMING it passed all the checks in order to apply an effect.
 public class StatusEffectsRunner : MonoBehaviour
 {
-    //TODO
-    /*
-    Make it so there is a red badge on the top right corner of the status effect icon showing the total number of stacked effects (capped at 99. will show "99+" after. If there is only a single stack, don't show anything
-    Also make it so there is a different badge on the bottom left corner of the status effect icon showing the maximum current tier the status effect is running. Also make it so if it's tier 1 nothing shows up.
-
-    Investigate new bug with immunity after deactivation.
-    */
-    // ***
-
-
-
     //Variables Section
     public StatusEffectsScriptObj scriptableObjReference;
     public Image statusEffectImage; //The actual image component, NOT the visible sprite
@@ -31,13 +20,11 @@ public class StatusEffectsRunner : MonoBehaviour
     AtlasAnimator atlasAnimatorRef;
     StatusEffectsCustomFunctionality customFunctionalityRef;
     [SerializeField] SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue = new SimplePriorityQueue<StatusEffectsExtras>();
-
-    //TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!! TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!!TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!!TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!!TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!!
-    public List<StatusEffectsExtras> sTE = new List<StatusEffectsExtras>();
-    
-
     private const int effectCountdown = 1;
     public int effectWeight = 0;
+    public UnityEvent OnEffectStart;
+    public UnityEvent OnTransitionToImmunity;
+    public UnityEvent OnEffectEnd;
     private float accumulateImmunity; //the total amount of time accumulated in the effect immunity timer
 
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
@@ -59,16 +46,6 @@ public class StatusEffectsRunner : MonoBehaviour
         }
         tierText.transform.parent.gameObject.SetActive(true);
         stackText.transform.parent.gameObject.SetActive(true);
-    }
-
-    //WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!WORKS!
-    private void Update()
-    {
-        sTE.Clear();
-        foreach (var item in statusEffectQueue)
-        {
-            sTE.Add(item);
-        }
     }
 
     public void InitializePermanentImmunitiy(StatusEffectsScriptObj scriptObjRef)

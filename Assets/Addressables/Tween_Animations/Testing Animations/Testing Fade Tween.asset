@@ -42,7 +42,7 @@ MonoBehaviour:
     useDynamicValue: 0
     useRelativeValue: 1
     runNextTweenImmediately: 0
-    _amountValue: 3
+    _amountValue: 0.5
     defaultTarget:
       dynamicValue: {x: 1, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 8
@@ -52,16 +52,16 @@ MonoBehaviour:
     useDynamicValue: 0
     useRelativeValue: 1
     runNextTweenImmediately: 0
-    _amountValue: 0.4
+    _amountValue: 3
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 0
     ease: 21
-    canBeInterrupted: 0
+    canBeInterrupted: 1
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
-    _amountValue: 3
+    _amountValue: 1
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
