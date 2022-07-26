@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using UnityEngine;
-using Toolbox;
-using UnityEngine.UI;
 using Priority_Queue;
+using System.Collections;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 //This script handles running a specific status effect (single) ASSUMING it passed all the checks in order to apply an effect.
 public class StatusEffectsRunner : MonoBehaviour
@@ -22,9 +19,9 @@ public class StatusEffectsRunner : MonoBehaviour
     [SerializeField] SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue = new SimplePriorityQueue<StatusEffectsExtras>();
     private const int effectCountdown = 1;
     public int effectWeight = 0;
-    public UnityEvent OnEffectStart;
+    public UnityEvent OnEffectStart; //Different from the OnEffectStart found in StatusEffectsCustomFunctionality
     public UnityEvent OnTransitionToImmunity;
-    public UnityEvent OnEffectEnd;
+    public UnityEvent OnEffectEnd; //Different from the OnEffectEnd found in StatusEffectsCustomFunctionality
     private float accumulateImmunity; //the total amount of time accumulated in the effect immunity timer
 
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
@@ -83,7 +80,7 @@ public class StatusEffectsRunner : MonoBehaviour
         }
         stackText.text = statusEffectQueue.Count.ToString();
         tierText.text = ConvertRomanNumeral();
-        
+
         Debug.LogWarning(statusEffectQueue.Count); //DEBUG DELETE LATER ????????????????????????????????????????????????????
     }
 
@@ -103,6 +100,7 @@ public class StatusEffectsRunner : MonoBehaviour
         stackText.transform.parent.gameObject.SetActive(false);
         StartCoroutine(DelayCallback(accumulateImmunity, callback));
         statusEffectImage.sprite = scriptableObjReference.immuneIcon;
+        OnTransitionToImmunity.Invoke();
     }
 
     public IEnumerator DelayCallback(float duration, UnityAction callback)
@@ -111,6 +109,7 @@ public class StatusEffectsRunner : MonoBehaviour
         if (callback != null)
         {
             callback.Invoke();
+            OnEffectEnd.Invoke();
         }
     }
 
@@ -126,7 +125,7 @@ public class StatusEffectsRunner : MonoBehaviour
             {
                 currentEffect.duration -= effectCountdown;
                 customFunctionalityRef.OnEffectUpdate(currentEffect.potency, targetToApply);
-                if(statusEffectQueue.Count <= 1)
+                if (statusEffectQueue.Count <= 1)
                 {
                     stackText.transform.parent.gameObject.SetActive(false);
                 }
@@ -134,7 +133,7 @@ public class StatusEffectsRunner : MonoBehaviour
                 {
                     stackText.transform.parent.gameObject.SetActive(true);
                 }
-                if(effectWeight <= 1)
+                if (effectWeight <= 1)
                 {
                     tierText.transform.parent.gameObject.SetActive(false);
                 }
@@ -152,6 +151,7 @@ public class StatusEffectsRunner : MonoBehaviour
             statusEffectQueue.Remove(currentEffect);
         }
         customFunctionalityRef.OnEffectEnd(targetToApply);
+        OnEffectEnd.Invoke();
         if (callback != null)
         {
             callback.Invoke();
@@ -178,7 +178,8 @@ public class StatusEffectsRunner : MonoBehaviour
     }
 }
 
-[System.Serializable] public class StatusEffectsExtras
+[System.Serializable]
+public class StatusEffectsExtras
 //This class contains the information for the effect when running it.
 {
     public int potency;

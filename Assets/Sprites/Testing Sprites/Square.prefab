@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToTween: {fileID: 3667519121632339281}
-  tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
+  tweeningScriptObj: {fileID: 11400000, guid: ad37f9385acb9ae40a4ec75ba8690506, type: 2}
   applyTweenToChildren: 0
 --- !u!1 &7176371745758817953
 GameObject:

@@ -35,6 +35,4 @@ public abstract class StatusEffectsCustomFunctionality : MonoBehaviour
     {
         
     }
-
-    //TODO: Add a mechanism to get the current highest potency of the effects list.
 }
