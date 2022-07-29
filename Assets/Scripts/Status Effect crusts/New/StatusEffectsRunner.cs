@@ -23,6 +23,12 @@ public class StatusEffectsRunner : MonoBehaviour
     public UnityEvent OnTransitionToImmunity;
     public UnityEvent OnEffectEnd; //Different from the OnEffectEnd found in StatusEffectsCustomFunctionality
     private float accumulateImmunity; //the total amount of time accumulated in the effect immunity timer
+    [SerializeField] private int stackCount = 0;
+
+    private void Update()
+    {
+        stackCount = statusEffectQueue.Count;
+    }
 
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
     {
@@ -80,8 +86,6 @@ public class StatusEffectsRunner : MonoBehaviour
         }
         stackText.text = statusEffectQueue.Count.ToString();
         tierText.text = ConvertRomanNumeral();
-
-        Debug.LogWarning(statusEffectQueue.Count); //DEBUG DELETE LATER ????????????????????????????????????????????????????
     }
 
     public void StartImmunity(UnityAction callback)
@@ -117,6 +121,7 @@ public class StatusEffectsRunner : MonoBehaviour
     {
         accumulateImmunity = 0;
         customFunctionalityRef.OnEffectStart(targetToApply);
+        OnEffectStart.Invoke();
         while (statusEffectQueue.Count != 0)
         {
             var currentEffect = statusEffectQueue.First;

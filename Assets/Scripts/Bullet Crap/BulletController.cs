@@ -111,7 +111,6 @@ public class BulletController : MonoBehaviour
             foreach(var effect in tempEffectList)
             {
                 effectManager.ApplyTemporaryStatusEffect_NoCheck(effect);
-                Debug.LogError($"{effect.statusEffect} has been applied");
             }
         }
     }

@@ -13,18 +13,28 @@ MonoBehaviour:
   m_Name: SE_EffectStart
   m_EditorClassIdentifier: 
   timesToRepeat: 0
-  targetType: Image - Fade, Fill, or Color
+  targetType: Game Object - Transformations, Rotations, Scale, or Set Activation
   helpers:
+  - typeOfTweenEvent: 2
+    ease: 12
+    canBeInterrupted: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0
+    defaultTarget:
+      dynamicValue: {x: 1, y: 1, z: 1, w: 0}
   - typeOfTweenEvent: 6
     ease: 13
     canBeInterrupted: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
-    runNextTweenImmediately: 1
-    _amountValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0.01
     defaultTarget:
-      dynamicValue: {x: 0, y: 0, z: 0, w: 0}
+      dynamicValue: {x: 0.01, y: 0.01, z: 0.01, w: 0}
   - typeOfTweenEvent: 1
     ease: 0
     canBeInterrupted: 0
@@ -42,6 +52,6 @@ MonoBehaviour:
     useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
-    _amountValue: 6
+    _amountValue: 0.5
     defaultTarget:
-      dynamicValue: {x: 0.1, y: 0.1, z: 0.1, w: 0}
+      dynamicValue: {x: 5, y: 5, z: 5, w: 0}

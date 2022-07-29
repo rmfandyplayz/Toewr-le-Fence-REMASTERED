@@ -15,6 +15,16 @@ MonoBehaviour:
   timesToRepeat: 0
   targetType: Image - Fade, Fill, or Color
   helpers:
+  - typeOfTweenEvent: 9
+    ease: 21
+    canBeInterrupted: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 1
     ease: 21
     canBeInterrupted: 0
@@ -22,17 +32,17 @@ MonoBehaviour:
     useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
-    _amountValue: 1
+    _amountValue: 0
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 0
     ease: 21
-    canBeInterrupted: 1
+    canBeInterrupted: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
-    _amountValue: 0
+    _amountValue: 0.01
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 0
