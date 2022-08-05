@@ -7,7 +7,11 @@ using Platinio;
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
 {
+    /*
+    CHECK LINE 84 FOR TO DO
+
     
+    */
     private static readonly SerializedDictionary<string, System.Type> validTweenTargets = new SerializedDictionary<string, System.Type>
     {
         {
@@ -81,6 +85,7 @@ public class TweeningScriptObj : ScriptableObject
             baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease);
             if(currentHelper.runNextTweenImmediately == false)
             {
+                //Todo: Add null check for OnComplete
                 return baseTween.SetOnComplete(() => RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, currentLoop));
             }
         }

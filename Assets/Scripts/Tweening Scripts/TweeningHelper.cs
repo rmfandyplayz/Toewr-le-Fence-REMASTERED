@@ -150,6 +150,9 @@ public class TweeningHelper
     [Tooltip("Makes it so this animation block can be resetted to another animation.")]
     public bool canBeInterrupted;
 
+    [ShowIf(nameof(canBeInterrupted), true)]
+    public int gotoTweenElement = 0;
+
     //TODO: Add the ability to reset to a certain element (index)
 
     [Tooltip("Treat amountValue as a speed value instead of a time value."), ShowIf(nameof(toggleOptionsVisibility), true)] public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?

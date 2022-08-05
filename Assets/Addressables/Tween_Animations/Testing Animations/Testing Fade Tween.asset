@@ -18,6 +18,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 9
     ease: 21
     canBeInterrupted: 0
+    gotoTweenElement: 3
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
@@ -28,6 +29,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 1
     ease: 21
     canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
@@ -38,6 +40,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 0
     ease: 21
     canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
@@ -48,6 +51,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 0
     ease: 21
     canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 1
@@ -58,6 +62,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 8
     ease: 0
     canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 1
@@ -68,6 +73,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 0
     ease: 21
     canBeInterrupted: 1
+    gotoTweenElement: 3
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
