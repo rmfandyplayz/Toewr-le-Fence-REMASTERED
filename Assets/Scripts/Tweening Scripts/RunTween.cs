@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Toolbox;
+using Platinio.TweenEngine;
 
 public class RunTween : MonoBehaviour
 {
@@ -11,45 +12,56 @@ public class RunTween : MonoBehaviour
 	[SerializeField, NotNull] private Object objectToTween;
 	[SerializeField, NotNull] private TweeningScriptObj tweeningScriptObj;
 	[SerializeField] private bool applyTweenToChildren = true;
+    private TweenInformation currentRunningTween;
 	
     //FUNCTIONS SECTION
-    public void RunTweenDefault()
+    
+    void RunTweenUniversal(Tweening_Dynamic_Transfer ?dynamicTransfer)
     {
-        tweeningScriptObj.RunTweenOnObjectUsingDefaultPreset(objectToTween);
+        if(currentRunningTween != null)
+        {
+            if(tweeningScriptObj.multiType == multipleTypes.runFirstOnly)
+            {
+                return;
+            }
+            if (tweeningScriptObj.multiType == multipleTypes.runRecent)
+            {
+                PlatinioTween.instance.CancelTween(currentRunningTween.currentRunningTween);
+            }
+        }
+        currentRunningTween = tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicTransfer);
+        if(currentRunningTween != null)
+        {
+            currentRunningTween.currentRunningTween.SetOnComplete(() => Debug.LogError("Tweening has finished"));
+            Debug.LogError($"Current Running Tween is {currentRunningTween}");
+        }
         if (applyTweenToChildren)
         {
-            RunTweenOnChildren(null);
+            RunTweenOnChildren(dynamicTransfer);
         }
     }
-
-	public void RunTweenWithDynamicFloat(float dynamicFloat)
+    
+    #region Public Run Tween Default
+    public void RunTweenDefault()
+    {
+        RunTweenUniversal(null);
+    }
+    #endregion
+    
+    public void RunTweenWithDynamicFloat(float dynamicFloat)
     {
         //Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicFloat);
-        tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicFloat);
-        if (applyTweenToChildren)
-        {
-            RunTweenOnChildren(dynamicFloat);
-        }
+        RunTweenUniversal(dynamicFloat);
     }
     
     public void RunTweenWithDynamicColor(Color dynamicColor)
     {
-        Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicColor);
-        tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicValue);
-        if (applyTweenToChildren)
-        {
-            RunTweenOnChildren(dynamicValue);
-        }
+        RunTweenUniversal(dynamicColor);
     }
     
     public void RunTweenWithDynamicVector3(Vector3 dynamicVector3)
     {
-        Tweening_Dynamic_Transfer dynamicValue = new Tweening_Dynamic_Transfer(dynamicVector3);
-        tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicValue);
-        if (applyTweenToChildren)
-        {
-            RunTweenOnChildren(dynamicValue);
-        }
+        RunTweenUniversal(dynamicVector3);
     }
 
     private void RunTweenOnChildren(Tweening_Dynamic_Transfer? dynamicValue)

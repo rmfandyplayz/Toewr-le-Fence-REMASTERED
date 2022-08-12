@@ -7,11 +7,9 @@ using Platinio;
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
 {
-    /*
-    CHECK LINE 84 FOR TO DO
-
+    [Tooltip("How should multiple tweens be handled?")]
+    public multipleTypes multiType;
     
-    */
     private static readonly SerializedDictionary<string, System.Type> validTweenTargets = new SerializedDictionary<string, System.Type>
     {
         {
@@ -49,25 +47,25 @@ public class TweeningScriptObj : ScriptableObject
         RunTweenOnObjectUsingDynamicValue(checkedObject, null);
     }
 
-    public void RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue)
+    public TweenInformation RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue)
     {
         if(checkedObject == null || !validTweenTargets.TryGetValue(targetType, out var checkedType) || checkedObject.GetType() != checkedType)
         {
-            return;
+            return null;
         }
         else
         {
-            RunTweenOnObj(checkedObject, dynamicValue);
+            return RunTweenOnObj(checkedObject, dynamicValue);
         }
     } //Verifies that the object passed in is supported
 
-    public Platinio.TweenEngine.BaseTween RunTweenOnObj(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue, int currentIndex = 0, float delay = 0, int currentLoop = 0)
+    public TweenInformation RunTweenOnObj(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue, int currentIndex = 0, float delay = 0, int currentLoop = 0)
     {
         currentIndex = Mathf.Max(0, currentIndex);
 
         if (currentIndex >= helpers.Count)
         {
-            if(currentLoop == timesToRepeat)
+            if (currentLoop == timesToRepeat)
             {
                 return null;
             }
@@ -80,21 +78,34 @@ public class TweeningScriptObj : ScriptableObject
 
         var currentHelper = helpers[currentIndex];
 
-        if(currentHelper.getTween(checkedObject, dynamicValue) is BaseTween baseTween)
+        if (currentHelper.getTween(checkedObject, dynamicValue) is BaseTween baseTween)
         {
             baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease);
-            if(currentHelper.runNextTweenImmediately == false)
+            if (currentHelper.runNextTweenImmediately == false)
             {
-                //Todo: Add null check for OnComplete
-                return baseTween.SetOnComplete(() => RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, currentLoop));
+                return new TweenInformation
+                {
+                    currentRunningTween = baseTween, carryDelay = delay, currentLoop = currentLoop, nextIndex = currentIndex++
+                };
+                //return baseTween.SetOnComplete(() => RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, currentLoop));
             }
         }
         else
         {
             delay += currentHelper.amountValue;
         }
-        return RunTweenOnObj(checkedObject,dynamicValue, ++currentIndex, delay, currentLoop);
+        return RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, delay, currentLoop);
     }
+}
+
+/// <summary>
+/// This enum will represent how the runner will determine how multiple tweens should run. 
+/// </summary>
+public enum multipleTypes
+{
+    allowMultiple, //Allows multiple tweens to run at once
+    runFirstOnly, //Only run the first tween in the list
+    runRecent //Runs the most recent tween in the list
 }
 
 /*
