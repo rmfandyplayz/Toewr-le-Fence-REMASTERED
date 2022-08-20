@@ -16,9 +16,9 @@ public class RunTween : MonoBehaviour
 	
     //FUNCTIONS SECTION
     
-    void RunTweenUniversal(Tweening_Dynamic_Transfer ?dynamicTransfer)
+    void RunTweenUniversal(Tweening_Dynamic_Transfer ?dynamicTransfer, int ?varID = null)
     {
-        if(currentRunningTween != null)
+        if(currentRunningTween != null && (varID == null || varID.Value != currentRunningTween.currentRunningTween.ID))
         {
             if(tweeningScriptObj.multiType == multipleTypes.runFirstOnly)
             {
@@ -26,18 +26,25 @@ public class RunTween : MonoBehaviour
             }
             if (tweeningScriptObj.multiType == multipleTypes.runRecent)
             {
+                if (currentRunningTween.gotoIndexWhenInterrupted.HasValue)
+                {
+                    currentRunningTween.nextIndex = currentRunningTween.gotoIndexWhenInterrupted.Value;
+                }
                 PlatinioTween.instance.CancelTween(currentRunningTween.currentRunningTween);
+                currentRunningTween = null;
             }
         }
-        currentRunningTween = tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicTransfer);
+        var previousTween = currentRunningTween;
+
+        currentRunningTween = tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicTransfer, previousTween);
         if(currentRunningTween != null)
         {
-            currentRunningTween.currentRunningTween.SetOnComplete(() => Debug.LogError("Tweening has finished"));
+            currentRunningTween.currentRunningTween.SetOnComplete(() => RunTweenUniversal(dynamicTransfer, currentRunningTween.currentRunningTween.ID));
             Debug.LogError($"Current Running Tween is {currentRunningTween}");
         }
         if (applyTweenToChildren)
         {
-            RunTweenOnChildren(dynamicTransfer);
+            RunTweenOnChildren(dynamicTransfer, previousTween);
         }
     }
     
@@ -64,21 +71,21 @@ public class RunTween : MonoBehaviour
         RunTweenUniversal(dynamicVector3);
     }
 
-    private void RunTweenOnChildren(Tweening_Dynamic_Transfer? dynamicValue)
+    private void RunTweenOnChildren(Tweening_Dynamic_Transfer? dynamicValue, TweenInformation tweenInformation)
     {
         bool foundValidType = tweeningScriptObj.TryGetType(out var type);
         if (objectToTween is GameObject gameobject && foundValidType)
         {
             foreach (var children in gameobject.GetComponentsInChildren(type))
             {
-                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
+                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue, tweenInformation); //Come back later
             }
         }
         else if (objectToTween is Component component && foundValidType)
         {
             foreach (var children in component.GetComponentsInChildren(type))
             {
-                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue);
+                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue, tweenInformation); //Come back later
             }
         }
     }

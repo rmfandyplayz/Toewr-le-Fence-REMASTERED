@@ -40,18 +40,15 @@ public class TweeningScriptObj : ScriptableObject
     [ReorderableList] public List<TweeningHelper> helpers = new List<TweeningHelper>();
 
     //FUNCTIONS AREA
-
-
-    public void RunTweenOnObjectUsingDefaultPreset(Object checkedObject)
-    {
-        RunTweenOnObjectUsingDynamicValue(checkedObject, null);
-    }
-
-    public TweenInformation RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue)
+    public TweenInformation RunTweenOnObjectUsingDynamicValue(Object checkedObject, Tweening_Dynamic_Transfer? dynamicValue, TweenInformation information)
     {
         if(checkedObject == null || !validTweenTargets.TryGetValue(targetType, out var checkedType) || checkedObject.GetType() != checkedType)
         {
             return null;
+        }
+        else if(information != null)
+        {
+            return RunTweenOnObj(checkedObject, dynamicValue, information.nextIndex, information.carryDelay, information.currentLoop);
         }
         else
         {
@@ -85,7 +82,7 @@ public class TweeningScriptObj : ScriptableObject
             {
                 return new TweenInformation
                 {
-                    currentRunningTween = baseTween, carryDelay = delay, currentLoop = currentLoop, nextIndex = currentIndex++
+                    currentRunningTween = baseTween, carryDelay = delay, currentLoop = currentLoop, nextIndex = currentIndex + 1, gotoIndexWhenInterrupted = currentHelper.canBeInterrupted ? currentHelper.gotoTweenElement : null
                 };
                 //return baseTween.SetOnComplete(() => RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, currentLoop));
             }
