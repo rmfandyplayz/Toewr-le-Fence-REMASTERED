@@ -25,7 +25,7 @@ public class StatusEffectsScriptObj : ScriptableObject
 
     [ClassExtends(typeof(StatusEffectsCustomFunctionality))] public UnityEngine.SerializedType customFunctionality;
     [TextArea(minLines: 8, maxLines: 100), Disable] public string note = @"
-    To add custom functionality (for a normal C# script, not visual script):
+    To add custom functionality:
     • Create a new class, name it anything you want
     • Inherit from StatusEffectsCustomFunctionality
     • Override run functionalitites.

@@ -82,9 +82,8 @@ public class TweeningScriptObj : ScriptableObject
             {
                 return new TweenInformation
                 {
-                    currentRunningTween = baseTween, carryDelay = delay, currentLoop = currentLoop, nextIndex = currentIndex + 1, gotoIndexWhenInterrupted = currentHelper.canBeInterrupted ? currentHelper.gotoTweenElement : null
+                    currentRunningTween = baseTween, carryDelay = 0, currentLoop = currentLoop, nextIndex = currentIndex + 1, gotoIndexWhenInterrupted = currentHelper.canBeInterrupted ? currentHelper.gotoTweenElement : null
                 };
-                //return baseTween.SetOnComplete(() => RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, 0, currentLoop));
             }
         }
         else

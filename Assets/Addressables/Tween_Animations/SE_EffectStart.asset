@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
   m_Name: SE_EffectStart
   m_EditorClassIdentifier: 
+  multiType: 2
   timesToRepeat: 0
   targetType: Game Object - Transformations, Rotations, Scale, or Set Activation
   helpers:
   - typeOfTweenEvent: 2
     ease: 12
     canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
@@ -28,6 +30,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 6
     ease: 13
     canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
@@ -38,6 +41,7 @@ MonoBehaviour:
   - typeOfTweenEvent: 1
     ease: 0
     canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
@@ -46,12 +50,24 @@ MonoBehaviour:
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 6
-    ease: 12
-    canBeInterrupted: 0
+    ease: 6
+    canBeInterrupted: 1
+    gotoTweenElement: 1
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
-    _amountValue: 0.5
+    _amountValue: 0.25
     defaultTarget:
-      dynamicValue: {x: 5, y: 5, z: 5, w: 0}
+      dynamicValue: {x: 1.15, y: 1.15, z: 1.15, w: 0}
+  - typeOfTweenEvent: 10
+    ease: 6
+    canBeInterrupted: 0
+    gotoTweenElement: 1
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 0}

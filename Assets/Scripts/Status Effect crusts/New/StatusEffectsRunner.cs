@@ -19,22 +19,24 @@ public class StatusEffectsRunner : MonoBehaviour
     [SerializeField] SimplePriorityQueue<StatusEffectsExtras> statusEffectQueue = new SimplePriorityQueue<StatusEffectsExtras>();
     private const int effectCountdown = 1;
     public int effectWeight = 0;
+    private float accumulateImmunity; //the total amount of time accumulated in the effect immunity timer
     public UnityEvent OnEffectStart; //Different from the OnEffectStart found in StatusEffectsCustomFunctionality
     public UnityEvent OnTransitionToImmunity;
     public UnityEvent OnEffectEnd; //Different from the OnEffectEnd found in StatusEffectsCustomFunctionality
-    private float accumulateImmunity; //the total amount of time accumulated in the effect immunity timer
+    private IEnumerator runStatusEffectCoroutine = null; //Used to hold the coroutine RunStatusEffect
     [SerializeField] private int stackCount = 0;
 
     private void Update()
     {
         stackCount = statusEffectQueue.Count;
+        var currentEffect = statusEffectQueue.First;
+        Debug.Log($"Duration: {currentEffect.duration}");
     }
 
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
     {
         this.scriptableObjReference = scriptableObjReference;
         this.targetToApply = target;
-
         if (scriptableObjReference.isAnimatedActiveIcon == true)
         {
             if (atlasAnimatorRef == null)
@@ -78,11 +80,11 @@ public class StatusEffectsRunner : MonoBehaviour
         statusEffectQueue.Enqueue(new StatusEffectsExtras(infoCarry.tier, infoCarry.duration, 1), -infoCarry.tier); //CHANGE LATER
         effectWeight = statusEffectQueue.First.potency;
 
-
-        if (callback != null)
+        
+        if (callback != null && runStatusEffectCoroutine == null)
         {
-            Debug.LogError($"Callback ran");
-            StartCoroutine(RunStatusEffect(callback));
+            runStatusEffectCoroutine = RunStatusEffect(callback);
+            StartCoroutine(runStatusEffectCoroutine);
         }
         stackText.text = statusEffectQueue.Count.ToString();
         tierText.text = ConvertRomanNumeral();
@@ -103,6 +105,8 @@ public class StatusEffectsRunner : MonoBehaviour
         tierText.transform.parent.gameObject.SetActive(false);
         stackText.transform.parent.gameObject.SetActive(false);
         StartCoroutine(DelayCallback(accumulateImmunity, callback));
+        StopCoroutine(runStatusEffectCoroutine);
+        runStatusEffectCoroutine = null;
         statusEffectImage.sprite = scriptableObjReference.immuneIcon;
         OnTransitionToImmunity.Invoke();
     }
@@ -116,6 +120,7 @@ public class StatusEffectsRunner : MonoBehaviour
             OnEffectEnd.Invoke();
         }
     }
+
 
     public IEnumerator RunStatusEffect(UnityAction callback)
     {
@@ -148,7 +153,9 @@ public class StatusEffectsRunner : MonoBehaviour
                 }
                 stackText.text = statusEffectQueue.Count.ToString();
                 tierText.text = ConvertRomanNumeral();
-                yield return new WaitForSeconds(effectCountdown);
+                Debug.Log($"Holding ; Effect Countdown: {effectCountdown}");
+                yield return new WaitForSeconds(1); //check
+                Debug.Log($"Continue");
                 accumulateImmunity += effectCountdown;
                 currentEffect = statusEffectQueue.First;
                 effectWeight = currentEffect.potency;
@@ -161,6 +168,7 @@ public class StatusEffectsRunner : MonoBehaviour
         {
             callback.Invoke();
         }
+        Debug.LogWarning("Run StatusEffect Coroutine Finished running; From StatusEffectRunner");
     }
 
     //helper function for converting the current tier to a roman numeral

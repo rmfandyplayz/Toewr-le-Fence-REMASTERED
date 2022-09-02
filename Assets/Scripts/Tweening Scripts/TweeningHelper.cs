@@ -15,7 +15,8 @@ public enum tweenEvents
     scale,
     color,
     [Tooltip("Pauses animations")] hold, //pauses tweens
-    [Tooltip("Stops animations")] cancel //stops tweens
+    [Tooltip("Stops animations")] cancel, //stops tweens
+    debug,
 };
 
 
@@ -136,6 +137,17 @@ public class TweeningHelper
             {
                 component.gameObject.SetActive(false);
             }
+                return null; } },
+        //=========================================================================
+        {tweenEvents.debug, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
+        {
+            if(obj is GameObject gameObj)
+            {
+                Debug.Log($"Game Object: {gameObj} || From TweeningHelper"); }
+            else if(obj is Component component)
+            {
+                Debug.Log($"Component: {component} || From TweeningHelper");
+            }
                 return null; } }
      };
     private bool toggleOptionsVisibility => typeOfTweenEvent != tweenEvents.appear && typeOfTweenEvent != tweenEvents.disappear && typeOfTweenEvent != tweenEvents.cancel && typeOfTweenEvent != tweenEvents.hold;
@@ -178,7 +190,7 @@ public class TweeningHelper
     {
         var info = useDynamicValue && dynamicValue.HasValue ? dynamicValue.Value : defaultTarget; //Info is a dynamic transfer value; Making a choice between making using default or dynamic value with "?" and "&&." ? and : is basically an if statement. If first expression == true, use the thing after the question mark. Otherwise, use the thing after the colon.
 
-        if(functionSelecter.TryGetValue(typeOfTweenEvent, out var tween))
+        if(functionSelecter.TryGetValue(typeOfTweenEvent, out var tween) && tween != null)
         {
             return tween(obj, useRelativeValue, info, useSpeedValue, amountValue);
         }

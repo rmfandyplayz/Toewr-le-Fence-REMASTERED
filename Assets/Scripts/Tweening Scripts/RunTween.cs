@@ -13,6 +13,7 @@ public class RunTween : MonoBehaviour
 	[SerializeField, NotNull] private TweeningScriptObj tweeningScriptObj;
 	[SerializeField] private bool applyTweenToChildren = true;
     private TweenInformation currentRunningTween;
+    List<int> childTweenID = new List<int>();
 	
     //FUNCTIONS SECTION
     
@@ -26,12 +27,19 @@ public class RunTween : MonoBehaviour
             }
             if (tweeningScriptObj.multiType == multipleTypes.runRecent)
             {
+                PlatinioTween.instance.CancelTween(currentRunningTween.currentRunningTween);
+                foreach(int childID in childTweenID)
+                {
+                    PlatinioTween.instance.CancelTween(childID);
+                }
                 if (currentRunningTween.gotoIndexWhenInterrupted.HasValue)
                 {
                     currentRunningTween.nextIndex = currentRunningTween.gotoIndexWhenInterrupted.Value;
                 }
-                PlatinioTween.instance.CancelTween(currentRunningTween.currentRunningTween);
-                currentRunningTween = null;
+                else
+                {
+                    currentRunningTween = null;
+                }
             }
         }
         var previousTween = currentRunningTween;
@@ -40,7 +48,6 @@ public class RunTween : MonoBehaviour
         if(currentRunningTween != null)
         {
             currentRunningTween.currentRunningTween.SetOnComplete(() => RunTweenUniversal(dynamicTransfer, currentRunningTween.currentRunningTween.ID));
-            Debug.LogError($"Current Running Tween is {currentRunningTween}");
         }
         if (applyTweenToChildren)
         {
@@ -74,18 +81,27 @@ public class RunTween : MonoBehaviour
     private void RunTweenOnChildren(Tweening_Dynamic_Transfer? dynamicValue, TweenInformation tweenInformation)
     {
         bool foundValidType = tweeningScriptObj.TryGetType(out var type);
+        childTweenID.Clear();
         if (objectToTween is GameObject gameobject && foundValidType)
         {
             foreach (var children in gameobject.GetComponentsInChildren(type))
             {
-                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue, tweenInformation); //Come back later
+                var childTween = tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue, tweenInformation);
+                if(childTween != null)
+                {
+                    childTweenID.Add(childTween.currentRunningTween.ID);
+                }
             }
         }
         else if (objectToTween is Component component && foundValidType)
         {
             foreach (var children in component.GetComponentsInChildren(type))
             {
-                tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue, tweenInformation); //Come back later
+                var childTween = tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(children, dynamicValue, tweenInformation);
+                if (childTween != null)
+                {
+                    childTweenID.Add(childTween.currentRunningTween.ID);
+                }
             }
         }
     }

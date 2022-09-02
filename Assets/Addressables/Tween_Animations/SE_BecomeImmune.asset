@@ -12,6 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
   m_Name: SE_BecomeImmune
   m_EditorClassIdentifier: 
+  multiType: 0
   timesToRepeat: 0
-  targetType: 
-  helpers: []
+  targetType: Image - Fade, Fill, or Color
+  helpers:
+  - typeOfTweenEvent: 7
+    ease: 10
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 255}
+  - typeOfTweenEvent: 7
+    ease: 10
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 0}
