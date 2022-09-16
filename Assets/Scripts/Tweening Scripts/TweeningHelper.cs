@@ -3,6 +3,8 @@ using UnityEngine;
 using Platinio;
 using Platinio.TweenEngine;
 using UnityEngine.UI;
+//using System;
+using UnityEditor;
 
 public enum tweenEvents
 {
@@ -27,7 +29,7 @@ public class TweeningHelper
 > functionSelecter = new SerializedDictionary<tweenEvents, System.Func<Object, bool, Tweening_Dynamic_Transfer, bool, float, Platinio.TweenEngine.BaseTween>> //Based on tweening event type, automatically picks the correct function for the tweening event.
     {
         {tweenEvents.fade, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
-        { 
+        {
             var tweeningInfo = info.dynamicValueFloat;
             System.Func<float, float, BaseTween> function = null;
         if(obj is Image img)
@@ -119,11 +121,32 @@ public class TweeningHelper
         {
             if(obj is GameObject gameObj)
             {
-                gameObj.SetActive(true);
+                //gameObj.SetActive(true);
+                foreach(var item in gameObj.GetComponents<Component>())
+                {
+                    if(item is Image img)
+                    {
+                        img.enabled = true;
+                    }
+                    else if(item is SpriteRenderer sprite)
+                    {
+                        sprite.enabled = true;
+                    }
+                }
             }
             else if(obj is Component component)
             {
-                component.gameObject.SetActive(true);
+                foreach(var item in component.GetComponents<Component>())
+                {
+                    if(item is Image img)
+                    {
+                        img.enabled = true;
+                    }
+                    else if(item is SpriteRenderer sprite)
+                    {
+                        sprite.enabled = true;
+                    }
+                }
             }
                 return null; } },
         //=========================================================================
@@ -131,13 +154,34 @@ public class TweeningHelper
         {
             if(obj is GameObject gameObj)
             {
-                gameObj.SetActive(false);
+                //gameObj.SetActive(true);
+                foreach(var item in gameObj.GetComponents<Component>())
+                {
+                    if(item is Image img)
+                    {
+                        img.enabled = false;
+                    }
+                    else if(item is SpriteRenderer sprite)
+                    {
+                        sprite.enabled = false;
+                    }
+                }
             }
             else if(obj is Component component)
             {
-                component.gameObject.SetActive(false);
+                foreach(var item in component.GetComponents<Component>())
+                {
+                    if(item is Image img)
+                    {
+                        img.enabled = false;
+                    }
+                    else if(item is SpriteRenderer sprite)
+                    {
+                        sprite.enabled = false;
+                    }
+                }
             }
-                return null; } },
+            return null; } },
         //=========================================================================
         {tweenEvents.debug, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {

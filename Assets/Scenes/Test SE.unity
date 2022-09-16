@@ -979,6 +979,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8800154704168940094}
+        m_TargetAssemblyTypeName: RunTween, Scripts
+        m_MethodName: RunTweenDefault
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnShieldUpdate:
     m_PersistentCalls:
       m_Calls: []
@@ -989,18 +1001,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: DamageIndicatorManager, Assembly-CSharp
         m_MethodName: GenerateIndicator
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8800154704168940094}
-        m_TargetAssemblyTypeName: CaptureDynamicValue, Assembly-CSharp
-        m_MethodName: RunTweenDefault
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1393,7 +1393,6 @@ GameObject:
   - component: {fileID: 8544604522049180226}
   - component: {fileID: 7667031391377405953}
   - component: {fileID: 4258486782486476539}
-  - component: {fileID: 7481907598240631479}
   - component: {fileID: 8800154704168940094}
   - component: {fileID: 8800154704168940095}
   m_Layer: 6
@@ -1496,19 +1495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c770b37503df04e44a3986e32ca91951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7481907598240631479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687804957827336154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668098b52686ccb4b96555e295593016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  calls: 0
 --- !u!114 &7667031391377405953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,7 +1568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToTween: {fileID: 1687804957827336154}
   tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
-  applyTweenToChildren: 0
+  applyTweenToChildren: 1
 --- !u!114 &8800154704168940095
 MonoBehaviour:
   m_ObjectHideFlags: 0

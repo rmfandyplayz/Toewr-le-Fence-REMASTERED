@@ -16,17 +16,6 @@ MonoBehaviour:
   timesToRepeat: 0
   targetType: Game Object - Transformations, Rotations, Scale, or Set Activation
   helpers:
-  - typeOfTweenEvent: 2
-    ease: 12
-    canBeInterrupted: 0
-    gotoTweenElement: 0
-    useSpeedValue: 0
-    useDynamicValue: 0
-    useRelativeValue: 0
-    runNextTweenImmediately: 0
-    _amountValue: 0
-    defaultTarget:
-      dynamicValue: {x: 1, y: 1, z: 1, w: 0}
   - typeOfTweenEvent: 6
     ease: 13
     canBeInterrupted: 0
@@ -60,14 +49,3 @@ MonoBehaviour:
     _amountValue: 0.25
     defaultTarget:
       dynamicValue: {x: 1.15, y: 1.15, z: 1.15, w: 0}
-  - typeOfTweenEvent: 10
-    ease: 6
-    canBeInterrupted: 0
-    gotoTweenElement: 1
-    useSpeedValue: 0
-    useDynamicValue: 0
-    useRelativeValue: 0
-    runNextTweenImmediately: 0
-    _amountValue: 0
-    defaultTarget:
-      dynamicValue: {x: 0, y: 0, z: 0, w: 0}

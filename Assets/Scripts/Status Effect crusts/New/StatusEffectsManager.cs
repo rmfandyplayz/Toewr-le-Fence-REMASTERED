@@ -99,6 +99,7 @@ public class StatusEffectsManager : MonoBehaviour
         {
             if (effect.scriptableObjReference == infoCarry.statusEffect)
             {
+                //if there is a tween running, don't fully deactivate the effect until the tween finish running.
                 effect.StartImmunity(() => { DeactivateStatusEffect(infoCarry); });
                 break;
             }
@@ -114,6 +115,7 @@ public class StatusEffectsManager : MonoBehaviour
             if (effect.scriptableObjReference == infoCarry.statusEffect)
             {
                 //Debug.Log(effect.gameObject);
+                //Take information from the info carry. Most notably, the length of the animation so we can hold off returning the gameObject to the object pool.
                 ObjectPooling.ReturnObject(effect.gameObject);
                 statusEffectsList.Remove(effect);
                 break;

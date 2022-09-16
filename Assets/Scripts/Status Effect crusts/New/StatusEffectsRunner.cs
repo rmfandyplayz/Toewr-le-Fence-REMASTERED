@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using Priority_Queue;
 using System.Collections;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -29,8 +31,10 @@ public class StatusEffectsRunner : MonoBehaviour
     private void Update()
     {
         stackCount = statusEffectQueue.Count;
-        var currentEffect = statusEffectQueue.First;
-        Debug.Log($"Duration: {currentEffect.duration}");
+        if(statusEffectQueue.Count != 0)
+        {
+            var currentEffect = statusEffectQueue.First;
+        }
     }
 
     public void InitializeEffect(StatusEffectsScriptObj scriptableObjReference, GameObject target)
@@ -124,6 +128,9 @@ public class StatusEffectsRunner : MonoBehaviour
 
     public IEnumerator RunStatusEffect(UnityAction callback)
     {
+        //temp
+        float tempDuration = 1;
+        //temp
         accumulateImmunity = 0;
         customFunctionalityRef.OnEffectStart(targetToApply);
         OnEffectStart.Invoke();
@@ -153,9 +160,7 @@ public class StatusEffectsRunner : MonoBehaviour
                 }
                 stackText.text = statusEffectQueue.Count.ToString();
                 tierText.text = ConvertRomanNumeral();
-                Debug.Log($"Holding ; Effect Countdown: {effectCountdown}");
-                yield return new WaitForSeconds(1); //check
-                Debug.Log($"Continue");
+                yield return new WaitForSeconds(tempDuration);
                 accumulateImmunity += effectCountdown;
                 currentEffect = statusEffectQueue.First;
                 effectWeight = currentEffect.potency;
@@ -163,12 +168,10 @@ public class StatusEffectsRunner : MonoBehaviour
             statusEffectQueue.Remove(currentEffect);
         }
         customFunctionalityRef.OnEffectEnd(targetToApply);
-        OnEffectEnd.Invoke();
         if (callback != null)
         {
             callback.Invoke();
         }
-        Debug.LogWarning("Run StatusEffect Coroutine Finished running; From StatusEffectRunner");
     }
 
     //helper function for converting the current tier to a roman numeral
