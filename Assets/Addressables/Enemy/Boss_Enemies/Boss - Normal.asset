@@ -15,10 +15,12 @@ MonoBehaviour:
   enemyType: Boss - Normal
   enemySprite: {fileID: 21300000, guid: 31dd670b6470d2242afb4c18ac46f55e, type: 3}
   speed: 1
-  maxHealth: 650
+  maxHealth: 50
   maxShields: 0
   scoreValue: 10
   dropMoneyAmount: 8
+  hasPermanentImmunities: 0
+  permanentImmunities: []
   isBossEnemy: 1
   boxShapedSpawningPattern: 1
   maxEnemies2Spawn: 50

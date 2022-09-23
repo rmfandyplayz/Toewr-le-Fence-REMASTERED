@@ -32,7 +32,7 @@ MonoBehaviour:
   statusEffects:
   - statusEffect: {fileID: 11400000, guid: 2a834d8263f7b834ba2edffb2f75dee8, type: 2}
     chance: 100
-    duration: 2
+    duration: 10
     tier: 5
   upgrades: 
   canDealDankDmg: 0

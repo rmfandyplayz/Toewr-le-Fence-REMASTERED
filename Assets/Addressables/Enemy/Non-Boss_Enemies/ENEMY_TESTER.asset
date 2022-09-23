@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyType: TESTER
   enemySprite: {fileID: -2413806693520163455, guid: 3bb042a5489444d5e9bfdb532f1c75d3, type: 3}
   speed: 0.6
-  maxHealth: 1e+11
+  maxHealth: 1e+9
   maxShields: 0
   scoreValue: 1
   dropMoneyAmount: 1

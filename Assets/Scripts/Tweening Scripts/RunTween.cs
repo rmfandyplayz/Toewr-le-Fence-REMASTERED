@@ -19,7 +19,6 @@ public class RunTween : MonoBehaviour
     
     void RunTweenUniversal(Tweening_Dynamic_Transfer ?dynamicTransfer, int ?varID = null)
     {
-        Debug.Log($"Running {tweeningScriptObj} on {objectToTween} with {dynamicTransfer} and {varID} // From RunTween.cs");
         if(currentRunningTween != null && (varID == null || varID.Value != currentRunningTween.currentRunningTween.ID))
         {
             if(tweeningScriptObj.multiType == multipleTypes.runFirstOnly)
