@@ -8,5 +8,20 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Animation Testing.unity
+    guid: 2db323db31682164d9d468f3b47b24b2
+  - enabled: 1
+    path: Assets/Scenes/Menu (Testing).unity
+    guid: a546e50f1797fa44db97ccbd07ca80fb
+  - enabled: 1
+    path: Assets/Scenes/Test SE.unity
+    guid: 0c754210f1a774c5ea0883c1f9a4c7e1
+  - enabled: 1
+    path: Assets/Scenes/Test Tween Anim.unity
+    guid: 1b60033c328f241abb1f511b28b0d567
+  - enabled: 1
+    path: Assets/Scenes/TLF 1.unity
+    guid: e40e40d38b108d840bdf1af003460c2c
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 2a8183875a62d47c1b7ca8e437e2afff, type: 2}

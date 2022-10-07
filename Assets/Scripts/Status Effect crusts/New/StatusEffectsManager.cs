@@ -51,8 +51,10 @@ public class StatusEffectsManager : MonoBehaviour
     {
         if(enemySetup == null)
         {
+            //Debug.LogError($"Enemy Setup Step 1: {enemySetup}");
+            //Debug.LogError($"Enemy Setup Step 2: {GetComponentInParent<EnemyController>()}");
             enemySetup = GetComponentInParent<EnemyController>().escript;
-            Debug.LogError("Enemy Setup:", enemySetup);
+            //Debug.LogError($"Enemy Setup Step 3: {enemySetup}");
         }
         return (enemySetup.permanentImmunities?.Contains(statusScriptObj) ?? false) || (temporaryImmuneList?.Contains(statusScriptObj) ?? false);
     }
@@ -155,29 +157,12 @@ public class StatusEffectsManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Stops the running of any active status effect, immunity, etc from the Manager.
+    /// </summary>
+    public void StopAllOperationsM()
+    {
+        statusEffectsList.ForEach((effect) => effect.StopAllOperationsR());
+    }
     
-
 }
-/*
-## Guiding Questions Part 3: Managing Status Effects
-1. What is the "API" of the status effect manager (i.e. what functionality does the manager expose to other components, and what is kept private)?
-    *  Public
-        * Apply Status Effect: 
-    * Private
-        * 
-2. Where does the status effect manager live in the game object (i.e. where is is placed in the hierarchy)?
-    * Same place as the enemy controller (we can pass in the current enemy gameobject as the target)
-3. How are status effects stored in the manager?
-    * Right now its a list of status effect script objects
-4. How does the manager create and remove the status effects? What status effect "events" does the manager listen for?
-5. How does the manager handle interactions between status effects of the same type? ... Of the same type but different levels? 
-    * Same Status Effect and Same Stack/Level: Stacking Additively
-    * Same Status Effect but Different Stack/Level: Stacking additively with priority for more potent effects; Less potent effects will freeze and be stored while the more potent effect will run. After the more potent effect finishes, it will run the less potent effect. (TODO: See if there is a priority queue built-in)
-*/
-
-
-/*
-    * For Permentant Immunity:
-        1. Get the Status Effect Prefab and assign it the perm-immune
-        2. Set the prefab (mainly the sprite) to the "Permanent Immune" State in the StatusEffectRunner
-*/

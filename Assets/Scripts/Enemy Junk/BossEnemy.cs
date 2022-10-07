@@ -51,8 +51,4 @@ public class BossEnemy : MonoBehaviour
             yield return new WaitForSeconds(enemyInfo.enemySpawnDelay);
         }
     }
-
-
-
-
 }

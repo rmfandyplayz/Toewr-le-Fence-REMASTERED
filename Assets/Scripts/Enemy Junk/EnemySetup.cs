@@ -11,6 +11,7 @@ public class EnemySetup : ScriptableObject
     public float speed;
     public float maxHealth;
     public float maxShields;
+    public float baseDamage; //The base will take this many health if the enemy hits it.;
     //public float firedamageamount;
     //private float firedmgpertick = 1f;
     public int scoreValue;

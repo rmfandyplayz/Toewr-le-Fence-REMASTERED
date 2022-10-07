@@ -17,6 +17,7 @@ MonoBehaviour:
   speed: 5
   maxHealth: 10
   maxShields: 0
+  baseDamage: 1
   scoreValue: 1
   dropMoneyAmount: 1
   hasPermanentImmunities: 0

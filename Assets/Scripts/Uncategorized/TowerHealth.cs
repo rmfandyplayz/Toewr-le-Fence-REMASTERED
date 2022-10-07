@@ -6,41 +6,31 @@ using UnityEngine.Events;
 
 public class TowerHealth : MonoBehaviour
 {
-    [SerializeField]
-    private float maxHealth=100;
-    [SerializeField] 
-    private float currentHealth=0;
+    [SerializeField] float maxBaseHP;
+    [SerializeField] float currentBaseHP;
+    public UEventFloat OnBaseDamage = new UEventFloat();
+    public UnityEvent OnBaseDeath = new UnityEvent();
 
-    public UEventInt OnHealthUpdate;
-    public UEventFloat OnHealthRatioUpdate;
-    public UnityEvent OnTowerDeath;
-
-    void Start()
+    private void Awake()
     {
-        currentHealth = maxHealth;
-        OnHealthUpdate?.Invoke((int) currentHealth);
+        currentBaseHP = maxBaseHP;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.GetComponent<EnemyTag>() != null )
+        var enemy = collision.GetComponent<EnemyController>();
+        if(enemy != null)
         {
-            if(other.transform.parent != null)
+            if(currentBaseHP > 0)
             {
-                Destroy(other.transform.parent.gameObject);
+                currentBaseHP -= enemy.escript.baseDamage;
+                OnBaseDamage.Invoke(currentBaseHP/maxBaseHP);
             }
-            else
+            if(currentBaseHP <= 0)
             {
-                Destroy(other.gameObject);
+                OnBaseDeath.Invoke();
             }
-            var enemy = other.GetComponent<EnemyController>();
-            currentHealth -= enemy.currentHealth + enemy.currentShields;
-            OnHealthUpdate?.Invoke((int) currentHealth);
-            OnHealthRatioUpdate?.Invoke(currentHealth/maxHealth);
-        }   
-        if(currentHealth <= 0)
-        {
-            OnTowerDeath?.Invoke();
-        } 
+        }
     }
+
 }

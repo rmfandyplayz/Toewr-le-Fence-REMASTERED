@@ -665,7 +665,19 @@ MonoBehaviour:
   escript: {fileID: 0}
   setHealth:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3571024467614696162}
+        m_TargetAssemblyTypeName: RunTween, Scripts
+        m_MethodName: RunTweenWithDynamicFloat
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   setShields:
     m_PersistentCalls:
       m_Calls: []
@@ -738,6 +750,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEnemyDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3307055619064760140}
+        m_TargetAssemblyTypeName: StatusEffectsManager, Scripts
+        m_MethodName: StopAllOperationsM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rb: {fileID: 0}
 --- !u!114 &3062593312297174632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,6 +1113,7 @@ GameObject:
   - component: {fileID: 2573820586507743987}
   - component: {fileID: 3657443528345549670}
   - component: {fileID: 3903719964407305859}
+  - component: {fileID: 3571024467614696162}
   m_Layer: 6
   m_Name: healthbar
   m_TagString: Untagged
@@ -1166,4 +1195,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToTween: {fileID: 3657443528345549670}
   tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
+  applyTweenToChildren: 1
+--- !u!114 &3571024467614696162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9129516297305302565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 3657443528345549670}
+  tweeningScriptObj: {fileID: 11400000, guid: 4b61adfee895e444bb8c6597c9f912ac, type: 2}
   applyTweenToChildren: 1

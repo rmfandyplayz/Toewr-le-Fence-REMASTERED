@@ -125,7 +125,6 @@ public class StatusEffectsRunner : MonoBehaviour
         }
     }
 
-
     public IEnumerator RunStatusEffect(UnityAction callback)
     {
         //temp
@@ -192,6 +191,16 @@ public class StatusEffectsRunner : MonoBehaviour
             _ => ""
         };
     }
+
+
+    /// <summary>
+    /// This function stops the running of all status effect events from the Runner.
+    /// </summary>
+    public void StopAllOperationsR()
+    {
+        StopAllCoroutines();
+    }
+
 }
 
 [System.Serializable]

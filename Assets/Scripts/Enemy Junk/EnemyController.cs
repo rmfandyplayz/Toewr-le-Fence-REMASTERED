@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using CustomUnityEvent;
 
 public class EnemyController : MonoBehaviour
@@ -13,6 +14,8 @@ public class EnemyController : MonoBehaviour
     public UEventFloat OnHealthUpdate;
     public UEventFloat OnShieldUpdate;
     public UEventDamageInfo OnTakeDamage;
+    public UnityEvent OnEnemyDeath;
+    public Rigidbody2D rb;
 
     private void Start()
     {
@@ -24,8 +27,7 @@ public class EnemyController : MonoBehaviour
         //OnShieldUpdate?.Invoke(currentShields / escript.maxShields);
 
         GetComponent<SpriteRenderer>().sprite = escript.enemySprite;
-
-
+        
     }
 
 
@@ -47,6 +49,7 @@ public class EnemyController : MonoBehaviour
         }
         currentHealth -= newDamage;
         OnHealthUpdate?.Invoke(currentHealth/escript.maxHealth);
+        Debug.Log($"{currentHealth / escript.maxHealth}, EnemyController");
         OnShieldUpdate?.Invoke(currentShields/escript.maxShields);
         OnTakeDamage?.Invoke(new DamageInfo(damage, damageType, transform.position));
         if(currentHealth <= 0)
@@ -57,9 +60,11 @@ public class EnemyController : MonoBehaviour
         }
         
     }
+
     private void OnDisable()
     {
         this.gameObject.CancelAllTweens();
+        this.OnEnemyDeath?.Invoke();
     }
 }
 

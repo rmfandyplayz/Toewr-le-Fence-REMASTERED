@@ -12,19 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
   m_Name: Testing Fill Tween
   m_EditorClassIdentifier: 
+  multiType: 2
+  timesToRepeat: 0
   targetType: Image - Fade, Fill, or Color
   helpers:
   - typeOfTweenEvent: 1
+    ease: 0
+    canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 1
-    ease: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
     _amountValue: 0
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 3
+    ease: 0
+    canBeInterrupted: 0
+    gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 1
-    ease: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0.1
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 0}
+  - typeOfTweenEvent: 10
+    ease: 21
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 1
+    useRelativeValue: 1
+    runNextTweenImmediately: 0
     _amountValue: 0.1
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
