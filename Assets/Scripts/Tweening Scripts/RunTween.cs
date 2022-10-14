@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Toolbox;
 using Platinio.TweenEngine;
+using UnityEngine.Events;
 
 public class RunTween : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class RunTween : MonoBehaviour
 	[SerializeField] private bool applyTweenToChildren = true;
     private TweenInformation currentRunningTween;
     List<int> childTweenID = new List<int>();
+    public UnityEvent OnTweenComplete;
 	
     //FUNCTIONS SECTION
     

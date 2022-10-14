@@ -31,6 +31,21 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    public void TakeDamageNormal(float damage)
+    {
+        TakeDamage(damage, damageIndicatorType.normieDamage);
+    }
+
+    public void TakeDamageDank(float damage)
+    {
+        TakeDamage(damage, damageIndicatorType.dankDamage);
+    }
+
+    public void TakeDamageSurreal(float damage)
+    {
+        TakeDamage(damage, damageIndicatorType.surrealDamage);
+    }
+
 
     public void TakeDamage(float damage, damageIndicatorType damageType)
     {

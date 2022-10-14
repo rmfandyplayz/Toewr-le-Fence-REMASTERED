@@ -75,6 +75,7 @@ public class ObjectPooling : MonoBehaviour
         if (objPoolReference == null)
         {
             Destroy(prefab);
+            return;
         }
         List<GameObject> objectList;
         if (objPoolReference.objectPool.TryGetValue(prefab.name, out objectList))
