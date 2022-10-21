@@ -30,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7359571356390044472}
   m_RootOrder: 3
@@ -187,9 +188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIndicatorText: {fileID: 1912194745353014744}
   damageType: 0
-  dissappearTimer: 2
-  indicatorSpeed: 2
   isUpdating: 0
+  motionTween: {fileID: 0}
+  colorTween: {fileID: 0}
 --- !u!114 &6025879937572045669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +222,7 @@ GameObject:
   - component: {fileID: 5555956335653679215}
   - component: {fileID: 609070930815170818}
   - component: {fileID: 2692330933547165643}
+  - component: {fileID: 3751745602379505110}
   m_Layer: 0
   m_Name: Normie Damage Popup
   m_TagString: Untagged
@@ -238,6 +240,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7359571356390044472}
   m_RootOrder: 0
@@ -395,9 +398,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIndicatorText: {fileID: 609070930815170818}
   damageType: 0
-  dissappearTimer: 2
-  indicatorSpeed: 1
   isUpdating: 0
+  motionTween: {fileID: 3751745602379505110}
+  colorTween: {fileID: 0}
+--- !u!114 &3751745602379505110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037138438999695130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 609070930815170818}
+  tweeningScriptObj: {fileID: 11400000, guid: 1d900757cf2d00b4786046174b17b931, type: 2}
+  applyTweenToChildren: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6705367165412149069
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +449,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7359571356390044472}
   m_RootOrder: 1
@@ -585,9 +607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIndicatorText: {fileID: 9022845012064681091}
   damageType: 0
-  dissappearTimer: 2
-  indicatorSpeed: 1
   isUpdating: 0
+  motionTween: {fileID: 0}
+  colorTween: {fileID: 0}
 --- !u!114 &6454177560582980058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,6 +656,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8037587430052864598}
   - {fileID: 5151066367457400392}
@@ -703,6 +726,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7359571356390044472}
   m_RootOrder: 2
@@ -860,9 +884,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageIndicatorText: {fileID: 5165865149585323172}
   damageType: 0
-  dissappearTimer: 2
-  indicatorSpeed: 1
   isUpdating: 0
+  motionTween: {fileID: 0}
+  colorTween: {fileID: 0}
 --- !u!114 &6451227344490655181
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,9 +16,18 @@ public class RunTween : MonoBehaviour
     private TweenInformation currentRunningTween;
     List<int> childTweenID = new List<int>();
     public UnityEvent OnTweenComplete;
-	
+
     //FUNCTIONS SECTION
-    
+
+    private void Start()
+    {
+        if(tweeningScriptObj.TryGetType(out var targetType) && targetType == typeof(GameObject) && objectToTween is Component component)
+        {
+            objectToTween = component.gameObject;
+        }
+    }
+
+
     void RunTweenUniversal(Tweening_Dynamic_Transfer ?dynamicTransfer, int ?varID = null)
     {
         if(currentRunningTween != null && (varID == null || varID.Value != currentRunningTween.currentRunningTween.ID))

@@ -13,13 +13,6 @@ public class DamageIndicatorManager : MonoBehaviour
 
     public SerializedDictionary<damageIndicatorType, DamageIndicatorPoolInfo> damageDictionary;
 
-    /*
-    public GameObject normieDamagePrefab;
-    public GameObject dankDamagePrefab;
-    public GameObject surrealDamagePrefab;
-    public GameObject noScopeDamagePrefab;
-    */
-
     private void Start()
     {
         foreach (var damagePrefab in damageDictionary.Values)

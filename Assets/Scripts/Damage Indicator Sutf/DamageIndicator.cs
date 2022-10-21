@@ -10,8 +10,6 @@ public class DamageIndicator : MonoBehaviour
 {
     public TMP_Text damageIndicatorText;
     public damageIndicatorType damageType;
-    public float dissappearTimer;
-    public float indicatorSpeed = 100;
     public bool isUpdating = false;
     [SerializeField] RunTween motionTween;
     [SerializeField] RunTween colorTween;
@@ -21,7 +19,10 @@ public class DamageIndicator : MonoBehaviour
     {
         StartCoroutine(IndicatorMovement());
         motionTween.RunTweenWithDynamicVector3(indicatorDirection);
-        colorTween.RunTweenDefault();
+        if (colorTween != null)
+        {
+            colorTween.RunTweenDefault();
+        }
         damageIndicatorText.alpha = 1;
         //Debug.Log("Updating (DamageIndicator.cs)");
     }
@@ -30,20 +31,18 @@ public class DamageIndicator : MonoBehaviour
         isUpdating = false;
     }
 
-
+    /// <summary>
+    /// Initializes the damage indicators for rendering. Does not actually render the damage indicators.
+    /// This function basically tells the text what damage number to display.
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="indicatorType"></param>
     public void InitializeIndicator(float damage, damageIndicatorType indicatorType)
     {
         isUpdating = true;
         damageIndicatorText = GetComponent<TMP_Text>();
         damageType = indicatorType;
-        if(damageType == damageIndicatorType.mlgNoScope)
-        {
-            damageIndicatorText.text = "360° Noscope'd";
-        }
-        else
-        {
-            damageIndicatorText.text = $"{damage}";
-        }
+        damageIndicatorText.text = $"{damage}";
     }
     
 
@@ -57,11 +56,7 @@ public class DamageIndicator : MonoBehaviour
 
     public IEnumerator IndicatorMovement()
     {
-        for(int i = 0; i < 10; i++)
-        {
-            //damageIndicatorText.alpha -= 0.1f;
-            yield return new WaitForSeconds(dissappearTimer/10);
-        }
+        yield return new WaitForSeconds(2.5f);
         ObjectPooling.ReturnObject(this.gameObject);
     }
 }
