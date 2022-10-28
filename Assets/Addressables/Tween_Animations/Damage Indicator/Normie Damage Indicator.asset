@@ -37,7 +37,18 @@ MonoBehaviour:
     runNextTweenImmediately: 0
     _amountValue: 0.001
     defaultTarget:
-      dynamicValue: {x: 1, y: 0.01, z: 1, w: 0}
+      dynamicValue: {x: 6, y: 0.001, z: 1, w: 0}
+  - typeOfTweenEvent: 4
+    ease: 10
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 1
+    runNextTweenImmediately: 0
+    _amountValue: 0.001
+    defaultTarget:
+      dynamicValue: {x: -0.15, y: -0.05, z: 0, w: 0}
   - typeOfTweenEvent: 1
     ease: 0
     canBeInterrupted: 0
@@ -57,7 +68,7 @@ MonoBehaviour:
     useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 1
-    _amountValue: 5
+    _amountValue: 0.5
     defaultTarget:
       dynamicValue: {x: 1, y: 1, z: 1, w: 0}
   - typeOfTweenEvent: 4
@@ -67,7 +78,51 @@ MonoBehaviour:
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 1
-    runNextTweenImmediately: 1
-    _amountValue: 5
+    runNextTweenImmediately: 0
+    _amountValue: 0.25
     defaultTarget:
-      dynamicValue: {x: 10, y: 10, z: 0, w: 0}
+      dynamicValue: {x: 1.2, y: 0.4, z: 0, w: 0}
+  - typeOfTweenEvent: 4
+    ease: 24
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 1
+    runNextTweenImmediately: 0
+    _amountValue: 0.5
+    defaultTarget:
+      dynamicValue: {x: 0, y: -0.3, z: 0, w: 0}
+  - typeOfTweenEvent: 8
+    ease: 4
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 0
+    runNextTweenImmediately: 0
+    _amountValue: 0.4
+    defaultTarget:
+      dynamicValue: {x: 25, y: 25, z: 25, w: 25}
+  - typeOfTweenEvent: 6
+    ease: 1
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 1
+    runNextTweenImmediately: 1
+    _amountValue: 0.7
+    defaultTarget:
+      dynamicValue: {x: 0, y: 10, z: 0, w: 0}
+  - typeOfTweenEvent: 0
+    ease: 0
+    canBeInterrupted: 0
+    gotoTweenElement: 0
+    useSpeedValue: 0
+    useDynamicValue: 0
+    useRelativeValue: 1
+    runNextTweenImmediately: 0
+    _amountValue: 0.7
+    defaultTarget:
+      dynamicValue: {x: 0, y: 0, z: 0, w: 0}

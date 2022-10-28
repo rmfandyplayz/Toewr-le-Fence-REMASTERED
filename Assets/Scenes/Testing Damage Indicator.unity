@@ -215,7 +215,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 1
+          m_FloatArgument: 69
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -539,11 +539,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509633357428149698, guid: 33d52889ad84665448ed8f9937fc5973, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 509633357428149698, guid: 33d52889ad84665448ed8f9937fc5973, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 509633357428149698, guid: 33d52889ad84665448ed8f9937fc5973, type: 3}
       propertyPath: m_LocalPosition.z
@@ -579,11 +579,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1592700301311377898, guid: 33d52889ad84665448ed8f9937fc5973, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1592700301311377898, guid: 33d52889ad84665448ed8f9937fc5973, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4040556417392208798, guid: 33d52889ad84665448ed8f9937fc5973, type: 3}
       propertyPath: escript

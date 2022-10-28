@@ -30,12 +30,13 @@ public class DamageIndicatorManager : MonoBehaviour
         GameObject damagePrefab = null;
         if (damageDictionary.ContainsKey(damageInfo.damageType))
         {
-            damagePrefab = ObjectPooling.GetGameObject(damageDictionary[damageInfo.damageType].indicatorPrefab);
+            damagePrefab = ObjectPooling.GetGameObject(damageDictionary[damageInfo.damageType].indicatorPrefab, alreadyActive : false);
         }
         if (damagePrefab != null)
         {
-            damagePrefab.transform.position = damageInfo.position;
-            damagePrefab.GetComponent<DamageIndicator>().InitializeIndicator(damageInfo.damage, damageInfo.damageType);
+            //damagePrefab.transform.position = damageInfo.position;
+            damagePrefab.GetComponent<DamageIndicator>().InitializeIndicator(damageInfo.damage, damageInfo.damageType, damageInfo.position);
+            damagePrefab.SetActive(true);
         }
     }
 

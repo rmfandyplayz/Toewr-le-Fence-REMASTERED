@@ -38,14 +38,3 @@ MonoBehaviour:
     _amountValue: 0.1
     defaultTarget:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
-  - typeOfTweenEvent: 10
-    ease: 21
-    canBeInterrupted: 0
-    gotoTweenElement: 0
-    useSpeedValue: 0
-    useDynamicValue: 1
-    useRelativeValue: 1
-    runNextTweenImmediately: 0
-    _amountValue: 0.1
-    defaultTarget:
-      dynamicValue: {x: 0, y: 0, z: 0, w: 0}

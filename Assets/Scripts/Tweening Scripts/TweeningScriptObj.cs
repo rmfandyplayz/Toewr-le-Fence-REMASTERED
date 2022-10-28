@@ -74,20 +74,20 @@ public class TweeningScriptObj : ScriptableObject
         }
 
         var currentHelper = helpers[currentIndex];
-        Debug.Log($"Line 77 {currentHelper.typeOfTweenEvent}");
+        //Debug.Log($"Line 77 {currentHelper.typeOfTweenEvent}");
         if (currentHelper.getTween(checkedObject, dynamicValue) is BaseTween baseTween)
         {
             baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease);
             if (currentHelper.runNextTweenImmediately == false)
             {
-                Debug.Log($"Line 83 {currentHelper.typeOfTweenEvent}");
+                //Debug.Log($"Line 83 {currentHelper.typeOfTweenEvent}");
                 return new TweenInformation
                 {
                     
                     currentRunningTween = baseTween, carryDelay = 0, currentLoop = currentLoop, nextIndex = currentIndex + 1, gotoIndexWhenInterrupted = currentHelper.canBeInterrupted ? currentHelper.gotoTweenElement : null
                 };
             }
-            Debug.Log("Running next immediately");
+            //Debug.Log("Running next immediately");
         }
         else
         {

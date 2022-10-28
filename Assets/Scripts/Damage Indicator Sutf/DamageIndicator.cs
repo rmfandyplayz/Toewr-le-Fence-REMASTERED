@@ -17,6 +17,7 @@ public class DamageIndicator : MonoBehaviour
 
     void OnEnable()
     {
+        Debug.Log(this.transform.position);
         StartCoroutine(IndicatorMovement());
         motionTween.RunTweenWithDynamicVector3(indicatorDirection);
         if (colorTween != null)
@@ -37,21 +38,16 @@ public class DamageIndicator : MonoBehaviour
     /// </summary>
     /// <param name="damage"></param>
     /// <param name="indicatorType"></param>
-    public void InitializeIndicator(float damage, damageIndicatorType indicatorType)
+    /// <param name="spawnPos"></param>
+    public void InitializeIndicator(float damage, damageIndicatorType indicatorType, Vector3 spawnPos)
     {
         isUpdating = true;
         damageIndicatorText = GetComponent<TMP_Text>();
         damageType = indicatorType;
         damageIndicatorText.text = $"{damage}";
-    }
-    
-
-    void Update()
-    {
-        if (isUpdating)
-        {
-            
-        }
+        this.transform.position = spawnPos;
+        Debug.Log(this.transform.position);
+        
     }
 
     public IEnumerator IndicatorMovement()

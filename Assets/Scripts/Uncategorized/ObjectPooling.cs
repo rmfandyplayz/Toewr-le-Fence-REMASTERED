@@ -44,7 +44,7 @@ public class ObjectPooling : MonoBehaviour
         objPoolReference.objectPool.Add(prefabObject.name, objectList);
     }
 
-    public static GameObject GetGameObject(GameObject prefab, Transform parent = null)
+    public static GameObject GetGameObject(GameObject prefab, Transform parent = null, bool alreadyActive = true)
     {
         if(objPoolReference == null)
         {
@@ -57,7 +57,7 @@ public class ObjectPooling : MonoBehaviour
         {
             obj = list[list.Count-1];
             list.RemoveAt(list.Count - 1);
-            obj.SetActive(true);
+            obj.SetActive(alreadyActive);
             if (parent != null)
             {
                 obj.transform.SetParent(parent);

@@ -15,12 +15,6 @@ public class StatusEffectsManager : MonoBehaviour
     public EnemySetup enemySetup;
     [SerializeField] GameObject statusEffectSpriteHolder;
 
-    //Might expand: A variable to hold which state of status effect the enemy is in.
-
-    //TODO
-    //Make a system which will handle the potency of effects. (aka I, II, III, IV)
-    //Also make a program which will reorder the list of effects based on priority
-
     private void Start()
     {
         enemySetup = GetComponentInParent<EnemyController>().escript;
@@ -36,6 +30,11 @@ public class StatusEffectsManager : MonoBehaviour
         enemySetup = null;
     }
 
+
+    /// <summary>
+    /// Applies any permanent immunities to the enemy, if any is declared within its Scriptable Object.
+    /// </summary>
+    /// <param name="statusEffect"></param>
     public void ApplyPermanentImmunity(StatusEffectsScriptObj statusEffect)
     {
         //Applies any permanent immunities for the enemy when it spawns, if there is any.
@@ -94,6 +93,10 @@ public class StatusEffectsManager : MonoBehaviour
         ReorderEffectsList();
     }
 
+    /// <summary>
+    /// Applies immunity to an effect temporarily for however many seconds the enemy got the effect for.
+    /// </summary>
+    /// <param name="infoCarry"></param>
     public void ApplyTemporaryImmunity(StatusEffectsInfoCarry infoCarry)
     {
         temporaryImmuneList.Add(infoCarry.statusEffect);
