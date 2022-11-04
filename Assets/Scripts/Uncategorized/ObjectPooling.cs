@@ -48,7 +48,7 @@ public class ObjectPooling : MonoBehaviour
     {
         if(objPoolReference == null)
         {
-            Debug.Log(prefab);
+            //Debug.Log(prefab);
             return Instantiate(prefab);
         }
         List<GameObject> list;

@@ -64,7 +64,6 @@ public class EnemyController : MonoBehaviour
         }
         currentHealth -= newDamage;
         OnHealthUpdate?.Invoke(currentHealth/escript.maxHealth);
-        Debug.Log($"{currentHealth / escript.maxHealth}, EnemyController");
         OnShieldUpdate?.Invoke(currentShields/escript.maxShields);
         OnTakeDamage?.Invoke(new DamageInfo(damage, damageType, transform.position));
         if(currentHealth <= 0)

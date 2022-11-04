@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToTween: {fileID: 4037138438999695130}
+  objectToTween: {fileID: 609070930815170818}
   tweeningScriptObj: {fileID: 11400000, guid: 1d900757cf2d00b4786046174b17b931, type: 2}
   applyTweenToChildren: 0
   OnTweenComplete:

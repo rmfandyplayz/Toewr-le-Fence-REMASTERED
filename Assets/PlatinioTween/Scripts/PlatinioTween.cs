@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using Platinio.UI;
+using TMPro;
+using JetBrains.Annotations;
 
 namespace Platinio.TweenEngine
 {
@@ -55,7 +57,6 @@ namespace Platinio.TweenEngine
         }
 
         #endregion
-
 
 
         private BaseTween ProcessTween(BaseTween tween)
@@ -391,7 +392,7 @@ namespace Platinio.TweenEngine
             float t = Math.Abs(cg.alpha - to) / speed;
             return Fade(cg, to, t);
         }
-
+        
         public BaseTween Fade(Image image, float to, float t)
         {
             ValueTween tween = TweenPool.GetValueTween(image.color.a, to, t);
@@ -408,6 +409,30 @@ namespace Platinio.TweenEngine
                 image.color = c;
             });
             return ProcessTween(tween);
+        }
+
+        public BaseTween Fade(TMP_Text tmPro, float to, float t)
+        {
+            ValueTween tween = TweenPool.GetValueTween(tmPro.color.a, to, t);
+            tween.SetOnUpdateFloat(v =>
+            {
+                if (tmPro == null)
+                {
+                    CancelTween(tween);
+                    return;
+                }
+
+                Color c = tmPro.color;
+                c.a = v;
+                tmPro.color = c;
+            });
+            return ProcessTween(tween);
+        }
+
+        public BaseTween FadeAtSpeed(TMP_Text tmPro, float to, float speed)
+        {
+            float t = Math.Abs(tmPro.color.a - to) / speed;
+            return Fade(tmPro, to, t);
         }
 
         internal BaseTween SetFloatProperty(Material material, int propertyHash, float value, float t)

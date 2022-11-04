@@ -5,6 +5,7 @@ using Platinio.TweenEngine;
 using UnityEngine.UI;
 //using System;
 using UnityEditor;
+using TMPro;
 
 public enum tweenEvents
 {
@@ -32,16 +33,27 @@ public class TweeningHelper
         {
             var tweeningInfo = info.dynamicValueFloat;
             System.Func<float, float, BaseTween> function = null;
-        if(obj is Image img)
+            if(obj is Image img)
             {
                 tweeningInfo = useRelativeValue ? img.color.a + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?img.FadeAtSpeed : img.Fade;
             }
-        else if(obj is SpriteRenderer spriteRender)
+            else if(obj is TMP_Text tmPro)
+            {
+                Debug.LogWarning("Passed");
+                tweeningInfo = useRelativeValue ? tmPro.color.a + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?tmPro.FadeAtSpeed : tmPro.Fade;
+            }
+            else if(obj is SpriteRenderer spriteRender)
             {
                 tweeningInfo = useRelativeValue ? spriteRender.color.a + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?spriteRender.FadeAtSpeed : spriteRender.Fade;
-            }  return function?.Invoke(tweeningInfo, amountValue); } },
+            }
+            else
+            {
+                Debug.LogError($"Cannot fade: {obj}");
+            }
+            return function?.Invoke(tweeningInfo, amountValue); } },
         //======================================================================
         {tweenEvents.fill, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
@@ -51,7 +63,11 @@ public class TweeningHelper
             {
                 tweeningInfo = useRelativeValue ? img.fillAmount + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?img.FillAmountTweenAtSpeed : img.FillAmountTween;
-            };
+            }
+            else
+            {
+                Debug.LogError($"Cannot fill: {obj}");
+            }
                 return function?.Invoke(tweeningInfo, amountValue); } },
         //=======================================================================
         {tweenEvents.move, (obj, useRelativeValue, info, useSpeedValue, amountValue)=> //MOVE
@@ -67,6 +83,10 @@ public class TweeningHelper
             {
                 tweeningInfo = useRelativeValue ? component.transform.position + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?component.gameObject.MoveAtSpeed : component.gameObject.Move;
+            }
+            else
+            {
+                Debug.LogError($"Cannot move: {obj}");
             }
                 return function?.Invoke(tweeningInfo, amountValue); } },
         //=========================================================================
@@ -84,6 +104,10 @@ public class TweeningHelper
                 tweeningInfo = useRelativeValue ? component.transform.rotation.eulerAngles + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?component.gameObject.RotateTween : component.gameObject.RotateTween;
             }
+            else
+            {
+                Debug.LogError($"Cannot rotate: {obj}");
+            }
                 return function?.Invoke(tweeningInfo, amountValue); } },
         //=========================================================================
         {tweenEvents.scale, (obj, useRelativeValue, info, useSpeedValue, amountValue)=> //SCALE
@@ -100,6 +124,10 @@ public class TweeningHelper
                 tweeningInfo = useRelativeValue ? component.transform.localScale + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?component.gameObject.ScaleAtSpeed : component.gameObject.ScaleTween;
             }
+            else
+            {
+                Debug.LogError($"Cannot scale: {obj}");
+            }
                 return function?.Invoke(tweeningInfo, amountValue); } },
         //=========================================================================
         {tweenEvents.color, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
@@ -115,7 +143,12 @@ public class TweeningHelper
             {
                 tweeningInfo = useRelativeValue ? spriteRender.color + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?spriteRender.ColorTweenAtSpeed : spriteRender.ColorTween;
-            }  return function?.Invoke(tweeningInfo, amountValue); } },
+            }
+            else
+            {
+                Debug.LogError($"Cannot change color(s): {obj}");
+            }
+            return function?.Invoke(tweeningInfo, amountValue); } },
         //=========================================================================
         {tweenEvents.appear, (obj, useRelativeValue, info, useSpeedValue, amountValue)=>
         {
@@ -147,6 +180,10 @@ public class TweeningHelper
                         sprite.enabled = true;
                     }
                 }
+            }
+            else
+            {
+                Debug.LogError($"Cannot appear: {obj}");
             }
                 return null; } },
         //=========================================================================
@@ -180,6 +217,10 @@ public class TweeningHelper
                         sprite.enabled = false;
                     }
                 }
+            }
+            else
+            {
+                Debug.LogError($"Cannot disappear: {obj}");
             }
             return null; } },
         //=========================================================================
@@ -251,6 +292,7 @@ public class TweeningHelper
         }
         return null;
     }
+
 }
 
 

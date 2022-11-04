@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using Platinio.TweenEngine;
 using Platinio.UI;
+using TMPro;
 
 public static class PlatinioTweenExtension
 {
@@ -197,6 +198,16 @@ public static class PlatinioTweenExtension
     public static BaseTween Fade(this Image image, float to, float t)
     {
         return PlatinioTween.instance.Fade(image , to , t);
+    }
+
+    public static BaseTween Fade(this TMP_Text tmPro, float to, float t)
+    {
+        return PlatinioTween.instance.Fade(tmPro, to, t);
+    }
+
+    public static BaseTween FadeAtSpeed(this TMP_Text tmPro, float to, float t)
+    {
+        return PlatinioTween.instance.FadeAtSpeed(tmPro, to, t);
     }
 
     public static BaseTween FadeAtSpeed(this Image img, float to, float speed)

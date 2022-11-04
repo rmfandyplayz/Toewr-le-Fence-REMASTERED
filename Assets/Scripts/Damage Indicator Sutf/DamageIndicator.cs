@@ -17,7 +17,7 @@ public class DamageIndicator : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log(this.transform.position);
+        //Debug.Log(this.transform.position);
         StartCoroutine(IndicatorMovement());
         motionTween.RunTweenWithDynamicVector3(indicatorDirection);
         if (colorTween != null)
@@ -46,7 +46,7 @@ public class DamageIndicator : MonoBehaviour
         damageType = indicatorType;
         damageIndicatorText.text = $"{damage}";
         this.transform.position = spawnPos;
-        Debug.Log(this.transform.position);
+        //Debug.Log(this.transform.position);
         
     }
 

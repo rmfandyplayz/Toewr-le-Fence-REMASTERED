@@ -3,24 +3,31 @@ using UnityEngine.UI;
 using UnityEngine;
 using Platinio.TweenEngine;
 using Platinio;
+using TMPro;
 
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
 {
     [Tooltip("How should multiple tweens be handled?")]
     public multipleTypes multiType;
-    
+
     private static readonly SerializedDictionary<string, System.Type> validTweenTargets = new SerializedDictionary<string, System.Type>
     {
         {
             "Image - Fade, Fill, or Color", typeof(Image)
-        }, 
+        },
         {
             "Sprite Renderer - Fade or Color", typeof(SpriteRenderer)
-        }, 
+        },
         {
             "Game Object - Transformations, Rotations, Scale, or Set Activation", typeof(GameObject)
-        } 
+        },
+        {
+            "TMPro UGUI Text - GameObj functions + fade", typeof(TextMeshProUGUI)
+        },
+        {
+            "TMPro Text - GameObj functions + fade", typeof(TextMeshPro)
+        }
     }; //Has to equal name of image and image type, can add values later on
 
     public bool TryGetType(out System.Type target)
@@ -44,6 +51,7 @@ public class TweeningScriptObj : ScriptableObject
     {
         if(checkedObject == null || !validTweenTargets.TryGetValue(targetType, out var checkedType) || checkedObject.GetType() != checkedType)
         {
+            Debug.LogWarning($"Checked Object: {checkedObject} // Valid Tween Targets: {!validTweenTargets.TryGetValue(targetType, out var _)}, Checked Type: {checkedObject.GetType()}");
             return null;
         }
         else if(information != null)

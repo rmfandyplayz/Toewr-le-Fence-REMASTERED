@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiType: 0
   timesToRepeat: 0
-  targetType: Game Object - Transformations, Rotations, Scale, or Set Activation
+  targetType: TMPro Text - GameObj functions + fade
   helpers:
   - typeOfTweenEvent: 2
     ease: 0

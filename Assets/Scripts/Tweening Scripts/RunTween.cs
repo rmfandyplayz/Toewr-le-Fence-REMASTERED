@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Toolbox;
 using Platinio.TweenEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class RunTween : MonoBehaviour
 {
@@ -54,6 +55,9 @@ public class RunTween : MonoBehaviour
             }
         }
         var previousTween = currentRunningTween;
+
+        Debug.LogError($"Object to tween: {objectToTween}");
+        Debug.LogError($"Is current a TMP Text? {objectToTween is TMP_Text}");
 
         currentRunningTween = tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicTransfer, previousTween);
         if(currentRunningTween != null)
