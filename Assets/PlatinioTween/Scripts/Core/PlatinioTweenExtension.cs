@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using Platinio.TweenEngine;
 using Platinio.UI;
 using TMPro;
+using UnityEditor;
+using Unity.Plastic.Antlr3.Runtime.Tree;
 
 public static class PlatinioTweenExtension
 {
@@ -288,6 +290,16 @@ public static class PlatinioTweenExtension
     public static BaseTween ColorTweenAtSpeed(this Image img, Color to, float speed)
     {
         return PlatinioTween.instance.ColorTweenAtSpeed(img , to , speed);
+    }
+
+    public static BaseTween ColorTween(this TMP_Text text, Color to, float t)
+    {
+        return PlatinioTween.instance.ColorTween(text, to, t);
+    }
+
+    public static BaseTween ColorTweenAtSpeed(this TMP_Text text, Color to, float speed)
+    {
+        return PlatinioTween.instance.ColorTweenAtSpeed(text, to, speed);
     }
 
     public static BaseTween FillAmountTween(this Image img , float to , float t)

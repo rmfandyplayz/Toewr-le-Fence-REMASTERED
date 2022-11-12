@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
-  m_Name: Normie Damage Indicator
+  m_Name: Surreal Damage Indicator
   m_EditorClassIdentifier: 
   multiType: 0
   timesToRepeat: 0

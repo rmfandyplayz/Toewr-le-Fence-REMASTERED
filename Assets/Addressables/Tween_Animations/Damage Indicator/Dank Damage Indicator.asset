@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c410310376861a54ab4a0dcdb9ac4419, type: 3}
-  m_Name: Normie Damage Indicator
+  m_Name: Dank Damage Indicator
   m_EditorClassIdentifier: 
   multiType: 0
   timesToRepeat: 0
@@ -93,17 +93,17 @@ MonoBehaviour:
     _amountValue: 0.5
     defaultTarget:
       dynamicValue: {x: 0, y: -0.4, z: 0, w: 0}
-  - typeOfTweenEvent: 8
-    ease: 4
+  - typeOfTweenEvent: 7
+    ease: 21
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
     useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
-    _amountValue: 0.4
+    _amountValue: 2
     defaultTarget:
-      dynamicValue: {x: 25, y: 25, z: 25, w: 25}
+      dynamicValue: {x: 255, y: 255, z: 255, w: 255}
   - typeOfTweenEvent: 6
     ease: 1
     canBeInterrupted: 0

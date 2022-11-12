@@ -22,6 +22,7 @@ public enum tweenEvents
     debug,
 };
 
+//tem
 
 [System.Serializable]
 public class TweeningHelper
@@ -143,6 +144,11 @@ public class TweeningHelper
             {
                 tweeningInfo = useRelativeValue ? spriteRender.color + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?spriteRender.ColorTweenAtSpeed : spriteRender.ColorTween;
+            }
+        else if(obj is TMP_Text text)
+            {
+                tweeningInfo = useRelativeValue ? text.color + tweeningInfo : tweeningInfo;
+                function = useSpeedValue ?text.ColorTweenAtSpeed : text.ColorTween;
             }
             else
             {

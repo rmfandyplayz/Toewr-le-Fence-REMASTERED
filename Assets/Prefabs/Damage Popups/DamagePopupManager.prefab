@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8037587430052864598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.75, y: 0.2}
 --- !u!23 &5555956335653679215
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -431,14 +431,14 @@ GameObject:
   - component: {fileID: 8835792052809770495}
   - component: {fileID: 9022845012064681091}
   - component: {fileID: 4451981986509920668}
-  - component: {fileID: 6454177560582980058}
+  - component: {fileID: 238331763289170533}
   m_Layer: 0
   m_Name: Dank Damage Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5151066367457400392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -458,7 +458,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.75, y: 0.2}
 --- !u!23 &8835792052809770495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -606,11 +606,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageIndicatorText: {fileID: 9022845012064681091}
-  damageType: 0
+  damageType: 1
   isUpdating: 0
-  motionTween: {fileID: 0}
+  motionTween: {fileID: 238331763289170533}
   colorTween: {fileID: 0}
---- !u!114 &6454177560582980058
+--- !u!114 &238331763289170533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -619,16 +619,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6705367165412149069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4eedeb023f2c43b881a052e42db1496, type: 3}
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRadialShake: 0
-  rotateSpeed: 500
-  maxRotation: 9
-  isLinearShake: 1
-  linearShakeSpeed: 100
-  maxLinearShake: {x: 0.02, y: 0.02}
-  startingPosition: {x: 0, y: 0, z: 0}
+  objectToTween: {fileID: 9022845012064681091}
+  tweeningScriptObj: {fileID: 11400000, guid: a8d830af6b553f34798e5ce729f1dac8, type: 2}
+  applyTweenToChildren: 1
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7359571356390044473
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,13 +708,14 @@ GameObject:
   - component: {fileID: 5165865149585323172}
   - component: {fileID: 6708484640705002985}
   - component: {fileID: 6451227344490655181}
+  - component: {fileID: 6666273512404839275}
   m_Layer: 0
   m_Name: Surrel Damage Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5129149954705201456
 RectTransform:
   m_ObjectHideFlags: 0
@@ -735,7 +735,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.75, y: 0.2}
 --- !u!23 &3433861563086216691
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -883,9 +883,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageIndicatorText: {fileID: 5165865149585323172}
-  damageType: 0
+  damageType: 2
   isUpdating: 0
-  motionTween: {fileID: 0}
+  motionTween: {fileID: 6666273512404839275}
   colorTween: {fileID: 0}
 --- !u!114 &6451227344490655181
 MonoBehaviour:
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8827503077317720728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4eedeb023f2c43b881a052e42db1496, type: 3}
   m_Name: 
@@ -906,3 +906,21 @@ MonoBehaviour:
   linearShakeSpeed: 0
   maxLinearShake: {x: 0, y: 0}
   startingPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &6666273512404839275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827503077317720728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 5165865149585323172}
+  tweeningScriptObj: {fileID: 11400000, guid: b7f6118977703d945a9404f81f280aaf, type: 2}
+  applyTweenToChildren: 1
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
