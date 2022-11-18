@@ -25,7 +25,7 @@ MonoBehaviour:
     priceIncrease: 1
   fireRate:
     name: Fire Rate
-    baseValue: 0.25
+    baseValue: 1
     upgradeEfficiency: -0.01
     maxUpgradeLevel: 24
     startingPrice: 3

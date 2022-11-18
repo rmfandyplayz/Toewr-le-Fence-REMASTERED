@@ -48,7 +48,7 @@ MonoBehaviour:
     runNextTweenImmediately: 0
     _amountValue: 0.001
     defaultTarget:
-      dynamicValue: {x: -0.15, y: -0.05, z: 0, w: 0}
+      dynamicValue: {x: 0, y: -0.05, z: 0, w: 0}
   - typeOfTweenEvent: 1
     ease: 0
     canBeInterrupted: 0

@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public UEventDamageInfo OnTakeDamage;
     public UnityEvent OnEnemyDeath;
     public Rigidbody2D rb;
+    public PathMovement pathMove;
 
     private void Start()
     {
@@ -74,6 +75,13 @@ public class EnemyController : MonoBehaviour
         }
         
     }
+
+
+    public Vector2 GetDirection()
+    {
+        return pathMove.Velocity;
+    }
+
 
     private void OnDisable()
     {

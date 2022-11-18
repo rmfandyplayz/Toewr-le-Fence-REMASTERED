@@ -16,6 +16,7 @@ public class RunTween : MonoBehaviour
 	[SerializeField] private bool applyTweenToChildren = true;
     private TweenInformation currentRunningTween;
     List<int> childTweenID = new List<int>();
+    [SerializeField] SerializedDictionary<int, RunTween[]> tweenCoroutineList = new SerializedDictionary<int, RunTween[]>();
     public UnityEvent OnTweenComplete;
 
     //FUNCTIONS SECTION
@@ -56,13 +57,23 @@ public class RunTween : MonoBehaviour
         }
         var previousTween = currentRunningTween;
 
-        Debug.LogError($"Object to tween: {objectToTween}");
-        Debug.LogError($"Is current a TMP Text? {objectToTween is TMP_Text}");
-
         currentRunningTween = tweeningScriptObj.RunTweenOnObjectUsingDynamicValue(objectToTween, dynamicTransfer, previousTween);
         if(currentRunningTween != null)
         {
+            int startingValue = previousTween != null ? previousTween.nextIndex :  0;
+            int endingValue = currentRunningTween.nextIndex;
             currentRunningTween.currentRunningTween.SetOnComplete(() => RunTweenUniversal(dynamicTransfer, currentRunningTween.currentRunningTween.ID));
+            for(int i = startingValue; i < endingValue; i++)
+            {
+                if(tweenCoroutineList.TryGetValue(i, out var tweens))
+                {
+                    foreach(var t in tweens)
+                    {
+                        Debug.Log("ran");
+                        t.RunTweenUniversal(dynamicTransfer);
+                    }
+                }
+            }
         }
         if (applyTweenToChildren)
         {

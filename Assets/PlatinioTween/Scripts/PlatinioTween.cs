@@ -548,7 +548,7 @@ namespace Platinio.TweenEngine
 
         public BaseTween ColorTween(TMP_Text text, Color to, float t)
         {
-            ColorTween tween = TweenPool.GetColorTween(text.color, to, t);
+            ColorTween tween = TweenPool.GetColorTween(text.faceColor, to, t);
             tween.SetOnUpdateColor(delegate (Color c)
             {
                 if (text == null)
@@ -557,7 +557,7 @@ namespace Platinio.TweenEngine
                     return;
                 }
 
-                text.color = c;
+                text.faceColor = c;
             });
             return ProcessTween(tween);
         }
@@ -570,7 +570,7 @@ namespace Platinio.TweenEngine
 
         public BaseTween ColorTweenAtSpeed(TMP_Text text, Color to, float speed)
         {
-            float t = CalculateColorDistance(text.color, to) / speed;
+            float t = CalculateColorDistance(text.faceColor, to) / speed;
             return ColorTween(text, to, t);
         }
 

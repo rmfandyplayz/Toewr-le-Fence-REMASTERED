@@ -43,7 +43,7 @@ MonoBehaviour:
     maxUpgradeLevel: 50
     startingPrice: 1
     priceIncrease: 1
-  dankDmgMultiplier: 2
+  dankDmgMultiplier: 6969
   canDealSurrealDmg: 1
   _surrealDmgChance:
     name: Upgradable
@@ -52,7 +52,7 @@ MonoBehaviour:
     maxUpgradeLevel: 0
     startingPrice: 0
     priceIncrease: 0
-  surrealDmgMultiplier: 3
+  surrealDmgMultiplier: 69420
   canDealNoscopeDmg: 0
   _noscopeDmgChance:
     name: Upgradable

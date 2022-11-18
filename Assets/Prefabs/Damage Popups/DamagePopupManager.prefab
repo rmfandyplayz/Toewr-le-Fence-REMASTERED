@@ -249,7 +249,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 1}
-  m_Pivot: {x: 0.75, y: 0.2}
+  m_Pivot: {x: 1, y: 0.2}
 --- !u!23 &5555956335653679215
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -416,6 +416,9 @@ MonoBehaviour:
   objectToTween: {fileID: 609070930815170818}
   tweeningScriptObj: {fileID: 11400000, guid: 1d900757cf2d00b4786046174b17b931, type: 2}
   applyTweenToChildren: 0
+  tweenCoroutineList:
+    pairs: []
+    error: 0
   OnTweenComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -432,6 +435,7 @@ GameObject:
   - component: {fileID: 9022845012064681091}
   - component: {fileID: 4451981986509920668}
   - component: {fileID: 238331763289170533}
+  - component: {fileID: 1913435533970716902}
   m_Layer: 0
   m_Name: Dank Damage Popup
   m_TagString: Untagged
@@ -458,7 +462,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 1}
-  m_Pivot: {x: 0.75, y: 0.2}
+  m_Pivot: {x: 1, y: 0.2}
 --- !u!23 &8835792052809770495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -625,6 +629,33 @@ MonoBehaviour:
   objectToTween: {fileID: 9022845012064681091}
   tweeningScriptObj: {fileID: 11400000, guid: a8d830af6b553f34798e5ce729f1dac8, type: 2}
   applyTweenToChildren: 1
+  tweenCoroutineList:
+    pairs:
+    - key: 6
+      value:
+      - {fileID: 1913435533970716902}
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1913435533970716902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705367165412149069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5782fab388978746a9b697cfa7c41e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToTween: {fileID: 9022845012064681091}
+  tweeningScriptObj: {fileID: 11400000, guid: 17c7fe4e5b54d964b820f7134135ca92, type: 2}
+  applyTweenToChildren: 0
+  tweenCoroutineList:
+    pairs: []
+    error: 0
   OnTweenComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -735,7 +766,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 1}
-  m_Pivot: {x: 0.75, y: 0.2}
+  m_Pivot: {x: 1, y: 0.2}
 --- !u!23 &3433861563086216691
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -921,6 +952,9 @@ MonoBehaviour:
   objectToTween: {fileID: 5165865149585323172}
   tweeningScriptObj: {fileID: 11400000, guid: b7f6118977703d945a9404f81f280aaf, type: 2}
   applyTweenToChildren: 1
+  tweenCoroutineList:
+    pairs: []
+    error: 0
   OnTweenComplete:
     m_PersistentCalls:
       m_Calls: []

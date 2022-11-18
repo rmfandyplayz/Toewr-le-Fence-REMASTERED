@@ -147,7 +147,7 @@ public class TweeningHelper
             }
         else if(obj is TMP_Text text)
             {
-                tweeningInfo = useRelativeValue ? text.color + tweeningInfo : tweeningInfo;
+                tweeningInfo = useRelativeValue ? text.faceColor + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?text.ColorTweenAtSpeed : text.ColorTween;
             }
             else

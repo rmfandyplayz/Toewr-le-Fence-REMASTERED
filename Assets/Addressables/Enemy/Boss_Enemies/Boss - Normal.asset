@@ -15,8 +15,9 @@ MonoBehaviour:
   enemyType: Boss - Normal
   enemySprite: {fileID: 21300000, guid: 31dd670b6470d2242afb4c18ac46f55e, type: 3}
   speed: 1
-  maxHealth: 200
+  maxHealth: 69696970
   maxShields: 0
+  baseDamage: 0
   scoreValue: 10
   dropMoneyAmount: 8
   hasPermanentImmunities: 0

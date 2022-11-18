@@ -10,7 +10,8 @@ public class PathMovement : MonoBehaviour {
     public bool enemyUpdating = false;
     int targetIndex = 1;
     Vector3 velocity;
-    private Vector3 previousPos;
+    public Vector3 Velocity => velocity;
+    Vector3 previousPos;
 
     public UnityEvent OnPathFinished;
     bool pathFinished = false;

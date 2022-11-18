@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1264922242}
         m_TargetAssemblyTypeName: EnemyController, Scripts
-        m_MethodName: TakeDamageNormal
+        m_MethodName: TakeDamageDank
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
