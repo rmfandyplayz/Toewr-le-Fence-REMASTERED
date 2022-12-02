@@ -243,12 +243,15 @@ public class TweeningHelper
      };
     private bool toggleOptionsVisibility => typeOfTweenEvent != tweenEvents.appear && typeOfTweenEvent != tweenEvents.disappear && typeOfTweenEvent != tweenEvents.cancel && typeOfTweenEvent != tweenEvents.hold;
     
-    private bool toggleDefaultTargetVisibility => toggleOptionsVisibility && !useDynamicValue;
+    private bool toggleDefaultTargetVisibility => toggleOptionsVisibility && tweenOperation != TweenOperations.dynaimcOnly;
 
     [SearchableEnum] public tweenEvents typeOfTweenEvent;
 
     [Tooltip("Choose the type of animation."), ShowIf(nameof(toggleOptionsVisibility), true)]
     public Ease ease;
+
+    // PLACE TOOLTIP HERE LATER ============================================================================
+    public TweenOperations tweenOperation;
 
     [Tooltip("Makes it so this animation block can be resetted to another animation.")]
     public bool canBeInterrupted;
@@ -260,8 +263,12 @@ public class TweeningHelper
 
     [Tooltip("Treat amountValue as a speed value instead of a time value."), ShowIf(nameof(toggleOptionsVisibility), true)] public bool useSpeedValue; //Change to how fast the animation goes instead of a target time value?
 
-    [Tooltip("Prevents values from being hardcoded and makes it flexible. Some scenarios where you would use this include healthbars, which could change. Hardcoding a healthbar does not make sense."), ShowIf(nameof(toggleOptionsVisibility), true)] 
-    public bool useDynamicValue; //No hardcoding items
+    //[Tooltip("Prevents values from being hardcoded and makes it flexible. Some scenarios where you would use this include healthbars, which could change. Hardcoding a healthbar does not make sense."), ShowIf(nameof(toggleOptionsVisibility), true)]
+    //public bool useDynamicValue; //No hardcoding items
+
+    
+
+
 
     [Tooltip("If this is checked, it allows for an input of how much to change relative to the current value rather than changing to a fixed value.")]
     public bool useRelativeValue = true;
@@ -279,7 +286,7 @@ public class TweeningHelper
 
     public BaseTween getTween(Object obj, Tweening_Dynamic_Transfer? dynamicValue)
     {
-        var info = useDynamicValue && dynamicValue.HasValue ? dynamicValue.Value : defaultTarget; //Info is a dynamic transfer value; Making a choice between making using default or dynamic value with "?" and "&&." ? and : is basically an if statement. If first expression == true, use the thing after the question mark. Otherwise, use the thing after the colon.
+        var info = dynamicValue.HasValue ? Tweening_Dynamic_Transfer.ChooseTweenOperation(defaultTarget, dynamicValue.Value, tweenOperation): defaultTarget; //Info is a dynamic transfer value; Making a choice between making using default or dynamic value with "?" and "&&." ? and : is basically an if statement. If first expression == true, use the thing after the question mark. Otherwise, use the thing after the colon.
 
         if(functionSelecter.TryGetValue(typeOfTweenEvent, out var tween) && tween != null)
         {
