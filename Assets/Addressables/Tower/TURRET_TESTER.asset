@@ -18,7 +18,7 @@ MonoBehaviour:
   buyPrice: 0
   range:
     name: Upgradable
-    baseValue: 2
+    baseValue: 100
     upgradeEfficiency: 0
     maxUpgradeLevel: 0
     startingPrice: 0

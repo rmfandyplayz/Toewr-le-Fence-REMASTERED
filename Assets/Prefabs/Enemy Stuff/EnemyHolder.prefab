@@ -95,6 +95,12 @@ MonoBehaviour:
   objectToTween: {fileID: 1765209772408395339}
   tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
   applyTweenToChildren: 1
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3307055619064760140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,6 +772,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   rb: {fileID: 0}
+  pathMove: {fileID: 509633357428149699}
 --- !u!114 &3062593312297174632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +914,12 @@ MonoBehaviour:
   objectToTween: {fileID: 2185809446092081534}
   tweeningScriptObj: {fileID: 11400000, guid: 37904f7ebc1270b438f55e31105e008e, type: 2}
   applyTweenToChildren: 0
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5307716921578439539
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1012,12 @@ MonoBehaviour:
   objectToTween: {fileID: 6777411903290945670}
   tweeningScriptObj: {fileID: 11400000, guid: 37904f7ebc1270b438f55e31105e008e, type: 2}
   applyTweenToChildren: 0
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5899242916986923492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1215,12 @@ MonoBehaviour:
   objectToTween: {fileID: 3657443528345549670}
   tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
   applyTweenToChildren: 1
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3571024467614696162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,3 +1236,9 @@ MonoBehaviour:
   objectToTween: {fileID: 3657443528345549670}
   tweeningScriptObj: {fileID: 11400000, guid: 4b61adfee895e444bb8c6597c9f912ac, type: 2}
   applyTweenToChildren: 1
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []

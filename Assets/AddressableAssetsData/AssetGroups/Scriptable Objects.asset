@@ -221,13 +221,6 @@ MonoBehaviour:
     - Tween_Animations
     - ScriptObj
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a8d830af6b553f34798e5ce729f1dac8
-    m_Address: Dank Damage Indicator
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Tween_Animations
-    - ScriptObj
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7f6118977703d945a9404f81f280aaf
     m_Address: Surreal Damage Indicator
     m_ReadOnly: 0
@@ -237,6 +230,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 17c7fe4e5b54d964b820f7134135ca92
     m_Address: Dank Damage Indicator Flashing
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Tween_Animations
+    - ScriptObj
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8d830af6b553f34798e5ce729f1dac8
+    m_Address: Dank Damage Indicator
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tween_Animations

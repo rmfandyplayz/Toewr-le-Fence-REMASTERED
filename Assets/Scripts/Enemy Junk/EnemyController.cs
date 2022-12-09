@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using CustomUnityEvent;
+using Codice.Client.BaseCommands.Differences;
 
 public class EnemyController : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class EnemyController : MonoBehaviour
         currentHealth -= newDamage;
         OnHealthUpdate?.Invoke(currentHealth/escript.maxHealth);
         OnShieldUpdate?.Invoke(currentShields/escript.maxShields);
-        OnTakeDamage?.Invoke(new DamageInfo(damage, damageType, transform.position));
+        OnTakeDamage?.Invoke(new DamageInfo(damage, damageType, transform.position, GetDirection()));
         if(currentHealth <= 0)
         {
             GoldManager.instance?.AddGold(escript.dropMoneyAmount);
@@ -95,12 +96,14 @@ public class DamageInfo
     public float damage;
     public damageIndicatorType damageType;
     public Vector3 position;
+    public Vector3 velocity;
 
-    public DamageInfo(float dmg, damageIndicatorType dit, Vector3 pos)
+    public DamageInfo(float dmg, damageIndicatorType dit, Vector3 pos, Vector3 vel)
     {
         damage = dmg;
         damageType = dit;
         position = pos;
+        velocity = vel;
     }
 
 }

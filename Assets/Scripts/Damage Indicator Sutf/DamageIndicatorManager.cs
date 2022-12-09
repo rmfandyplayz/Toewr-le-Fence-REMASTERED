@@ -35,7 +35,7 @@ public class DamageIndicatorManager : MonoBehaviour
         if (damagePrefab != null)
         {
             //damagePrefab.transform.position = damageInfo.position;
-            damagePrefab.GetComponent<DamageIndicator>().InitializeIndicator(damageInfo.damage, damageInfo.damageType, damageInfo.position);
+            damagePrefab.GetComponent<DamageIndicator>().InitializeIndicator(damageInfo.damage, damageInfo.damageType, damageInfo.position, damageInfo.velocity);
             damagePrefab.SetActive(true);
         }
     }

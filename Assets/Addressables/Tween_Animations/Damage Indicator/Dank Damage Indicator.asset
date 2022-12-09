@@ -18,10 +18,10 @@ MonoBehaviour:
   helpers:
   - typeOfTweenEvent: 2
     ease: 0
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
     _amountValue: 0
@@ -29,10 +29,10 @@ MonoBehaviour:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 6
     ease: 0
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
     _amountValue: 0.001
@@ -40,10 +40,10 @@ MonoBehaviour:
       dynamicValue: {x: 4, y: 0.001, z: 1, w: 0}
   - typeOfTweenEvent: 4
     ease: 10
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 1
     runNextTweenImmediately: 0
     _amountValue: 0.001
@@ -51,10 +51,10 @@ MonoBehaviour:
       dynamicValue: {x: 0, y: -0.05, z: 0, w: 0}
   - typeOfTweenEvent: 1
     ease: 0
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
     _amountValue: 0
@@ -62,10 +62,10 @@ MonoBehaviour:
       dynamicValue: {x: 1, y: 0.01, z: 1, w: 0}
   - typeOfTweenEvent: 6
     ease: 4
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 1
     _amountValue: 0.5
@@ -73,10 +73,10 @@ MonoBehaviour:
       dynamicValue: {x: 1, y: 1, z: 1, w: 0}
   - typeOfTweenEvent: 4
     ease: 10
+    tweenOperation: 3
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 1
     runNextTweenImmediately: 0
     _amountValue: 0.25
@@ -84,10 +84,10 @@ MonoBehaviour:
       dynamicValue: {x: 2, y: 0.2, z: 0, w: 0}
   - typeOfTweenEvent: 4
     ease: 24
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 1
     runNextTweenImmediately: 0
     _amountValue: 0.5
@@ -95,10 +95,10 @@ MonoBehaviour:
       dynamicValue: {x: 0, y: -0.4, z: 0, w: 0}
   - typeOfTweenEvent: 8
     ease: 0
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
     _amountValue: 0.4
@@ -106,10 +106,10 @@ MonoBehaviour:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 6
     ease: 1
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 1
     runNextTweenImmediately: 1
     _amountValue: 0.7
@@ -117,10 +117,10 @@ MonoBehaviour:
       dynamicValue: {x: 0, y: 2.75, z: 0, w: 0}
   - typeOfTweenEvent: 0
     ease: 0
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 0
     useRelativeValue: 0
     runNextTweenImmediately: 0
     _amountValue: 0.4

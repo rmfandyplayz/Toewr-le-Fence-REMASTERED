@@ -1009,6 +1009,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEnemyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  rb: {fileID: 0}
+  pathMove: {fileID: 509633357356937401}
 --- !u!58 &509633358132168695
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1285,6 +1290,12 @@ MonoBehaviour:
   objectToTween: {fileID: 509633358356747272}
   tweeningScriptObj: {fileID: 11400000, guid: 37904f7ebc1270b438f55e31105e008e, type: 2}
   applyTweenToChildren: 0
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &509633358863712990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1485,6 +1496,12 @@ MonoBehaviour:
   objectToTween: {fileID: 509633357342740672}
   tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
   applyTweenToChildren: 1
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7368970891016706023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,6 +1553,12 @@ MonoBehaviour:
   objectToTween: {fileID: 509633357679064818}
   tweeningScriptObj: {fileID: 11400000, guid: 37904f7ebc1270b438f55e31105e008e, type: 2}
   applyTweenToChildren: 0
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &8544604522049180226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1571,6 +1594,12 @@ MonoBehaviour:
   objectToTween: {fileID: 8800154704168940096}
   tweeningScriptObj: {fileID: 11400000, guid: 05c86d59ae170be48b0aa7b66efb053a, type: 2}
   applyTweenToChildren: 1
+  tweenCoroutineList:
+    pairs: []
+    error: 0
+  OnTweenComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8800154704168940095
 MonoBehaviour:
   m_ObjectHideFlags: 0

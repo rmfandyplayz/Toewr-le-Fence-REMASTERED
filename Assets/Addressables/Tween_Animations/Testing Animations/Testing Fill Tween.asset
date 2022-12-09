@@ -18,10 +18,10 @@ MonoBehaviour:
   helpers:
   - typeOfTweenEvent: 1
     ease: 0
+    tweenOperation: 0
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 1
     useRelativeValue: 0
     runNextTweenImmediately: 0
     _amountValue: 0
@@ -29,10 +29,10 @@ MonoBehaviour:
       dynamicValue: {x: 0, y: 0, z: 0, w: 0}
   - typeOfTweenEvent: 3
     ease: 0
+    tweenOperation: 1
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
-    useDynamicValue: 1
     useRelativeValue: 0
     runNextTweenImmediately: 0
     _amountValue: 0.1
