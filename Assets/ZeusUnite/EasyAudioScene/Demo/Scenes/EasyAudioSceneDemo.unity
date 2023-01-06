@@ -450,7 +450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -565,6 +564,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -596,6 +596,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1064455490345031277, guid: d9e1c821ba8567046ac89f59d6f293c1, type: 3}
@@ -651,12 +652,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: e56eee48b91d61743b1c8da58d1cf6f5, type: 3}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e1c821ba8567046ac89f59d6f293c1, type: 3}
 --- !u!1001 &6244687300055588312
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2078977537}
     m_Modifications:
     - target: {fileID: 1839504686811336064, guid: 3ee165169ccb1884e806c4b03d52eb0e, type: 3}
@@ -748,6 +751,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee165169ccb1884e806c4b03d52eb0e, type: 3}
 --- !u!224 &6244687300055588313 stripped
 RectTransform:
@@ -759,6 +763,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7199796528836259533, guid: 247a95b4a94c6a945b94a77764dd12c7, type: 3}
@@ -810,6 +815,7 @@ PrefabInstance:
       value: AudioController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 247a95b4a94c6a945b94a77764dd12c7, type: 3}
 --- !u!224 &8431919502820129264
 RectTransform:

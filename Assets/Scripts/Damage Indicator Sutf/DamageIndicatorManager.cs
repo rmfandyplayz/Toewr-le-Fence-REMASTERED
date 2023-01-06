@@ -37,6 +37,20 @@ public class DamageIndicatorManager : MonoBehaviour
             damagePrefab.GetComponent<DamageIndicator>().InitializeIndicator(damageInfo.damage, damageInfo.damageType, damageInfo.position, damageInfo.velocity);
             damagePrefab.SetActive(true);
         }
+
+        /*
+        if(damageInfo.damageType == damageinfo.damageType.dank)
+        {
+            AudioController
+            PlaySound(<sound>)
+            PlayMusicOnRepeat()
+            PlayMusic()
+            StopMusic()
+            StopSound()
+        }
+
+
+         */
     }
 
 
