@@ -2,13 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.Plastic.Antlr3.Runtime;
 
 [System.Serializable]
 public struct Tweening_Dynamic_Transfer
 {
     [SerializeField, NewLabel("Dynamic Values - Vector4"), Tooltip("If using float, use X (This could be used for Fade and Fill)\nIf using Vector3, use XY[Z] (This could be used for Move, Rotate [Use ONLY Z for 2D rotation], Scale))\nIf using color, use XYZW, which is RGBA (red, green, blue, alpha)")]
     private Vector4 dynamicValue;
-    
+
+    public override string ToString()
+    {
+        return dynamicValue.ToString("F4");
+    }
 
     public float dynamicValueFloat
     {

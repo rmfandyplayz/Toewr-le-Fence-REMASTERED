@@ -41,7 +41,6 @@ public class TweeningHelper
             }
             else if(obj is TMP_Text tmPro)
             {
-                Debug.LogWarning("Passed");
                 tweeningInfo = useRelativeValue ? tmPro.color.a + tweeningInfo : tweeningInfo;
                 function = useSpeedValue ?tmPro.FadeAtSpeed : tmPro.Fade;
             }

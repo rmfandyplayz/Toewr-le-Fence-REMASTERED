@@ -4,12 +4,17 @@ using UnityEngine;
 using Platinio.TweenEngine;
 using Platinio;
 using TMPro;
+using Codice.Client.Common;
 
 [CreateAssetMenu(menuName = "Tween Animation")]
 public class TweeningScriptObj : ScriptableObject
 {
     [Tooltip("How should multiple tweens be handled?")]
     public multipleTypes multiType;
+
+
+    //temporary
+    [SerializeField] bool debugMode = false;
 
     private static readonly SerializedDictionary<string, System.Type> validTweenTargets = new SerializedDictionary<string, System.Type>
     {
@@ -88,7 +93,10 @@ public class TweeningScriptObj : ScriptableObject
             baseTween = baseTween.SetDelay(delay).SetEase(currentHelper.ease);
             if (currentHelper.runNextTweenImmediately == false)
             {
-                //Debug.Log($"Line 83 {currentHelper.typeOfTweenEvent}");
+                if (debugMode)
+                {
+                    Debug.Log($"⚠️ DEBUG MODE ENABLED || Name: {this.name} / Currently Running: {currentHelper.typeOfTweenEvent} / Dynamic Value: {dynamicValue}");
+                }
                 return new TweenInformation
                 {
                     
@@ -100,6 +108,10 @@ public class TweeningScriptObj : ScriptableObject
         else
         {
             delay += currentHelper.amountValue;
+        }
+        if (debugMode)
+        {
+            Debug.Log($"⚠️ DEBUG MODE ENABLED || Name: {this.name} / Currently Running: {currentHelper.typeOfTweenEvent} / Dynamic Value: {dynamicValue}");
         }
         return RunTweenOnObj(checkedObject, dynamicValue, ++currentIndex, delay, currentLoop);
     }

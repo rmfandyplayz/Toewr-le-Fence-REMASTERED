@@ -35,7 +35,7 @@ MonoBehaviour:
     duration: 2
     tier: 5
   upgrades: 
-  canDealDankDmg: 1
+  canDealDankDmg: 0
   _dankDmgChance:
     name: Dank Chance Increase
     baseValue: 10
@@ -44,7 +44,7 @@ MonoBehaviour:
     startingPrice: 1
     priceIncrease: 1
   dankDmgMultiplier: 6969
-  canDealSurrealDmg: 1
+  canDealSurrealDmg: 0
   _surrealDmgChance:
     name: Upgradable
     baseValue: 10

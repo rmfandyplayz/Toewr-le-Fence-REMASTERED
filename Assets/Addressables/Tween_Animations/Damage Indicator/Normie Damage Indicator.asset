@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Normie Damage Indicator
   m_EditorClassIdentifier: 
   multiType: 0
+  debugMode: 0
   timesToRepeat: 0
   targetType: TMPro Text - GameObj functions + fade
   helpers:
@@ -40,7 +41,7 @@ MonoBehaviour:
       dynamicValue: {x: 4, y: 0.001, z: 1, w: 0}
   - typeOfTweenEvent: 4
     ease: 10
-    tweenOperation: 0
+    tweenOperation: 3
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0
@@ -48,7 +49,7 @@ MonoBehaviour:
     runNextTweenImmediately: 0
     _amountValue: 0.001
     defaultTarget:
-      dynamicValue: {x: 0, y: -0.05, z: 0, w: 0}
+      dynamicValue: {x: 1, y: -0.05, z: 0, w: 0}
   - typeOfTweenEvent: 1
     ease: 0
     tweenOperation: 0
@@ -81,10 +82,10 @@ MonoBehaviour:
     runNextTweenImmediately: 0
     _amountValue: 0.25
     defaultTarget:
-      dynamicValue: {x: 2, y: 0.2, z: 0, w: 0}
+      dynamicValue: {x: 1, y: 0.2, z: 0, w: 0}
   - typeOfTweenEvent: 4
     ease: 24
-    tweenOperation: 0
+    tweenOperation: 3
     canBeInterrupted: 0
     gotoTweenElement: 0
     useSpeedValue: 0

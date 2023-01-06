@@ -5,21 +5,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using log4net.DateFormatter;
-using UnityEditor.Experimental.GraphView;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class DamageIndicator : MonoBehaviour
 {
     public TMP_Text damageIndicatorText;
     public damageIndicatorType damageType;
     public bool isUpdating = false;
+    bool initialized = false;
     [SerializeField] RunTween motionTween;
     [SerializeField] RunTween colorTween;
     Vector3 indicatorDirection;
 
     void OnEnable()
     {
+        if (!initialized)
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
         StartCoroutine(IndicatorMovement());
+        Debug.Log($"Indicator Direction: {indicatorDirection}");
         motionTween.RunTweenWithDynamicVector3(indicatorDirection);
         if (colorTween != null)
         {
@@ -54,14 +60,18 @@ public class DamageIndicator : MonoBehaviour
         //If the enemy is going up or down
         else
         {
-            indicatorDirection = new Vector3((Camera.main.pixelWidth / 2) - this.transform.position.x >= 0 ? 1 : -1, 1, 1);
+            indicatorDirection = new Vector3((Camera.main.pixelWidth / 2) - Camera.main.WorldToScreenPoint(spawnPos).x >= 0 ? 1 : -1, 1, 1);
         }
-        Debug.LogError($"IndicatorDirection: {indicatorDirection}");
         this.transform.position = spawnPos;
         if(indicatorDirection.x < 0)
         {
             damageIndicatorText.rectTransform.pivot = new Vector2(0, damageIndicatorText.rectTransform.pivot.y);
         }
+        else
+        {
+            damageIndicatorText.rectTransform.pivot = new Vector2(1, damageIndicatorText.rectTransform.pivot.y);
+        }
+        initialized = true;
     }
 
     public IEnumerator IndicatorMovement()
