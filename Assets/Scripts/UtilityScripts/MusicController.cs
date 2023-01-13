@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZeusUnite.Audio;
 
-public class AudioController : MonoBehaviour
+public class MusicController : MonoBehaviour
 {
-    public static AudioController instance;
+    public static MusicController instance;
 
     private void Awake()
     {
@@ -14,21 +15,10 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    public static void PlaySound(AudioClip sound)
-    {
-
-    }
-
-    public static void StopSound(AudioClip sound)
-    {
-        
-    }
-
-    public static void StopAllSounds()
-    {
-
-    }
-
+    /// <summary>
+    /// Plays music WITHOUT repeat. To play music with repeat, use PlayMusicRepeat().
+    /// </summary>
+    /// <param name="music"></param>
     public static void PlayMusic(AudioClip music)
     {
         

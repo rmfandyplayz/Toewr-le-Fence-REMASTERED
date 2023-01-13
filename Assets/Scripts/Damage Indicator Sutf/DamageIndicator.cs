@@ -6,6 +6,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ZeusUnite.Audio;
 
 public class DamageIndicator : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class DamageIndicator : MonoBehaviour
     [SerializeField] RunTween motionTween;
     [SerializeField] RunTween colorTween;
     Vector3 indicatorDirection;
+
+    [Header("Audios for different types of damage")]
+    [SerializeField] AudioShot normieDamageSound;
+    [SerializeField] AudioShot dankDamageSound;
+    [SerializeField] AudioShot surrealDamageSound;
 
     void OnEnable()
     {
@@ -71,6 +77,12 @@ public class DamageIndicator : MonoBehaviour
         {
             damageIndicatorText.rectTransform.pivot = new Vector2(1, damageIndicatorText.rectTransform.pivot.y);
         }
+
+        //Checks which type of damage is going to be applied, and plays the appropriate sound.
+        if (indicatorType == damageIndicatorType.normieDamage) normieDamageSound.Play();
+        else if (indicatorType == damageIndicatorType.dankDamage) dankDamageSound.Play();
+        else if (indicatorType == damageIndicatorType.surrealDamage) surrealDamageSound.Play();
+
         initialized = true;
     }
 

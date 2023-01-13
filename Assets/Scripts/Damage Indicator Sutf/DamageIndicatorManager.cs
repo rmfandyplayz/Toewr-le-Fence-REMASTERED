@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using ZeusUnite.Audio;
+//using ZeusUnite.Audio;
+
 
 public enum damageIndicatorType
 {
@@ -10,7 +13,6 @@ public enum damageIndicatorType
 
 public class DamageIndicatorManager : MonoBehaviour
 {
-
     public SerializedDictionary<damageIndicatorType, DamageIndicatorPoolInfo> damageDictionary;
 
     private void Start()
@@ -27,6 +29,7 @@ public class DamageIndicatorManager : MonoBehaviour
 
     public void GenerateIndicator(DamageInfo damageInfo)
     {
+        Debug.Log($"Now Playing {GetComponent<AudioSource>()}");
         GameObject damagePrefab = null;
         if (damageDictionary.ContainsKey(damageInfo.damageType))
         {
