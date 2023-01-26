@@ -191,6 +191,21 @@ MonoBehaviour:
   isUpdating: 0
   motionTween: {fileID: 0}
   colorTween: {fileID: 0}
+  normieDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
+  dankDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
+  surrealDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
 --- !u!114 &6025879937572045669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +416,21 @@ MonoBehaviour:
   isUpdating: 0
   motionTween: {fileID: 3751745602379505110}
   colorTween: {fileID: 0}
+  normieDamageSound:
+    audioClip: {fileID: 8300000, guid: ed60baa1b0b5314439f914cd6c9cf829, type: 3}
+    audioVolume: 0.5
+    audioPitch: 1
+    playDelay: 0
+  dankDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
+  surrealDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
 --- !u!114 &3751745602379505110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +644,21 @@ MonoBehaviour:
   isUpdating: 0
   motionTween: {fileID: 238331763289170533}
   colorTween: {fileID: 0}
+  normieDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
+  dankDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
+  surrealDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
 --- !u!114 &238331763289170533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,11 +752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5fcdac812a60d46a4029dd1e68f2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio:
-    audioClip: {fileID: 8300000, guid: ed60baa1b0b5314439f914cd6c9cf829, type: 3}
-    audioVolume: 35.15
-    audioPitch: 1
-    playDelay: 0
   damageDictionary:
     pairs:
     - key: 0
@@ -923,6 +963,21 @@ MonoBehaviour:
   isUpdating: 0
   motionTween: {fileID: 6666273512404839275}
   colorTween: {fileID: 0}
+  normieDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
+  dankDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
+  surrealDamageSound:
+    audioClip: {fileID: 0}
+    audioVolume: 1
+    audioPitch: 1
+    playDelay: 0
 --- !u!114 &6451227344490655181
 MonoBehaviour:
   m_ObjectHideFlags: 0
